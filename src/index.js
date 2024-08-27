@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-// import App from './App';
 import reportWebVitals from './reportWebVitals';
 import {
   createBrowserRouter,
@@ -10,7 +9,6 @@ import {
 import App from './App';
 import Home from './Components/Home';
 import VinGenerator from './Components/VinGenerator';
-import VinResult from './Components/VinResult';
 
 const router = createBrowserRouter([
   {
@@ -18,16 +16,12 @@ const router = createBrowserRouter([
     element: <App />,
     children: [
       {
-        path: "/",
+        path: "",
         element: <Home />,
       },
       {
-        path: "/VinGenerator",
+        path: "VinGenerator",
         element: <VinGenerator />,
-      },
-      {
-        path: "/VinResult",
-        element: <VinResult />,
       },
     ],
   },
