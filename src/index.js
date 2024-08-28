@@ -9,6 +9,8 @@ import {
 import App from './App';
 import Home from './Components/Home';
 import VinGenerator from './Components/VinGenerator';
+import Dealer from './Components/Dealer';
+import Origenate from './Components/Origenate';
 
 const router = createBrowserRouter([
   {
@@ -22,6 +24,14 @@ const router = createBrowserRouter([
       {
         path: "VinGenerator",
         element: <VinGenerator />,
+      },
+      {
+        path: "Dealer",
+        element: <Dealer />,
+      },
+      {
+        path: "Origenate",
+        element: <Origenate />,
       },
     ],
   },

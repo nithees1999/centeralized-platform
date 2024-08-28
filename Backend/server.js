@@ -13,6 +13,7 @@ const db = mysql.createConnection({
     database: "Test",
 })
 
+//fetch VIN details
 app.get('/api/fetchVinDetails', (req, res) => {
     const query = "SELECT * FROM VINDetails"
     db.query(query, (err, data) => {
@@ -21,7 +22,7 @@ app.get('/api/fetchVinDetails', (req, res) => {
     })
 })
 
-app.post('/api/filter', (req, res) => {
+app.post('/api/VinFilter', (req, res) => {
     const { VINType, VIN, Model, Make, Year } = req.body;
 
     let query = 'SELECT * FROM VINDetails WHERE 1=1';
@@ -33,7 +34,7 @@ app.post('/api/filter', (req, res) => {
     }
     if (VIN) {
         query += " AND VIN LIKE ?";
-        queryParams.push(VIN + "%");
+        queryParams.push("%" + VIN + "%");
     }
     if (Model) {
         query += ' AND Model = ?';
@@ -55,26 +56,63 @@ app.post('/api/filter', (req, res) => {
     });
 });
 
-app.post('/api/sort', (req, res) => {
-    const { sortBy, sortOrder = 'ASC' } = req.body;
-
-    // List of allowed columns for sorting to prevent SQL injection
-    const allowedColumns = ['VINType', 'VIN', 'Model', 'Make', 'Year'];
-
-    // Check if the provided sortBy column is allowed
-    if (!allowedColumns.includes(sortBy)) {
-        return res.status(400).json({ error: 'Invalid column name for sorting' });
-    }
-
-    // Ensure sortOrder is either 'ASC' or 'DESC'
-    const order = sortOrder.toUpperCase() === 'DESC' ? 'DESC' : 'ASC';
-
-    // Construct the query with the sorting
-    const query = `SELECT * FROM VINDetails ORDER BY ${sortBy} ${order}`;
-
+//fetch dealer details
+app.get('/api/fetchDealerDetails', (req, res) => {
+    const query = "SELECT * FROM dealer"
     db.query(query, (err, data) => {
         if (err) return res.json(err);
-        return res.json(data);
+        return res.json(data)
+    })
+})
+
+app.post('/api/DealerFilter', (req, res) => {
+    const { state, brand } = req.body;
+
+    let query = 'SELECT * FROM dealer WHERE 1=1';
+    const queryParams = [];
+
+    if (state) {
+        query += ' AND state = ?';
+        queryParams.push(state);
+    }
+    if (brand) {
+        query += ' AND brand = ?';
+        queryParams.push(brand);
+    }
+
+    db.query(query, queryParams, (err, data) => {
+        if (err) return res.json(err);
+        return data.length ? res.json(data) : res.status(200).json({ message: "No data available" })
+    });
+});
+
+//fetch origenate details
+app.get('/api/fetchOrigenateDetails', (req, res) => {
+    const query = "SELECT * FROM origenate"
+    db.query(query, (err, data) => {
+        if (err) return res.json(err);
+        return res.json(data)
+    })
+})
+
+app.post('/api/OrigenateFilter', (req, res) => {
+    const { ENVType, SecurityProfile } = req.body;
+
+    let query = 'SELECT * FROM origenate WHERE 1=1';
+    const queryParams = [];
+
+    if (ENVType) {
+        query += ' AND env = ?';
+        queryParams.push(ENVType);
+    }
+    if (SecurityProfile) {
+        query += ' AND security_profile = ?';
+        queryParams.push(SecurityProfile);
+    }
+
+    db.query(query, queryParams, (err, data) => {
+        if (err) return res.json(err);
+        return data.length ? res.json(data) : res.status(200).json({ message: "No data available" })
     });
 });
 

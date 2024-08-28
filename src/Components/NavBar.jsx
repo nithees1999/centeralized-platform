@@ -32,7 +32,7 @@ export default function NavBar() {
 
 
     return (
-        <nav className="bg-gray-300 w-full text-blue-500">
+        <nav className="bg-gray-200 w-full text-blue-700">
             <div className='flex justify-between mx-4 p-4'>
                 <button onClick={toggleSidebar} className='text-2xl cursor-pointer'>
                     <RxHamburgerMenu />

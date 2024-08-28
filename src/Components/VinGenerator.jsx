@@ -21,7 +21,7 @@ export default function VinGenerator() {
         if (searchParamsLength > 0) {
             setMydata([])
             try {
-                const response = await fetch('http://localhost:8080/api/filter', {
+                const response = await fetch('http://localhost:8080/api/VinFilter', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -59,8 +59,8 @@ export default function VinGenerator() {
     };
 
     return (
-        <div className="bg-gray-200 p-2">
-            <h1 className="text-center text-xl font-bold p-2 ">VIN Generator</h1>
+        <div className=" p-2 ">
+            <h1 className="text-center text-xl font-bold p-2 text-blue-700  ">VIN Generator</h1>
             <form
                 className="conditionsNav p-2 m-2 border border-black rounded-md flex justify-start lg:justify-center items-center gap-1 flex-wrap "
                 onSubmit={handleSearch}
@@ -69,7 +69,7 @@ export default function VinGenerator() {
                 <section>
                     <label className="px-1 font-medium " htmlFor="VINType">VIN type:</label>
                     <select
-                        className="border border-black rounded p-1 w-32 bg-gray-300"
+                        className="border border-black rounded p-1 w-32 "
                         name="VINType"
                         id="VINType"
                         value={searchParams.VINType}
@@ -84,7 +84,7 @@ export default function VinGenerator() {
                 <section>
                     <label className="px-1 font-medium " htmlFor="VIN">VIN Number:</label>
                     <input
-                        className="border border-black rounded p-1 w-44 bg-gray-300"
+                        className="border border-black rounded p-1 w-44 "
                         type="text"
                         name="VIN"
                         value={searchParams.VIN}
@@ -95,7 +95,7 @@ export default function VinGenerator() {
                 <section>
                     <label className="px-1 font-medium " htmlFor="Model">Model:</label>
                     <input
-                        className="border border-black rounded p-1 w-32 bg-gray-300"
+                        className="border border-black rounded p-1 w-32 "
                         type="text"
                         name="Model"
                         value={searchParams.Model}
@@ -106,7 +106,7 @@ export default function VinGenerator() {
                 <section>
                     <label className="px-1 font-medium " htmlFor="Make">Make:</label>
                     <input
-                        className="border border-black rounded p-1 w-32 bg-gray-300"
+                        className="border border-black rounded p-1 w-32 "
                         type="text"
                         name="Make"
                         list="MakeSuggestions"
@@ -123,7 +123,7 @@ export default function VinGenerator() {
                 <section>
                     <label className="px-1 font-medium " htmlFor="Year">Year:</label>
                     <input
-                        className="border border-black rounded p-1 w-32 bg-gray-300"
+                        className="border border-black rounded p-1 w-32 "
                         name="Year"
                         type="number"
                         min={1950}
@@ -134,7 +134,7 @@ export default function VinGenerator() {
                     />
                 </section>
 
-                <button className="rounded-full px-3 py-3 mx-2 border border-black " type="submit">
+                <button className="rounded-full p-2 mx-2 border border-black " type="submit">
                     <FaSearch />
                 </button>
             </form>
@@ -142,11 +142,11 @@ export default function VinGenerator() {
                 <table className="w-full">
                     <thead className="border border-black ">
                         <tr>
-                            <th className="p-4 border border-black">VIN Type</th>
-                            <th className="p-4 border border-black">VIN Number</th>
-                            <th className="p-4 border border-black">Model</th>
-                            <th className="p-4 border border-black">Make</th>
-                            <th className="p-4 border border-black">Year</th>
+                            <th className="p-4 border border-black text-blue-700">VIN Type</th>
+                            <th className="p-4 border border-black text-blue-700">VIN Number</th>
+                            <th className="p-4 border border-black text-blue-700">Model</th>
+                            <th className="p-4 border border-black text-blue-700">Make</th>
+                            <th className="p-4 border border-black text-blue-700">Year</th>
                         </tr>
                     </thead>
 
@@ -186,7 +186,6 @@ export default function VinGenerator() {
                                                 Check values / Provide values for searching
                                             </td>
                                         </tr>
-
                         }
                     </tbody>
 
