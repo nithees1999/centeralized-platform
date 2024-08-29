@@ -1,15 +1,21 @@
-import { FaSearch } from "react-icons/fa";
+import { FaSearch, FaEye } from "react-icons/fa";
 import React, { useEffect, useState } from "react";
 
 export default function VinGenerator() {
     //state for initial data
     const [mydata, setMydata] = useState([]);
+    const [hoveredRow, setHoveredRow] = useState(null); // State to track hovered row
+
     const [searchParams, setSearchParams] = useState({
-        VINType: '',
-        VIN: '',
+        VIN_Type: '',
+        VIN_ID: '',
         Model: '',
         Make: '',
-        Year: ''
+        Year: '',
+        MDL_CD: '',
+        MSRP_AM: '',
+        DLR_INV_AM: '',
+        DH_AMT: '',
     });
 
     const [responseData, setResponseData] = useState([]);
@@ -40,6 +46,13 @@ export default function VinGenerator() {
         }
     };
 
+    const handleEyeEnter = (index) => {
+        setHoveredRow(index); // Set the index of the row that is hovered
+    };
+
+    const handleEyeLeave = () => {
+        setHoveredRow(null); // Reset the hovered row index when leaving
+    };
 
     useEffect(() => {
         //fetch only for demo data in the page
@@ -67,27 +80,27 @@ export default function VinGenerator() {
             >
 
                 <section>
-                    <label className="px-1 font-medium " htmlFor="VINType">VIN type:</label>
+                    <label className="px-1 font-medium " htmlFor="VIN_Type">VIN type:</label>
                     <select
                         className="border border-black rounded p-1 w-32 "
-                        name="VINType"
-                        id="VINType"
-                        value={searchParams.VINType}
+                        name="VIN_Type"
+                        id="VIN_Type"
+                        value={searchParams.VIN_Type}
                         onChange={handleChange}
                     >
                         <option value="">NA</option>
                         <option value="VIN">VIN</option>
-                        <option value="AutoVIN">Auto VIN</option>
+                        <option value="Auto VIN">Auto VIN</option>
                     </select>
                 </section>
 
                 <section>
-                    <label className="px-1 font-medium " htmlFor="VIN">VIN Number:</label>
+                    <label className="px-1 font-medium " htmlFor="VIN_ID">VIN Number:</label>
                     <input
                         className="border border-black rounded p-1 w-44 "
-                        type="text"
-                        name="VIN"
-                        value={searchParams.VIN}
+                        type="VIN_ID"
+                        name="VIN_ID"
+                        value={searchParams.VIN_ID}
                         onChange={handleChange}
                     />
                 </section>
@@ -142,11 +155,13 @@ export default function VinGenerator() {
                 <table className="w-full">
                     <thead className="border border-black ">
                         <tr>
-                            <th className="p-4 border border-black text-blue-700">VIN Type</th>
-                            <th className="p-4 border border-black text-blue-700">VIN Number</th>
-                            <th className="p-4 border border-black text-blue-700">Model</th>
-                            <th className="p-4 border border-black text-blue-700">Make</th>
-                            <th className="p-4 border border-black text-blue-700">Year</th>
+                            <th className="p-2 border border-black text-blue-700">VIN Type</th>
+                            <th className="p-2 border border-black text-blue-700">VIN Number</th>
+                            <th className="p-2 border border-black text-blue-700">Model</th>
+                            <th className="p-2 border border-black text-blue-700">Make</th>
+                            <th className="p-2 border border-black text-blue-700">Year</th>
+                            <th className="p-2 border border-black text-blue-700">Model ID</th>
+                            <th className="p-2 border border-black text-blue-700">Model Details</th>
                         </tr>
                     </thead>
 
@@ -155,17 +170,36 @@ export default function VinGenerator() {
                             mydata.length > 0 ?
                                 mydata.map((element, index) => (
                                     <tr key={index} className="text-center">
-                                        <td className="p-2 border border-black">{element.VINType}</td>
-                                        <td className="p-2 border border-black">{element.VIN}</td>
+                                        <td className="p-2 border border-black">{element.VIN_Type}</td>
+                                        <td className="p-2 border border-black">{element.VIN_ID}</td>
                                         <td className="p-2 border border-black">{element.Model}</td>
                                         <td className="p-2 border border-black">{element.Make}</td>
                                         <td className="p-2 border border-black">{element.Year}</td>
+                                        <td className="p-2 border border-black">{element.MDL_CD}</td>
+
+                                        <td className="p-2 border border-black relative">
+                                            <span className={`inline ${hoveredRow === index ? 'block' : 'hidden'} absolute -top-48 -left-3/4 bg-white border border-black rounded-lg p-2`}>
+                                                <div className="p-2 border border-black rounded-t-lg">MSRP_AM: {element.MSRP_AM}</div>
+                                                <div className="p-2 border border-black ">DLR_INV_AM: {element.DLR_INV_AM}</div>
+                                                <div className="p-2 border border-black ">DH_AMT: {element.DH_AMT}</div>
+                                                <div className="p-2 border border-black ">Color_Up_MSRP: {element.Color_Upcharge_MSRP}</div>
+                                                <div className="p-2 border border-black ">Color_Up_Invoice: {element.Color_Upcharge_Invoice}</div>
+                                                <div className="p-2 border border-black ">PIO_TMSRP_Amount: {element.PIO_Total_MSRP_Amount}</div>
+                                                <div className="p-2 border border-black rounded-b-lg">PIO_TDlr_Amount: {element.PIO_Total_Dlr_Invoice_Amount}</div>
+                                            </span>
+                                            <button
+                                                onMouseEnter={() => handleEyeEnter(index)}
+                                                onMouseLeave={handleEyeLeave}
+                                            >
+                                                <FaEye />
+                                            </button>
+                                        </td>
                                     </tr>
                                 ))
                                 :
                                 responseData.message === "No data available" ?
                                     <tr key="no-data">
-                                        <td colSpan={5} className="p-4 text-center w-full">
+                                        <td colSpan={7} className="p-4 text-center w-full">
                                             No data available
                                         </td>
                                     </tr>
@@ -173,16 +207,35 @@ export default function VinGenerator() {
                                     responseData.length > 0 ?
                                         responseData.map((element, index) => (
                                             <tr key={index} className="text-center">
-                                                <td className="p-2 border border-black">{element.VINType}</td>
-                                                <td className="p-2 border border-black">{element.VIN}</td>
+                                                <td className="p-2 border border-black">{element.VIN_Type}</td>
+                                                <td className="p-2 border border-black">{element.VIN_ID}</td>
                                                 <td className="p-2 border border-black">{element.Model}</td>
                                                 <td className="p-2 border border-black">{element.Make}</td>
                                                 <td className="p-2 border border-black">{element.Year}</td>
+                                                <td className="p-2 border border-black">{element.MDL_CD}</td>
+
+                                                <td className="p-2 border border-black relative">
+                                                    <span className={`inline ${hoveredRow === index ? 'block' : 'hidden'} absolute -top-48 -left-3/4 bg-white border border-black rounded-lg p-2`}>
+                                                        <div className="p-2 border border-black rounded-t-lg">MSRP_AM: {element.MSRP_AM}</div>
+                                                        <div className="p-2 border border-black">DLR_INV_AM: {element.DLR_INV_AM}</div>
+                                                        <div className="p-2 border border-black">DH_AMT: {element.DH_AMT}</div>
+                                                        <div className="p-2 border border-black ">Color_Up_MSRP: {element.Color_Upcharge_MSRP}</div>
+                                                        <div className="p-2 border border-black ">Color_Up_Invoice: {element.Color_Upcharge_Invoice}</div>
+                                                        <div className="p-2 border border-black ">PIO_TMSRP_Amount: {element.PIO_Total_MSRP_Amount}</div>
+                                                        <div className="p-2 border border-black rounded-b-lg">PIO_TDlr_Amount: {element.PIO_Total_Dlr_Invoice_Amount}</div>
+                                                    </span>
+                                                    <button
+                                                        onMouseEnter={() => handleEyeEnter(index)}
+                                                        onMouseLeave={handleEyeLeave}
+                                                    >
+                                                        <FaEye />
+                                                    </button>
+                                                </td>
                                             </tr>
                                         ))
                                         :
                                         <tr key="no-data">
-                                            <td colSpan={5} className="p-4 text-center w-full">
+                                            <td colSpan={7} className="p-4 text-center w-full">
                                                 Check values / Provide values for searching
                                             </td>
                                         </tr>

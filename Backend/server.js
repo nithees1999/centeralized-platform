@@ -15,7 +15,7 @@ const db = mysql.createConnection({
 
 //fetch VIN details
 app.get('/api/fetchVinDetails', (req, res) => {
-    const query = "SELECT * FROM VINDetails"
+    const query = "SELECT * FROM vindetails"
     db.query(query, (err, data) => {
         if (err) return res.json(err);
         return res.json(data)
@@ -23,18 +23,18 @@ app.get('/api/fetchVinDetails', (req, res) => {
 })
 
 app.post('/api/VinFilter', (req, res) => {
-    const { VINType, VIN, Model, Make, Year } = req.body;
+    const { VIN_Type, VIN_ID, Model, Make, Year } = req.body;
 
-    let query = 'SELECT * FROM VINDetails WHERE 1=1';
+    let query = 'SELECT * FROM vindetails WHERE 1=1';
     const queryParams = [];
 
-    if (VINType) {
-        query += ' AND VINType = ?';
-        queryParams.push(VINType);
+    if (VIN_Type) {
+        query += ' AND VIN_Type = ?';
+        queryParams.push(VIN_Type);
     }
-    if (VIN) {
-        query += " AND VIN LIKE ?";
-        queryParams.push("%" + VIN + "%");
+    if (VIN_ID) {
+        query += " AND VIN_ID LIKE ?";
+        queryParams.push("%" + VIN_ID + "%");
     }
     if (Model) {
         query += ' AND Model = ?';
