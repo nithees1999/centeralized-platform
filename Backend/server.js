@@ -116,6 +116,66 @@ app.post('/api/OrigenateFilter', (req, res) => {
     });
 });
 
+
+
+//AutoApproval
+// Get State
+app.get('/getStates', (req, res) => {
+    const sql = 'SELECT DISTINCT `State` FROM `autoapproval`';
+    db.query(sql, (err, results) => {
+      if (err) throw err;
+      res.json(results.map(row => row.State));
+    });
+  });
+  
+  //Get Tier
+  app.get('/getTier', (req, res) => {
+    const sql = 'SELECT DISTINCT `Tier` FROM `autoapproval`';
+    db.query(sql, (err, results) => {
+      if (err) throw err;
+      res.json(results.map(row => row.Tier));
+    });
+  });
+  
+  
+  
+  // Get all data (initial page load)
+  app.get('/autoapproval', (req, res) => {
+    const sql = 'SELECT * FROM `autoapproval`'; // Adjust the SQL query if needed
+    db.query(sql, (err, results) => {
+      if (err) {
+        console.error('Error fetching data:', err);
+        res.status(500).json({ error: 'Internal Server Error' });
+        return;
+      }
+      res.json(results);
+    });
+  });
+  
+  
+  // Filter Data
+  app.post('/autoapproval', (req, res) => {
+    const { State, FicoScore, Tier } = req.body;
+    let sql = `
+        SELECT First Name, Last Name, House, Street Name, Street Type, City, State, Zip Code, SSN, FICO Score, Tier
+        FROM autoapproval
+        WHERE State = ? 
+    `;
+    let queryParams = [State];
+    if (FicoScore) {
+      sql += ' AND `FICO Score` >= ?';
+      queryParams.push(FicoScore);
+    }
+    if (Tier) {
+      sql += ' AND `Tier` = ?';
+      queryParams.push(Tier);
+    }
+    db.query(sql, queryParams, (err, results) => {
+      if (err) throw err;
+      res.json(results);
+    });
+  });
+  
 //sending response to the client
 app.get('/', (req, res) => {
     return res.json("From Backend Side")
