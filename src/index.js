@@ -12,6 +12,7 @@ import VinGenerator from './Components/VinGenerator';
 import Dealer from './Components/Dealer';
 import Origenate from './Components/Origenate';
 import AutoApproval from './Components/AutoApproval';
+import CustomerProfile from './Components/CustomerProfile';
 
 const router = createBrowserRouter([
   {
@@ -37,6 +38,10 @@ const router = createBrowserRouter([
       {
         path: "AutoApproval",
         element: <AutoApproval />,
+      },
+      {
+        path: "CustomerProfile",
+        element: <CustomerProfile />,
       },
     ],
   },

@@ -14,6 +14,7 @@ export default function SideBar({ isOpen, onClose, sidebarRef }) {
                     <li><NavLink to="/Dealer" className={({ isActive }) => ` block text-black text-center p-2  font-bold hover:underline hover:underline-offset-8 ${isActive ? " text-blue-700 underline underline-offset-8 " : " text-black "}`}>Dealer Details</NavLink></li>
                     <li><NavLink to="/Origenate" className={({ isActive }) => ` block text-black text-center p-2  font-bold hover:underline hover:underline-offset-8 ${isActive ? " text-blue-700 underline underline-offset-8 " : " text-black "}`}>Origenate Details</NavLink></li>
                     <li><NavLink to="/AutoApproval" className={({ isActive }) => ` block text-black text-center p-2  font-bold hover:underline hover:underline-offset-8 ${isActive ? " text-blue-700 underline underline-offset-8 " : " text-black "}`}>AutoApproval</NavLink></li>
+                    <li><NavLink to="/CustomerProfile" className={({ isActive }) => ` block text-black text-center p-2  font-bold hover:underline hover:underline-offset-8 ${isActive ? " text-blue-700 underline underline-offset-8 " : " text-black "}`}>CustomerProfile</NavLink></li>
                 </ul>
             </div>
         </div>

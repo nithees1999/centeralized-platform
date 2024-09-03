@@ -1,7 +1,7 @@
 import { FaSearch, FaUndo } from "react-icons/fa";
 import React, { useEffect, useState } from "react";
 
-const AutoApproval = () => {
+const CustomerProfile = () => {
     const [states, setStates] = useState([]);
     const [selectedState, setSelectedState] = useState('');
     const [ficoScore, setFicoScore] = useState('');
@@ -13,7 +13,7 @@ const AutoApproval = () => {
 
     //Initial data
     useEffect(() => {
-        fetch('http://localhost:8080/api/autoapproval')
+        fetch('http://localhost:8080/api/customerprofile')
             .then(response => response.json())
             .then(data => {
                 setData(data);
@@ -24,7 +24,7 @@ const AutoApproval = () => {
 
 //fetching states
     useEffect(() => {
-        fetch('http://localhost:8080/api/getApprovalStates')
+        fetch('http://localhost:8080/api/getStates')
             .then(response => response.json())
             .then(data => {
                 console.log('Fetched states:', data);
@@ -35,7 +35,7 @@ const AutoApproval = () => {
 
 //fetching tier
     useEffect(() => {
-        fetch('http://localhost:8080/api/getApprovalTier')
+        fetch('http://localhost:8080/api/getTier')
             .then(response => response.json())
             .then(data => {
                 console.log('Fetched tiers:', data);
@@ -82,12 +82,18 @@ const AutoApproval = () => {
         setFicoScore('');
         setSelectedTier('');
     };
-
+    const formatDOB = (dob) => {
+        const date = new Date(dob);
+        const day = String(date.getDate()).padStart(2, '0');
+        const month = String(date.getMonth() + 1).padStart(2, '0'); // Months are zero-based
+        const year = date.getFullYear();
+        return `${day}-${month}-${year}`;
+    };
 
 
     return (
         <div className=" p-2 ">
-            <h1 className="text-center text-xl font-bold p-2 text-blue-700  ">AUTO APPROVAL</h1>
+            <h1 className="text-center text-xl font-bold p-2 text-blue-700  ">CUSTOMER PROFILE</h1>
             <form
                 className="conditionsNav p-2 m-2 border border-black rounded-md flex justify-start lg:justify-center items-center gap-1 flex-wrap "
                 onSubmit={handleSearch}
@@ -155,6 +161,7 @@ const AutoApproval = () => {
                         <tr>
                             <th className="p-4 border border-black text-blue-700">First Name</th>
                             <th className="p-4 border border-black text-blue-700">Last Name</th>
+                            <th className="p-4 border border-black text-blue-700">DOB</th>
                             <th className="p-4 border border-black text-blue-700">House</th>
                             <th className="p-4 border border-black text-blue-700">Street Name</th>
                             <th className="p-4 border border-black text-blue-700">Street Type</th>
@@ -167,10 +174,12 @@ const AutoApproval = () => {
                         </tr>
                     </thead>
                     <tbody className="border border-black">
+                    
                         {filteredData.map((item, index) => (
                             <tr key={index} className="text-center">
                                 <td className="p-2 border border-black">{item["First Name"]}</td>
                                 <td className="p-2 border border-black">{item["Last Name"]}</td>
+                                <td className="p-2 border border-black" style={{ whiteSpace:'nowrap'}}>{formatDOB(item.DOB)}</td>
                                 <td className="p-2 border border-black">{item.House}</td>
                                 <td className="p-2 border border-black">{item["Street Name"]}</td>
                                 <td className="p-2 border border-black">{item["Street Type"]}</td>
@@ -189,4 +198,4 @@ const AutoApproval = () => {
         </div>
     );
 };
-export default AutoApproval;
+export default CustomerProfile;
