@@ -88,6 +88,7 @@ const AutoApproval = () => {
     return (
         <div className=" p-2 ">
             <h1 className="text-center text-xl font-bold p-2 text-blue-700  ">AUTO APPROVAL</h1>
+            <p>Hello</p>
             <form
                 className="conditionsNav p-2 m-2 border border-black rounded-md flex justify-start lg:justify-center items-center gap-1 flex-wrap "
                 onSubmit={handleSearch}
