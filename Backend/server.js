@@ -23,7 +23,7 @@ app.get('/api/fetchVinDetails', (req, res) => {
 })
 
 app.post('/api/VinFilter', (req, res) => {
-    const { VIN_Type, VIN_ID, Model, Make, Year } = req.body;
+    const { VIN_Type, VIN, Model, Make, Year } = req.body;
 
     let query = 'SELECT * FROM vindetails WHERE 1=1';
     const queryParams = [];
@@ -32,9 +32,9 @@ app.post('/api/VinFilter', (req, res) => {
         query += ' AND VIN_Type = ?';
         queryParams.push(VIN_Type);
     }
-    if (VIN_ID) {
-        query += " AND VIN_ID LIKE ?";
-        queryParams.push("%" + VIN_ID + "%");
+    if (VIN) {
+        query += " AND VIN LIKE ?";
+        queryParams.push("%" + VIN + "%");
     }
     if (Model) {
         query += ' AND Model = ?';

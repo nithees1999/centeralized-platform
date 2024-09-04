@@ -12,6 +12,7 @@ import VinGenerator from './Components/VinGenerator';
 import Dealer from './Components/Dealer';
 import Origenate from './Components/Origenate';
 import AutoApproval from './Components/AutoApproval';
+import PaginationButtons from './Components/PaginationButtons';
 
 const router = createBrowserRouter([
   {
