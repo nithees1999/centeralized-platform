@@ -10,7 +10,11 @@ const CustomerProfile = () => {
     const [data, setData] = useState([]);
     const [filteredData, setFilteredData] = useState([]);
     const [loading, setLoading] = useState(false);
+    const [selectedScoreCardType, setSelectedScoreCardType] = useState('');
+    const [scoreCardTypes,setScoreCardTypes]=useState([]);
 
+   
+   
     //Initial data
     useEffect(() => {
         fetch('http://localhost:8080/api/customerprofile')
@@ -21,6 +25,20 @@ const CustomerProfile = () => {
             })
             .catch(error => console.error('Error fetching initial data:', error));
     }, []);
+
+
+    //fetching ScoreCard Type
+
+    useEffect(() => {
+        fetch('http://localhost:8080/api/getScoreCardTypes')
+            .then(response => response.json())
+            .then(data => {
+                console.log('Fetched ScoreCard Types:',data);
+                setScoreCardTypes(data);
+            })
+            .catch(error => console.error('Error fetching ScoreCard Types:', error));
+    }, []);
+
 
 //fetching states
     useEffect(() => {
@@ -69,7 +87,8 @@ const CustomerProfile = () => {
             const stateMatch = selectedState ? item.State === selectedState : true;
             const tierMatch = selectedTier ? item.Tier === Number(selectedTier) : true;
             const ficoMatch = ficoScore ? item["FICO Score"] === Number(ficoScore) : true;
-            return stateMatch && ficoMatch && tierMatch;
+            const scoreCardTypeMatch = selectedScoreCardType ? item["ScoreCard Type"]===selectedScoreCardType : true;
+            return stateMatch && ficoMatch && tierMatch && scoreCardTypeMatch;
         });
         setFilteredData(filtered);
         setLoading(false);
@@ -81,6 +100,7 @@ const CustomerProfile = () => {
         setSelectedState('');
         setFicoScore('');
         setSelectedTier('');
+        setSelectedScoreCardType('');
     };
     const formatDOB = (dob) => {
         const date = new Date(dob);
@@ -94,7 +114,7 @@ const CustomerProfile = () => {
     return (
         <div className=" p-2 ">
             <h1 className="text-center text-xl font-bold p-2 text-blue-700  ">CUSTOMER PROFILE</h1>
-            
+
             <form
                 className="conditionsNav p-2 m-2 border border-black rounded-md flex justify-start lg:justify-center items-center gap-1 flex-wrap "
                 onSubmit={handleSearch}
@@ -144,6 +164,24 @@ const CustomerProfile = () => {
                         onChange={(e) => setFicoScore(e.target.value)}
                     />
                 </div>
+                <div>
+                    <label className="px-1 font-medium " htmlFor="ScoreCardType">ScoreCard :</label>
+                    <select
+                        className="border border-black rounded p-1 w-32 "
+                        name="ScoreCardType"
+                        id="ScoreCardType"
+                        value={selectedScoreCardType}
+                        onChange={(e) => setSelectedScoreCardType(e.target.value)}
+                    >
+                    <option value="">Select ScoreCard</option>
+
+                    {
+                        scoreCardTypes.map((type,index)=>(
+                            <option key={index} value={type}>{type}</option>
+                        ))
+                    }
+                    </select>
+                </div>
                 <button type="submit" className="rounded-full p-2 mx-2 border border-black">
                     <FaSearch />
                 </button>
@@ -172,6 +210,8 @@ const CustomerProfile = () => {
                             <th className="p-4 border border-black text-blue-700">SSN</th>
                             <th className="p-4 border border-black text-blue-700">FICO Score</th>
                             <th className="p-4 border border-black text-blue-700">Tier</th>
+                            <th className="p-4 border border-black text-blue-700">ScoreCard</th>
+
                         </tr>
                     </thead>
                     <tbody className="border border-black">
@@ -190,6 +230,7 @@ const CustomerProfile = () => {
                                 <td className="p-2 border border-black">{item.SSN}</td>
                                 <td className="p-2 border border-black">{item["FICO Score"]}</td>
                                 <td className="p-2 border border-black">{item.Tier}</td>
+                                <td className="p-2 border border-black">{item["ScoreCard Type"]}</td>
                             </tr>
                         ))}
                     </tbody>
