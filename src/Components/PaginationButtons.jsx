@@ -3,7 +3,6 @@ import React, { useEffect } from 'react';
 import { BsChevronLeft, BsChevronRight } from "react-icons/bs";
 export default function PaginationButtons(props) {
     const { currentPage, setCurrentPage, totalPosts, postsPerPage, resetPage, setResetPage } = props
-
     const totalPages = Math.max(Math.ceil(totalPosts / postsPerPage), 1);
 
     const handlePageClick = ({ selected }) => {
@@ -18,7 +17,7 @@ export default function PaginationButtons(props) {
             setCurrentPage(1);
             setResetPage(false)
         }
-    }, [resetPage, setCurrentPage]);
+    }, [resetPage, setCurrentPage, setResetPage]);
 
 
     return (

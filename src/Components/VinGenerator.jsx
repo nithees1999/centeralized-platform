@@ -1,25 +1,15 @@
-import { FaSearch, FaEye } from "react-icons/fa";
+import { FaSearch } from "react-icons/fa";
 import React, { useEffect, useState } from "react";
 import PaginationButtons from "./PaginationButtons";
 import axios from "axios";
 
 export default function VinGenerator() {
-    const [mydata, setMydata] = useState([]); //state for initial data
-    const [hoveredRow, setHoveredRow] = useState(null); // State to track hovered row
-    const [loading, setLoading] = useState(true);
+    const [loading, setLoading] = useState(false);
     const [currentPage, setCurrentPage] = useState(1);
-    const [postsPerPage, setPostsPerPage] = useState(10);
+    const postsPerPage = 10
     const lastPostIndex = currentPage * postsPerPage;
     const firstPostIndex = lastPostIndex - postsPerPage;
-    const [pages, setPages] = useState([]);
     const [resetPage, setResetPage] = useState(false);
-
-    let currentPosts = mydata.slice(firstPostIndex, lastPostIndex)
-
-    //api call URLs
-    const portUrl = "http://localhost:8080"
-    const fetchVinDetailsUrl = "/api/fetchVinDetails"
-
     const [searchParams, setSearchParams] = useState({
         VIN_Type: '',
         VIN: '',
@@ -31,56 +21,41 @@ export default function VinGenerator() {
         DLR_INV_AM: '',
         DH_AMT: '',
     });
-
     const [responseData, setResponseData] = useState([]);
     let responseDataPosts;
     if (responseData && responseData.length > 0) {
         responseDataPosts = responseData.slice(firstPostIndex, lastPostIndex)
+    }
 
+    //api call URLs
+    const portUrl = "http://localhost:8080"
+    const fetchVinDetailsUrl = "/api/fetchVinDetails"
+    const filterVinDetailsUrl = "/api/VinFilter"
+
+    const fetchVinDetails = async () => {
+        setLoading(true)
+        const result = await axios.get(`${portUrl + fetchVinDetailsUrl}`)
+        setResponseData(result.data)
+        setLoading(false)
     }
 
     const handleSearch = async (e) => {
         e.preventDefault();
-
+        //checking if we have enough parameters for requesting from DB
         let searchParamsLength = Object.values(searchParams).filter(value => value !== null && value !== undefined && value !== "").length
         if (searchParamsLength > 0) {
-            setMydata([])
-            setResetPage(true)
             try {
-                const response = await fetch('http://localhost:8080/api/VinFilter', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify(searchParams),
-                });
-                const data = await response.json();
-                setResponseData(data);
+                setLoading(true)
+                const response = await axios.post(`${portUrl + filterVinDetailsUrl}`, searchParams);
+                setResponseData(response.data);
+                setLoading(false)
             } catch (error) {
                 console.error(error);
             }
         } else {
-            setResponseData([])
+            fetchVinDetails()
         }
     };
-
-    const handleEyeEnter = (index) => {
-        setHoveredRow(index); // Set the index of the row that is hovered
-    };
-
-    const handleEyeLeave = () => {
-        setHoveredRow(null); // Reset the hovered row index when leaving
-    };
-
-    useEffect(() => {
-
-        const fetchVinDetails = async () => {
-            const result = await axios.get(`${portUrl + fetchVinDetailsUrl}`)
-            setMydata(result.data)
-            setLoading(false)
-        }
-        fetchVinDetails()
-    }, []);
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -90,9 +65,13 @@ export default function VinGenerator() {
         }));
     };
 
+    useEffect(() => {
+        fetchVinDetails()
+    }, []);
+
     return (
         <div className=" p-2 ">
-            <h1 className="text-center text-xl font-bold p-2 text-blue-700  ">VIN Generator</h1>
+            <h1 className="text-center text-xl font-bold p-2 text-blue-700">VIN Generator</h1>
             <form
                 className="conditionsNav p-2 m-2 border border-black rounded-md flex justify-start lg:justify-center items-center gap-1 flex-wrap "
                 onSubmit={handleSearch}
@@ -100,7 +79,7 @@ export default function VinGenerator() {
                 <section>
                     <label className="px-1 font-medium " htmlFor="VIN_Type">VIN type:</label>
                     <select
-                        className="border border-black rounded p-1 w-32 "
+                        className="border border-black rounded p-1 w-32"
                         name="VIN_Type"
                         id="VIN_Type"
                         value={searchParams.VIN_Type}
@@ -115,7 +94,7 @@ export default function VinGenerator() {
                 <section>
                     <label className="px-1 font-medium " htmlFor="VIN">VIN Number:</label>
                     <input
-                        className="border border-black rounded p-1 w-44 "
+                        className="border border-black rounded p-1 w-44"
                         type="VIN"
                         name="VIN"
                         value={searchParams.VIN}
@@ -126,7 +105,7 @@ export default function VinGenerator() {
                 <section>
                     <label className="px-1 font-medium " htmlFor="Model">Model:</label>
                     <input
-                        className="border border-black rounded p-1 w-32 "
+                        className="border border-black rounded p-1 w-32"
                         type="text"
                         name="Model"
                         value={searchParams.Model}
@@ -137,7 +116,7 @@ export default function VinGenerator() {
                 <section>
                     <label className="px-1 font-medium " htmlFor="Make">Make:</label>
                     <input
-                        className="border border-black rounded p-1 w-32 "
+                        className="border border-black rounded p-1 w-32"
                         type="text"
                         name="Make"
                         list="MakeSuggestions"
@@ -154,7 +133,7 @@ export default function VinGenerator() {
                 <section>
                     <label className="px-1 font-medium " htmlFor="Year">Year:</label>
                     <input
-                        className="border border-black rounded p-1 w-32 "
+                        className="border border-black rounded p-1 w-32"
                         name="Year"
                         type="number"
                         min={1950}
@@ -165,7 +144,7 @@ export default function VinGenerator() {
                     />
                 </section>
 
-                <button className="rounded-full p-2 mx-2 border border-black " type="submit">
+                <button className="rounded-full p-2 mx-2 border border-black" type="submit">
                     <FaSearch />
                 </button>
             </form>
@@ -179,7 +158,6 @@ export default function VinGenerator() {
                             <th className="p-2 border border-black text-blue-700">Make</th>
                             <th className="p-2 border border-black text-blue-700">Year</th>
                             <th className="p-2 border border-black text-blue-700">Model ID</th>
-
                             <th className="p-2 border border-black text-blue-700">MSRP AM</th>
                             <th className="p-2 border border-black text-blue-700">DLR INV AM</th>
                             <th className="p-2 border border-black text-blue-700">DH AMT</th>
@@ -192,8 +170,14 @@ export default function VinGenerator() {
 
                     <tbody className="border border-black">
                         {
-                            mydata.length > 0 ?
-                                currentPosts.map((element, index) => (
+                            loading ?
+                                <tr key="loading">
+                                    <td colSpan={13} className="p-4 text-center w-full text-2xl">
+                                        Loading.......
+                                    </td>
+                                </tr>
+                                :
+                                responseDataPosts && responseDataPosts.length > 0 ? responseDataPosts.map((element, index) => (
                                     <tr key={index} className="text-center">
                                         <td className="p-2 border border-black">{element.VIN_Type}</td>
                                         <td className="p-2 border border-black">{element.VIN}</td>
@@ -201,7 +185,6 @@ export default function VinGenerator() {
                                         <td className="p-2 border border-black">{element.Make}</td>
                                         <td className="p-2 border border-black">{element.Year}</td>
                                         <td className="p-2 border border-black">{element.MDL_CD}</td>
-
                                         <td className="p-2 border border-black">{element.MSRP_AM}</td>
                                         <td className="p-2 border border-black">{element.DLR_INV_AM}</td>
                                         <td className="p-2 border border-black">{element.DH_AMT}</td>
@@ -211,50 +194,17 @@ export default function VinGenerator() {
                                         <td className="p-2 border border-black">{element.PIO_Total_Dlr_Invoice_Amount}</td>
                                     </tr>
                                 ))
-                                :
-                                responseData.message === "No data available" ?
-                                    <tr key="no-data">
-                                        <td colSpan={13} className="p-4 text-center w-full">
+                                    : <tr key="no-data">
+                                        <td colSpan={13} className="p-4 text-center w-full text-2xl">
                                             No data available
                                         </td>
                                     </tr>
-                                    :
-                                    responseData.length > 0 ?
-                                        responseDataPosts.map((element, index) => (
-                                            <tr key={index} className="text-center">
-                                                <td className="p-2 border border-black">{element.VIN_Type}</td>
-                                                <td className="p-2 border border-black">{element.VIN}</td>
-                                                <td className="p-2 border border-black">{element.Model}</td>
-                                                <td className="p-2 border border-black">{element.Make}</td>
-                                                <td className="p-2 border border-black">{element.Year}</td>
-                                                <td className="p-2 border border-black">{element.MDL_CD}</td>
-
-
-                                                <td className="p-2 border border-black">{element.MSRP_AM}</td>
-                                                <td className="p-2 border border-black">{element.DLR_INV_AM}</td>
-                                                <td className="p-2 border border-black">{element.DH_AMT}</td>
-                                                <td className="p-2 border border-black">{element.Color_Upcharge_MSRP}</td>
-                                                <td className="p-2 border border-black">{element.Color_Upcharge_Invoice}</td>
-                                                <td className="p-2 border border-black">{element.PIO_Total_MSRP_Amount}</td>
-                                                <td className="p-2 border border-black">{element.PIO_Total_Dlr_Invoice_Amount}</td>
-                                            </tr>
-                                        ))
-                                        :
-                                        <tr key="no-data">
-                                            <td colSpan={13} className="p-4 text-center w-full">
-                                                Check values / Provide values for searching
-                                            </td>
-                                        </tr>
                         }
                     </tbody>
-
                 </table>
-                {mydata.length > 0 ?
-                    <PaginationButtons loading={loading} currentPage={currentPage} setCurrentPage={setCurrentPage} totalPosts={mydata.length} postsPerPage={postsPerPage} resetPage={resetPage} setResetPage={setResetPage} />
-                    :
-                    responseData.length > 0 ?
-                        <PaginationButtons loading={loading} currentPage={currentPage} setCurrentPage={setCurrentPage} totalPosts={responseData.length} postsPerPage={postsPerPage} resetPage={resetPage} setResetPage={setResetPage} />
-                        : null
+
+                {responseDataPosts && responseDataPosts.length > 0 &&
+                    <PaginationButtons currentPage={currentPage} setCurrentPage={setCurrentPage} totalPosts={responseData.length} postsPerPage={postsPerPage} resetPage={resetPage} setResetPage={setResetPage} />
                 }
 
             </section>

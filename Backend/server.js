@@ -66,23 +66,23 @@ app.get('/api/fetchDealerDetails', (req, res) => {
 })
 
 app.post('/api/DealerFilter', (req, res) => {
-    const { state, brand } = req.body;
+    const { State, Brand } = req.body;
 
     let query = 'SELECT * FROM dealer WHERE 1=1';
     const queryParams = [];
 
-    if (state) {
-        query += ' AND state = ?';
-        queryParams.push(state);
+    if (State) {
+        query += ' AND State = ?';
+        queryParams.push(State);
     }
-    if (brand) {
-        query += ' AND brand = ?';
-        queryParams.push(brand);
+    if (Brand) {
+        query += ' AND Brand = ?';
+        queryParams.push(Brand);
     }
 
     db.query(query, queryParams, (err, data) => {
         if (err) return res.json(err);
-        return data.length ? res.json(data) : res.status(200).json({ message: "No data available" })
+        return res.json(data)
     });
 });
 
@@ -96,18 +96,18 @@ app.get('/api/fetchOrigenateDetails', (req, res) => {
 })
 
 app.post('/api/OrigenateFilter', (req, res) => {
-    const { ENVType, SecurityProfile } = req.body;
+    const { Env, Security_Profile } = req.body;
 
     let query = 'SELECT * FROM origenate WHERE 1=1';
     const queryParams = [];
 
-    if (ENVType) {
-        query += ' AND env = ?';
-        queryParams.push(ENVType);
+    if (Env) {
+        query += ' AND Env = ?';
+        queryParams.push(Env);
     }
-    if (SecurityProfile) {
-        query += ' AND security_profile = ?';
-        queryParams.push(SecurityProfile);
+    if (Security_Profile) {
+        query += ' AND Security_Profile = ?';
+        queryParams.push(Security_Profile);
     }
 
     db.query(query, queryParams, (err, data) => {
@@ -187,13 +187,13 @@ app.get('/api/getTier', (req, res) => {
   });
 });
 // Get ScoreCard Type
-app.get('/api/getScoreCardTypes', (req, res) => {
-  const sql = 'SELECT DISTINCT `ScoreCard Type` FROM customerprofile';
-  db.query(sql, (err, results) => {
-      if (err) throw err;
-      res.json(results.map(row => row['ScoreCard Type']));
-  });
-});
+// app.get('/api/getScoreCardTypes', (req, res) => {
+//   const sql = 'SELECT DISTINCT `ScoreCard Type` FROM customerprofile';
+//   db.query(sql, (err, results) => {
+//       if (err) throw err;
+//       res.json(results.map(row => row['ScoreCard Type']));
+//   });
+// });
 // Get all data (initial page load)
 app.get('/api/customerprofile', (req, res) => {
   const sql = 'SELECT * FROM customerprofile';

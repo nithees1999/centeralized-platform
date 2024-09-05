@@ -5,8 +5,8 @@ export default function Origenate() {
     //state for initial data
     const [origenateData, setOrigenateData] = useState([]);
     const [searchParams, setSearchParams] = useState({
-        ENVType: '',
-        SecurityProfile: ''
+        Env: '',
+        Security_Profile: ''
     });
 
     const [responseData, setResponseData] = useState([]);
@@ -63,12 +63,12 @@ export default function Origenate() {
             >
 
                 <section>
-                    <label className="px-1 font-medium " htmlFor="ENVType">ENV type:</label>
+                    <label className="px-1 font-medium " htmlFor="Env">ENV type:</label>
                     <select
                         className="border border-black rounded p-1 w-32 "
-                        name="ENVType"
-                        id="ENVType"
-                        value={searchParams.ENVType}
+                        name="Env"
+                        id="Env"
+                        value={searchParams.Env}
                         onChange={handleChange}
                     >
                         <option value="">NA</option>
@@ -78,13 +78,13 @@ export default function Origenate() {
                 </section>
 
                 <section>
-                    <label className="px-1 font-medium " htmlFor="SecurityProfile">Security Profile:</label>
+                    <label className="px-1 font-medium " htmlFor="Security_Profile">Security Profile:</label>
                     <input
                         className="border border-black rounded p-1 w-44 "
                         type="text"
-                        name="SecurityProfile"
-                        id="SecurityProfile"
-                        value={searchParams.SecurityProfile}
+                        name="Security_Profile"
+                        id="Security_Profile"
+                        value={searchParams.Security_Profile}
                         onChange={handleChange}
                     />
                 </section>
@@ -110,11 +110,11 @@ export default function Origenate() {
                             origenateData.length > 0 ?
                             origenateData.map((element, index) => (
                                     <tr key={index} className="text-center">
-                                        <td className="p-2 border border-black">{element.user_id}</td>
-                                        <td className="p-2 border border-black">{element.password}</td>
-                                        <td className="p-2 border border-black">{element.team}</td>
-                                        <td className="p-2 border border-black">{element.security_profile}</td>
-                                        <td className="p-2 border border-black">{element.env}</td>
+                                        <td className="p-2 border border-black">{element.User_ID}</td>
+                                        <td className="p-2 border border-black">{element.Password}</td>
+                                        <td className="p-2 border border-black">{element.Team}</td>
+                                        <td className="p-2 border border-black">{element.Security_Profile}</td>
+                                        <td className="p-2 border border-black">{element.Env}</td>
                                     </tr>
                                 ))
                                 :
@@ -128,11 +128,11 @@ export default function Origenate() {
                                     responseData.length > 0 ?
                                         responseData.map((element, index) => (
                                             <tr key={index} className="text-center">
-                                                <td className="p-2 border border-black">{element.user_id}</td>
-                                                <td className="p-2 border border-black">{element.password}</td>
-                                                <td className="p-2 border border-black">{element.team}</td>
-                                                <td className="p-2 border border-black">{element.security_profile}</td>
-                                                <td className="p-2 border border-black">{element.env}</td>
+                                                <td className="p-2 border border-black">{element.User_ID}</td>
+                                                <td className="p-2 border border-black">{element.Password}</td>
+                                                <td className="p-2 border border-black">{element.Team}</td>
+                                                <td className="p-2 border border-black">{element.Security_Profile}</td>
+                                                <td className="p-2 border border-black">{element.Env}</td>
                                             </tr>
                                         ))
                                         :
