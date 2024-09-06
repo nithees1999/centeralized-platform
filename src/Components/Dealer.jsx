@@ -5,8 +5,8 @@ export default function Dealer() {
     //state for initial data
     const [dealerData, setDealerData] = useState([]);
     const [searchParams, setSearchParams] = useState({
-        state: '',
-        brand: '',
+        State: '',
+        Brand: '',
     });
 
     const [responseData, setResponseData] = useState([]);
@@ -66,9 +66,9 @@ export default function Dealer() {
                     <label className="px-1 font-medium " htmlFor="state">State:</label>
                     <input
                         className="border border-black rounded p-1 w-32 "
-                        name="state"
-                        id="state"
-                        value={searchParams.state}
+                        name="State"
+                        id="State"
+                        value={searchParams.State}
                         onChange={handleChange}
                     />
                 </section>
@@ -78,8 +78,8 @@ export default function Dealer() {
                     <input
                         className="border border-black rounded p-1 w-44 "
                         type="text"
-                        name="brand"
-                        value={searchParams.brand}
+                        name="Brand"
+                        value={searchParams.Brand}
                         onChange={handleChange}
                     />
                 </section>
@@ -106,11 +106,11 @@ export default function Dealer() {
                             dealerData.length > 0 ?
                             dealerData.map((element, index) => (
                                     <tr key={index} className="text-center">
-                                        <td className="p-2 border border-black">{element.state}</td>
-                                        <td className="p-2 border border-black">{element.brand}</td>
-                                        <td className="p-2 border border-black">{element.dealernumber}</td>
-                                        <td className="p-2 border border-black">{element.userid}</td>
-                                        <td className="p-2 border border-black">{element.password}</td>
+                                        <td className="p-2 border border-black">{element.State}</td>
+                                        <td className="p-2 border border-black">{element.Brand}</td>
+                                        <td className="p-2 border border-black">{element.DealerNumber}</td>
+                                        <td className="p-2 border border-black">{element.UserID}</td>
+                                        <td className="p-2 border border-black">{element.Password}</td>
                                     </tr>
                                 ))
                                 :
@@ -124,11 +124,11 @@ export default function Dealer() {
                                     responseData.length > 0 ?
                                         responseData.map((element, index) => (
                                             <tr key={index} className="text-center">
-                                                <td className="p-2 border border-black">{element.state}</td>
-                                                <td className="p-2 border border-black">{element.brand}</td>
-                                                <td className="p-2 border border-black">{element.dealernumber}</td>
-                                                <td className="p-2 border border-black">{element.userid}</td>
-                                                <td className="p-2 border border-black">{element.password}</td>
+                                                <td className="p-2 border border-black">{element.State}</td>
+                                                <td className="p-2 border border-black">{element.Brand}</td>
+                                                <td className="p-2 border border-black">{element.DealerNumber}</td>
+                                                <td className="p-2 border border-black">{element.UserID}</td>
+                                                <td className="p-2 border border-black">{element.Password}</td>
                                             </tr>
                                         ))
                                         :
