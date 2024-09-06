@@ -31,7 +31,7 @@ export default function Dealer() {
                 console.error(error);
             }
         } else {
-            //No values provided and exicuted the search feature 
+             //No values provided and exicuted the search feature 
             setResponseData([])
         }
     };

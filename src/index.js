@@ -13,6 +13,7 @@ import Dealer from './Components/Dealer';
 import Origenate from './Components/Origenate';
 import AutoApproval from './Components/AutoApproval';
 import CustomerProfile from './Components/CustomerProfile';
+import Fcl from './Components/Fcl';
 
 const router = createBrowserRouter([
   {
@@ -42,6 +43,10 @@ const router = createBrowserRouter([
       {
         path: "CustomerProfile",
         element: <CustomerProfile />,
+      },
+      {
+        path: "Fcl",
+        element: <Fcl />,
       },
     ],
   },
