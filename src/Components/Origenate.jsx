@@ -1,49 +1,58 @@
 import { FaSearch } from "react-icons/fa";
 import React, { useEffect, useState } from "react";
+import axios from "axios";
+import PaginationButtons from "./PaginationButtons";
+import LoadingIcons from 'react-loading-icons'
 
 export default function Origenate() {
-    //state for initial data
-    const [origenateData, setOrigenateData] = useState([]);
     const [searchParams, setSearchParams] = useState({
         Env: '',
         Security_Profile: ''
     });
-
+    const [loading, setLoading] = useState(false);
+    const [currentPage, setCurrentPage] = useState(1);
+    const postsPerPage = 10
+    const lastPostIndex = currentPage * postsPerPage;
+    const firstPostIndex = lastPostIndex - postsPerPage;
+    const [resetPage, setResetPage] = useState(false);
     const [responseData, setResponseData] = useState([]);
+    let responseDataPosts;
+    if (responseData && responseData.length > 0) {
+        responseDataPosts = responseData.slice(firstPostIndex, lastPostIndex)
+    }
+
+    //api call URLs
+    const portUrl = "http://localhost:8080"
+    const fetchOrigenateDetailsUrl = "/api/fetchOrigenateDetails"
+    const filterOrigenateDetailsUrl = "/api/OrigenateFilter"
+
+    const fetchOrigenateDetails = async () => {
+        setLoading(true)
+        const response = await axios.get(`${portUrl + fetchOrigenateDetailsUrl}`)
+        setResponseData(response.data)
+        setLoading(false)
+    }
 
     const handleSearch = async (e) => {
         e.preventDefault();
-
+        setResetPage(true)
         let searchParamsLength = Object.values(searchParams).filter(value => value !== null && value !== undefined && value !== "").length
         if (searchParamsLength > 0) {
-            setOrigenateData([])
             try {
-                const response = await fetch('http://localhost:8080/api/OrigenateFilter', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify(searchParams),
-                });
-                const data = await response.json();
-                setResponseData(data);
+                setLoading(true)
+                const response = await axios.post(`${portUrl + filterOrigenateDetailsUrl}`, searchParams);
+                setResponseData(response.data)
+                setLoading(false)
             } catch (error) {
                 console.error(error);
             }
         } else {
-            //No values provided and exicuted the search feature 
-            setResponseData([])
+            fetchOrigenateDetails()
         }
     };
 
-
     useEffect(() => {
-        //fetch only for demo data in the page
-        fetch("http://localhost:8080/api/fetchOrigenateDetails")
-            .then(res => res.json())
-            .then(data => setOrigenateData(data))
-            .catch(err => console.log(err));
-        // eslint-disable-next-line
+        fetchOrigenateDetails()
     }, []);
 
     const handleChange = (e) => {
@@ -107,8 +116,14 @@ export default function Origenate() {
 
                     <tbody className="border border-black">
                         {
-                            origenateData.length > 0 ?
-                            origenateData.map((element, index) => (
+                            loading ?
+                                <tr key="loading">
+                                    <td colSpan={13} className="p-4 text-2xl">
+                                        <LoadingIcons.Bars fill="black" className="h-10 w-full place-self-center" />
+                                    </td>
+                                </tr>
+                                :
+                                responseDataPosts && responseDataPosts.length > 0 ? responseDataPosts.map((element, index) => (
                                     <tr key={index} className="text-center">
                                         <td className="p-2 border border-black">{element.User_ID}</td>
                                         <td className="p-2 border border-black">{element.Password}</td>
@@ -117,34 +132,18 @@ export default function Origenate() {
                                         <td className="p-2 border border-black">{element.Env}</td>
                                     </tr>
                                 ))
-                                :
-                                responseData.message === "No data available" ?
-                                    <tr key="no-data">
-                                        <td colSpan={5} className="p-4 text-center w-full">
+                                    : <tr key="no-data">
+                                        <td colSpan={13} className="p-4 text-center w-full text-2xl">
                                             No data available
                                         </td>
                                     </tr>
-                                    :
-                                    responseData.length > 0 ?
-                                        responseData.map((element, index) => (
-                                            <tr key={index} className="text-center">
-                                                <td className="p-2 border border-black">{element.User_ID}</td>
-                                                <td className="p-2 border border-black">{element.Password}</td>
-                                                <td className="p-2 border border-black">{element.Team}</td>
-                                                <td className="p-2 border border-black">{element.Security_Profile}</td>
-                                                <td className="p-2 border border-black">{element.Env}</td>
-                                            </tr>
-                                        ))
-                                        :
-                                        <tr key="no-data">
-                                            <td colSpan={5} className="p-4 text-center w-full">
-                                                Check values / Provide values for searching
-                                            </td>
-                                        </tr>
                         }
                     </tbody>
-
                 </table>
+
+                {responseDataPosts && responseDataPosts.length > 0 &&
+                    <PaginationButtons currentPage={currentPage} setCurrentPage={setCurrentPage} totalPosts={responseData.length} postsPerPage={postsPerPage} resetPage={resetPage} setResetPage={setResetPage} />
+                }
             </section>
         </div>
     );

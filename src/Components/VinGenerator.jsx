@@ -2,6 +2,7 @@ import { FaSearch } from "react-icons/fa";
 import React, { useEffect, useState } from "react";
 import PaginationButtons from "./PaginationButtons";
 import axios from "axios";
+import LoadingIcons from 'react-loading-icons'
 
 export default function VinGenerator() {
     const [loading, setLoading] = useState(false);
@@ -34,13 +35,14 @@ export default function VinGenerator() {
 
     const fetchVinDetails = async () => {
         setLoading(true)
-        const result = await axios.get(`${portUrl + fetchVinDetailsUrl}`)
-        setResponseData(result.data)
+        const response = await axios.get(`${portUrl + fetchVinDetailsUrl}`)
+        setResponseData(response.data)
         setLoading(false)
     }
 
     const handleSearch = async (e) => {
         e.preventDefault();
+        setResetPage(true)
         //checking if we have enough parameters for requesting from DB
         let searchParamsLength = Object.values(searchParams).filter(value => value !== null && value !== undefined && value !== "").length
         if (searchParamsLength > 0) {
@@ -172,8 +174,8 @@ export default function VinGenerator() {
                         {
                             loading ?
                                 <tr key="loading">
-                                    <td colSpan={13} className="p-4 text-center w-full text-2xl">
-                                        Loading.......
+                                    <td colSpan={13} className="p-4 text-2xl">
+                                        <LoadingIcons.Bars fill="black" className="h-10 w-full place-self-center"/>
                                     </td>
                                 </tr>
                                 :
