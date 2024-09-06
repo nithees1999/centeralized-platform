@@ -129,12 +129,12 @@ app.get('/api/getApprovalStates', (req, res) => {
 });
 // Get Tier
 app.get('/api/getApprovalTier', (req, res) => {
-  const sql = 'SELECT DISTINCT Tier FROM autoapproval';
-  db.query(sql, (err, results) => {
-      if (err) throw err;
-      res.json(results.map(row => row.Tier));
+    const sql = 'SELECT DISTINCT Tier FROM autoapproval';
+    db.query(sql, (err, results) => {
+        if (err) throw err;
+        res.json(results.map(row => row.Tier));
+    });
   });
-});
 // Get all data (initial page load)
 app.get('/api/autoapproval', (req, res) => {
   const sql = 'SELECT * FROM autoapproval';
@@ -149,89 +149,167 @@ app.get('/api/autoapproval', (req, res) => {
 });
 // Filter Data
 app.post('/api/autoapproval', (req, res) => {
-  const { State, FicoScore, Tier } = req.body;
-  let sql = `
-      SELECT "First Name", "Last Name", "House", "Street Name", "Street Type", "City", "State", "Zip Code", "SSN", "FICO Score", "Tier"
-      FROM autoapproval
-      WHERE State = ?
-  `;
-  let queryParams = [State];
-  if (FicoScore) {
-      sql += ' AND "FICO Score" = ?';
+    const { State, FicoScore, Tier } = req.body;
+    // Start with the base query
+    let sql = 'SELECT * FROM autoapproval WHERE 1=1';
+    // Array to hold query parameters
+    let queryParams = [];
+    // Append conditions based on the request body
+    if (State) {
+      sql += ' AND State = ?';
+      queryParams.push(State);
+    }
+    if (FicoScore) {
+      sql += ' AND FICO_Score = ?';
       queryParams.push(FicoScore);
-  }
-  if (Tier) {
-      sql += ' AND "Tier" = ?';
+    }
+    if (Tier) {
+      sql += ' AND Tier = ?';
       queryParams.push(Tier);
-  }
-  db.query(sql, queryParams, (err, results) => {
-      if (err) throw err;
-      res.json(results);
-  });
-});
-// CustomerProfile
-// Get State
-app.get('/api/getStates', (req, res) => {
-  const sql = 'SELECT DISTINCT State FROM customerprofile';
-  db.query(sql, (err, results) => {
-      if (err) throw err;
-      res.json(results.map(row => row.State));
-  });
-});
-// Get Tier
-app.get('/api/getTier', (req, res) => {
-  const sql = 'SELECT DISTINCT Tier FROM customerprofile';
-  db.query(sql, (err, results) => {
-      if (err) throw err;
-      res.json(results.map(row => row.Tier));
-  });
-});
-// Get ScoreCard Type
-app.get('/api/getScoreCardTypes', (req, res) => {
-  const sql = 'SELECT DISTINCT `ScoreCard Type` FROM customerprofile';
-  db.query(sql, (err, results) => {
-      if (err) throw err;
-      res.json(results.map(row => row['ScoreCard Type']));
-  });
-});
-// Get all data (initial page load)
-app.get('/api/customerprofile', (req, res) => {
-  const sql = 'SELECT * FROM customerprofile';
-  db.query(sql, (err, results) => {
+    }
+    // Execute the query with the parameters
+    db.query(sql, queryParams, (err, results) => {
       if (err) {
-          console.error('Error fetching data:', err);
-          res.status(500).json({ error: 'Internal Server Error' });
-          return;
+        console.error('Error filtering data:', err);
+        return res.status(500).json({ error: 'Internal Server Error' });
       }
       res.json(results);
+    });
+   });
+
+
+
+
+
+// Customerprofile
+// Get State
+app.get('/api/getApprovalStates', (req, res) => {
+    const sql = 'SELECT DISTINCT State FROM customerprofile';
+    db.query(sql, (err, results) => {
+        if (err) throw err;
+        res.json(results.map(row => row.State));
+    });
   });
-});
-// Filter Data
-app.post('/api/customerprofile', (req, res) => {
-  const { State, FicoScore, Tier, ScoreCardType } = req.body;
-  let sql = `
-      SELECT "First Name", "Last Name", "DOB", "House", "Street Name", "Street Type", "City", "State", "Zip Code", "SSN", "FICO Score", "Tier", "ScoreCard Type"
-      FROM customerprofile
-      WHERE State = ?
-  `;
-  let queryParams = [State];
-  if (FicoScore) {
-      sql += ' AND "FICO Score" = ?';
-      queryParams.push(FicoScore);
-  }
-  if (Tier) {
-      sql += ' AND "Tier" = ?';
-      queryParams.push(Tier);
-  }
-  if (ScoreCardType) {
-      sql += ' AND "ScoreCard Type" = ?';
-      queryParams.push(ScoreCardType);
-  }
-  db.query(sql, queryParams, (err, results) => {
-      if (err) throw err;
-      res.json(results);
+  // Get Tier
+  app.get('/api/getApprovalTier', (req, res) => {
+      const sql = 'SELECT DISTINCT Tier FROM customerprofile';
+      db.query(sql, (err, results) => {
+          if (err) throw err;
+          res.json(results.map(row => row.Tier));
+      });
+    });
+  // Get all data (initial page load)
+  app.get('/api/customerprofile', (req, res) => {
+    const sql = 'SELECT * FROM customerprofile';
+    db.query(sql, (err, results) => {
+        if (err) {
+            console.error('Error fetching data:', err);
+            res.status(500).json({ error: 'Internal Server Error' });
+            return;
+        }
+        res.json(results);
+    });
   });
-});
+  // Filter Data
+  app.post('/api/customerprofile', (req, res) => {
+      const { State, FicoScore, Tier } = req.body;
+      // Start with the base query
+      let sql = 'SELECT * FROM customerprofile WHERE 1=1';
+      // Array to hold query parameters
+      let queryParams = [];
+      // Append conditions based on the request body
+      if (State) {
+        sql += ' AND State = ?';
+        queryParams.push(State);
+      }
+      if (FicoScore) {
+        sql += ' AND FICO_Score = ?';
+        queryParams.push(FicoScore);
+      }
+      if (Tier) {
+        sql += ' AND Tier = ?';
+        queryParams.push(Tier);
+      }
+      // Execute the query with the parameters
+      db.query(sql, queryParams, (err, results) => {
+        if (err) {
+          console.error('Error filtering data:', err);
+          return res.status(500).json({ error: 'Internal Server Error' });
+        }
+        res.json(results);
+      });
+     });
+
+
+
+
+
+ 
+
+//FCL
+
+app.get('/api/getProducts', (req, res) => {
+    const sql = 'SELECT DISTINCT Product FROM fcl';
+    db.query(sql, (err, results) => {
+        if (err) throw err;
+        res.json(results.map(row => row.Product));
+    });
+  });
+// Get all data (initial page load)
+app.get('/api/fcl', (req, res) => {
+    const sql = 'SELECT * FROM fcl';
+    db.query(sql, (err, results) => {
+        if (err) {
+            console.error('Error fetching data:', err);
+            res.status(500).json({ error: 'Internal Server Error' });
+            return;
+        }
+        res.json(results);
+    });
+  });
+  // Filter Data
+app.post('/api/fcl', (req, res) => {
+    const { Product, FicoScore, Tier, ScoreCardType } = req.body;
+    let sql = `
+        SELECT "Product", "Last Name", "DOB", "House", "Street Name", "Street Type", "City", "State", "Zip Code", "SSN", "FICO Score", "Tier", "ScoreCard Type"
+        FROM fcl
+        WHERE Product = ?
+    `;
+    let queryParams = [Product];
+    if (FicoScore) {
+        sql += ' AND "FICO Score" = ?';
+        queryParams.push(FicoScore);
+    }
+    if (Tier) {
+        sql += ' AND "Tier" = ?';
+        queryParams.push(Tier);
+    }
+    if (ScoreCardType) {
+        sql += ' AND "ScoreCard Type" = ?';
+        queryParams.push(ScoreCardType);
+    }
+    db.query(sql, queryParams, (err, results) => {
+        if (err) throw err;
+        res.json(results);
+    });
+  });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // Sending response to the client
 app.get('/', (req, res) => {
   return res.json("From Backend Side")
