@@ -1,49 +1,59 @@
 import { FaSearch } from "react-icons/fa";
 import React, { useEffect, useState } from "react";
+import axios from "axios";
+import PaginationButtons from "./PaginationButtons";
+import LoadingIcons from 'react-loading-icons'
 
 export default function Dealer() {
-    //state for initial data
-    const [dealerData, setDealerData] = useState([]);
     const [searchParams, setSearchParams] = useState({
         State: '',
         Brand: '',
     });
-
+    const [loading, setLoading] = useState(false);
+    const [currentPage, setCurrentPage] = useState(1);
+    const postsPerPage = 10
+    const lastPostIndex = currentPage * postsPerPage;
+    const firstPostIndex = lastPostIndex - postsPerPage;
+    const [resetPage, setResetPage] = useState(false);
     const [responseData, setResponseData] = useState([]);
+    let responseDataPosts;
+    if (responseData && responseData.length > 0) {
+        responseDataPosts = responseData.slice(firstPostIndex, lastPostIndex)
+    }
+
+    //api call URLs
+    const portUrl = "http://localhost:8080"
+    const fetchDealerDetailsUrl = "/api/fetchDealerDetails"
+    const filterDealerDetailsUrl = "/api/DealerFilter"
+
+    const fetchDealerDetails = async () => {
+        setLoading(true)
+        const response = await axios.get(`${portUrl + fetchDealerDetailsUrl}`)
+        setResponseData(response.data)
+        setLoading(false)
+    }
 
     const handleSearch = async (e) => {
         e.preventDefault();
-
+        setResetPage(true)
+        //checking if we have enough parameters for requesting from DB
         let searchParamsLength = Object.values(searchParams).filter(value => value !== null && value !== undefined && value !== "").length
         if (searchParamsLength > 0) {
-            setDealerData([])
             try {
-                const response = await fetch('http://localhost:8080/api/DealerFilter', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify(searchParams),
-                });
-                const data = await response.json();
-                setResponseData(data);
+                setLoading(true)
+                const response = await axios.post(`${portUrl + filterDealerDetailsUrl}`, searchParams);
+                setResponseData(response.data)
+                setLoading(false)
             } catch (error) {
                 console.error(error);
             }
         } else {
-             //No values provided and exicuted the search feature 
-            setResponseData([])
+            fetchDealerDetails()
         }
     };
 
-
     useEffect(() => {
-        //fetch only for demo data in the page
-        fetch("http://localhost:8080/api/fetchDealerDetails")
-            .then(res => res.json())
-            .then(data => setDealerData(data))
-            .catch(err => console.log(err));
-        // eslint-disable-next-line
+        fetchDealerDetails()
     }, []);
 
     const handleChange = (e) => {
@@ -103,8 +113,14 @@ export default function Dealer() {
 
                     <tbody className="border border-black">
                         {
-                            dealerData.length > 0 ?
-                            dealerData.map((element, index) => (
+                            loading ?
+                                <tr key="loading">
+                                    <td colSpan={13} className="p-4 text-2xl">
+                                        <LoadingIcons.Bars fill="black" className="h-10 w-full place-self-center" />
+                                    </td>
+                                </tr>
+                                :
+                                responseDataPosts && responseDataPosts.length > 0 ? responseDataPosts.map((element, index) => (
                                     <tr key={index} className="text-center">
                                         <td className="p-2 border border-black">{element.State}</td>
                                         <td className="p-2 border border-black">{element.Brand}</td>
@@ -113,35 +129,18 @@ export default function Dealer() {
                                         <td className="p-2 border border-black">{element.Password}</td>
                                     </tr>
                                 ))
-                                :
-                                responseData.message === "No data available" ?
-                                    <tr key="no-data">
-                                        <td colSpan={5} className="p-4 text-center w-full">
+                                    : <tr key="no-data">
+                                        <td colSpan={13} className="p-4 text-center w-full text-2xl">
                                             No data available
                                         </td>
                                     </tr>
-                                    :
-                                    responseData.length > 0 ?
-                                        responseData.map((element, index) => (
-                                            <tr key={index} className="text-center">
-                                                <td className="p-2 border border-black">{element.State}</td>
-                                                <td className="p-2 border border-black">{element.Brand}</td>
-                                                <td className="p-2 border border-black">{element.DealerNumber}</td>
-                                                <td className="p-2 border border-black">{element.UserID}</td>
-                                                <td className="p-2 border border-black">{element.Password}</td>
-                                            </tr>
-                                        ))
-                                        :
-                                        <tr key="no-data">
-                                            <td colSpan={5} className="p-4 text-center w-full">
-                                                Check values / Provide values for searching
-                                            </td>
-                                        </tr>
-                            // console.log(mydata)
                         }
                     </tbody>
-
                 </table>
+
+                {responseDataPosts && responseDataPosts.length > 0 &&
+                    <PaginationButtons currentPage={currentPage} setCurrentPage={setCurrentPage} totalPosts={responseData.length} postsPerPage={postsPerPage} resetPage={resetPage} setResetPage={setResetPage} />
+                }
             </section>
         </div>
     );
