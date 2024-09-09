@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import PaginationButtons from "./PaginationButtons";
 import axios from "axios";
 import LoadingIcons from 'react-loading-icons'
+import Select from 'react-select';
 
 export default function VinGenerator() {
     const [loading, setLoading] = useState(false);
@@ -43,6 +44,7 @@ export default function VinGenerator() {
     const handleSearch = async (e) => {
         e.preventDefault();
         setResetPage(true)
+        setselectedOptionFields(selectedOption)
         //checking if we have enough parameters for requesting from DB
         let searchParamsLength = Object.values(searchParams).filter(value => value !== null && value !== undefined && value !== "").length
         if (searchParamsLength > 0) {
@@ -66,6 +68,37 @@ export default function VinGenerator() {
             [name]: value,
         }));
     };
+
+    //dropdown multiSelect
+    const options = [
+        { value: 'MSRP_AM', label: 'MSRP AM' },
+        { value: 'DLR_INV_AM', label: 'DLR INV AM' },
+        { value: 'DH_AMT', label: 'DH AMT' },
+        { value: 'Color_Upcharge_MSRP', label: 'MSRP' },
+        { value: 'Color_Upcharge_Invoice', label: 'Invoice' },
+        { value: 'PIO_Total_MSRP_Amount', label: 'TotalMSRP' },
+        { value: 'PIO_Total_Dlr_Invoice_Amount', label: 'TotalDlr' },
+    ];
+    const [selectedOption, setSelectedOption] = useState(null);
+    const [selectedOptionFields, setselectedOptionFields] = useState(null);
+    const customStyles = {
+        control: (provided, state) => ({
+            ...provided,
+            borderColor: state.isFocused ? 'black' : 'black', //select box styling
+            boxShadow: state.isFocused ? '0 0 0 1px black' : null,
+            "&:hover": {
+                borderColor: 'black'
+            },
+        }),
+        option: (provided) => ({
+            ...provided,
+            backgroundColor: "white",  // Background color for selected option 
+            "&:hover": {
+                backgroundColor: "gray", // Background color when an option is hovered
+                color: "white"
+            },
+        }),
+    }
 
     useEffect(() => {
         fetchVinDetails()
@@ -97,8 +130,8 @@ export default function VinGenerator() {
                     <label className="px-1 font-medium " htmlFor="VIN">VIN Number:</label>
                     <input
                         className="border border-black rounded p-1 w-44"
-                        type="VIN"
                         name="VIN"
+                        id="VIN"
                         value={searchParams.VIN}
                         onChange={handleChange}
                     />
@@ -110,6 +143,7 @@ export default function VinGenerator() {
                         className="border border-black rounded p-1 w-32"
                         type="text"
                         name="Model"
+                        id="Model"
                         value={searchParams.Model}
                         onChange={handleChange}
                     />
@@ -121,6 +155,7 @@ export default function VinGenerator() {
                         className="border border-black rounded p-1 w-32"
                         type="text"
                         name="Make"
+                        id="Make"
                         list="MakeSuggestions"
                         value={searchParams.Make}
                         onChange={handleChange}
@@ -137,6 +172,7 @@ export default function VinGenerator() {
                     <input
                         className="border border-black rounded p-1 w-32"
                         name="Year"
+                        id="Year"
                         type="number"
                         min={1950}
                         max={2024}
@@ -145,6 +181,15 @@ export default function VinGenerator() {
                         onChange={handleChange}
                     />
                 </section>
+
+                <Select
+                    defaultValue={selectedOption}
+                    onChange={setSelectedOption}
+                    options={options}
+                    styles={customStyles}
+                    isMulti
+                    className="mt-2 min-w-52 text-sm"
+                />
 
                 <button className="rounded-full p-2 mx-2 border border-black" type="submit">
                     <FaSearch />
@@ -160,13 +205,11 @@ export default function VinGenerator() {
                             <th className="p-2 border border-black text-blue-700">Make</th>
                             <th className="p-2 border border-black text-blue-700">Year</th>
                             <th className="p-2 border border-black text-blue-700">Model ID</th>
-                            <th className="p-2 border border-black text-blue-700">MSRP AM</th>
-                            <th className="p-2 border border-black text-blue-700">DLR INV AM</th>
-                            <th className="p-2 border border-black text-blue-700">DH AMT</th>
-                            <th className="p-2 border border-black text-blue-700">MSRP</th>
-                            <th className="p-2 border border-black text-blue-700">Invoice</th>
-                            <th className="p-2 border border-black text-blue-700">TotalMSRP</th>
-                            <th className="p-2 border border-black text-blue-700">TotalDlr</th>
+                            {selectedOptionFields && selectedOptionFields.map((option) => (
+                                <th key={option.label} className="p-2 border border-black text-blue-700">
+                                    {option.label}
+                                </th>
+                            ))}
                         </tr>
                     </thead>
 
@@ -175,7 +218,7 @@ export default function VinGenerator() {
                             loading ?
                                 <tr key="loading">
                                     <td colSpan={13} className="p-4 text-2xl">
-                                        <LoadingIcons.Bars fill="black" className="h-10 w-full place-self-center"/>
+                                        <LoadingIcons.Bars fill="black" className="h-10 w-full place-self-center" />
                                     </td>
                                 </tr>
                                 :
@@ -187,13 +230,11 @@ export default function VinGenerator() {
                                         <td className="p-2 border border-black">{element.Make}</td>
                                         <td className="p-2 border border-black">{element.Year}</td>
                                         <td className="p-2 border border-black">{element.MDL_CD}</td>
-                                        <td className="p-2 border border-black">{element.MSRP_AM}</td>
-                                        <td className="p-2 border border-black">{element.DLR_INV_AM}</td>
-                                        <td className="p-2 border border-black">{element.DH_AMT}</td>
-                                        <td className="p-2 border border-black">{element.Color_Upcharge_MSRP}</td>
-                                        <td className="p-2 border border-black">{element.Color_Upcharge_Invoice}</td>
-                                        <td className="p-2 border border-black">{element.PIO_Total_MSRP_Amount}</td>
-                                        <td className="p-2 border border-black">{element.PIO_Total_Dlr_Invoice_Amount}</td>
+                                        {selectedOptionFields && selectedOptionFields.map((option) => (
+                                            <td key={option.value} className="p-2 border border-black">
+                                                {element[option.value]}
+                                            </td>
+                                        ))}
                                     </tr>
                                 ))
                                     : <tr key="no-data">
