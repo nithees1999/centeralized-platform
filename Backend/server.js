@@ -156,7 +156,7 @@ app.get('/api/autoapproval', (req, res) => {
 });
 // Filter Data
 app.post('/api/autoapproval', (req, res) => {
-    const { State, FicoScore, Tier } = req.body;
+    const { State, FICO_Score, Tier } = req.body;
     // Start with the base query
     let sql = 'SELECT * FROM autoapproval WHERE 1=1';
     // Array to hold query parameters
@@ -166,9 +166,9 @@ app.post('/api/autoapproval', (req, res) => {
         sql += ' AND State = ?';
         queryParams.push(State);
     }
-    if (FicoScore) {
+    if (FICO_Score) {
         sql += ' AND FICO_Score = ?';
-        queryParams.push(FicoScore);
+        queryParams.push(FICO_Score);
     }
     if (Tier) {
         sql += ' AND Tier = ?';
@@ -227,24 +227,24 @@ app.get('/api/customerprofile', (req, res) => {
 });
 // Filter Data
 app.post('/api/customerprofile', (req, res) => {
-    const { State, FicoScore, Tier, ScoreCardType } = req.body;
+    const { State, FICO_Score, Tier, ScoreCard_Type } = req.body;
     let sql = 'SELECT * FROM customerprofile WHERE 1=1';
     let queryParams = [];
     if (State) {
         sql += ' AND `State` = ?';
         queryParams.push(State);
     }
-    if (FicoScore) {
+    if (FICO_Score) {
         sql += ' AND `FICO_Score` = ?';
-        queryParams.push(FicoScore);
+        queryParams.push(FICO_Score);
     }
     if (Tier) {
         sql += ' AND `Tier` = ?';
         queryParams.push(Tier);
     }
-    if (ScoreCardType) {
+    if (ScoreCard_Type) {
         sql += ' AND `ScoreCard_Type` = ?';
-        queryParams.push(ScoreCardType);
+        queryParams.push(ScoreCard_Type);
     }
     db.query(sql, queryParams, (err, results) => {
         if (err) {

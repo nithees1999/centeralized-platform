@@ -1,12 +1,12 @@
-import { FaSearch, FaUndo } from "react-icons/fa";
+import { FaSearch, FaHome } from "react-icons/fa";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 const CustomerProfile = () => {
     const [formState, setFormState] = useState({
-        selectedState: '',
-        ficoScore: '',
-        selectedTier: '',
-        selectedScoreCardType: '',
+        State: '',
+        FICO_Score: '',
+        Tier: '',
+        ScoreCard_Type: '',
     });
     const [states, setStates] = useState([]);
     const [tiers, setTiers] = useState([]);
@@ -32,7 +32,7 @@ const CustomerProfile = () => {
         };
         fetchData();
     }, []);
-    const handleInputChange = (e) => {
+    const handleChange = (e) => {
         const { name, value } = e.target;
         setFormState(prevState => ({
             ...prevState,
@@ -43,12 +43,7 @@ const CustomerProfile = () => {
         e.preventDefault();
         setLoading(true);
         try {
-            const response = await axios.post('http://localhost:8080/api/customerprofile', {
-                State: formState.selectedState,
-                FicoScore: formState.ficoScore,
-                Tier: formState.selectedTier,
-                ScoreCardType: formState.selectedScoreCardType
-            });
+            const response = await axios.post('http://localhost:8080/api/customerprofile',formState);
             setFilteredData(response.data);
         } catch (error) {
             console.error('Error fetching filtered data:', error);
@@ -58,10 +53,10 @@ const CustomerProfile = () => {
     };
     const handleReset = async () => {
         setFormState({
-            selectedState: '',
-            ficoScore: '',
-            selectedTier: '',
-            selectedScoreCardType: '',
+            State: '',
+            FICO_Score: '',
+            Tier: '',
+            ScoreCard_Type: '',
         });
         try {
             const response = await axios.get('http://localhost:8080/api/customerprofile');
@@ -88,9 +83,10 @@ const CustomerProfile = () => {
                     <label className="px-1 font-medium" htmlFor="State">State:</label>
                     <select
                         className="border border-black rounded p-1 w-32"
-                        name="selectedState"
-                        value={formState.selectedState}
-                        onChange={handleInputChange}
+                        name="State"
+                        id="State"
+                        value={formState.State}
+                        onChange={handleChange}
                     >
                         <option value="">Select State</option>
                         {states.map((state, index) => (
@@ -102,9 +98,10 @@ const CustomerProfile = () => {
                     <label className="px-1 font-medium" htmlFor="Tier">Tier:</label>
                     <select
                         className="border border-black rounded p-1 w-32"
-                        name="selectedTier"
-                        value={formState.selectedTier}
-                        onChange={handleInputChange}
+                        name="Tier"
+                        id="Tier"
+                        value={formState.Tier}
+                        onChange={handleChange}
                     >
                         <option value="">Select Tier</option>
                         {tiers.map((tier, index) => (
@@ -113,22 +110,24 @@ const CustomerProfile = () => {
                     </select>
                 </div>
                 <div>
-                    <label className="px-1 font-medium" htmlFor="ficoScore">FICO_Score:</label>
+                    <label className="px-1 font-medium" htmlFor="FICO_Score">FICO Score:</label>
                     <input
                         className="border border-black rounded p-1 w-32"
                         type="number"
-                        name="ficoScore"
-                        value={formState.ficoScore}
-                        onChange={handleInputChange}
+                        name="FICO_Score"
+                        id="FICO_Score"
+                        value={formState.FICO_Score}
+                        onChange={handleChange}
                     />
                 </div>
                 <div>
-                    <label className="px-1 font-medium" htmlFor="selectedScoreCardType">ScoreCard:</label>
+                    <label className="px-1 font-medium" htmlFor="ScoreCard_Type">ScoreCard:</label>
                     <select
                         className="border border-black rounded p-1 w-32"
-                        name="selectedScoreCardType"
-                        value={formState.selectedScoreCardType}
-                        onChange={handleInputChange}
+                        name="ScoreCard_Type"
+                        id="ScoreCard_Type"
+                        value={formState.ScoreCard_Type}
+                        onChange={handleChange}
                     >
                         <option value="">Select ScoreCard</option>
                         {scoreCardTypes.map((type, index) => (
@@ -140,7 +139,7 @@ const CustomerProfile = () => {
                     <FaSearch />
                 </button>
                 <button type="button" onClick={handleReset} className="rounded-full p-2 mx-2 border border-black">
-                    <FaUndo />
+                    <FaHome />
                 </button>
                 {loading && <div>Loading...</div>}
             </form>
@@ -176,7 +175,7 @@ const CustomerProfile = () => {
                                     <td className="p-2 border border-black">{item.Street_Type}</td>
                                     <td className="p-2 border border-black">{item.City}</td>
                                     <td className="p-2 border border-black">{item.State}</td>
-                                    <td className="p-2 border border-black">{item["Zip Code"]}</td>
+                                    <td className="p-2 border border-black">{item.Zip_Code}</td>
                                     <td className="p-2 border border-black">{item.SSN}</td>
                                     <td className="p-2 border border-black">{item.FICO_Score}</td>
                                     <td className="p-2 border border-black">{item.Tier}</td>

@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { FaSearch, FaUndo } from 'react-icons/fa';
+import { FaSearch, FaHome } from 'react-icons/fa';
 const AutoApproval = () => {
     const [stateData, setStateData] = useState({
         states: [],
         tiers: [],
         data: [],
         filteredData: [],
-        selectedState: '',
-        ficoScore: '',
-        selectedTier: '',
+        State: '',
+        FICO_Score: '',
+        Tier: '',
     });
     const [loading, setLoading] = useState(false);
     useEffect(() => {
@@ -33,15 +33,19 @@ const AutoApproval = () => {
         };
         fetchData();
     }, []);
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setStateData(prevState => ({
+            ...prevState,
+            [name]: value
+        }));
+    };
     const handleSearch = async (e) => {
         e.preventDefault();
         setLoading(true);
         try {
-            const response = await axios.post('http://localhost:8080/api/autoapproval', {
-                State: stateData.selectedState,
-                FicoScore: stateData.ficoScore,
-                Tier: stateData.selectedTier,
-            });
+            const response = await axios.post('http://localhost:8080/api/autoapproval',stateData);
+                
             setStateData(prevState => ({ ...prevState, filteredData: response.data }));
         } catch (error) {
             console.error('Error fetching filtered data:', error);
@@ -52,9 +56,9 @@ const AutoApproval = () => {
         setStateData(prevState => ({
             ...prevState,
             filteredData: prevState.data,
-            selectedState: '',
-            ficoScore: '',
-            selectedTier: ''
+            State: '',
+            FICO_Score: '',
+            Tier: ''
         }));
     };
     return (
@@ -70,8 +74,8 @@ const AutoApproval = () => {
                         className="border border-black rounded p-1 w-32"
                         name="State"
                         id="State"
-                        value={stateData.selectedState}
-                        onChange={(e) => setStateData(prevState => ({ ...prevState, selectedState: e.target.value }))}
+                        value={stateData.State}
+                        onChange={handleChange}
                     >
                         <option value="">Select State</option>
                         {stateData.states.map((state, index) => (
@@ -85,8 +89,8 @@ const AutoApproval = () => {
                         className="border border-black rounded p-1 w-32"
                         name="Tier"
                         id="Tier"
-                        value={stateData.selectedTier}
-                        onChange={(e) => setStateData(prevState => ({ ...prevState, selectedTier: e.target.value }))}
+                        value={stateData.Tier}
+                        onChange={handleChange}
                     >
                         <option value="">Select Tier</option>
                         {stateData.tiers.map((tier, index) => (
@@ -99,15 +103,17 @@ const AutoApproval = () => {
                     <input
                         className="border border-black rounded p-1 w-32"
                         type="number"
-                        value={stateData.ficoScore}
-                        onChange={(e) => setStateData(prevState => ({ ...prevState, ficoScore: e.target.value }))}
+                        name="FICO_Score"
+                        id="fico-score"
+                        value={stateData.FICO_Score}
+                        onChange={handleChange}
                     />
                 </div>
                 <button type="submit" className="rounded-full p-2 mx-2 border border-black">
                     <FaSearch />
                 </button>
                 <button type="button" onClick={handleReset} className="rounded-full p-2 mx-2 border border-black">
-                    <FaUndo />
+                    <FaHome />
                 </button>
                 {loading && <div>Loading...</div>}
             </form>
