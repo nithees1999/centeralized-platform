@@ -89,6 +89,7 @@ export default function VinGenerator() {
             "&:hover": {
                 borderColor: 'black'
             },
+            padding: '2px'
         }),
         option: (provided) => ({
             ...provided,
@@ -114,7 +115,7 @@ export default function VinGenerator() {
                 <section>
                     <label className="px-1 font-medium " htmlFor="VIN_Type">VIN type:</label>
                     <select
-                        className="border border-black rounded p-1 w-32"
+                        className="border border-black rounded p-2"
                         name="VIN_Type"
                         id="VIN_Type"
                         value={searchParams.VIN_Type}
@@ -129,7 +130,7 @@ export default function VinGenerator() {
                 <section>
                     <label className="px-1 font-medium " htmlFor="VIN">VIN Number:</label>
                     <input
-                        className="border border-black rounded p-1 w-44"
+                        className="border border-black rounded p-2"
                         name="VIN"
                         id="VIN"
                         value={searchParams.VIN}
@@ -140,7 +141,7 @@ export default function VinGenerator() {
                 <section>
                     <label className="px-1 font-medium " htmlFor="Model">Model:</label>
                     <input
-                        className="border border-black rounded p-1 w-32"
+                        className="border border-black rounded p-2"
                         type="text"
                         name="Model"
                         id="Model"
@@ -152,7 +153,7 @@ export default function VinGenerator() {
                 <section>
                     <label className="px-1 font-medium " htmlFor="Make">Make:</label>
                     <input
-                        className="border border-black rounded p-1 w-32"
+                        className="border border-black rounded p-2"
                         type="text"
                         name="Make"
                         id="Make"
@@ -170,7 +171,7 @@ export default function VinGenerator() {
                 <section>
                     <label className="px-1 font-medium " htmlFor="Year">Year:</label>
                     <input
-                        className="border border-black rounded p-1 w-32"
+                        className="border border-black rounded p-2"
                         name="Year"
                         id="Year"
                         type="number"
@@ -188,10 +189,10 @@ export default function VinGenerator() {
                     options={options}
                     styles={customStyles}
                     isMulti
-                    className="mt-2 min-w-52 text-sm"
+                    className="mx-2 min-w-52"
                 />
 
-                <button className="rounded-full p-2 mx-2 border border-black" type="submit">
+                <button className="rounded-full p-2 mt-2 mx-2 border border-black" type="submit">
                     <FaSearch />
                 </button>
             </form>
