@@ -261,15 +261,57 @@ app.post('/api/customerprofile', (req, res) => {
 
 
 
-//FCL
 
+// FCL
+// Get Product
 app.get('/api/getProducts', (req, res) => {
-    const sql = 'SELECT DISTINCT Product FROM fcl';
+    const sql = 'SELECT DISTINCT `Product` FROM fcl';
     db.query(sql, (err, results) => {
         if (err) throw err;
         res.json(results.map(row => row.Product));
     });
 });
+// Get VehicleType
+app.get('/api/getVehicleType', (req, res) => {
+    const sql = 'SELECT DISTINCT `Vehicle_Type` FROM fcl';
+    db.query(sql, (err, results) => {
+        if (err) throw err;
+        res.json(results.map(row => row.Vehicle_Type));
+    });
+});
+// Get ScoreCard
+app.get('/api/getScoreCard', (req, res) => {
+    const sql = 'SELECT DISTINCT `Score_Card` FROM fcl';
+    db.query(sql, (err, results) => {
+        if (err) throw err;
+        res.json(results.map(row => row.Score_Card));
+    });
+});
+// Get salesProgram
+app.get('/api/getSalesProgram', (req, res) => {
+    const sql = 'SELECT DISTINCT `SalesProgram` FROM fcl';
+    db.query(sql, (err, results) => {
+        if (err) throw err;
+        res.json(results.map(row => row.SalesProgram));
+    });
+});
+// Get Term
+app.get('/api/getTerm', (req, res) => {
+    const sql = 'SELECT DISTINCT `Term` FROM fcl';
+    db.query(sql, (err, results) => {
+        if (err) throw err;
+        res.json(results.map(row => row.Term));
+    });
+});
+// Get Modifier
+app.get('/api/getModifier', (req, res) => {
+    const sql = 'SELECT DISTINCT `Modifier` FROM fcl';
+    db.query(sql, (err, results) => {
+        if (err) throw err;
+        res.json(results.map(row => row.Modifier));
+    });
+});
+
 // Get all data (initial page load)
 app.get('/api/fcl', (req, res) => {
     const sql = 'SELECT * FROM fcl';
@@ -284,27 +326,39 @@ app.get('/api/fcl', (req, res) => {
 });
 // Filter Data
 app.post('/api/fcl', (req, res) => {
-    const { Product, FicoScore, Tier, ScoreCardType } = req.body;
-    let sql = `
-        SELECT "Product", "Last Name", "DOB", "House", "Street Name", "Street Type", "City", "State", "Zip Code", "SSN", "FICO Score", "Tier", "ScoreCard Type"
-        FROM fcl
-        WHERE Product = ?
-    `;
-    let queryParams = [Product];
-    if (FicoScore) {
-        sql += ' AND "FICO_Score" = ?';
-        queryParams.push(FicoScore);
+    const { Product, Vehicle_Type, Score_Card, SalesProgram, Term, Modifier } = req.body;
+    let sql = 'SELECT * FROM fcl WHERE 1=1';
+    let queryParams = [];
+    if (Product) {
+        sql += ' AND `Product` = ?';
+        queryParams.push(Product);
     }
-    if (Tier) {
-        sql += ' AND "Tier" = ?';
-        queryParams.push(Tier);
+    if (Vehicle_Type) {
+        sql += ' AND `Vehicle_Type` = ?';
+        queryParams.push(Vehicle_Type);
     }
-    if (ScoreCardType) {
-        sql += ' AND "ScoreCard_Type" = ?';
-        queryParams.push(ScoreCardType);
+    if (Score_Card) {
+        sql += ' AND `Score_Card` = ?';
+        queryParams.push(Score_Card);
+    }
+    if (SalesProgram) {
+        sql += ' AND `SalesProgram` = ?';
+        queryParams.push(SalesProgram);
+    }
+    if (Term) {
+        sql += ' AND `Term` = ?';
+        queryParams.push(Term);
+    }
+    if (Modifier) {
+        sql += ' AND `Modifier` = ?';
+        queryParams.push(Modifier);
     }
     db.query(sql, queryParams, (err, results) => {
-        if (err) throw err;
+        if (err) {
+            console.error('Error executing query:', err);
+            res.status(500).json({ error: 'Internal Server Error' });
+            return;
+        }
         res.json(results);
     });
 });

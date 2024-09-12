@@ -43,7 +43,7 @@ const CustomerProfile = () => {
         e.preventDefault();
         setLoading(true);
         try {
-            const response = await axios.post('http://localhost:8080/api/customerprofile',formState);
+            const response = await axios.post('http://localhost:8080/api/customerprofile', formState);
             setFilteredData(response.data);
         } catch (error) {
             console.error('Error fetching filtered data:', error);
@@ -144,28 +144,31 @@ const CustomerProfile = () => {
                 {loading && <div>Loading...</div>}
             </form>
             <section className="min-h-screen py-8 px-4 m-2 border border-black rounded-md">
-                {filteredData.length === 0 && !loading && (<div className="flex justify-center items-center min-h-full">No data available</div>)}
-                {filteredData.length > 0 && (
-                    <table className="w-full">
-                        <thead className="border border-black">
+                <table className="w-full">
+                    <thead className="border border-black">
+                        <tr>
+                            <th className="p-4 border border-black text-blue-700">First Name</th>
+                            <th className="p-4 border border-black text-blue-700">Last Name</th>
+                            <th className="p-4 border border-black text-blue-700">DOB</th>
+                            <th className="p-4 border border-black text-blue-700">House</th>
+                            <th className="p-4 border border-black text-blue-700">Street Name</th>
+                            <th className="p-4 border border-black text-blue-700">Street Type</th>
+                            <th className="p-4 border border-black text-blue-700">City</th>
+                            <th className="p-4 border border-black text-blue-700">State</th>
+                            <th className="p-4 border border-black text-blue-700">Zip Code</th>
+                            <th className="p-4 border border-black text-blue-700">SSN</th>
+                            <th className="p-4 border border-black text-blue-700">FICO Score</th>
+                            <th className="p-4 border border-black text-blue-700">Tier</th>
+                            <th className="p-4 border border-black text-blue-700">ScoreCard</th>
+                        </tr>
+                    </thead>
+                    <tbody className="border border-black">
+                        {filteredData.length === 0 && !loading ? (
                             <tr>
-                                <th className="p-4 border border-black text-blue-700">First Name</th>
-                                <th className="p-4 border border-black text-blue-700">Last Name</th>
-                                <th className="p-4 border border-black text-blue-700">DOB</th>
-                                <th className="p-4 border border-black text-blue-700">House</th>
-                                <th className="p-4 border border-black text-blue-700">Street Name</th>
-                                <th className="p-4 border border-black text-blue-700">Street Type</th>
-                                <th className="p-4 border border-black text-blue-700">City</th>
-                                <th className="p-4 border border-black text-blue-700">State</th>
-                                <th className="p-4 border border-black text-blue-700">Zip Code</th>
-                                <th className="p-4 border border-black text-blue-700">SSN</th>
-                                <th className="p-4 border border-black text-blue-700">FICO Score</th>
-                                <th className="p-4 border border-black text-blue-700">Tier</th>
-                                <th className="p-4 border border-black text-blue-700">ScoreCard</th>
+                                <td colSpan="13" className="p-4 text-center">No data available</td>
                             </tr>
-                        </thead>
-                        <tbody className="border border-black">
-                            {filteredData.map((item, index) => (
+                        ) : (
+                            filteredData.map((item, index) => (
                                 <tr key={index} className="text-center">
                                     <td className="p-2 border border-black">{item.First_Name}</td>
                                     <td className="p-2 border border-black">{item.Last_Name}</td>
@@ -181,10 +184,10 @@ const CustomerProfile = () => {
                                     <td className="p-2 border border-black">{item.Tier}</td>
                                     <td className="p-2 border border-black">{item.ScoreCard_Type}</td>
                                 </tr>
-                            ))}
-                        </tbody>
-                    </table>
-                )}
+                            ))
+                        )}
+                    </tbody>
+                </table>
             </section>
         </div>
     );
