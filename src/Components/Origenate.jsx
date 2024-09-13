@@ -10,6 +10,7 @@ export default function Origenate() {
         Security_Profile: ''
     });
     const [loading, setLoading] = useState(false);
+    const [envTypes, setEnvTypes] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
     const postsPerPage = 10
     const lastPostIndex = currentPage * postsPerPage;
@@ -53,6 +54,11 @@ export default function Origenate() {
 
     useEffect(() => {
         fetchOrigenateDetails()
+        const fetchEnvTypes = async () =>{
+            const response = await axios.get("http://localhost:8080/api/getEnvTypes")
+            setEnvTypes(response.data)
+        }
+        fetchEnvTypes()
     }, []);
 
     const handleChange = (e) => {
@@ -81,8 +87,9 @@ export default function Origenate() {
                         onChange={handleChange}
                     >
                         <option value="">NA</option>
-                        <option value="STG">STG</option>
-                        <option value="SIN">SIN</option>
+                        {envTypes.map((Envtype, index) => (
+                            <option key={index} value={Envtype}>{Envtype}</option>
+                        ))}
                     </select>
                 </section>
 

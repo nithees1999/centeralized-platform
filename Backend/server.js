@@ -116,7 +116,14 @@ app.post('/api/OrigenateFilter', (req, res) => {
     });
 });
 
-
+// Get origenate ENV Types
+app.get('/api/getEnvTypes', (req, res) => {
+    const sql = 'SELECT DISTINCT Env FROM origenate';
+    db.query(sql, (err, results) => {
+        if (err) throw err;
+        res.json(results.map(row => row['Env']));
+    });
+});
 
 // AutoApproval
 // Get State
