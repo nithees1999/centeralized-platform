@@ -356,6 +356,110 @@ app.post('/api/fcl', (req, res) => {
     });
 });
 
+//Residual
+
+
+// Get Module
+app.get('/api/getModules', (req, res) => {
+    const sql = 'SELECT DISTINCT `Module` FROM residual';
+    db.query(sql, (err, results) => {
+        if (err) throw err;
+        res.json(results.map(row => row.Module));
+    });
+});
+// Get VehicleType
+app.get('/api/getVehicleType', (req, res) => {
+    const sql = 'SELECT DISTINCT `Vehicle_Type` FROM residual';
+    db.query(sql, (err, results) => {
+        if (err) throw err;
+        res.json(results.map(row => row.Vehicle_Type));
+    });
+});
+// Get Brand
+app.get('/api/getBrand', (req, res) => {
+    const sql = 'SELECT DISTINCT `Brand` FROM residual';
+    db.query(sql, (err, results) => {
+        if (err) throw err;
+        res.json(results.map(row => row.Brand));
+    });
+});
+// Get Finance
+app.get('/api/getFinance', (req, res) => {
+    const sql = 'SELECT DISTINCT `Finance` FROM residual';
+    db.query(sql, (err, results) => {
+        if (err) throw err;
+        res.json(results.map(row => row.Finance));
+    });
+});
+// Get Vehicle_Year
+app.get('/api/getVehicle_Year', (req, res) => {
+    const sql = 'SELECT DISTINCT `Vehicle_Year` FROM residual';
+    db.query(sql, (err, results) => {
+        if (err) throw err;
+        res.json(results.map(row => row.Vehicle_Year));
+    });
+});
+// Get Formula_Field
+app.get('/api/getFormula_Field', (req, res) => {
+    const sql = 'SELECT DISTINCT `Formula_Field` FROM residual';
+    db.query(sql, (err, results) => {
+        if (err) throw err;
+        res.json(results.map(row => row.Formula_Field));
+    });
+});
+
+// Get all data (initial page load)
+app.get('/api/residual', (req, res) => {
+    const sql = 'SELECT * FROM residual';
+    db.query(sql, (err, results) => {
+        if (err) {
+            console.error('Error fetching data:', err);
+            res.status(500).json({ error: 'Internal Server Error' });
+            return;
+        }
+        res.json(results);
+    });
+});
+// Filter Data
+app.post('/api/residual', (req, res) => {
+    const { Module, Vehicle_Type, Brand, Finance, Vehicle_Year, Formula_Field } = req.body;
+    let sql = 'SELECT * FROM residual WHERE 1=1';
+    let queryParams = [];
+    if (Module) {
+        sql += ' AND `Module` = ?';
+        queryParams.push(Module);
+    }
+    if (Vehicle_Type) {
+        sql += ' AND `Vehicle_Type` = ?';
+        queryParams.push(Vehicle_Type);
+    }
+    if (Brand) {
+        sql += ' AND `Brand` = ?';
+        queryParams.push(Brand);
+    }
+    if (Finance) {
+        sql += ' AND `Finance` = ?';
+        queryParams.push(Finance);
+    }
+    if (Vehicle_Year) {
+        sql += ' AND `Vehicle_Year` = ?';
+        queryParams.push(Vehicle_Year);
+    }
+    if (Formula_Field) {
+        sql += ' AND `Formula_Field` = ?';
+        queryParams.push(Formula_Field);
+    }
+    db.query(sql, queryParams, (err, results) => {
+        if (err) {
+            console.error('Error executing query:', err);
+            res.status(500).json({ error: 'Internal Server Error' });
+            return;
+        }
+        res.json(results);
+    });
+});
+
+
 
 
 
