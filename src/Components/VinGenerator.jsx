@@ -1,4 +1,6 @@
 import { FaSearch } from "react-icons/fa";
+import { IoMdArrowRoundBack } from "react-icons/io";
+import { VscDebugStepBack } from "react-icons/vsc";
 import React, { useEffect, useState } from "react";
 import PaginationButtons from "./PaginationButtons";
 import axios from "axios";
@@ -28,6 +30,7 @@ export default function VinGenerator() {
     if (responseData && responseData.length > 0) {
         responseDataPosts = responseData.slice(firstPostIndex, lastPostIndex)
     }
+    const [requestHistory, setRequestHistory] = useState([]) //state for Back button
 
     //api call URLs
     const portUrl = "http://localhost:8080"
@@ -50,14 +53,17 @@ export default function VinGenerator() {
         if (searchParamsLength > 0) {
             try {
                 setLoading(true)
+                // Save current request details for back functionality
+                setRequestHistory(prevHistory => [
+                    ...prevHistory,
+                    { params: searchParams, endpoint: filterVinDetailsUrl }
+                ]);
                 const response = await axios.post(`${portUrl + filterVinDetailsUrl}`, searchParams);
                 setResponseData(response.data);
                 setLoading(false)
             } catch (error) {
                 console.error(error);
             }
-        } else {
-            fetchVinDetails()
         }
     };
 
@@ -100,6 +106,44 @@ export default function VinGenerator() {
             },
         }),
     }
+
+    const handleReset = () => {
+        setSearchParams({
+            VIN_Type: '',
+            VIN: '',
+            Model: '',
+            Make: '',
+            Year: '',
+            MDL_CD: '',
+            MSRP_AM: '',
+            DLR_INV_AM: '',
+            DH_AMT: '',
+        });
+        fetchVinDetails()
+        setRequestHistory([]);
+    };
+
+    const handleBack = async () => {
+        if (requestHistory.length > 1) {
+            const previousRequest = requestHistory[requestHistory.length - 2];  // Get the last second request
+            const newHistory = requestHistory.slice(0, -1);  // Remove the last request from history
+            setRequestHistory(newHistory);  // Update history
+            const { params, endpoint } = previousRequest;
+            try {
+                setLoading(true);
+                const response = await axios.post(`${portUrl + endpoint}`, params);// Re-fetch data using the stored request details
+                setResponseData(response.data);
+                setLoading(false);
+            } catch (error) {
+                console.error(error);
+                setLoading(false);
+            }
+        } else {
+            setRequestHistory([]);
+            console.log("cleared")
+        }
+        console.log(requestHistory)
+    };
 
     useEffect(() => {
         fetchVinDetails()
@@ -183,19 +227,34 @@ export default function VinGenerator() {
                     />
                 </section>
 
-                <Select
-                    defaultValue={selectedOption}
-                    onChange={setSelectedOption}
-                    options={options}
-                    styles={customStyles}
-                    isMulti
-                    className="mx-2 min-w-52"
-                />
+                {/* columns dropdown */}
+                <div className="flex items-center space-x-2">
+                    <label className="font-medium" htmlFor="Year">Select:</label>
+                    <Select
+                        defaultValue={selectedOption}
+                        onChange={setSelectedOption}
+                        options={options}
+                        styles={customStyles}
+                        isMulti
+                        className="min-w-52"
+                    />
+                </div>
 
-                <button className="rounded-full p-2 mt-2 mx-2 border border-black" type="submit">
+                <button className="rounded-full p-2 mx-2 border border-black" type="submit">
                     <FaSearch />
                 </button>
+
+                <button type="button" className="rounded-full p-2 mx-2 border border-black" onClick={handleReset}>
+                    <VscDebugStepBack />
+                </button>
+
+                {requestHistory.length > 1 && (
+                    <button type="button" className="rounded-full p-2 mx-2 border border-black" onClick={handleBack}>
+                        <IoMdArrowRoundBack />
+                    </button>
+                )}
             </form>
+
             <section className="min-h-screen py-8 px-4 m-2 border border-black rounded-md">
                 <table className="w-full">
                     <thead className="border border-black ">
