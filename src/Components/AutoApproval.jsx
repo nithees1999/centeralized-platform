@@ -1,38 +1,102 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { FaSearch, FaHome } from 'react-icons/fa';
+import LoadingIcons from 'react-loading-icons'
+import Select from 'react-select';
+import PaginationButtons from "./PaginationButtons";
+
 const AutoApproval = () => {
     const [stateData, setStateData] = useState({
         states: [],
         tiers: [],
-        data: [],
-        filteredData: [],
         State: '',
         FICO_Score: '',
         Tier: '',
     });
+    const [currentPage, setCurrentPage] = useState(1);
+    const postsPerPage = 10
+    const lastPostIndex = currentPage * postsPerPage;
+    const firstPostIndex = lastPostIndex - postsPerPage;
     const [loading, setLoading] = useState(false);
+    const [resetPageNumber, setResetPageNumber] = useState(false);
+
+
+    const [responseData, setResponseData] = useState([]);
+    let responseDataPosts;
+    if (responseData && responseData.length > 0) {
+        responseDataPosts = responseData.slice(firstPostIndex, lastPostIndex)
+    }
+
+    //api call URLs
+    const portUrl = "http://localhost:8080"
+    const fetchAutoApprovalUrl = "/api/autoapproval"
+    const filterAutoApprovalUrl = "/api/autoApprovalFilter"
+    const getApprovalStatesUrl = "/api/getApprovalStates"
+    const ApprovalTiersUrl = "/api/getApprovalTiers"
+
+    //dropdown multiSelect
+    const options = [
+        { value: 'Middle_Name', label: 'Middle Name' },
+        { value: 'Suffix', label: 'Suffix' },
+        { value: 'House', label: 'House' },
+        { value: 'Direction', label: 'Direction' },
+        { value: 'Street_Name', label: 'Street Name' },
+        { value: 'Street_Type', label: 'Street Type' },
+        { value: 'Post_Dir', label: 'Post Dir' },
+        { value: 'Apt', label: 'Apt' },
+    ];
+    const [selectedOption, setSelectedOption] = useState(null);
+    const [selectedOptionFields, setselectedOptionFields] = useState(null);
+    const customStyles = {
+        control: (provided, state) => ({
+            ...provided,
+            borderColor: state.isFocused ? 'black' : 'black', //select box styling
+            boxShadow: state.isFocused ? '0 0 0 1px black' : null,
+            "&:hover": {
+                borderColor: 'black'
+            },
+            padding: '2px'
+        }),
+        option: (provided) => ({
+            ...provided,
+            backgroundColor: "white",  // Background color for selected option 
+            "&:hover": {
+                backgroundColor: "gray", // Background color when an option is hovered
+                color: "white"
+            },
+        }),
+    }
+
+    const fetchAutoApprovalDetails = async () => {
+        setLoading(true)
+        const response = await axios.get(portUrl + fetchAutoApprovalUrl)
+        setResponseData(response.data)
+        setLoading(false)
+    }
+
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const [allData, statesResponse, tiersResponse] = await Promise.all([
-                    axios.get('http://localhost:8080/api/autoapproval'),
-                    axios.get('http://localhost:8080/api/getApprovalStates'),
-                    axios.get('http://localhost:8080/api/getApprovalTier')
+                setLoading(true)
+                const [statesResponse, tiersResponse] = await Promise.all([
+                    axios.get(portUrl + getApprovalStatesUrl),
+                    axios.get(portUrl + ApprovalTiersUrl)
                 ]);
+                setLoading(false);
                 setStateData(prevState => ({
                     ...prevState,
                     states: statesResponse.data,
                     tiers: tiersResponse.data,
-                    data: allData.data,
-                    filteredData: allData.data
                 }));
+                fetchAutoApprovalDetails()
             } catch (error) {
                 console.error('Error fetching data:', error);
+                setLoading(false);
             }
         };
         fetchData();
     }, []);
+
     const handleChange = (e) => {
         const { name, value } = e.target;
         setStateData(prevState => ({
@@ -40,27 +104,30 @@ const AutoApproval = () => {
             [name]: value
         }));
     };
+
     const handleSearch = async (e) => {
         e.preventDefault();
-        setLoading(true);
         try {
-            const response = await axios.post('http://localhost:8080/api/autoapproval',stateData);
-                
-            setStateData(prevState => ({ ...prevState, filteredData: response.data }));
+            setLoading(true);
+            setselectedOptionFields(selectedOption)
+            const response = await axios.post(portUrl + filterAutoApprovalUrl, stateData);
+            setResponseData(response.data);
         } catch (error) {
             console.error('Error fetching filtered data:', error);
         }
         setLoading(false);
     };
+
     const handleReset = () => {
         setStateData(prevState => ({
             ...prevState,
-            filteredData: prevState.data,
             State: '',
+            Tier: '',
             FICO_Score: '',
-            Tier: ''
         }));
+        fetchAutoApprovalDetails()
     };
+
     return (
         <div className="p-2">
             <h1 className="text-center text-xl font-bold p-2 text-blue-700">AUTO APPROVAL</h1>
@@ -109,69 +176,86 @@ const AutoApproval = () => {
                         onChange={handleChange}
                     />
                 </div>
+
+                {/* columns dropdown */}
+                <div className="flex items-center space-x-2">
+                    <label className="font-medium" htmlFor="Year">Select:</label>
+                    <Select
+                        defaultValue={selectedOption}
+                        onChange={setSelectedOption}
+                        options={options}
+                        styles={customStyles}
+                        isMulti
+                        className="min-w-52"
+                    />
+                </div>
+
                 <button type="submit" className="rounded-full p-2 mx-2 border border-black">
                     <FaSearch />
                 </button>
                 <button type="button" onClick={handleReset} className="rounded-full p-2 mx-2 border border-black">
                     <FaHome />
                 </button>
-                {loading && <div>Loading...</div>}
             </form>
             <section className="min-h-screen py-8 px-4 m-2 border border-black rounded-md">
                 <div style={{ overflowX: 'auto' }}>
-                    <table className="w-full" style={{ tableLayout: 'fixed' }}>
+                    <table className="w-full">
                         <thead className="border border-black">
                             <tr>
-                                <th className="p-4 border border-black text-blue-700" style={{ width: '120px' }}>Last Name</th>
-                                <th className="p-4 border border-black text-blue-700" style={{ width: '120px' }}>First Name</th>
-                                <th className="p-4 border border-black text-blue-700" style={{ width: '120px' }}>Middle Name</th>
-                                <th className="p-4 border border-black text-blue-700" style={{ width: '80px' }}>Prefix</th>
-                                <th className="p-4 border border-black text-blue-700" style={{ width: '80px' }}>Suffix</th>
-                                <th className="p-4 border border-black text-blue-700" style={{ width: '120px' }}>House</th>
-                                <th className="p-4 border border-black text-blue-700" style={{ width: '100px' }}>Direction</th>
-                                <th className="p-4 border border-black text-blue-700" style={{ width: '150px' }}>Street Name</th>
-                                <th className="p-4 border border-black text-blue-700" style={{ width: '100px' }}>Post Dir</th>
-                                <th className="p-4 border border-black text-blue-700" style={{ width: '100px' }}>Street Type</th>
-                                <th className="p-4 border border-black text-blue-700" style={{ width: '80px' }}>Apt</th>
-                                <th className="p-4 border border-black text-blue-700" style={{ width: '120px' }}>City</th>
-                                <th className="p-4 border border-black text-blue-700" style={{ width: '100px' }}>State</th>
-                                <th className="p-4 border border-black text-blue-700" style={{ width: '120px' }}>Zip Code</th>
-                                <th className="p-4 border border-black text-blue-700" style={{ width: '120px' }}>SSN</th>
-                                <th className="p-4 border border-black text-blue-700" style={{ width: '120px' }}>FICO Score</th>
-                                <th className="p-4 border border-black text-blue-700" style={{ width: '80px' }}>Tier</th>
+                                <th className="p-4 border border-black text-blue-700" >Last Name</th>
+                                <th className="p-4 border border-black text-blue-700" >First Name</th>
+                                <th className="p-4 border border-black text-blue-700" >City</th>
+                                <th className="p-4 border border-black text-blue-700" >State</th>
+                                <th className="p-4 border border-black text-blue-700" >Zip Code</th>
+                                <th className="p-4 border border-black text-blue-700" >SSN</th>
+                                <th className="p-4 border border-black text-blue-700" >FICO Score</th>
+                                <th className="p-4 border border-black text-blue-700">Tier</th>
+                                {selectedOptionFields && selectedOptionFields.map((option) => (
+                                    <th key={option.label} className="p-2 border border-black text-blue-700">
+                                        {[option.label]}
+                                    </th>
+                                ))}
                             </tr>
                         </thead>
                         <tbody className="border border-black">
-                            {stateData.filteredData.length === 0 && !loading ? (
-                                <tr>
-                                    <td colSpan={17} className="p-4 text-center">No data available</td>
-                                </tr>
-                            ) : (
-                                stateData.filteredData.map((item, index) => (
-                                    <tr key={index} className="text-center">
-                                        <td className="p-2 border border-black">{item.Last_Name}</td>
-                                        <td className="p-2 border border-black">{item.First_Name}</td>
-                                        <td className="p-2 border border-black">{item.Middle_Name}</td>
-                                        <td className="p-2 border border-black">{item.Prefix}</td>
-                                        <td className="p-2 border border-black">{item.Suffix}</td>
-                                        <td className="p-2 border border-black">{item.House}</td>
-                                        <td className="p-2 border border-black">{item.Direction}</td>
-                                        <td className="p-2 border border-black">{item.Street_Name}</td>
-                                        <td className="p-2 border border-black">{item.Post_Dir}</td>
-                                        <td className="p-2 border border-black">{item.Street_Type}</td>
-                                        <td className="p-2 border border-black">{item.Apt}</td>
-                                        <td className="p-2 border border-black">{item.City}</td>
-                                        <td className="p-2 border border-black">{item.State}</td>
-                                        <td className="p-2 border border-black">{item.Zip_Code}</td>
-                                        <td className="p-2 border border-black">{item.SSN}</td>
-                                        <td className="p-2 border border-black">{item.FICO_Score}</td>
-                                        <td className="p-2 border border-black">{item.Tier}</td>
+                            {
+                                loading ?
+                                    <tr key="loading">
+                                        <td colSpan={13} className="p-4 text-2xl">
+                                            <LoadingIcons.Bars fill="black" className="h-10 w-full place-self-center" />
+                                        </td>
                                     </tr>
-                                ))
-                            )}
+                                    :
+                                    responseData && responseData.length > 0 ? responseData.map((item, index) => (
+                                        <tr key={index} className="text-center">
+                                            <td className="p-2 border border-black">{item.Last_Name}</td>
+                                            <td className="p-2 border border-black">{item.First_Name}</td>
+                                            <td className="p-2 border border-black">{item.City}</td>
+                                            <td className="p-2 border border-black">{item.State}</td>
+                                            <td className="p-2 border border-black">{item.Zip_Code}</td>
+                                            <td className="p-2 border border-black">{item.SSN}</td>
+                                            <td className="p-2 border border-black">{item.FICO_Score}</td>
+                                            <td className="p-2 border border-black">{item.Tier}</td>
+                                            {selectedOptionFields && selectedOptionFields.map((option) => (
+                                                <td key={option.value} className="p-2 border border-black">
+                                                    {item[option.value]}
+                                                </td>
+                                            ))}
+                                        </tr>
+                                    ))
+                                        : <tr key="no-data">
+                                            <td colSpan={13} className="p-4 text-center w-full text-2xl">
+                                                No data available
+                                            </td>
+                                        </tr>
+                            }
                         </tbody>
                     </table>
                 </div>
+                {responseDataPosts && responseDataPosts.length > 0 &&
+                    <PaginationButtons currentPage={currentPage} setCurrentPage={setCurrentPage} totalPosts={responseData.length} postsPerPage={postsPerPage} resetPageNumber={resetPageNumber} setResetPageNumber={setResetPageNumber} />
+                }
+
             </section>
         </div>
     );
