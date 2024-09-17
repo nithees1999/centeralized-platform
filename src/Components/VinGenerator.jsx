@@ -13,7 +13,7 @@ export default function VinGenerator() {
     const postsPerPage = 10
     const lastPostIndex = currentPage * postsPerPage;
     const firstPostIndex = lastPostIndex - postsPerPage;
-    const [resetPage, setResetPage] = useState(false);
+    const [resetPageNumber, setResetPageNumber] = useState(false);
     const [searchParams, setSearchParams] = useState({
         VIN_Type: '',
         VIN: '',
@@ -46,7 +46,7 @@ export default function VinGenerator() {
 
     const handleSearch = async (e) => {
         e.preventDefault();
-        setResetPage(true)
+        setResetPageNumber(true)
         setselectedOptionFields(selectedOption)
         //checking if we have enough parameters for requesting from DB
         let searchParamsLength = Object.values(searchParams).filter(value => value !== null && value !== undefined && value !== "").length
@@ -307,7 +307,7 @@ export default function VinGenerator() {
                 </table>
 
                 {responseDataPosts && responseDataPosts.length > 0 &&
-                    <PaginationButtons currentPage={currentPage} setCurrentPage={setCurrentPage} totalPosts={responseData.length} postsPerPage={postsPerPage} resetPage={resetPage} setResetPage={setResetPage} />
+                    <PaginationButtons currentPage={currentPage} setCurrentPage={setCurrentPage} totalPosts={responseData.length} postsPerPage={postsPerPage} resetPageNumber={resetPageNumber} setResetPageNumber={setResetPageNumber} />
                 }
 
             </section>

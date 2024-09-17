@@ -126,7 +126,7 @@ app.get('/api/getEnvTypes', (req, res) => {
 });
 
 // AutoApproval
-// Get State
+// Get States
 app.get('/api/getApprovalStates', (req, res) => {
     const sql = 'SELECT DISTINCT State FROM autoapproval';
     db.query(sql, (err, results) => {
@@ -134,8 +134,8 @@ app.get('/api/getApprovalStates', (req, res) => {
         res.json(results.map(row => row.State));
     });
 });
-// Get Tier
-app.get('/api/getApprovalTier', (req, res) => {
+// Get Tiers
+app.get('/api/getApprovalTiers', (req, res) => {
     const sql = 'SELECT DISTINCT Tier FROM autoapproval';
     db.query(sql, (err, results) => {
         if (err) throw err;
@@ -154,8 +154,9 @@ app.get('/api/autoapproval', (req, res) => {
         res.json(results);
     });
 });
+
 // Filter Data
-app.post('/api/autoapproval', (req, res) => {
+app.post('/api/autoApprovalFilter', (req, res) => {
     const { State, FICO_Score, Tier } = req.body;
     // Start with the base query
     let sql = 'SELECT * FROM autoapproval WHERE 1=1';

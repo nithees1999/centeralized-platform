@@ -2,7 +2,7 @@ import ReactPaginate from "react-paginate";
 import React, { useEffect } from 'react';
 import { BsChevronLeft, BsChevronRight } from "react-icons/bs";
 export default function PaginationButtons(props) {
-    const { currentPage, setCurrentPage, totalPosts, postsPerPage, resetPage, setResetPage } = props
+    const { currentPage, setCurrentPage, totalPosts, postsPerPage, resetPageNumber, setResetPageNumber } = props
     const totalPages = Math.max(Math.ceil(totalPosts / postsPerPage), 1);
 
     const handlePageClick = ({ selected }) => {
@@ -13,11 +13,11 @@ export default function PaginationButtons(props) {
     const showPrevButton = currentPage > 1;
 
     useEffect(() => {
-        if (resetPage) {
+        if (resetPageNumber) {
             setCurrentPage(1);
-            setResetPage(false)
+            setResetPageNumber(false)
         }
-    }, [resetPage, setCurrentPage, setResetPage]);
+    }, [resetPageNumber, setCurrentPage, setResetPageNumber]);
 
 
     return (
