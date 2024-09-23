@@ -1,10 +1,40 @@
 const express = require('express');
 const mysql = require('mysql');
 const cors = require("cors");
+const sql = require('mssql/msnodesqlv8');
 
 const app = express();
 app.use(cors());
 app.use(express.json());
+
+const config = {
+    server: 'LTIN527389',
+    port: 1433,
+    driver: "SQL Server Native Client 11.0",
+    database: "rules",
+    connectionTimeout: 150000,
+    options: {
+        encrypt: false,
+        trustedConnection: true
+    }
+};
+const mydb = new sql.connect(config);
+
+//fetch tables details
+app.get('/api/rulesTable/:option', (req, res) => {
+    const selectedOption = req.params.option;
+    try {
+        const query = `SELECT * FROM ${selectedOption}`;
+        mydb.then(() => {
+            sql.query(query, (err1, recordset) => {
+                if (err1) { console.log(err1); return res.json(err1); }
+                res.send(recordset.recordset);
+            });
+        });
+    } catch (err) {
+        console.log(err);
+    }
+})
 
 const db = mysql.createConnection({
     host: "localhost",
@@ -122,6 +152,29 @@ app.get('/api/getEnvTypes', (req, res) => {
     db.query(sql, (err, results) => {
         if (err) throw err;
         res.json(results.map(row => row['Env']));
+    });
+});
+
+//update origenate user password
+app.post('/api/updateOrigenateRecord', (req, res) => {
+    const { id, data } = req.body;
+
+    if (!id || !data) {
+        return res.status(400).send('Missing id or data');
+    }
+
+    const query = 'UPDATE origenate SET PASSWORD = ? WHERE User_ID = ?';
+    db.query(query, [data, id], (error, results) => {
+        if (error) {
+            console.error('Error updating record:', error);
+            return res.status(500).send('Failed to update record');
+        }
+
+        if (results.affectedRows === 0) {
+            return res.status(404).send('Record not found');
+        }
+
+        res.status(200).send('Record updated successfully');
     });
 });
 

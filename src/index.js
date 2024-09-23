@@ -14,6 +14,7 @@ import Origenate from './Components/Origenate';
 import AutoApproval from './Components/AutoApproval';
 import CustomerProfile from './Components/CustomerProfile';
 import Fcl from './Components/Fcl';
+import DecisionRules from './Components/DecisionRules';
 
 const router = createBrowserRouter([
   {
@@ -47,6 +48,10 @@ const router = createBrowserRouter([
       {
         path: "Fcl",
         element: <Fcl />,
+      },
+      {
+        path: "DecisionRules",
+        element: <DecisionRules />,
       },
     ],
   },

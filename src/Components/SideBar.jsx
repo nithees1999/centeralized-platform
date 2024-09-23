@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
 import { RxCross2 } from "react-icons/rx";
+import { IoMdArrowDropright, IoMdArrowDropdown } from "react-icons/io";
+
 export default function SideBar({ isOpen, onClose, sidebarRef }) {
     const [isFormulaOpen, setIsFormulaOpen] = useState(false);
     const location = useLocation();
@@ -20,14 +22,15 @@ export default function SideBar({ isOpen, onClose, sidebarRef }) {
                     <li><NavLink to="/Origenate" className={({ isActive }) => ` block text-black text-center p-2  font-bold hover:underline hover:underline-offset-8 ${isActive ? " text-blue-700 underline underline-offset-8 " : " text-black "}`}>Origenate Details</NavLink></li>
                     <li><NavLink to="/AutoApproval" className={({ isActive }) => ` block text-black text-center p-2  font-bold hover:underline hover:underline-offset-8 ${isActive ? " text-blue-700 underline underline-offset-8 " : " text-black "}`}>AutoApproval</NavLink></li>
                     <li><NavLink to="/CustomerProfile" className={({ isActive }) => ` block text-black text-center p-2  font-bold hover:underline hover:underline-offset-8 ${isActive ? " text-blue-700 underline underline-offset-8 " : " text-black "}`}>CustomerProfile</NavLink></li>
-                    <li><NavLink to="#" onClick={toggleFormulaMenu} className={`block text-center p-2 font-bold hover:underline hover:underline-offset-8 ${isFormulaActive ? "text-blue-700 underline underline-offset-8" : "text-black"}`}>Formula</NavLink>
+                    <li><NavLink to="#" onClick={toggleFormulaMenu} className={`block text-center p-2 font-bold hover:underline hover:underline-offset-8 ${isFormulaActive ? "text-blue-700 underline underline-offset-8" : "text-black"}`}>Formula{isFormulaOpen ? <IoMdArrowDropdown className='inline-block' /> : <IoMdArrowDropright className='inline-block' />}</NavLink>
                         {isFormulaOpen && (
-                            <ul className="ml-4 mt-2">
-                                <li><NavLink to="/Fcl" className={({ isActive }) => `block text-black text-center p-2 font-bold  hover:underline hover:underline-offset-8 ${isActive ? " text-blue-700 underline underline-offset-8" : "text-black"}`}>*Fcl</NavLink></li>
-                                <li><NavLink to="/Residual" className={({ isActive }) => `block text-black text-center p-2 font-bold hover:underline hover:underline-offset-8 ${isActive ? " text-blue-700 underline underline-offset-8" : "text-black"}`}>*Residual</NavLink></li>
+                            <ul className="mt-2">
+                                <li><NavLink to="/Fcl" className={({ isActive }) => `block text-black text-center p-2 font-bold text-sm hover:underline hover:underline-offset-8 ${isActive ? " text-blue-700 underline underline-offset-8" : "text-black"}`}>Fcl</NavLink></li>
+                                <li><NavLink to="/Residual" className={({ isActive }) => `block text-black text-center p-2 font-bold text-sm hover:underline hover:underline-offset-8 ${isActive ? " text-blue-700 underline underline-offset-8" : "text-black"}`}>Residual</NavLink></li>
                             </ul>
                         )}
                     </li>
+                    <li><NavLink to="/DecisionRules" className={({ isActive }) => ` block text-black text-center p-2  font-bold hover:underline hover:underline-offset-8 ${isActive ? " text-blue-700 underline underline-offset-8 " : " text-black "}`}>DecisionRules</NavLink></li>
                 </ul>
             </div>
         </div>
