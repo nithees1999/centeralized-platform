@@ -260,110 +260,113 @@ app.post('/api/customerprofile', (req, res) => {
 
 
 
-
-
-
 // FCL
-// Get Product
-app.get('/api/getProducts', (req, res) => {
-    const sql = 'SELECT DISTINCT `Product` FROM fcl';
-    db.query(sql, (err, results) => {
-        if (err) throw err;
-        res.json(results.map(row => row.Product));
-    });
-});
-// Get VehicleType
-app.get('/api/getVehicleType', (req, res) => {
-    const sql = 'SELECT DISTINCT `Vehicle_Type` FROM fcl';
-    db.query(sql, (err, results) => {
-        if (err) throw err;
-        res.json(results.map(row => row.Vehicle_Type));
-    });
-});
-// Get ScoreCard
-app.get('/api/getScoreCard', (req, res) => {
-    const sql = 'SELECT DISTINCT `Score_Card` FROM fcl';
-    db.query(sql, (err, results) => {
-        if (err) throw err;
-        res.json(results.map(row => row.Score_Card));
-    });
-});
-// Get salesProgram
-app.get('/api/getSalesProgram', (req, res) => {
-    const sql = 'SELECT DISTINCT `SalesProgram` FROM fcl';
-    db.query(sql, (err, results) => {
-        if (err) throw err;
-        res.json(results.map(row => row.SalesProgram));
-    });
-});
-// Get Term
-app.get('/api/getTerm', (req, res) => {
-    const sql = 'SELECT DISTINCT `Term` FROM fcl';
-    db.query(sql, (err, results) => {
-        if (err) throw err;
-        res.json(results.map(row => row.Term));
-    });
-});
-// Get Modifier
-app.get('/api/getModifier', (req, res) => {
-    const sql = 'SELECT DISTINCT `Modifier` FROM fcl';
-    db.query(sql, (err, results) => {
-        if (err) throw err;
-        res.json(results.map(row => row.Modifier));
-    });
-});
+// FCL search route
+app.post('/search', (req, res) => {
+    const { product, scoreCard, salesProgram, term, score, ltv } = req.body;
+    if (!term) {
+        return res.json('No data available');
+    }
+    let ltvColumn;
+    // Determine which LTV column to use based on the selected value
+    if (ltv <= 95) {
+        ltvColumn = 'ltv_less_equal_95';
+    } else if (ltv > 95 && ltv <= 115) {
+        ltvColumn = 'ltv_greater_95_less_equal_115';
+    } else if (ltv > 115) {
+        ltvColumn = 'ltv_greater_115';
+    }
+    let tableName;
+    // Fetch data for 'THN' ScoreCard and 'Standard' SalesProgram
+    if (product === 'Retail & Balloon' && scoreCard === 'THN' && salesProgram === 'Standard') {
+        tableName = term === 'Regular' ? 'regular_term' : 'extended_term';
+    }
+    // Fetch data for 'THN' ScoreCard and 'Incentive & Special' SalesProgram
+    else if (product === 'Retail & Balloon' && scoreCard === 'THN' && salesProgram === 'Incentive & Special') {
+        tableName = term === 'Regular' ? 'incentive_regular' : 'incentive_extended';
+    }
+    // Fetch data for 'DLQ' ScoreCard and 'Standard' SalesProgram
+    else if (product === 'Retail & Balloon' && scoreCard === 'DLQ' && salesProgram === 'Standard') {
+        tableName = term === 'Regular' ? 'DLQ_standard_regular' : 'DLQ_standard_extended';
+    }
+    // Fetch data for 'DLQ' ScoreCard and 'Incentive & Special' SalesProgram
+    else if (product === 'Retail & Balloon' && scoreCard === 'DLQ' && salesProgram === 'Incentive & Special') {
+        tableName = term === 'Regular' ? 'DLQ_Incentive_regular' : 'DLQ_Incentive_extended';
+    }
+    // Fetch data for 'CLN' ScoreCard and 'Standard' SalesProgram
+    else if (product === 'Retail & Balloon' && scoreCard === 'CLN' && salesProgram === 'Standard') {
+        tableName = term === 'Regular' ? 'CLN_Standard_regular' : 'CLN_Standard_extended'; // Add CLN_Standard_extended if needed
+    }
+    // Fetch data for 'CLN' ScoreCard and 'Incentive & Special' SalesProgram
+    else if (product === 'Retail & Balloon' && scoreCard === 'CLN' && salesProgram === 'Incentive & Special') {
+        tableName = term === 'Regular' ? 'CLN_Incentive_regular' : 'CLN_Incentive_extended'; // Add CLN_Incentive_extended if needed
+    }
 
-// Get all data (initial page load)
-app.get('/api/fcl', (req, res) => {
-    const sql = 'SELECT * FROM fcl';
-    db.query(sql, (err, results) => {
-        if (err) {
-            console.error('Error fetching data:', err);
-            res.status(500).json({ error: 'Internal Server Error' });
-            return;
-        }
-        res.json(results);
-    });
-});
-// Filter Data
-app.post('/api/fcl', (req, res) => {
-    const { Product, Vehicle_Type, Score_Card, SalesProgram, Term, Modifier } = req.body;
-    let sql = 'SELECT * FROM fcl WHERE 1=1';
-    let queryParams = [];
-    if (Product) {
-        sql += ' AND `Product` = ?';
-        queryParams.push(Product);
-    }
-    if (Vehicle_Type) {
-        sql += ' AND `Vehicle_Type` = ?';
-        queryParams.push(Vehicle_Type);
-    }
-    if (Score_Card) {
-        sql += ' AND `Score_Card` = ?';
-        queryParams.push(Score_Card);
-    }
-    if (SalesProgram) {
-        sql += ' AND `SalesProgram` = ?';
-        queryParams.push(SalesProgram);
-    }
-    if (Term) {
-        sql += ' AND `Term` = ?';
-        queryParams.push(Term);
-    }
-    if (Modifier) {
-        sql += ' AND `Modifier` = ?';
-        queryParams.push(Modifier);
-    }
-    db.query(sql, queryParams, (err, results) => {
-        if (err) {
-            console.error('Error executing query:', err);
-            res.status(500).json({ error: 'Internal Server Error' });
-            return;
-        }
-        res.json(results);
-    });
-});
+    //fetch data for Lease
 
+    else if (product === 'Lease' && scoreCard === 'THN' && salesProgram === 'Standard') {
+        tableName = term === 'Regular' ? 'Lease_THN_Standard_regular' : 'Lease_THN_Standard_extended';
+    }
+
+
+
+    else if (product === 'Lease' && scoreCard === 'THN' && salesProgram === 'Incentive & Special') {
+        tableName = term === 'Regular' ? 'Lease_THN_incentive_regular' : 'Lease_THN_incentive_extended';
+    }
+
+
+    // Fetch data for 'DLQ' ScoreCard and 'Standard' SalesProgram
+    else if (product === 'Lease' && scoreCard === 'DLQ' && salesProgram === 'Standard') {
+        tableName = term === 'Regular' ? 'Lease_DLQ_standard_regular' : 'Lease_DLQ_standard_extended';
+    }
+
+
+    // Fetch data for 'DLQ' ScoreCard and 'Incentive & Special' SalesProgram
+    else if (product === 'Lease' && scoreCard === 'DLQ' && salesProgram === 'Incentive & Special') {
+        tableName = term === 'Regular' ? 'Lease_DLQ_Incentive_regular' : 'Lease_DLQ_Incentive_extended';
+    }
+
+
+    // Fetch data for 'CLN' ScoreCard and 'Standard' SalesProgram
+    else if (product === 'Lease' && scoreCard === 'CLN' && salesProgram === 'Standard') {
+        tableName = term === 'Regular' ? 'Lease_CLN_Standard_regular' : 'Lease_CLN_Standard_extended'; // Add CLN_Standard_extended if needed
+    }
+    // Fetch data for 'CLN' ScoreCard and 'Incentive & Special' SalesProgram
+    else if (product === 'Lease' && scoreCard === 'CLN' && salesProgram === 'Incentive & Special') {
+        tableName = term === 'Regular' ? 'Lease_CLN_Incentive_regular' : 'Lease_CLN_Incentive_extended'; // Add CLN_Incentive_extended if needed
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    else {
+        return res.json('No data available');
+    }
+    // Query the database
+    const query = 'SELECT * FROM ?? WHERE score_range_start <= ? AND score_range_end >= ?';
+    db.query(query, [tableName, score, score], (err, results) => {
+        if (err) {
+            console.error('Error querying the database:', err);
+            return res.status(500).json('Error fetching data');
+        } else if (results.length > 0) {
+            const data = results[0];
+            const ltvValue = data[ltvColumn]; // Use the determined LTV column
+            res.json(ltvValue !== undefined ? ltvValue : 'No data available');
+        } else {
+            res.json('No data available');
+        }
+    });
+});
 //Residual
 
 
