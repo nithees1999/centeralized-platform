@@ -31,6 +31,18 @@ const MyModal = (props) => {
                             placeholder="Enter Password"
                         />
                     </div>
+
+                    <div>
+                        <label htmlFor="">Admin Password :</label>
+                        <input
+                            name='AdminPassword'
+                            type="text"
+                            value={creds.AdminPassword}
+                            onChange={modalInputChange}
+                            className='p-2 mx-4 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500'
+                            placeholder="Authentication password"
+                        />
+                    </div>
                 </div>
                 <button className='mt-4 px-4 py-2 border-2 border-black bg-black text-white rounded-md hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-500' onClick={handlePasswordUpdate} creds={creds}>
                     Update

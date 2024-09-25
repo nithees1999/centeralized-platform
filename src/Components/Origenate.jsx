@@ -34,14 +34,17 @@ export default function Origenate() {
     const [updateResponse, setUpdateResponse] = useState("");
     const [creds, setCreds] = useState({
         User_ID: "",
-        Password: ""
+        Password: "",
+        AdminPassword: ""
     });
+    const customAdminPassword = "12345"
 
     const onOpenModal = (element) => {
         setOpen(true)
         setCreds({
             User_ID: element.User_ID,
-            Password: element.Password
+            Password: element.Password,
+            AdminPassword: ""
         })
     }
     const onCloseModal = () => {
@@ -54,12 +57,16 @@ export default function Origenate() {
     }
 
     const handlePasswordUpdate = async (creds) =>{
-        const Response = await axios.post(portUrl + updateOrigenateRecord, {
-            id : creds.User_ID,
-            data : creds.Password
-        });
-        setUpdateResponse(Response.data)
-        fetchOrigenateDetails()
+        if(creds.AdminPassword && creds.AdminPassword === customAdminPassword){
+            const Response = await axios.post(portUrl + updateOrigenateRecord, {
+                id : creds.User_ID,
+                data : creds.Password
+            });
+            setUpdateResponse(Response.data)
+            fetchOrigenateDetails()
+        }else{
+            setUpdateResponse("Admin password error")
+        }
     }
 
 
