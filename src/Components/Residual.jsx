@@ -3,41 +3,35 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 const Residual = () => {
     const [formState, setFormState] = useState({
-        Module: '',
         Vehicle_Type: '',
-        Brand: '',
         Finance: '',
         Vehicle_Year: '',
-        Formula_Field: '',
     });
-    const [Modules, setModules] = useState([]);
     const [vehicleType, setvehicleType] = useState([]);
-    const [Brand, setBrand] = useState([]);
     const [Finance, setFinance] = useState([]);
     const [Vehicle_Year, setVehicle_Year] = useState([]);
-    const [Formula_Field, setFormula_Field] = useState([]);
     const [filteredData, setFilteredData] = useState([]);
     const [loading, setLoading] = useState(false);
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const [customerDataResponse, ModulesResponse, vehicleTypeResponse, BrandResponse, FinanceResponse, Vehicle_YearResponse, Formula_FieldResponse] = await Promise.all([
+                const [customerDataResponse, vehicleTypeResponse, FinanceResponse, Vehicle_YearResponse] = await Promise.all([
                     axios.get('http://localhost:8080/api/residual'),
-                    axios.get('http://localhost:8080/api/getModules'),
+                    
                     axios.get('http://localhost:8080/api/getVehicleType'),
-                    axios.get('http://localhost:8080/api/getBrand'),
+                    
                     axios.get('http://localhost:8080/api/getFinance'),
                     axios.get('http://localhost:8080/api/getVehicle_Year'),
-                    axios.get('http://localhost:8080/api/getFormula_Field'),
+                    
 
                 ]);
                 setFilteredData(customerDataResponse.data);
-                setModules(ModulesResponse.data);
+                
                 setvehicleType(vehicleTypeResponse.data);
-                setBrand(BrandResponse.data);
+                
                 setFinance(FinanceResponse.data);
                 setVehicle_Year(Vehicle_YearResponse.data);
-                setFormula_Field(Formula_FieldResponse.data);
+                
             } catch (error) {
                 console.error('Error fetching data:', error);
             }
@@ -65,12 +59,12 @@ const Residual = () => {
     };
     const handleReset = async () => {
         setFormState({
-            Module: '',
+            
             Vehicle_Type: '',
-            Brand: '',
+            
             Finance: '',
             Vehicle_Year: '',
-            Formula_Field: '',
+            
         });
         try {
             const response = await axios.get('http://localhost:8080/api/residual');
@@ -88,21 +82,7 @@ const Residual = () => {
                 className="conditionsNav p-2 m-2 border border-black rounded-md flex justify-start lg:justify-center items-center gap-1 flex-wrap"
                 onSubmit={handleSearch}
             >
-                <div>
-                    <label className="px-1 font-medium" htmlFor="Module">Module:</label>
-                    <select
-                        className="border border-black rounded p-1 w-32"
-                        name="Module"
-                        id="Module"
-                        value={formState.Module}
-                        onChange={handleChange}
-                    >
-                        <option value="">Select Module</option>
-                        {Modules.map((Module, index) => (
-                            <option key={index} value={Module}>{Module}</option>
-                        ))}
-                    </select>
-                </div>
+               
                 <div>
                     <label className="px-1 font-medium" htmlFor="Vehicle_Type">Vehicle Type:</label>
                     <select
@@ -118,21 +98,7 @@ const Residual = () => {
                         ))}
                     </select>
                 </div>
-                <div>
-                    <label className="px-1 font-medium" htmlFor="Brand">Brand:</label>
-                    <select
-                        className="border border-black rounded p-1 w-32"
-                        name="Brand"
-                        id="Brand"
-                        value={formState.Brand}
-                        onChange={handleChange}
-                    >
-                        <option value="">Select Brand</option>
-                        {Brand.map((Brand, index) => (
-                            <option key={index} value={Brand}>{Brand}</option>
-                        ))}
-                    </select>
-                </div>
+                
                 <div>
                     <label className="px-1 font-medium" htmlFor="Finance">Finance:</label>
                     <select
@@ -163,21 +129,7 @@ const Residual = () => {
                         ))}
                     </select>
                 </div>
-                <div>
-                    <label className="px-1 font-medium" htmlFor="Formula_Field">Formula_Field:</label>
-                    <select
-                        className="border border-black rounded p-1 w-32"
-                        name="Formula_Field"
-                        id="Formula_Field"
-                        value={formState.Formula_Field}
-                        onChange={handleChange}
-                    >
-                        <option value="">Select Formula_Field</option>
-                        {Formula_Field.map((Formula_Field, index) => (
-                            <option key={index} value={Formula_Field}>{Formula_Field}</option>
-                        ))}
-                    </select>
-                </div>
+               
                 <button type="submit" className="rounded-full p-2 mx-2 border border-black">
                     <FaSearch />
                 </button>

@@ -84,18 +84,11 @@ const FCLPage = () => {
                 </div>
                 <div>
                     <label className="px-1 font-medium" htmlFor="Ltv">LTV:</label>
-                    <select className="border border-black rounded p-1 w-32" value={ltv} onChange={(e) => setLtv(e.target.value)}>
-                        <option value="">Select LTV</option>
-                        <option value="85">85</option>
-                        <option value="90">90</option>
-                        <option value="95">95</option>
-                        <option value="100">100</option>
-                        <option value="105">105</option>
-                        <option value="110">110</option>
-                        <option value="115">115</option>
-                        <option value="120">120</option>
-                        <option value="125">125</option>
-                    </select>
+                    <input className="border border-black rounded p-1 w-32"
+                        type="number"
+                        value={ltv}
+                        onChange={(e) => setLtv(e.target.value)}
+                    />
                 </div>
                 <button onClick={handleSearch} className="rounded-full p-2 mx-2 border border-black">
                     <FaSearch />
