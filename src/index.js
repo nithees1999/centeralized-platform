@@ -15,6 +15,7 @@ import AutoApproval from './Components/AutoApproval';
 import CustomerProfile from './Components/CustomerProfile';
 import Fcl from './Components/Fcl';
 import DecisionRules from './Components/DecisionRules';
+import ToleranceRules from './Components/ToleranceRules';
 
 const router = createBrowserRouter([
   {
@@ -52,6 +53,10 @@ const router = createBrowserRouter([
       {
         path: "DecisionRules",
         element: <DecisionRules />,
+      },
+      {
+        path: "ToleranceRules",
+        element: <ToleranceRules />,
       },
     ],
   },

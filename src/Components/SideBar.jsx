@@ -31,6 +31,7 @@ export default function SideBar({ isOpen, onClose, sidebarRef }) {
                         )}
                     </li>
                     <li><NavLink to="/DecisionRules" className={({ isActive }) => ` block text-black text-center p-2  font-bold hover:underline hover:underline-offset-8 ${isActive ? " text-blue-700 underline underline-offset-8 " : " text-black "}`}>DecisionRules</NavLink></li>
+                    <li><NavLink to="/ToleranceRules" className={({ isActive }) => ` block text-black text-center p-2  font-bold hover:underline hover:underline-offset-8 ${isActive ? " text-blue-700 underline underline-offset-8 " : " text-black "}`}>ToleranceRules</NavLink></li>
                 </ul>
             </div>
         </div>
