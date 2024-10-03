@@ -1,216 +1,7 @@
-// import React, { useEffect, useState } from "react"
-// import axios from "axios";
-
-
-// export default function ToleranceRules() {
-
-//     //api call URLs
-//     const portUrl = "http://localhost:8080"
-//     const filterVinDetailsUrl = "/api/VinFilter"
-
-//     //search parameters to fetch vin
-//     const [searchParams, setSearchParams] = useState({
-//         VIN: '',
-//         ProductType: '',
-//         Condition: '',
-//         category: '',
-//     });
-
-//     //handle the input changes in UI form
-//     const handleChange = (e) => {
-//         const { name, value } = e.target;
-//         setSearchParams((prevState) => ({
-//             ...prevState,
-//             [name]: value,
-//         }));
-//     };
-
-//     //searching vin and storing to display
-//     const [vinData, setVinData] = useState([])
-//     const handleSearch = async (e) => {
-//         e.preventDefault();
-//         const response = await axios.post(`${portUrl + filterVinDetailsUrl}`, { VIN: searchParams.VIN });
-//         setVinData(response.data)
-//         console.log(response.data)
-//     }
-
-//     // setting other parameters based on category
-//     let percentOfInvoiceData
-//     let TermData
-//     let PolicyTermData
-//     const DifferenceData = [50, 50, 50.01, 500, 500.01, 1000.01]
-
-
-//     if (searchParams.Condition === "New") {
-//         if (searchParams.category === "MaintOtherCare") {
-//             percentOfInvoiceData = [4, 4, 4, 6, 6, 8]
-//             if (searchParams.ProductType === "Lease") {
-//                 TermData = 36
-//                 PolicyTermData = [12, 13, 36, 37, 59, 60]
-//             }
-//             else if (searchParams.ProductType === "Retail") {
-//                 TermData = 24
-//                 PolicyTermData = [9, 13, 36, 37, 59, 60]
-//             }
-//         } else if (searchParams.category === "MaintHondaCare") {
-//             percentOfInvoiceData = [6, 6, 6, 8, 8, 10]
-//             if (searchParams.ProductType === "Lease") {
-//                 TermData = 36
-//                 PolicyTermData = [12, 13, 36, 37, 59, 60]
-//             }
-//             else if (searchParams.ProductType === "Retail") {
-//                 TermData = 24
-//                 PolicyTermData = [9, 13, 36, 37, 59, 60]
-//             }
-//         }
-//     } else if (searchParams.Condition === "Used/Certified") {
-//         console.log("this is not new")
-//     }
-
-
-//     // formula Calculation function
-//     const calculateValues = (invoice, dAndH, colorUpCharge, percentOfInvoice, DifferenceData, vinYear) => {
-//         const calculatedParameter = (invoice + dAndH + colorUpCharge) * percentOfInvoice / 100;
-//         const calculatedOptionalMaintenanceContract = calculatedParameter + DifferenceData;
-//         const calculatedDifference = calculatedOptionalMaintenanceContract - calculatedParameter;
-//         let calculatedOverride = 0;
-//         if (DifferenceData <= 50) {
-//             calculatedOverride = 0;
-//         } else if (DifferenceData <= 500) {
-//             calculatedOverride = 2;
-//         } else if (DifferenceData <= 1000) {
-//             calculatedOverride = 4;
-//         } else {
-//             calculatedOverride = 5;
-//         }
-//         return { calculatedParameter, calculatedOptionalMaintenanceContract, calculatedDifference, calculatedOverride };
-//     };
-
-
-//     return (
-//         <>
-//             <h1 className="text-center text-xl font-bold p-2 text-blue-700">ToleranceRules</h1>
-//             <h1 className="text-center text-xl font-bold p-2 text-blue-700">Maintenance over- advance </h1>
-
-//             <form
-//                 className="conditionsNav p-2 m-2 border border-black rounded-md flex justify-start lg:justify-center items-center gap-1 flex-wrap "
-//                 onSubmit={handleSearch}
-//             >
-//                 <section>
-//                     <label className="px-1 font-medium" htmlFor="VIN">VIN:</label>
-//                     <input name="VIN" value={searchParams.VIN} onChange={handleChange} type="text" className="border border-black rounded p-2" required />
-//                 </section>
-
-//                 <section>
-//                     <label className="px-1 font-medium" htmlFor="Condition">Condition:</label>
-//                     <select name="Condition" id="Condition" value={searchParams.Condition} onChange={handleChange} className="border border-black rounded p-2" required >
-//                         <option value="">NA</option>
-//                         <option value="New">New</option>
-//                         <option value="Used/Certified">Used/Certified</option>
-//                     </select>
-//                 </section>
-
-//                 <section>
-//                     <label className="px-1 font-medium" htmlFor="category">Category:</label>
-//                     <select name="category" id="category" value={searchParams.category} onChange={handleChange} className="border border-black rounded p-2" required>
-//                         <option value="">NA</option>
-//                         <option value="MaintOtherCare">Maint - Other Care</option>
-//                         <option value="MaintHondaCare">Maint - Honda Care </option>
-//                     </select>
-//                 </section>
-
-//                 <section>
-//                     <label className="px-1 font-medium" htmlFor="ProductType">Product Type:</label>
-//                     <select name="ProductType" id="ProductType" onChange={handleChange} value={searchParams.ProductType} className="border border-black rounded p-2" required >
-//                         <option value="">NA</option>
-//                         <option value="Lease">Lease</option>
-//                         <option value="Retail">Retail</option>
-//                     </select>
-//                 </section>
-
-//                 <button className="rounded-md p-2 mx-2 border border-black" type="submit">submit</button>
-//             </form>
-//             <section className="min-h-screen py-8 px-4 m-2 border border-black rounded-md">
-//                 <div style={{ overflowX: 'auto' }}>
-//                     <table className="w-full">
-//                         <thead className="border border-black">
-//                             <tr>
-//                                 <th className="p-4 border border-black text-blue-700">Product Type</th>
-//                                 <th className="p-4 border border-black text-blue-700">Condition</th>
-//                                 <th className="p-4 border border-black text-blue-700">vin</th>
-//                                 <th className="p-4 border border-black text-blue-700">Year</th>
-//                                 <th className="p-4 border border-black text-blue-700">Make</th>
-//                                 <th className="p-4 border border-black text-blue-700">Model</th>
-//                                 <th className="p-4 border border-black text-blue-700">Term</th>
-//                                 <th className="p-4 border border-black text-blue-700">Invoice</th>
-//                                 <th className="p-4 border border-black text-blue-700">D&H</th>
-//                                 <th className="p-4 border border-black text-blue-700">Colorup charge</th>
-//                                 <th className="p-4 border border-black text-blue-700">% of Invoice</th>
-//                                 <th className="p-4 border border-black text-blue-700">Parameter</th>
-//                                 <th className="p-4 border border-black text-blue-700">Optional Maintenance contract</th>
-//                                 <th className="p-4 border border-black text-blue-700">Difference</th>
-//                                 <th className="p-4 border border-black text-blue-700">Company/ Provider Name</th>
-//                                 <th className="p-4 border border-black text-blue-700">Policy term</th>
-//                                 <th className="p-4 border border-black text-blue-700">Actual</th>
-//                                 <th className="p-4 border border-black text-blue-700">Parameter</th>
-//                                 <th className="p-4 border border-black text-blue-700">Override</th>
-//                             </tr>
-//                         </thead>
-//                         <tbody>
-//                             {
-//                                 vinData && vinData.map((element) => {
-//                                     return (
-//                                         <React.Fragment key={element.VIN}>
-//                                             {percentOfInvoiceData && percentOfInvoiceData.map((percentOfInvoiceValue, index) => {
-//                                                 const { calculatedParameter, calculatedOptionalMaintenanceContract, calculatedDifference, calculatedOverride } = calculateValues(
-//                                                     element.DLR_INV_AM,
-//                                                     element.DH_AMT,
-//                                                     element.Color_Upcharge_MSRP,
-//                                                     percentOfInvoiceValue, // Use the value from percentOfInvoiceData
-//                                                     DifferenceData[index],
-//                                                 );
-
-//                                                 return (
-//                                                     <tr key={index}>
-//                                                         <td className="p-2 border border-black">{searchParams.ProductType}</td>
-//                                                         <td className="p-2 border border-black">{searchParams.Condition}</td>
-//                                                         <td className="p-2 border border-black">{element.VIN}</td>
-//                                                         <td className="p-2 border border-black">{element.Year}</td>
-//                                                         <td className="p-2 border border-black">{element.Make}</td>
-//                                                         <td className="p-2 border border-black">{element.Model}</td>
-//                                                         <td className="p-2 border border-black">{TermData}</td>
-//                                                         <td className="p-2 border border-black">{element.DLR_INV_AM}</td>
-//                                                         <td className="p-2 border border-black">{element.DH_AMT}</td>
-//                                                         <td className="p-2 border border-black">{element.Color_Upcharge_MSRP}</td>
-//                                                         <td className="p-2 border border-black">{percentOfInvoiceData[index]}</td>
-//                                                         <td className="p-2 border border-black">{calculatedParameter.toFixed(2)}</td>
-//                                                         <td className="p-2 border border-black">{calculatedOptionalMaintenanceContract.toFixed(2)}</td>
-//                                                         <td className="p-2 border border-black">{calculatedDifference.toFixed(2)}</td>
-//                                                         <td className="p-2 border border-black">{searchParams.category}</td>
-//                                                         <td className="p-2 border border-black">{PolicyTermData[index]}</td>
-//                                                         <td className="p-2 border border-black">{calculatedOptionalMaintenanceContract.toFixed(2)}</td>
-//                                                         <td className="p-2 border border-black">{index === 0 ? 0 : calculatedParameter.toFixed(2)}</td>
-//                                                         <td className="p-2 border border-black">{index === 0 ? 4 : calculatedOverride.toFixed(2)}</td>
-//                                                     </tr>
-//                                                 );
-//                                             })}
-//                                         </React.Fragment>
-//                                     );
-//                                 })
-//                             }
-
-//                         </tbody>
-//                     </table>
-//                 </div>
-//             </section>
-//         </>
-//     )
-// }
-
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
-export default function ToleranceRules() {
+export default function MaintenanceOverAdvance() {
 
     // API call URLs
     const portUrl = "http://localhost:8080";
@@ -258,11 +49,8 @@ export default function ToleranceRules() {
     useEffect(() => {
         if (searchParams.Condition === "New") {
 
-
             if (vinYear === 2024) {
-                // console.log()
                 setTableTitle("2024 Prologue & ZDX VIN (12 Months Complimentary)")
-
                 if (searchParams.Condition === "New") {
                     if (searchParams.category === "MaintOtherCare") {
                         setPercentOfInvoiceData([4, 4, 4, 6, 6, 8]);
@@ -357,29 +145,21 @@ export default function ToleranceRules() {
                 }
             }
         } else if (searchParams.Condition === "Used/Certified") {
-            if (vinYear === 2022) {
-                setTableTitle("Used & Certified Vehicle")
-                setProductType("Retail")
-                setDifferenceData([50, 50.01, 500.01, 1000.01])
+            setTableTitle("Used & Certified Vehicle")
+            setProductType("Retail")
+            setDifferenceData([50, 50.01, 500.01, 1000.01])
 
-                if (searchParams.category === "MaintOtherCare") {
-                    setPercentOfInvoiceData([4, 4, 6, 8]);
-                    setTermData(36);
-                    setPolicyTermData([6, 24, 48, 84]);
-                } else if (searchParams.category === "MaintHondaCare") {
-                    setPercentOfInvoiceData([0, 0, 0, 0]);
-                    setTermData(24);
-                    setPolicyTermData([0, 0, 0, 0]);
-                }
-            } else {
-                setTableTitle("")
-                setTermData(null);
-                setPercentOfInvoiceData([]);
-                setPolicyTermData([]);
-                setProductType("")
-                setDifferenceData([])
+            if (searchParams.category === "MaintOtherCare") {
+                setPercentOfInvoiceData([4, 4, 6, 8]);
+                setTermData(36);
+                setPolicyTermData([6, 24, 48, 84]);
+            } else if (searchParams.category === "MaintHondaCare") {
+                setPercentOfInvoiceData([0, 0, 0, 0]);
+                setTermData(24);
+                setPolicyTermData([0, 0, 0, 0]);
             }
         }
+
     }, [searchParams, vinYear, vinModel]);
 
     // Formula Calculation function
