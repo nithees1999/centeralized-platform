@@ -385,6 +385,52 @@ app.post('/api/residual', (req, res) => {
         res.json(results);
     });
 });
+
+// Checklist
+// Get Description
+app.get('/api/getDescription', (req, res) => {
+    const sql = 'SELECT DISTINCT `Description` FROM Checklist';
+    db.query(sql, (err, results) => {
+        if (err) throw err;
+        res.json(results.map(row => row.Description));
+    });
+});
+
+// Get all data (initial page load)
+app.get('/api/Checklist', (req, res) => {
+    const sql = 'SELECT * FROM Checklist';
+    db.query(sql, (err, results) => {
+        if (err) {
+            console.error('Error fetching data:', err);
+            res.status(500).json({ error: 'Internal Server Error' });
+            return;
+        }
+        res.json(results);
+    });
+});
+// Filter Data
+app.post('/api/Checklist', (req, res) => {
+    const { Description } = req.body;
+    let sql = 'SELECT * FROM Checklist WHERE 1=1';
+    let queryParams = [];
+    if (Description) {
+        sql += ' AND `Description` = ?';
+        queryParams.push(Description);
+    }
+    
+    db.query(sql, queryParams, (err, results) => {
+        if (err) {
+            console.error('Error executing query:', err);
+            res.status(500).json({ error: 'Internal Server Error' });
+            return;
+        }
+        res.json(results);
+    });
+});
+
+
+
+
 // Sending response to the client
 app.get('/', (req, res) => {
     return res.json("From Backend Side")

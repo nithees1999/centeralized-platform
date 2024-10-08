@@ -15,6 +15,7 @@ import AutoApproval from './Components/AutoApproval';
 import CustomerProfile from './Components/CustomerProfile';
 import Fcl from './Components/Fcl';
 import Residual from './Components/Residual';
+import Checklist from './Components/Checklist';
 
 const router = createBrowserRouter([
   {
@@ -52,6 +53,10 @@ const router = createBrowserRouter([
       {
         path: "Residual",
         element: <Residual />,
+      },
+      {
+        path: "Checklist",
+        element: <Checklist />,
       },
     ],
   },

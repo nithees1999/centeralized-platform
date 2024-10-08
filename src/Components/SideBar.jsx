@@ -25,9 +25,11 @@ export default function SideBar({ isOpen, onClose, sidebarRef }) {
                             <ul className="ml-4 mt-2">
                                 <li><NavLink to="/Fcl" className={({ isActive }) => `block text-black text-center p-2 font-bold  hover:underline hover:underline-offset-8 ${isActive ? " text-blue-700 underline underline-offset-8" : "text-black"}`}>*Fcl</NavLink></li>
                                 <li><NavLink to="/Residual" className={({ isActive }) => `block text-black text-center p-2 font-bold hover:underline hover:underline-offset-8 ${isActive ? " text-blue-700 underline underline-offset-8" : "text-black"}`}>*Residual</NavLink></li>
+                                
                             </ul>
                         )}
                     </li>
+                    <li><NavLink to="/Checklist" className={({ isActive }) => ` block text-black text-center p-2  font-bold hover:underline hover:underline-offset-8 ${isActive ? " text-blue-700 underline underline-offset-8 " : " text-black "}`}>Checklist</NavLink></li>
                 </ul>
             </div>
         </div>
