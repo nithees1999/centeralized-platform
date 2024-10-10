@@ -16,10 +16,11 @@ export default function SideBar({ isOpen, onClose, sidebarRef }) {
 
     //Tolerance rules
     const [isTolerance, setIsTolerance] = useState(false);
-    const isToleranceActive = location.pathname === '/MaintenanceOverAdvance';
+    const isToleranceActive = location.pathname === '/MaintenanceOverAdvance' || location.pathname === '/GAPIsNotPermitted';
     const toggleToleranceMenu = () => {
         setIsTolerance(!isTolerance);
     };
+    
     return (
         <div ref={sidebarRef} className={`fixed inset-0 z-40 bg-gray-200 text-black max-w-48 transition-transform duration-300 ${isOpen ? 'translate-x-0' : '-translate-x-full'}`}>
             <div className="w-full h-full overflow-y-auto">
@@ -46,6 +47,8 @@ export default function SideBar({ isOpen, onClose, sidebarRef }) {
                             <ul className="mt-2">
                                 <Tooltip id="MaintenanceOverAdvance"  />
                                 <li><NavLink data-tooltip-id="MaintenanceOverAdvance" data-tooltip-content="Maintenance Over Advance" to="/MaintenanceOverAdvance" className={({ isActive }) => `block text-black  p-2 font-bold text-sm hover:underline hover:underline-offset-8 ${isActive ? " text-blue-700 underline underline-offset-8" : "text-black"}`}>MOA</NavLink></li>
+                                <Tooltip id="GAPIsNotPermitted"  />
+                                <li><NavLink data-tooltip-id="GAPIsNotPermitted" data-tooltip-content="GAP Is Not Permitted" to="/GAPIsNotPermitted" className={({ isActive }) => `block text-black  p-2 font-bold text-sm hover:underline hover:underline-offset-8 ${isActive ? " text-blue-700 underline underline-offset-8" : "text-black"}`}>GAP-INP</NavLink></li>
                             </ul>
                         )}
                     </li>

@@ -31,7 +31,6 @@ export default function MaintenanceOverAdvance() {
         setVinData(response.data);
         setVinYear(response.data[0].Year)
         setVinModel(response.data[0].Model)
-        setVinModel(response.data[0].Model)
     };
 
     // Values that depend on category
@@ -48,8 +47,7 @@ export default function MaintenanceOverAdvance() {
     //using useEffect for updating table constants once the input is changed
     useEffect(() => {
         if (searchParams.Condition === "New") {
-
-            if (vinYear === 2024) {
+            if (vinYear === "2024") {
                 setTableTitle("2024 Prologue & ZDX VIN (12 Months Complimentary)")
                 if (searchParams.Condition === "New") {
                     if (searchParams.category === "MaintOtherCare") {
@@ -99,7 +97,7 @@ export default function MaintenanceOverAdvance() {
                     setDifferenceData([])
                 }
 
-            } else if (vinYear === 2023) {
+            } else if (vinYear === "2023") {
                 setTableTitle("2023 VIN (24 Months Complimentary )")
 
                 if (searchParams.Condition === "New") {
@@ -121,28 +119,20 @@ export default function MaintenanceOverAdvance() {
                     setProductType("")
                     setDifferenceData([])
                 }
-            } else if (vinYear === 2025) {
+            } else if (vinYear === "2025") {
                 setTableTitle("2025 VIN (12 Months Complimentary)")
 
-                if (searchParams.Condition === "New") {
-                    setTermData(36);
-                    setPolicyTermData([12, 15, 24, 39, 48, 84]);
-                    setProductType("Retail")
-                    setDifferenceData([1000.01, 50, 50.01, 500, 500.01, 1000.01])
+                setTermData(36);
+                setPolicyTermData([12, 15, 24, 39, 48, 84]);
+                setProductType("Retail")
+                setDifferenceData([1000.01, 50, 50.01, 500, 500.01, 1000.01])
 
-                    if (searchParams.category === "MaintOtherCare") {
-                        setPercentOfInvoiceData([4, 4, 4, 6, 6, 8]);
-                    } else if (searchParams.category === "MaintHondaCare") {
-                        setPercentOfInvoiceData([6, 6, 6, 8, 8, 10]);
-                    }
-                } else {
-                    setTableTitle("")
-                    setTermData(null);
-                    setPercentOfInvoiceData([]);
-                    setPolicyTermData([]);
-                    setProductType("")
-                    setDifferenceData([])
+                if (searchParams.category === "MaintOtherCare") {
+                    setPercentOfInvoiceData([4, 4, 4, 6, 6, 8]);
+                } else if (searchParams.category === "MaintHondaCare") {
+                    setPercentOfInvoiceData([6, 6, 6, 8, 8, 10]);
                 }
+
             }
         } else if (searchParams.Condition === "Used/Certified") {
             setTableTitle("Used & Certified Vehicle")
@@ -159,7 +149,6 @@ export default function MaintenanceOverAdvance() {
                 setPolicyTermData([0, 0, 0, 0]);
             }
         }
-
     }, [searchParams, vinYear, vinModel]);
 
     // Formula Calculation function
@@ -219,47 +208,26 @@ export default function MaintenanceOverAdvance() {
             {vinData.length ?
                 <section className="conditionsNav p-2 m-2 border border-black rounded-md flex justify-start lg:justify-center items-center gap-1 flex-wrap">
                     <span className="px-1 font-normal">Product Type:</span>
-                    <span className="px-1 font-bold">{productType}</span>
+                    <span className="px-1 font-bold">{productType ? productType : null}</span>
                     <span className="px-1 font-normal">Condition:</span>
-                    <span className="px-1 font-bold">{searchParams.Condition}</span>
+                    <span className="px-1 font-bold">{searchParams.Condition ? searchParams.Condition : null}</span>
                     <span className="px-1 font-normal">vin:</span>
-                    <span className="px-1 font-bold">{vinData[0].VIN}</span>
+                    <span className="px-1 font-bold">{vinData[0].VIN ? vinData[0].VIN : null}</span>
                     <span className="px-1 font-normal">Year:</span>
-                    <span className="px-1 font-bold">{vinData[0].Year}</span>
+                    <span className="px-1 font-bold">{vinData[0].Year ? vinData[0].Year : null}</span>
                     <span className="px-1 font-normal">Make:</span>
-                    <span className="px-1 font-bold">{vinData[0].Make}</span>
+                    <span className="px-1 font-bold">{vinData[0].Make ? vinData[0].Make : null}</span>
                     <span className="px-1 font-normal">Model:</span>
-                    <span className="px-1 font-bold">{vinData[0].Model}</span>
+                    <span className="px-1 font-bold">{vinData[0].Model ? vinData[0].Model : null}</span>
                 </section>
-
                 :
-                <section className="conditionsNav p-2 m-2 border border-black rounded-md flex justify-start lg:justify-center items-center gap-1 flex-wrap">
-                    <span className="px-1 font-normal">Product Type:</span>
-                    <span className="p-2 border border-black"></span>
-                    <span className="px-1 font-normal">Condition:</span>
-                    <span className="p-2 border border-black"></span>
-                    <span className="px-1 font-normal">vin:</span>
-                    <span className="p-2 border border-black"></span>
-                    <span className="px-1 font-normal">Year:</span>
-                    <span className="p-2 border border-black"></span>
-                    <span className="px-1 font-normal">Make:</span>
-                    <span className="p-2 border border-black"></span>
-                    <span className="px-1 font-normal">Model:</span>
-                    <span className="p-2 border border-black"></span>
-                </section>
-
+                null
             }
             <section className="min-h-screen py-8 px-4 m-2 border border-black rounded-md">
                 <div style={{ overflowX: 'auto' }}>
                     <table className="w-full">
                         <thead className="border border-black">
                             <tr>
-                                {/* <th className="p-4 border border-black text-blue-700">Product Type</th>
-                                <th className="p-4 border border-black text-blue-700">Condition</th>
-                                <th className="p-4 border border-black text-blue-700">vin</th>
-                                <th className="p-4 border border-black text-blue-700">Year</th>
-                                <th className="p-4 border border-black text-blue-700">Make</th>
-                                <th className="p-4 border border-black text-blue-700">Model</th> */}
                                 <th className="p-4 border border-black text-blue-700">Term</th>
                                 <th className="p-4 border border-black text-blue-700">Invoice</th>
                                 <th className="p-4 border border-black text-blue-700">D&H</th>
@@ -281,20 +249,14 @@ export default function MaintenanceOverAdvance() {
                                     {
                                         percentOfInvoiceData && percentOfInvoiceData.map((percentOfInvoiceValue, index) => {
                                             const { calculatedParameter, calculatedOptionalMaintenanceContract, calculatedDifference, calculatedOverride } = calculateValues(
-                                                element.DLR_INV_AM,
-                                                element.DH_AMT,
-                                                element.Color_Upcharge_MSRP,
+                                                parseInt(element.DLR_INV_AM),
+                                                parseInt(element.DH_AMT),
+                                                parseInt(element.Color_Upcharge_MSRP),
                                                 percentOfInvoiceValue,
                                                 DifferenceData[index],
                                             );
                                             return (
                                                 <tr key={index}>
-                                                    {/* <td className="p-2 border border-black">{productType}</td>
-                                                    <td className="p-2 border border-black">{searchParams.Condition}</td>
-                                                    <td className="p-2 border border-black">{element.VIN}</td>
-                                                    <td className="p-2 border border-black">{element.Year}</td>
-                                                    <td className="p-2 border border-black">{element.Make}</td>
-                                                    <td className="p-2 border border-black">{element.Model}</td> */}
                                                     <td className="p-2 border border-black">{TermData}</td>
                                                     <td className="p-2 border border-black">{element.DLR_INV_AM}</td>
                                                     <td className="p-2 border border-black">{element.DH_AMT}</td>
