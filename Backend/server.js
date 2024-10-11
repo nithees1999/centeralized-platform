@@ -309,88 +309,183 @@ app.post('/api/customerprofile', (req, res) => {
         })
     });
 });
+// FCL
 
+app.post('/search', (req, res) => {
+    const { product, scoreCard, salesProgram, term, score, ltv } = req.body;
+    if (!term) {
+        return res.json('No data available');
+    }
+    let ltvColumn;
+    if (ltv <= 95) {
+        ltvColumn = 'ltv_less_equal_95';
+    } else if (ltv > 95 && ltv <= 115) {
+        ltvColumn = 'ltv_greater_95_less_equal_115';
+    } else if (ltv > 115) {
+        ltvColumn = 'ltv_greater_115';
+    }
+    let tableName;
+    if (product === 'Retail & Balloon' && scoreCard === 'THN' && salesProgram === 'Standard') {
+        tableName = term === 'Regular' ? 'regular_term' : 'extended_term';
+    } else if (product === 'Retail & Balloon' && scoreCard === 'THN' && salesProgram === 'Incentive & Special') {
+        tableName = term === 'Regular' ? 'incentive_regular' : 'incentive_extended';
+    } else if (product === 'Retail & Balloon' && scoreCard === 'DLQ' && salesProgram === 'Standard') {
+        tableName = term === 'Regular' ? 'DLQ_standard_regular' : 'DLQ_standard_extended';
+    } else if (product === 'Retail & Balloon' && scoreCard === 'DLQ' && salesProgram === 'Incentive & Special') {
+        tableName = term === 'Regular' ? 'DLQ_Incentive_regular' : 'DLQ_Incentive_extended';
+    } else if (product === 'Retail & Balloon' && scoreCard === 'CLN' && salesProgram === 'Standard') {
+        tableName = term === 'Regular' ? 'CLN_Standard_regular' : 'CLN_Standard_extended';
+    } else if (product === 'Retail & Balloon' && scoreCard === 'CLN' && salesProgram === 'Incentive & Special') {
+        tableName = term === 'Regular' ? 'CLN_Incentive_regular' : 'CLN_Incentive_extended';
+    } else if (product === 'Lease' && scoreCard === 'THN' && salesProgram === 'Standard') {
+        tableName = term === 'Regular' ? 'Lease_THN_Standard_regular' : 'Lease_THN_Standard_extended';
+    } else if (product === 'Lease' && scoreCard === 'THN' && salesProgram === 'Incentive & Special') {
+        tableName = term === 'Regular' ? 'Lease_THN_incentive_regular' : 'Lease_THN_incentive_extended';
+    } else if (product === 'Lease' && scoreCard === 'DLQ' && salesProgram === 'Standard') {
+        tableName = term === 'Regular' ? 'Lease_DLQ_standard_regular' : 'Lease_DLQ_standard_extended';
+    } else if (product === 'Lease' && scoreCard === 'DLQ' && salesProgram === 'Incentive & Special') {
+        tableName = term === 'Regular' ? 'Lease_DLQ_Incentive_regular' : 'Lease_DLQ_Incentive_extended';
+    } else if (product === 'Lease' && scoreCard === 'CLN' && salesProgram === 'Standard') {
+        tableName = term === 'Regular' ? 'Lease_CLN_Standard_regular' : 'Lease_CLN_Standard_extended';
+    } else if (product === 'Lease' && scoreCard === 'CLN' && salesProgram === 'Incentive & Special') {
+        tableName = term === 'Regular' ? 'Lease_CLN_Incentive_regular' : 'Lease_CLN_Incentive_extended';
+    } else {
+        return res.json('No data available');
+    }
 
-//FCL
-
-app.get('/api/getProducts', (req, res) => {
-    const sql = 'SELECT DISTINCT Product FROM fcl';
-    db.then(() => {
-        mysql.query(sql, (err, results) => {
-            if (err) throw err;
-            res.json(results.recordset.map(row => row.Product));
-        })
+    const query = 'SELECT ?? AS ltvValue, modifier FROM ?? WHERE score_range_start <= ? AND score_range_end >= ?';
+    db.query(query, [ltvColumn, tableName, score, score], (err, results) => {
+        if (err) {
+            console.error('Error querying the database:', err);
+            return res.status(500).json('Error fetching data');
+        } else if (results.length > 0) {
+            const data = results[0];
+            const ltvValue = data.ltvValue;
+            const modifier = data.modifier;
+            const fclValue = ltvValue !== undefined ? ltvValue * modifier : 'No data available';
+            res.json(fclValue);
+        } else {
+            res.json('No data available');
+        }
+    });
+});
+//Residual
+// Get VehicleType
+app.get('/api/getVehicleType', (req, res) => {
+    const sql = 'SELECT DISTINCT `Vehicle_Type` FROM residual';
+    db.query(sql, (err, results) => {
+        if (err) throw err;
+        res.json(results.map(row => row.Vehicle_Type));
     });
 });
 
+// Get Finance
+app.get('/api/getFinance', (req, res) => {
+    const sql = 'SELECT DISTINCT `Finance` FROM residual';
+    db.query(sql, (err, results) => {
+        if (err) throw err;
+        res.json(results.map(row => row.Finance));
+    });
+});
+// Get Vehicle_Year
+app.get('/api/getVehicle_Year', (req, res) => {
+    const sql = 'SELECT DISTINCT `Vehicle_Year` FROM residual';
+    db.query(sql, (err, results) => {
+        if (err) throw err;
+        res.json(results.map(row => row.Vehicle_Year));
+    });
+});
+
+
 // Get all data (initial page load)
-app.get('/api/fcl', (req, res) => {
-    const sql = 'SELECT * FROM fcl';
-    db.then(() => {
-        mysql.query(sql, (err, results) => {
-            if (err) {
-                console.error('Error fetching data:', err);
-                res.status(500).json({ error: 'Internal Server Error' });
-                return;
-            }
-            res.json(results.recordset);
-        })
+app.get('/api/residual', (req, res) => {
+    const sql = 'SELECT * FROM residual';
+    db.query(sql, (err, results) => {
+        if (err) {
+            console.error('Error fetching data:', err);
+            res.status(500).json({ error: 'Internal Server Error' });
+            return;
+        }
+        res.json(results);
     });
 });
 
 // Filter Data
-app.post('/api/fcl', (req, res) => {
-    const { Product, FicoScore, Tier, ScoreCardType } = req.body;
-    let sql = `
-        SELECT "Product", "Last Name", "DOB", "House", "Street Name", "Street Type", "City", "State", "Zip Code", "SSN", "FICO Score", "Tier", "ScoreCard Type"
-        FROM fcl
-        WHERE Product = ?
-    `;
-    let queryParams = [Product];
-    if (FicoScore) {
-        sql += ' AND "FICO_Score" = ?';
-        queryParams.push(FicoScore);
+app.post('/api/residual', (req, res) => {
+    const { Vehicle_Type, Finance, Vehicle_Year } = req.body;
+    let sql = 'SELECT * FROM residual WHERE 1=1';
+    let queryParams = [];
+
+    if (Vehicle_Type) {
+        sql += ' AND `Vehicle_Type` = ?';
+        queryParams.push(Vehicle_Type);
     }
-    if (Tier) {
-        sql += ' AND "Tier" = ?';
-        queryParams.push(Tier);
+
+    if (Finance) {
+        sql += ' AND `Finance` = ?';
+        queryParams.push(Finance);
     }
-    if (ScoreCardType) {
-        sql += ' AND "ScoreCard_Type" = ?';
-        queryParams.push(ScoreCardType);
+    if (Vehicle_Year) {
+        sql += ' AND `Vehicle_Year` = ?';
+        queryParams.push(Vehicle_Year);
     }
-    db.then(() => {
-        mysql.query(sql, queryParams, (err, results) => {
-            if (err) throw err;
-            res.json(results);
-        })
+
+    db.query(sql, queryParams, (err, results) => {
+        if (err) {
+            console.error('Error executing query:', err);
+            res.status(500).json({ error: 'Internal Server Error' });
+            return;
+        }
+        res.json(results);
     });
 });
 
-//MOA - maintenanceOVerAdvance
-//fetch tables details
-app.get('/api/rulesTable/:option', async (req, res) => {
-    const selectedOption = req.params.option;
-    try {
-        const query = `SELECT * FROM ${selectedOption}`;
-        // db2.then(() => {
-        //     mysql.query(sql, (err, results) => {
-        //         if (err) {
-        //             console.error('Error executing query:', err);
-        //             return res.status(500).json({ error: 'Query execution failed' });
-        //         }
-        //         res.json(results.recordset);
-        //     });
-        // });
-        const result = await db2.query(query); // Use the request method to execute the query
-        
-        res.json(result.recordset); // Send the result as JSON
-    } catch (err) {
-        console.log(err);
-    }
-})
+// Checklist
+// Get Description
+app.get('/api/getDescription', (req, res) => {
+    const sql = 'SELECT DISTINCT `Description` FROM Checklist';
+    db.query(sql, (err, results) => {
+        if (err) throw err;
+        res.json(results.map(row => row.Description));
+    });
+});
 
-//sending response to the client
+// Get all data (initial page load)
+app.get('/api/Checklist', (req, res) => {
+    const sql = 'SELECT * FROM Checklist';
+    db.query(sql, (err, results) => {
+        if (err) {
+            console.error('Error fetching data:', err);
+            res.status(500).json({ error: 'Internal Server Error' });
+            return;
+        }
+        res.json(results);
+    });
+});
+// Filter Data
+app.post('/api/Checklist', (req, res) => {
+    const { Description } = req.body;
+    let sql = 'SELECT * FROM Checklist WHERE 1=1';
+    let queryParams = [];
+    if (Description) {
+        sql += ' AND `Description` = ?';
+        queryParams.push(Description);
+    }
+    
+    db.query(sql, queryParams, (err, results) => {
+        if (err) {
+            console.error('Error executing query:', err);
+            res.status(500).json({ error: 'Internal Server Error' });
+            return;
+        }
+        res.json(results);
+    });
+});
+
+
+
+
+// Sending response to the client
 app.get('/', (req, res) => {
     return res.json("From Backend Side")
 })

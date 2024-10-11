@@ -35,9 +35,9 @@ export default function SideBar({ isOpen, onClose, sidebarRef }) {
                     <li><NavLink to="/CustomerProfile" className={({ isActive }) => ` block text-black  p-2  font-bold hover:underline hover:underline-offset-8 ${isActive ? " text-blue-700 underline underline-offset-8 " : " text-black "}`}>Customer Profile</NavLink></li>
                     <li><NavLink to="#" onClick={toggleFormulaMenu} className={`block  p-2 font-bold hover:underline hover:underline-offset-8 ${isFormulaActive ? "text-blue-700 underline underline-offset-8" : "text-black"}`}>Formula{isFormulaOpen ? <IoMdArrowDropdown className='inline-block' /> : <IoMdArrowDropright className='inline-block' />}</NavLink>
                         {isFormulaOpen && (
-                            <ul className="mt-2">
-                                <li><NavLink to="/Fcl" className={({ isActive }) => `block text-black  p-2 font-bold text-sm hover:underline hover:underline-offset-8 ${isActive ? " text-blue-700 underline underline-offset-8" : "text-black"}`}>Fcl</NavLink></li>
-                                <li><NavLink to="/Residual" className={({ isActive }) => `block text-black  p-2 font-bold text-sm hover:underline hover:underline-offset-8 ${isActive ? " text-blue-700 underline underline-offset-8" : "text-black"}`}>Residual</NavLink></li>
+                            <ul className="ml-4 mt-2">
+                                <li><NavLink to="/Fcl" className={({ isActive }) => `block text-black text-center p-2 font-bold  hover:underline hover:underline-offset-8 ${isActive ? " text-blue-700 underline underline-offset-8" : "text-black"}`}>*Fcl</NavLink></li>
+                                <li><NavLink to="/Residual" className={({ isActive }) => `block text-black text-center p-2 font-bold hover:underline hover:underline-offset-8 ${isActive ? " text-blue-700 underline underline-offset-8" : "text-black"}`}>*Residual</NavLink></li>
                             </ul>
                         )}
                     </li>
@@ -52,6 +52,7 @@ export default function SideBar({ isOpen, onClose, sidebarRef }) {
                             </ul>
                         )}
                     </li>
+                    <li><NavLink to="/Checklist" className={({ isActive }) => ` block text-black text-center p-2  font-bold hover:underline hover:underline-offset-8 ${isActive ? " text-blue-700 underline underline-offset-8 " : " text-black "}`}>Checklist</NavLink></li>
                 </ul>
             </div>
         </div>
