@@ -16,6 +16,10 @@ import CustomerProfile from './Components/CustomerProfile';
 import Fcl from './Components/Fcl';
 import Residual from './Components/Residual';
 import Checklist from './Components/Checklist';
+import DecisionRules from './Components/DecisionRules';
+import MaintenanceOverAdvance from './Components/ToleranceRules/MaintenanceOverAdvance';
+import GAPIsNotPermitted from './Components/ToleranceRules/GAPIsNotPermitted';
+
 
 const router = createBrowserRouter([
   {
@@ -57,6 +61,18 @@ const router = createBrowserRouter([
       {
         path: "Checklist",
         element: <Checklist />,
+      },
+      {
+        path: "DecisionRules",
+        element: <DecisionRules />,
+      },
+      {
+        path: "MaintenanceOverAdvance",
+        element: <MaintenanceOverAdvance/>,
+      },
+      {
+        path: "GAPIsNotPermitted",
+        element: <GAPIsNotPermitted/>,
       },
     ],
   },

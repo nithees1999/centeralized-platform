@@ -1,8 +1,9 @@
-import { FaSearch } from "react-icons/fa";
+import { FaSearch, FaEdit } from "react-icons/fa";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import PaginationButtons from "./PaginationButtons";
 import LoadingIcons from 'react-loading-icons'
+import MyModal from "./MyModal";
 
 export default function Origenate() {
     const [searchParams, setSearchParams] = useState({
@@ -22,10 +23,52 @@ export default function Origenate() {
         responseDataPosts = responseData.slice(firstPostIndex, lastPostIndex)
     }
 
-    //api call URLs
-    const portUrl = "http://localhost:8080"
-    const fetchOrigenateDetailsUrl = "/api/fetchOrigenateDetails"
-    const filterOrigenateDetailsUrl = "/api/OrigenateFilter"
+        //api call URLs
+        const portUrl = "http://localhost:8080"
+        const fetchOrigenateDetailsUrl = "/api/fetchOrigenateDetails"
+        const filterOrigenateDetailsUrl = "/api/OrigenateFilter"
+        const updateOrigenateRecord ="/api/updateOrigenateRecord"
+
+    //Modal
+    const [open, setOpen] = useState(false);
+    const [updateResponse, setUpdateResponse] = useState("");
+    const [creds, setCreds] = useState({
+        User_ID: "",
+        Password: "",
+        AdminPassword: ""
+    });
+    const customAdminPassword = "12345"
+
+    const onOpenModal = (element) => {
+        setOpen(true)
+        setCreds({
+            User_ID: element.User_ID,
+            Password: element.Password,
+            AdminPassword: ""
+        })
+    }
+    const onCloseModal = () => {
+        setOpen(false);
+        setUpdateResponse("")
+    } 
+
+    const modalInputChange = (e) => {
+        setCreds({ ...creds, [e.target.name]: e.target.value })
+    }
+
+    const handlePasswordUpdate = async (creds) =>{
+        if(creds.AdminPassword && creds.AdminPassword === customAdminPassword){
+            const Response = await axios.post(portUrl + updateOrigenateRecord, {
+                id : creds.User_ID,
+                data : creds.Password
+            });
+            setUpdateResponse(Response.data)
+            fetchOrigenateDetails()
+        }else{
+            setUpdateResponse("Admin password error")
+        }
+    }
+
 
     const fetchOrigenateDetails = async () => {
         setLoading(true)
@@ -54,7 +97,7 @@ export default function Origenate() {
 
     useEffect(() => {
         fetchOrigenateDetails()
-        const fetchEnvTypes = async () =>{
+        const fetchEnvTypes = async () => {
             const response = await axios.get("http://localhost:8080/api/getEnvTypes")
             setEnvTypes(response.data)
         }
@@ -110,6 +153,7 @@ export default function Origenate() {
                 </button>
             </form>
             <section className="min-h-screen py-8 px-4 m-2 border border-black rounded-md">
+                <MyModal open={open} onCloseModal={onCloseModal} creds={creds} modalInputChange={modalInputChange} handlePasswordUpdate={()=>handlePasswordUpdate(creds)} updateResponse={updateResponse} />
                 <table className="w-full">
                     <thead className="border border-black ">
                         <tr>
@@ -118,6 +162,7 @@ export default function Origenate() {
                             <th className="p-4 border border-black text-blue-700">Team</th>
                             <th className="p-4 border border-black text-blue-700">Security Profile</th>
                             <th className="p-4 border border-black text-blue-700">ENV</th>
+                            <th className="p-4 border border-black text-blue-700">EDIT</th>
                         </tr>
                     </thead>
 
@@ -137,6 +182,9 @@ export default function Origenate() {
                                         <td className="p-2 border border-black">{element.Team}</td>
                                         <td className="p-2 border border-black">{element.Security_Profile}</td>
                                         <td className="p-2 border border-black">{element.Env}</td>
+                                        <td className="p-2 border border-black text-center">
+                                                <FaEdit className="inline-block cursor-pointer" onClick={() => onOpenModal(element)} />
+                                        </td>
                                     </tr>
                                 ))
                                     : <tr key="no-data">
