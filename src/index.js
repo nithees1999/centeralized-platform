@@ -20,6 +20,7 @@ import DecisionRules from './Components/DecisionRules';
 import MaintenanceOverAdvance from './Components/ToleranceRules/MaintenanceOverAdvance';
 import GAPIsNotPermitted from './Components/ToleranceRules/GAPIsNotPermitted';
 import ServiceContractOverAdvance from './Components/ToleranceRules/ServiceContractOverAdvance';
+import GapAmountOverAdvance from './Components/ToleranceRules/GapAmountOverAdvance';
 
 
 const router = createBrowserRouter([
@@ -78,6 +79,10 @@ const router = createBrowserRouter([
       {
         path: "ServiceContractOverAdvance",
         element: <ServiceContractOverAdvance/>,
+      },
+      {
+        path: "GapAmountOverAdvance",
+        element: <GapAmountOverAdvance/>,
       },
     ],
   },

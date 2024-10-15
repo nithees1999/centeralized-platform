@@ -51,6 +51,8 @@ export default function SideBar({ isOpen, onClose, sidebarRef }) {
                                 <li><NavLink data-tooltip-id="GAPIsNotPermitted" data-tooltip-content="GAP Is Not Permitted" to="/GAPIsNotPermitted" className={({ isActive }) => `block text-black  p-2 font-bold text-sm hover:underline hover:underline-offset-8 ${isActive ? " text-blue-700 underline underline-offset-8" : "text-black"}`}>GAP-INP</NavLink></li>
                                 <Tooltip id="ServiceContractOverAdvance"  />
                                 <li><NavLink data-tooltip-id="ServiceContractOverAdvance" data-tooltip-content="Service Contract Over Advance" to="/ServiceContractOverAdvance" className={({ isActive }) => `block text-black  p-2 font-bold text-sm hover:underline hover:underline-offset-8 ${isActive ? " text-blue-700 underline underline-offset-8" : "text-black"}`}>SCOA</NavLink></li>
+                                <Tooltip id="GapAmountOverAdvance"  />
+                                <li><NavLink data-tooltip-id="GapAmountOverAdvance" data-tooltip-content="Gap Amount Over Advance" to="/GapAmountOverAdvance" className={({ isActive }) => `block text-black  p-2 font-bold text-sm hover:underline hover:underline-offset-8 ${isActive ? " text-blue-700 underline underline-offset-8" : "text-black"}`}>GAOA</NavLink></li>
                             </ul>
                         )}
                     </li>
