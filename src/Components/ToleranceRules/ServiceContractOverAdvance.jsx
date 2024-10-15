@@ -32,7 +32,6 @@ export default function ServiceContractOverAdvance() {
     };
 
     //options for Category
-    const [productType, setProductType] = useState("Retail/Lease");
     const [TermData, setTermData] = useState(null);
     const [percentageOfInvoice, setpercentageOfInvoice] = useState(null);
     const [difference, setdifference] = useState([]);
@@ -137,7 +136,7 @@ export default function ServiceContractOverAdvance() {
             {vinData.length ?
                 <section className="conditionsNav p-2 m-2 border border-black rounded-md flex justify-start lg:justify-center items-center gap-1 flex-wrap">
                     <span className="px-1 font-normal">Product Type:</span>
-                    <span className="px-1 font-bold">{productType ? productType : null}</span>
+                    <span className="px-1 font-bold">Retail/Lease</span>
                     <span className="px-1 font-normal">Condition:</span>
                     <span className="px-1 font-bold">{searchParams.condition ? searchParams.condition : null}</span>
                     <span className="px-1 font-normal">vin:</span>
