@@ -11,8 +11,7 @@ export default function ServiceContractOverAdvance() {
     const [searchParams, setSearchParams] = useState({
         VIN: '',
         condition: '',
-        category: '',
-        productType: '',
+        category: ''
     });
 
     // Handle input changes in the UI form
@@ -33,7 +32,7 @@ export default function ServiceContractOverAdvance() {
     };
 
     //options for Category
-    // const [productType, setProductType] = useState(null);
+    const [productType, setProductType] = useState("Retail/Lease");
     const [TermData, setTermData] = useState(null);
     const [percentageOfInvoice, setpercentageOfInvoice] = useState(null);
     const [difference, setdifference] = useState([]);
@@ -59,7 +58,7 @@ export default function ServiceContractOverAdvance() {
 
     //initiate when changes in the form input
     useEffect(() => {
-        const { condition, category, productType } = searchParams;
+        const { condition, category } = searchParams;
 
         const setFormData = (TermData, percentageOfInvoice, difference, CompanyOrProviderName) => {
             setTermData(TermData)
@@ -71,67 +70,31 @@ export default function ServiceContractOverAdvance() {
 
         if (condition === "NEW") {
             if (category === "HondaCare") {
-                if (productType === "Retail") {
-                    if (vinData.length ? vinData[0].Make === "Honda" : null) {
-                        setFormData(36, 15, [50, 50.01, 1000, 1000.01], "Honda Care")
-                    } else {
-                        setFormData(24, 15, [50, 50.01, 500.01, 1000.01], "Acura Care")
-                    }
-                }
-                if (productType === "Lease") {
-                    if (vinData ? vinData[0].Make === "Honda" : null) {
-                        setFormData(36, 15, [50, 50.01, 1000, 1000.01], "Honda Care")
-                    } else {
-                        setFormData(24, 15, [50, 50.01, 500.01, 1000.01], "Acura Care")
-                    }
+                if (vinData.length ? vinData[0].Make === "Honda" : null) {
+                    setFormData(36, 15, [50, 50.01, 1000, 1000.01], "Honda Care")
+                } else {
+                    setFormData(24, 15, [50, 50.01, 500.01, 1000.01], "Acura Care")
                 }
             } else if (category === "OtherCare") {
-                if (productType === "Retail") {
-                    if (vinData ? vinData[0].Make === "Honda" : null) {
-                        setFormData(36, 14, [50, 50.01, 1000, 1000.01], "Honda Care")
-                    } else {
-                        setFormData(24, 14, [50, 50.01, 500.01, 1000.01], "Acura Care")
-                    }
-                }
-                if (productType === "Lease") {
-                    if (vinData ? vinData[0].Make === "Honda" : null) {
-                        setFormData(36, 14, [50, 50.01, 1000, 1000.01], "Honda Care")
-                    } else {
-                        setFormData(24, 14, [50, 50.01, 500.01, 1000.01], "Acura Care")
-                    }
+                if (vinData ? vinData[0].Make === "Honda" : null) {
+                    setFormData(36, 14, [50, 50.01, 1000, 1000.01], "Honda Care")
+                } else {
+                    setFormData(24, 14, [50, 50.01, 500.01, 1000.01], "Acura Care")
                 }
             }
 
         } else if (condition === "Used/Certified") {
             if (category === "HondaCare") {
-                if (productType === "Retail") {
-                    if (vinData ? vinData[0].Make === "Honda" : null) {
-                        setFormData(36, 15, [50, 50.01, 1000, 1000.01], "Honda Care")
-                    } else {
-                        setFormData(24, 15, [50, 50.01, 500.01, 1000.01], "Acura Care")
-                    }
-                }
-                if (productType === "Lease") {
-                    if (vinData ? vinData[0].Make === "Honda" : null) {
-                        setFormData(36, 15, [50, 50.01, 1000, 1000.01], "Honda Care")
-                    } else {
-                        setFormData(24, 15, [50, 50.01, 500.01, 1000.01], "Acura Care")
-                    }
+                if (vinData ? vinData[0].Make === "Honda" : null) {
+                    setFormData(36, 15, [50, 50.01, 1000, 1000.01], "Honda Care")
+                } else {
+                    setFormData(24, 15, [50, 50.01, 500.01, 1000.01], "Acura Care")
                 }
             } else if (category === "OtherCare") {
-                if (productType === "Retail") {
-                    if (vinData ? vinData[0].Make === "Honda" : null) {
-                        setFormData(36, 14, [50, 50.01, 1000, 1000.01], "Honda Care")
-                    } else {
-                        setFormData(24, 14, [50, 50.01, 500.01, 1000.01], "Acura Care")
-                    }
-                }
-                if (productType === "Lease") {
-                    if (vinData ? vinData[0].Make === "Honda" : null) {
-                        setFormData(36, 14, [50, 50.01, 1000, 1000.01], "Honda Care")
-                    } else {
-                        setFormData(24, 14, [50, 50.01, 500.01, 1000.01], "Acura Care")
-                    }
+                if (vinData ? vinData[0].Make === "Honda" : null) {
+                    setFormData(36, 14, [50, 50.01, 1000, 1000.01], "Honda Care")
+                } else {
+                    setFormData(24, 14, [50, 50.01, 500.01, 1000.01], "Acura Care")
                 }
             }
         }
@@ -168,22 +131,13 @@ export default function ServiceContractOverAdvance() {
                     </select>
                 </section>
 
-                <section>
-                    <label className="px-1 font-medium" htmlFor="productType">productType:</label>
-                    <select name="productType" id="productType" value={searchParams.productType} onChange={handleChange} className="border border-black rounded p-2" required >
-                        <option value="">NA</option>
-                        <option value="Retail">Retail</option>
-                        <option value="Lease">Lease</option>
-                    </select>
-                </section>
-
                 <button className="rounded-md p-2 mx-2 border border-black" type="submit">Submit</button>
             </form>
 
             {vinData.length ?
                 <section className="conditionsNav p-2 m-2 border border-black rounded-md flex justify-start lg:justify-center items-center gap-1 flex-wrap">
                     <span className="px-1 font-normal">Product Type:</span>
-                    <span className="px-1 font-bold">{searchParams.productType ? searchParams.productType : null}</span>
+                    <span className="px-1 font-bold">{productType ? productType : null}</span>
                     <span className="px-1 font-normal">Condition:</span>
                     <span className="px-1 font-bold">{searchParams.condition ? searchParams.condition : null}</span>
                     <span className="px-1 font-normal">vin:</span>
