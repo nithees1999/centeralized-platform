@@ -43,22 +43,14 @@ db.connect()
 app.get('/api/fetchVinDetails', async (req, res) => {
     try {
         const query = "SELECT * FROM VINDetails where 1=1";
-        // db.then(() => {
-        //     mysql.query(query, function (err1, recordset) {
-        //         if (err1) { console.log(err1); return res.json(err1); }
-        //         res.send(recordset.recordset);
-        //     });
-        // });
-        // const pool = await db; // Wait for the connection pool
         const result = await db.query(query); // Use the request method to execute the query
-        
         res.json(result.recordset); // Send the result as JSON
     } catch (err) {
         console.log(err);
     }
 })
 
-app.post('/api/VinFilter', (req, res) => {
+app.post('/api/VinFilter', async (req, res) => {
     const { VIN_Type, VIN, Model, Make, Year } = req.body;
 
     let query = 'SELECT * FROM VINDetails WHERE 1=1';
@@ -85,13 +77,8 @@ app.post('/api/VinFilter', (req, res) => {
         queryParams.push(Year);
     }
     query = SqlString.format(query, queryParams);
-
-    db.then(() => {
-        mysql.query(query, function (err, data) {
-            if (err) return res.json(err);
-            res.json(data.recordset);
-        });
-    });
+    const result = await db.query(query); // Use the request method to execute the query
+    res.json(result.recordset); // Send the result as JSON
 });
 
 //fetch dealer details

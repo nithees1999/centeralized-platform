@@ -16,7 +16,7 @@ export default function SideBar({ isOpen, onClose, sidebarRef }) {
 
     //Tolerance rules
     const [isTolerance, setIsTolerance] = useState(false);
-    const isToleranceActive = location.pathname === '/MaintenanceOverAdvance' || location.pathname === '/GAPIsNotPermitted';
+    const isToleranceActive = location.pathname === '/MaintenanceOverAdvance' || location.pathname === '/GAPIsNotPermitted' || location.pathname === '/ServiceContractOverAdvance';
     const toggleToleranceMenu = () => {
         setIsTolerance(!isTolerance);
     };
@@ -35,9 +35,9 @@ export default function SideBar({ isOpen, onClose, sidebarRef }) {
                     <li><NavLink to="/CustomerProfile" className={({ isActive }) => ` block text-black  p-2  font-bold hover:underline hover:underline-offset-8 ${isActive ? " text-blue-700 underline underline-offset-8 " : " text-black "}`}>Customer Profile</NavLink></li>
                     <li><NavLink to="#" onClick={toggleFormulaMenu} className={`block  p-2 font-bold hover:underline hover:underline-offset-8 ${isFormulaActive ? "text-blue-700 underline underline-offset-8" : "text-black"}`}>Formula{isFormulaOpen ? <IoMdArrowDropdown className='inline-block' /> : <IoMdArrowDropright className='inline-block' />}</NavLink>
                         {isFormulaOpen && (
-                            <ul className="ml-4 mt-2">
-                                <li><NavLink to="/Fcl" className={({ isActive }) => `block text-black text-center p-2 font-bold  hover:underline hover:underline-offset-8 ${isActive ? " text-blue-700 underline underline-offset-8" : "text-black"}`}>*Fcl</NavLink></li>
-                                <li><NavLink to="/Residual" className={({ isActive }) => `block text-black text-center p-2 font-bold hover:underline hover:underline-offset-8 ${isActive ? " text-blue-700 underline underline-offset-8" : "text-black"}`}>*Residual</NavLink></li>
+                            <ul className="mt-2">
+                                <li><NavLink to="/Fcl" className={({ isActive }) => `block text-black p-2 font-bold text-sm hover:underline hover:underline-offset-8 ${isActive ? " text-blue-700 underline underline-offset-8" : "text-black"}`}>FCL</NavLink></li>
+                                <li><NavLink to="/Residual" className={({ isActive }) => `block text-black p-2 font-bold text-sm hover:underline hover:underline-offset-8 ${isActive ? " text-blue-700 underline underline-offset-8" : "text-black"}`}>Residual</NavLink></li>
                             </ul>
                         )}
                     </li>
@@ -49,10 +49,12 @@ export default function SideBar({ isOpen, onClose, sidebarRef }) {
                                 <li><NavLink data-tooltip-id="MaintenanceOverAdvance" data-tooltip-content="Maintenance Over Advance" to="/MaintenanceOverAdvance" className={({ isActive }) => `block text-black  p-2 font-bold text-sm hover:underline hover:underline-offset-8 ${isActive ? " text-blue-700 underline underline-offset-8" : "text-black"}`}>MOA</NavLink></li>
                                 <Tooltip id="GAPIsNotPermitted"  />
                                 <li><NavLink data-tooltip-id="GAPIsNotPermitted" data-tooltip-content="GAP Is Not Permitted" to="/GAPIsNotPermitted" className={({ isActive }) => `block text-black  p-2 font-bold text-sm hover:underline hover:underline-offset-8 ${isActive ? " text-blue-700 underline underline-offset-8" : "text-black"}`}>GAP-INP</NavLink></li>
+                                <Tooltip id="ServiceContractOverAdvance"  />
+                                <li><NavLink data-tooltip-id="ServiceContractOverAdvance" data-tooltip-content="Service Contract Over Advance" to="/ServiceContractOverAdvance" className={({ isActive }) => `block text-black  p-2 font-bold text-sm hover:underline hover:underline-offset-8 ${isActive ? " text-blue-700 underline underline-offset-8" : "text-black"}`}>SCOA</NavLink></li>
                             </ul>
                         )}
                     </li>
-                    <li><NavLink to="/Checklist" className={({ isActive }) => ` block text-black text-center p-2  font-bold hover:underline hover:underline-offset-8 ${isActive ? " text-blue-700 underline underline-offset-8 " : " text-black "}`}>Checklist</NavLink></li>
+                    <li><NavLink to="/Checklist" className={({ isActive }) => ` block text-black p-2  font-bold hover:underline hover:underline-offset-8 ${isActive ? " text-blue-700 underline underline-offset-8 " : " text-black "}`}>Checklist</NavLink></li>
                 </ul>
             </div>
         </div>
