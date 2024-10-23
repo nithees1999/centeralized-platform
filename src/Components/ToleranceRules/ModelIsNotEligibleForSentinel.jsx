@@ -1,5 +1,5 @@
 
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 
 export default function ModelIsNotEligibleForSentinel() {
 
@@ -30,19 +30,19 @@ export default function ModelIsNotEligibleForSentinel() {
     const handleSearch = async (e) => {
         e.preventDefault();
         setModel(searchParams.Model)
-        if (searchParams.Model && searchParams.Model === "Prologue" ) {
+        if (searchParams.Model && searchParams.Model === "Prologue") {
             setTermData([24, 24, 36, 36, 36])
             setVIN("3GPKHURM3RS500012")
             setYear("2024")
             setMake("Honda")
             setOverRide("9")
-        } else if(searchParams.Model === "ZDX") {
+        } else if (searchParams.Model === "ZDX") {
             setTermData([24, 24, 36, 36, 36])
             setVIN("4W5KHMRK1RZ500001")
             setYear("2024")
             setMake("Acura")
             setOverRide("9")
-        }else{
+        } else {
             setTermData([24, 24, 48, 48, 36])
             setVIN("3CZRZ1H3XPM701650")
             setYear("2023/2024")
@@ -50,11 +50,6 @@ export default function ModelIsNotEligibleForSentinel() {
             setOverRide("0")
         }
     };
-
-    //initiate when changes in the form input
-    useEffect(() => {
-        // handleSearch()
-    }, [searchParams.Model]);
 
     return (
         <>
