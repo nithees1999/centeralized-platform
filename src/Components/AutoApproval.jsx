@@ -32,7 +32,7 @@ const AutoApproval = () => {
     const fetchAutoApprovalUrl = "/api/autoapproval"
     const filterAutoApprovalUrl = "/api/autoApprovalFilter"
     const getApprovalStatesUrl = "/api/getApprovalStates"
-    const ApprovalTiersUrl = "/api/getApprovalTiers"
+    const getApprovalTiersUrl = "/api/getApprovalTiers"
 
     //dropdown multiSelect
     const options = [
@@ -68,11 +68,16 @@ const AutoApproval = () => {
     }
 
     const fetchAutoApprovalDetails = async () => {
-        setLoading(true)
-        const response = await axios.get(portUrl + fetchAutoApprovalUrl)
-        setResponseData(response.data)
-        setLoading(false)
-    }
+        setLoading(true);
+        try {
+            const response = await axios.get(portUrl + fetchAutoApprovalUrl);
+            setResponseData(response.data); 
+        } catch (error) {
+            console.error("Error fetching auto approval data:", error);
+        }
+        setLoading(false);
+    };
+     
 
     useEffect(() => {
         const fetchData = async () => {
@@ -80,7 +85,7 @@ const AutoApproval = () => {
                 setLoading(true)
                 const [statesResponse, tiersResponse] = await Promise.all([
                     axios.get(portUrl + getApprovalStatesUrl),
-                    axios.get(portUrl + ApprovalTiersUrl)
+                    axios.get(portUrl + getApprovalTiersUrl)
                 ]);
                 setLoading(false);
                 setStateData(prevState => ({
@@ -179,7 +184,7 @@ const AutoApproval = () => {
 
                 {/* columns dropdown */}
                 <div className="flex items-center space-x-2">
-                    <label className="font-medium" htmlFor="Year">Select:</label>
+                    <label className="font-medium" htmlFor="fico-score">Select:</label>
                     <Select
                         defaultValue={selectedOption}
                         onChange={setSelectedOption}

@@ -4,7 +4,7 @@ const mysql = require('mssql/msnodesqlv8');
 const SqlString = require('tsqlstring');
 
 const config = {
-    server: 'LTIN527389',
+    server: 'LTIN191785',
     driver: "SQL Server Native Client 11.0",
     database: "ForTestDB",
     connectionTimeout: 150000,
@@ -13,9 +13,8 @@ const config = {
         trustedConnection: true
     }
 };
-
 const config2 = {
-    server: 'LTIN527389',
+    server: 'LTIN191785',
     driver: "SQL Server Native Client 11.0",
     database: "rules",
     connectionTimeout: 150000,
@@ -43,7 +42,15 @@ db.connect()
 app.get('/api/fetchVinDetails', async (req, res) => {
     try {
         const query = "SELECT * FROM VINDetails where 1=1";
+        // db.then(() => {
+        //     mysql.query(query, function (err1, recordset) {
+        //         if (err1) { console.log(err1); return res.json(err1); }
+        //         res.send(recordset.recordset);
+        //     });
+        // });
+        // const pool = await db; // Wait for the connection pool
         const result = await db.query(query); // Use the request method to execute the query
+        
         res.json(result.recordset); // Send the result as JSON
     } catch (err) {
         console.log(err);
@@ -77,23 +84,22 @@ app.post('/api/VinFilter', async (req, res) => {
         queryParams.push(Year);
     }
     query = SqlString.format(query, queryParams);
-    const result = await db.query(query); // Use the request method to execute the query
-    res.json(result.recordset); // Send the result as JSON
+
+    const result = await db.query(query);
+    res.json(result.recordset);
+    
+
 });
 
 //fetch dealer details
-app.get('/api/fetchDealerDetails', (req, res) => {
+app.get('/api/fetchDealerDetails', async (req, res) => {
     const query = "SELECT * FROM dealer"
-    db.then(() => {
-        mysql.query(query, (err, data) => {
-            if (err) return res.json(err);
-            return res.json(data.recordset)
-        })
-    })
+    const result = await db.query(query);
+    res.json(result.recordset);
 })
 
 
-app.post('/api/DealerFilter', (req, res) => {
+app.post('/api/DealerFilter', async (req, res) => {
     const { State, Brand } = req.body;
 
     let query = 'SELECT * FROM dealer WHERE 1=1';
@@ -109,26 +115,18 @@ app.post('/api/DealerFilter', (req, res) => {
     }
     query = SqlString.format(query, queryParams);
 
-    db.then(() => {
-        mysql.query(query, (err, data) => {
-            if (err) return res.json(err);
-            res.json(data.recordset);
-        });
-    });
+    const result = await db.query(query);
+    res.json(result.recordset);
 });
 
 //fetch origenate details
-app.get('/api/fetchOrigenateDetails', (req, res) => {
+app.get('/api/fetchOrigenateDetails', async (req, res) => {
     const query = "SELECT * FROM origenate"
-    db.then(() => {
-        mysql.query(query, (err, data) => {
-            if (err) return res.json(err);
-            return res.json(data.recordset)
-        })
-    })
+    const result = await db.query(query);
+    res.json(result.recordset);
 })
 
-app.post('/api/OrigenateFilter', (req, res) => {
+app.post('/api/OrigenateFilter', async (req, res) => {
     const { Env, Security_Profile } = req.body;
 
     let query = 'SELECT * FROM origenate WHERE 1=1';
@@ -144,161 +142,122 @@ app.post('/api/OrigenateFilter', (req, res) => {
     }
     query = SqlString.format(query, queryParams);
 
-    db.then(() => {
-        mysql.query(query, (err, data) => {
-            if (err) return res.json(err);
-            return res.json(data.recordset)
-        });
-    });
+    const result = await db.query(query);
+    res.json(result.recordset);
 });
 
+
 // Get origenate ENV Types
-app.get('/api/getEnvTypes', (req, res) => {
-    const sql = 'SELECT DISTINCT Env FROM origenate';
-    db.then(() => {
-        mysql.query(sql, (err, results) => {
-            if (err) throw err;
-            res.json(results.recordset.map(row => row['Env']));
-        })
-    });
+app.get('/api/getEnvTypes', async (req, res) => {
+    const query = 'SELECT DISTINCT Env FROM origenate';
+    const result = await db.query(query);
+    res.json(result.recordset.map(item => item['Env']));
 });
+
+
 
 // AutoApproval
 // Get State
-app.get('/api/getApprovalStates', (req, res) => {
-    const sql = 'SELECT DISTINCT State FROM autoapprovel';
-    db.then(() => {
-        mysql.query(sql, (err, results) => {
-            if (err) throw err;
-            res.json(results.recordset.map(row => row.State));
-        })
-    });
+app.get('/api/getApprovalStates', async (req, res) => {
+    const query = 'SELECT DISTINCT State FROM autoapproval';
+    const result = await db.query(query);
+    res.json(result.recordset.map(item => item['State']));
 });
 // Get Tier
-app.get('/api/getApprovalTier', (req, res) => {
-    const sql = 'SELECT DISTINCT Tier FROM autoapprovel';
-    db.then(() => {
-        mysql.query(sql, (err, results) => {
-            if (err) throw err;
-            res.json(results.recordset.map(row => row.Tier));
-        })
-    });
+app.get('/api/getApprovalTiers', async (req, res) => {
+    const query = 'SELECT DISTINCT Tier FROM autoapproval';
+    const result = await db.query(query);
+    res.json(result.recordset.map(item => item['Tier']));
 });
 // Get all data (initial page load)
-app.get('/api/autoapproval', (req, res) => {
-    const sql = 'SELECT * FROM autoapprovel';
-    db.then(() => {
-        mysql.query(sql, (err, results) => {
-            if (err) {
-                console.error('Error fetching data:', err);
-                res.status(500).json({ error: 'Internal Server Error' });
-                return;
-            }
-            res.json(results.recordset);
-        })
-    });
+app.get('/api/autoapproval', async (req, res) => {
+    const query = 'SELECT * FROM autoapproval';
+    const result = await db.query(query);
+    res.json(result.recordset);
 });
 // Filter Data
-app.post('/api/autoapproval', (req, res) => {
-    const { State, FicoScore, Tier } = req.body;
-    let sql = `SELECT * FROM autoapprovel WHERE 1=1`;
+app.post('/api/autoapprovalFilter', async (req, res) => {
+    const { State, FICO_Score, Tier } = req.body;
+    let query = `SELECT * FROM autoapproval WHERE 1=1`;
     let queryParams = [];
     if (State) {
-        sql += ' AND "State" = ?';
+        query += ' AND "State" = ?';
         queryParams.push(State);
     }
-    if (FicoScore) {
-        sql += ' AND "FICO_Score" = ?';
-        queryParams.push(FicoScore);
+    if (FICO_Score) {
+        query += ' AND "FICO_Score" = ?';
+        queryParams.push(FICO_Score);
     }
     if (Tier) {
-        sql += ' AND "Tier" = ?';
+        query += ' AND "Tier" = ?';
         queryParams.push(Tier);
     }
-    sql = SqlString.format(sql, queryParams);
-    db.then(() => {
-        mysql.query(sql, (err, results) => {
-            if (err) throw err;
-            res.json(results.recordset);
-        })
-    });
+    query = SqlString.format(query, queryParams);
+    const result = await db.query(query);
+    res.json(result.recordset);
 });
+
+
+
 
 // CustomerProfile
 // Get State
-app.get('/api/getStates', (req, res) => {
-    const sql = 'SELECT DISTINCT State FROM customerprofile';
-    db.then(() => {
-        mysql.query(sql, (err, results) => {
-            if (err) throw err;
-            res.json(results.recordset.map(row => row.State));
-        })
-    });
+app.get('/api/getStates', async (req, res) => {
+    const query = 'SELECT DISTINCT State FROM customerprofile';
+    const result = await db.query(query);
+    res.json(result.recordset.map(item => item['State']));
 });
 // Get Tier
-app.get('/api/getTier', (req, res) => {
-    const sql = 'SELECT DISTINCT Tier FROM customerprofile';
-    db.then(() => {
-        mysql.query(sql, (err, results) => {
-            if (err) throw err;
-            res.json(results.recordset.map(row => row.Tier));
-        })
-    });
+app.get('/api/getTier', async (req, res) => {
+    const query = 'SELECT DISTINCT Tier FROM customerprofile';
+    const result = await db.query(query);
+    res.json(result.recordset.map(item => item['Tier']));
 });
 
 // Get ScoreCard Type
-app.get('/api/getScoreCardTypes', (req, res) => {
-    const sql = 'SELECT DISTINCT ScoreCard_Type FROM customerprofile';
-    db.then(() => {
-        mysql.query(sql, (err, results) => {
-            if (err) throw err;
-            res.json(results.recordset.map(row => row['ScoreCard_Type']));
-        })
-    });
+app.get('/api/getScoreCardTypes', async (req, res) => {
+    const query = 'SELECT DISTINCT ScoreCard_Type FROM customerprofile';
+    const result = await db.query(query);
+    res.json(result.recordset.map(item => item['ScoreCard_Type']));
 });
 // Get all data (initial page load)
-app.get('/api/customerprofile', (req, res) => {
-    const sql = 'SELECT * FROM customerprofile';
-    db.then(() => {
-        mysql.query(sql, (err, results) => {
-            if (err) {
-                console.error('Error fetching data:', err);
-                res.status(500).json({ error: 'Internal Server Error' });
-                return;
-            }
-            res.json(results.recordset);
-        })
-    });
+app.get('/api/customerprofile', async (req, res) => {
+    const query = 'SELECT * FROM customerprofile';
+    const result = await db.query(query);
+    res.json(result.recordset);
 });
 
 // Filter Data
-app.post('/api/customerprofile', (req, res) => {
-    const { State, FicoScore, Tier, ScoreCardType } = req.body;
-    let sql = `SELECT * FROM customerprofile WHERE State = ?`;
-    let queryParams = [State];
-    if (FicoScore) {
-        sql += ' AND "FICO_Score" = ?';
-        queryParams.push(FicoScore);
+app.post('/api/customerprofile', async (req, res) => {
+    const { State, FICO_Score, Tier, ScoreCard_Type } = req.body;
+    let query = `SELECT * FROM customerprofile WHERE 1=1`;
+    let queryParams = [];
+    if (State) {
+        query += ' AND "State" = ?';
+        queryParams.push(State);
+    }
+    if (FICO_Score) {
+        query += ' AND "FICO_Score" = ?';
+        queryParams.push(FICO_Score);
     }
     if (Tier) {
-        sql += ' AND "Tier" = ?';
+        query += ' AND "Tier" = ?';
         queryParams.push(Tier);
     }
-    if (ScoreCardType) {
-        sql += ' AND "ScoreCard_Type" = ?';
-        queryParams.push(ScoreCardType);
+    if (ScoreCard_Type) {
+        query += ' AND "ScoreCard_Type" = ?';
+        queryParams.push(ScoreCard_Type);
     }
-    sql = SqlString.format(sql, queryParams);
-    db.then(() => {
-        mysql.query(sql, (err, results) => {
-            if (err) throw err;
-            res.json(results.recordset);
-        })
-    });
+    query = SqlString.format(query, queryParams);
+    const result = await db.query(query);
+    res.json(result.recordset);
 });
+
+
+
 // FCL
 
-app.post('/search', (req, res) => {
+app.post('/search', async (req, res) => {
     const { product, scoreCard, salesProgram, term, score, ltv } = req.body;
     if (!term) {
         return res.json('No data available');
@@ -350,123 +309,90 @@ app.post('/search', (req, res) => {
             const ltvValue = data.ltvValue;
             const modifier = data.modifier;
             const fclValue = ltvValue !== undefined ? ltvValue * modifier : 'No data available';
-            res.json(fclValue);
+            res.json(fclValue.recordset);
+        
         } else {
             res.json('No data available');
         }
     });
 });
+
+
 //Residual
 // Get VehicleType
-app.get('/api/getVehicleType', (req, res) => {
-    const sql = 'SELECT DISTINCT `Vehicle_Type` FROM residual';
-    db.query(sql, (err, results) => {
-        if (err) throw err;
-        res.json(results.map(row => row.Vehicle_Type));
-    });
+app.get('/api/getVehicleType', async (req, res) => {
+    const query = 'SELECT DISTINCT Vehicle_Type FROM residual';
+    const result = await db.query(query);
+    res.json(result.recordset.map(item => item['Vehicle_Type']));
 });
 
 // Get Finance
-app.get('/api/getFinance', (req, res) => {
-    const sql = 'SELECT DISTINCT `Finance` FROM residual';
-    db.query(sql, (err, results) => {
-        if (err) throw err;
-        res.json(results.map(row => row.Finance));
-    });
+app.get('/api/getFinance', async (req, res) => {
+    const query = 'SELECT DISTINCT Finance FROM residual';
+    const result = await db.query(query);
+    res.json(result.recordset.map(item => item['Finance']));
 });
 // Get Vehicle_Year
-app.get('/api/getVehicle_Year', (req, res) => {
-    const sql = 'SELECT DISTINCT `Vehicle_Year` FROM residual';
-    db.query(sql, (err, results) => {
-        if (err) throw err;
-        res.json(results.map(row => row.Vehicle_Year));
-    });
+app.get('/api/getVehicle_Year', async (req, res) => {
+    const query = 'SELECT DISTINCT Vehicle_Year FROM residual';
+    const result = await db.query(query);
+    res.json(result.recordset.map(item => item['Vehicle_Year']));
 });
 
 
 // Get all data (initial page load)
-app.get('/api/residual', (req, res) => {
-    const sql = 'SELECT * FROM residual';
-    db.query(sql, (err, results) => {
-        if (err) {
-            console.error('Error fetching data:', err);
-            res.status(500).json({ error: 'Internal Server Error' });
-            return;
-        }
-        res.json(results);
-    });
+app.get('/api/residual', async (req, res) => {
+    const query = 'SELECT * FROM residual';
+    const result = await db.query(query);
+    res.json(result.recordset);
 });
 
 // Filter Data
-app.post('/api/residual', (req, res) => {
+app.post('/api/residual', async (req, res) => {
     const { Vehicle_Type, Finance, Vehicle_Year } = req.body;
-    let sql = 'SELECT * FROM residual WHERE 1=1';
+    let query = 'SELECT * FROM residual WHERE 1=1';
     let queryParams = [];
 
     if (Vehicle_Type) {
-        sql += ' AND `Vehicle_Type` = ?';
+        query += ' AND "Vehicle_Type" = ?';
         queryParams.push(Vehicle_Type);
     }
 
     if (Finance) {
-        sql += ' AND `Finance` = ?';
+        query += ' AND "Finance" = ?';
         queryParams.push(Finance);
     }
     if (Vehicle_Year) {
-        sql += ' AND `Vehicle_Year` = ?';
+        query += ' AND "Vehicle_Year" = ?';
         queryParams.push(Vehicle_Year);
     }
 
-    db.query(sql, queryParams, (err, results) => {
-        if (err) {
-            console.error('Error executing query:', err);
-            res.status(500).json({ error: 'Internal Server Error' });
-            return;
-        }
-        res.json(results);
-    });
+    query = SqlString.format(query, queryParams);
+    const result = await db.query(query);
+    res.json(result.recordset);
 });
+
 
 // Checklist
 // Get Description
-app.get('/api/getDescription', (req, res) => {
-    const sql = 'SELECT DISTINCT `Description` FROM Checklist';
-    db.query(sql, (err, results) => {
-        if (err) throw err;
-        res.json(results.map(row => row.Description));
-    });
-});
-
-// Get all data (initial page load)
-app.get('/api/Checklist', (req, res) => {
-    const sql = 'SELECT * FROM Checklist';
-    db.query(sql, (err, results) => {
-        if (err) {
-            console.error('Error fetching data:', err);
-            res.status(500).json({ error: 'Internal Server Error' });
-            return;
-        }
-        res.json(results);
-    });
+app.get('/api/getDescription', async (req, res) => {
+    const query = 'SELECT DISTINCT Description FROM Checklist';
+    const result = await db.query(query);
+    res.json(result.recordset.map(item => item['Description']));
 });
 // Filter Data
-app.post('/api/Checklist', (req, res) => {
+app.post('/api/Checklist', async (req, res) => {
     const { Description } = req.body;
-    let sql = 'SELECT * FROM Checklist WHERE 1=1';
+    let query = 'SELECT * FROM Checklist WHERE 1=1';
     let queryParams = [];
     if (Description) {
-        sql += ' AND `Description` = ?';
+        query += ' AND Description = ?';
         queryParams.push(Description);
     }
     
-    db.query(sql, queryParams, (err, results) => {
-        if (err) {
-            console.error('Error executing query:', err);
-            res.status(500).json({ error: 'Internal Server Error' });
-            return;
-        }
-        res.json(results);
-    });
+    query = SqlString.format(query, queryParams);
+    const result = await db.query(query);
+    res.json(result.recordset);
 });
 
 

@@ -21,10 +21,14 @@ import MaintenanceOverAdvance from './Components/ToleranceRules/MaintenanceOverA
 import GAPIsNotPermitted from './Components/ToleranceRules/GAPIsNotPermitted';
 import ServiceContractOverAdvance from './Components/ToleranceRules/ServiceContractOverAdvance';
 import GapAmountOverAdvance from './Components/ToleranceRules/GapAmountOverAdvance';
+import OtherAmountsOverAdvance from './Components/ToleranceRules/OtherAmountsOverAdvance';
+import Halo from './Components/ToleranceRules/Halo';
+import TermProtection from './Components/ToleranceRules/TermProtection';
 import TheftProtectionFeeExceedsLimit from './Components/ToleranceRules/TheftProtectionFeeExceedsLimit';
 import EVTaxCredit from './Components/ToleranceRules/EVTaxCredit';
 import ModelIsNotEligibleForSentinel from './Components/ToleranceRules/ModelIsNotEligibleForSentinel';
 import TireAndWheelProtectionExceedsLimit from './Components/ToleranceRules/TireAndWheelProtectionExceedsLimit';
+
 
 
 const router = createBrowserRouter([
@@ -89,6 +93,17 @@ const router = createBrowserRouter([
         element: <GapAmountOverAdvance/>,
       },
       {
+        path: "OtherAmountsOverAdvance",
+        element: <OtherAmountsOverAdvance/>,
+      },
+      {
+        path: "Halo",
+        element: <Halo/>,
+      },
+      {
+        path: "TermProtection",
+        element: <TermProtection/>,
+      },
         path: "TheftProtectionFeeExceedsLimit",
         element: <TheftProtectionFeeExceedsLimit/>,
       },
