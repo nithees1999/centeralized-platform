@@ -21,6 +21,9 @@ import MaintenanceOverAdvance from './Components/ToleranceRules/MaintenanceOverA
 import GAPIsNotPermitted from './Components/ToleranceRules/GAPIsNotPermitted';
 import ServiceContractOverAdvance from './Components/ToleranceRules/ServiceContractOverAdvance';
 import GapAmountOverAdvance from './Components/ToleranceRules/GapAmountOverAdvance';
+import OtherAmountsOverAdvance from './Components/ToleranceRules/OtherAmountsOverAdvance';
+import Halo from './Components/ToleranceRules/Halo';
+import TermProtection from './Components/ToleranceRules/TermProtection';
 
 
 const router = createBrowserRouter([
@@ -83,6 +86,18 @@ const router = createBrowserRouter([
       {
         path: "GapAmountOverAdvance",
         element: <GapAmountOverAdvance/>,
+      },
+      {
+        path: "OtherAmountsOverAdvance",
+        element: <OtherAmountsOverAdvance/>,
+      },
+      {
+        path: "Halo",
+        element: <Halo/>,
+      },
+      {
+        path: "TermProtection",
+        element: <TermProtection/>,
       },
     ],
   },
