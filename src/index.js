@@ -24,6 +24,11 @@ import GapAmountOverAdvance from './Components/ToleranceRules/GapAmountOverAdvan
 import OtherAmountsOverAdvance from './Components/ToleranceRules/OtherAmountsOverAdvance';
 import Halo from './Components/ToleranceRules/Halo';
 import TermProtection from './Components/ToleranceRules/TermProtection';
+import TheftProtectionFeeExceedsLimit from './Components/ToleranceRules/TheftProtectionFeeExceedsLimit';
+import EVTaxCredit from './Components/ToleranceRules/EVTaxCredit';
+import ModelIsNotEligibleForSentinel from './Components/ToleranceRules/ModelIsNotEligibleForSentinel';
+import TireAndWheelProtectionExceedsLimit from './Components/ToleranceRules/TireAndWheelProtectionExceedsLimit';
+
 
 
 const router = createBrowserRouter([
@@ -98,6 +103,21 @@ const router = createBrowserRouter([
       {
         path: "TermProtection",
         element: <TermProtection/>,
+      },
+        path: "TheftProtectionFeeExceedsLimit",
+        element: <TheftProtectionFeeExceedsLimit/>,
+      },
+      {
+        path: "EVTaxCredit",
+        element: <EVTaxCredit/>,
+      },
+      {
+        path: "ModelIsNotEligibleForSentinel",
+        element: <ModelIsNotEligibleForSentinel/>,
+      },
+      {
+        path: "TireAndWheelProtectionExceedsLimit",
+        element: <TireAndWheelProtectionExceedsLimit/>,
       },
     ],
   },
