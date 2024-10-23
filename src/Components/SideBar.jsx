@@ -53,6 +53,12 @@ export default function SideBar({ isOpen, onClose, sidebarRef }) {
                                 <li><NavLink data-tooltip-id="ServiceContractOverAdvance" data-tooltip-content="Service Contract Over Advance" to="/ServiceContractOverAdvance" className={({ isActive }) => `block text-black  p-2 font-bold text-sm hover:underline hover:underline-offset-8 ${isActive ? " text-blue-700 underline underline-offset-8" : "text-black"}`}>SCOA</NavLink></li>
                                 <Tooltip id="GapAmountOverAdvance"  />
                                 <li><NavLink data-tooltip-id="GapAmountOverAdvance" data-tooltip-content="Gap Amount Over Advance" to="/GapAmountOverAdvance" className={({ isActive }) => `block text-black  p-2 font-bold text-sm hover:underline hover:underline-offset-8 ${isActive ? " text-blue-700 underline underline-offset-8" : "text-black"}`}>GAOA</NavLink></li>
+                                <Tooltip id="TheftProtectionFeeExceedsLimit"  />
+                                <li><NavLink data-tooltip-id="TheftProtectionFeeExceedsLimit" data-tooltip-content="Theft Protection FeeExceeds Limit" to="/TheftProtectionFeeExceedsLimit" className={({ isActive }) => `block text-black  p-2 font-bold text-sm hover:underline hover:underline-offset-8 ${isActive ? " text-blue-700 underline underline-offset-8" : "text-black"}`}>TPFEL</NavLink></li>
+                                <Tooltip id="EVTaxCredit"  />
+                                <li><NavLink data-tooltip-id="EVTaxCredit" data-tooltip-content="EV Tax Credit" to="/EVTaxCredit" className={({ isActive }) => `block text-black  p-2 font-bold text-sm hover:underline hover:underline-offset-8 ${isActive ? " text-blue-700 underline underline-offset-8" : "text-black"}`}>EV-TC</NavLink></li>
+                                <Tooltip id="ModelIsNotEligibleForSentinel"  />
+                                <li><NavLink data-tooltip-id="ModelIsNotEligibleForSentinel" data-tooltip-content="Model Is Not Eligible For Sentinel" to="/ModelIsNotEligibleForSentinel" className={({ isActive }) => `block text-black  p-2 font-bold text-sm hover:underline hover:underline-offset-8 ${isActive ? " text-blue-700 underline underline-offset-8" : "text-black"}`}>MINEFS</NavLink></li>
                             </ul>
                         )}
                     </li>

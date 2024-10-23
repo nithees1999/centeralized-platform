@@ -21,6 +21,9 @@ import MaintenanceOverAdvance from './Components/ToleranceRules/MaintenanceOverA
 import GAPIsNotPermitted from './Components/ToleranceRules/GAPIsNotPermitted';
 import ServiceContractOverAdvance from './Components/ToleranceRules/ServiceContractOverAdvance';
 import GapAmountOverAdvance from './Components/ToleranceRules/GapAmountOverAdvance';
+import TheftProtectionFeeExceedsLimit from './Components/ToleranceRules/TheftProtectionFeeExceedsLimit';
+import EVTaxCredit from './Components/ToleranceRules/EVTaxCredit';
+import ModelIsNotEligibleForSentinel from './Components/ToleranceRules/ModelIsNotEligibleForSentinel';
 
 
 const router = createBrowserRouter([
@@ -83,6 +86,18 @@ const router = createBrowserRouter([
       {
         path: "GapAmountOverAdvance",
         element: <GapAmountOverAdvance/>,
+      },
+      {
+        path: "TheftProtectionFeeExceedsLimit",
+        element: <TheftProtectionFeeExceedsLimit/>,
+      },
+      {
+        path: "EVTaxCredit",
+        element: <EVTaxCredit/>,
+      },
+      {
+        path: "ModelIsNotEligibleForSentinel",
+        element: <ModelIsNotEligibleForSentinel/>,
       },
     ],
   },
