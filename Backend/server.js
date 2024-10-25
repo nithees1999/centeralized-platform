@@ -4,7 +4,7 @@ const mysql = require('mssql/msnodesqlv8');
 const SqlString = require('tsqlstring');
 
 const config = {
-    server: 'LTIN191785',
+    server: 'LTIN527389',
     driver: "SQL Server Native Client 11.0",
     database: "ForTestDB",
     connectionTimeout: 150000,
@@ -14,7 +14,7 @@ const config = {
     }
 };
 const config2 = {
-    server: 'LTIN191785',
+    server: 'LTIN527389',
     driver: "SQL Server Native Client 11.0",
     database: "rules",
     connectionTimeout: 150000,
@@ -34,23 +34,30 @@ db.connect()
     .then(() => console.log('Connected to ForTestDB'))
     .catch(err => console.error('Connection error to ForTestDB:', err));
 
-    db2.connect()
+db2.connect()
     .then(() => console.log('Connected to rules database'))
     .catch(err => console.error('Connection error to rules database:', err));
+
+//MOA - maintenanceOVerAdvance
+//fetch tables details
+app.get('/api/rulesTable/:option', async (req, res) => {
+    const selectedOption = req.params.option;
+    try {
+        const query = `SELECT * FROM ${selectedOption}`;
+
+        const result = await db2.query(query); // Use the request method to execute the query
+
+        res.json(result.recordset); // Send the result as JSON
+    } catch (err) {
+        console.log(err);
+    }
+})
 
 //fetch VIN details
 app.get('/api/fetchVinDetails', async (req, res) => {
     try {
         const query = "SELECT * FROM VINDetails where 1=1";
-        // db.then(() => {
-        //     mysql.query(query, function (err1, recordset) {
-        //         if (err1) { console.log(err1); return res.json(err1); }
-        //         res.send(recordset.recordset);
-        //     });
-        // });
-        // const pool = await db; // Wait for the connection pool
         const result = await db.query(query); // Use the request method to execute the query
-        
         res.json(result.recordset); // Send the result as JSON
     } catch (err) {
         console.log(err);
@@ -87,8 +94,6 @@ app.post('/api/VinFilter', async (req, res) => {
 
     const result = await db.query(query);
     res.json(result.recordset);
-    
-
 });
 
 //fetch dealer details
@@ -272,47 +277,44 @@ app.post('/search', async (req, res) => {
     }
     let tableName;
     if (product === 'Retail & Balloon' && scoreCard === 'THN' && salesProgram === 'Standard') {
-        tableName = term === 'Regular' ? 'regular_term' : 'extended_term';
+        tableName = term === 'Regular' ? 'fcl.regular_term' : 'fcl.extended_term';
     } else if (product === 'Retail & Balloon' && scoreCard === 'THN' && salesProgram === 'Incentive & Special') {
-        tableName = term === 'Regular' ? 'incentive_regular' : 'incentive_extended';
+        tableName = term === 'Regular' ? 'fcl.incentive_regular' : 'fcl.incentive_extended';
     } else if (product === 'Retail & Balloon' && scoreCard === 'DLQ' && salesProgram === 'Standard') {
-        tableName = term === 'Regular' ? 'DLQ_standard_regular' : 'DLQ_standard_extended';
+        tableName = term === 'Regular' ? 'fcl.DLQ_standard_regular' : 'fcl.DLQ_standard_extended';
     } else if (product === 'Retail & Balloon' && scoreCard === 'DLQ' && salesProgram === 'Incentive & Special') {
-        tableName = term === 'Regular' ? 'DLQ_Incentive_regular' : 'DLQ_Incentive_extended';
+        tableName = term === 'Regular' ? 'fcl.DLQ_Incentive_regular' : 'fcl.DLQ_Incentive_extended';
     } else if (product === 'Retail & Balloon' && scoreCard === 'CLN' && salesProgram === 'Standard') {
-        tableName = term === 'Regular' ? 'CLN_Standard_regular' : 'CLN_Standard_extended';
+        tableName = term === 'Regular' ? 'fcl.CLN_Standard_regular' : 'fcl.CLN_Standard_extended';
     } else if (product === 'Retail & Balloon' && scoreCard === 'CLN' && salesProgram === 'Incentive & Special') {
-        tableName = term === 'Regular' ? 'CLN_Incentive_regular' : 'CLN_Incentive_extended';
+        tableName = term === 'Regular' ? 'fcl.CLN_Incentive_regular' : 'fcl.CLN_Incentive_extended';
     } else if (product === 'Lease' && scoreCard === 'THN' && salesProgram === 'Standard') {
-        tableName = term === 'Regular' ? 'Lease_THN_Standard_regular' : 'Lease_THN_Standard_extended';
+        tableName = term === 'Regular' ? 'fcl.Lease_THN_Standard_regular' : 'fcl.Lease_THN_Standard_extended';
     } else if (product === 'Lease' && scoreCard === 'THN' && salesProgram === 'Incentive & Special') {
-        tableName = term === 'Regular' ? 'Lease_THN_incentive_regular' : 'Lease_THN_incentive_extended';
+        tableName = term === 'Regular' ? 'fcl.Lease_THN_incentive_regular' : 'fcl.Lease_THN_incentive_extended';
     } else if (product === 'Lease' && scoreCard === 'DLQ' && salesProgram === 'Standard') {
-        tableName = term === 'Regular' ? 'Lease_DLQ_standard_regular' : 'Lease_DLQ_standard_extended';
+        tableName = term === 'Regular' ? 'fcl.Lease_DLQ_standard_regular' : 'fcl.Lease_DLQ_standard_extended';
     } else if (product === 'Lease' && scoreCard === 'DLQ' && salesProgram === 'Incentive & Special') {
-        tableName = term === 'Regular' ? 'Lease_DLQ_Incentive_regular' : 'Lease_DLQ_Incentive_extended';
+        tableName = term === 'Regular' ? 'fcl.Lease_DLQ_Incentive_regular' : 'fcl.Lease_DLQ_Incentive_extended';
     } else if (product === 'Lease' && scoreCard === 'CLN' && salesProgram === 'Standard') {
-        tableName = term === 'Regular' ? 'Lease_CLN_Standard_regular' : 'Lease_CLN_Standard_extended';
+        tableName = term === 'Regular' ? 'fcl.Lease_CLN_Standard_regular' : 'fcl.Lease_CLN_Standard_extended';
     } else if (product === 'Lease' && scoreCard === 'CLN' && salesProgram === 'Incentive & Special') {
-        tableName = term === 'Regular' ? 'Lease_CLN_Incentive_regular' : 'Lease_CLN_Incentive_extended';
+        tableName = term === 'Regular' ? 'fcl.Lease_CLN_Incentive_regular' : 'fcl.Lease_CLN_Incentive_extended';
     } else {
         return res.json('No data available');
     }
 
-    const query = 'SELECT ?? AS ltvValue, modifier FROM ?? WHERE score_range_start <= ? AND score_range_end >= ?';
-    db.query(query, [ltvColumn, tableName, score, score], (err, results) => {
-        if (err) {
-            console.error('Error querying the database:', err);
-            return res.status(500).json('Error fetching data');
-        } else if (results.length > 0) {
-            const data = results[0];
+    const simpleQuery = 'SELECT ?? AS ltvValue, modifier FROM ?? WHERE score_range_start <= ? AND score_range_end >= ?';
+    const query = SqlString.format(simpleQuery, [ltvColumn, tableName, score, score]);
+    db.query(query, (err, result) => {
+        try {
+            const data = result.recordset[0];
             const ltvValue = data.ltvValue;
             const modifier = data.modifier;
             const fclValue = ltvValue !== undefined ? ltvValue * modifier : 'No data available';
-            res.json(fclValue.recordset);
-        
-        } else {
-            res.json('No data available');
+            res.json(fclValue)
+        } catch (error) {
+            res.json('Error fetching data');
         }
     });
 });
@@ -389,7 +391,6 @@ app.post('/api/Checklist', async (req, res) => {
         query += ' AND Description = ?';
         queryParams.push(Description);
     }
-    
     query = SqlString.format(query, queryParams);
     const result = await db.query(query);
     res.json(result.recordset);

@@ -106,10 +106,12 @@ const router = createBrowserRouter([
         element: <TermProtection/>,
       },
       {
+
         path: "WindshieldProtection",
         element: <WindshieldProtection/>,
       },
       {
+
         path: "TheftProtectionFeeExceedsLimit",
         element: <TheftProtectionFeeExceedsLimit/>,
       },
