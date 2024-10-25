@@ -61,7 +61,14 @@ export default function SideBar({ isOpen, onClose, sidebarRef }) {
                                 <li><NavLink data-tooltip-id="TermProtection" data-tooltip-content="TermProtection" to="/TermProtection" className={({ isActive }) => `block text-black  p-2 font-bold text-sm hover:underline hover:underline-offset-8 ${isActive ? " text-blue-700 underline underline-offset-8" : "text-black"}`}>TermProtection</NavLink></li>
                                 <Tooltip id="WindshieldProtection"  />
                                 <li><NavLink data-tooltip-id="WindshieldProtection" data-tooltip-content="WindshieldProtection" to="/WindshieldProtection" className={({ isActive }) => `block text-black  p-2 font-bold text-sm hover:underline hover:underline-offset-8 ${isActive ? " text-blue-700 underline underline-offset-8" : "text-black"}`}>WindshieldProtection</NavLink></li>
-                                
+                                <Tooltip id="TheftProtectionFeeExceedsLimit"  />
+                                <li><NavLink data-tooltip-id="TheftProtectionFeeExceedsLimit" data-tooltip-content="Theft Protection FeeExceeds Limit" to="/TheftProtectionFeeExceedsLimit" className={({ isActive }) => `block text-black  p-2 font-bold text-sm hover:underline hover:underline-offset-8 ${isActive ? " text-blue-700 underline underline-offset-8" : "text-black"}`}>TPFEL</NavLink></li>
+                                <Tooltip id="EVTaxCredit"  />
+                                <li><NavLink data-tooltip-id="EVTaxCredit" data-tooltip-content="EV Tax Credit" to="/EVTaxCredit" className={({ isActive }) => `block text-black  p-2 font-bold text-sm hover:underline hover:underline-offset-8 ${isActive ? " text-blue-700 underline underline-offset-8" : "text-black"}`}>EV-TC</NavLink></li>
+                                <Tooltip id="ModelIsNotEligibleForSentinel"  />
+                                <li><NavLink data-tooltip-id="ModelIsNotEligibleForSentinel" data-tooltip-content="Model Is Not Eligible For Sentinel" to="/ModelIsNotEligibleForSentinel" className={({ isActive }) => `block text-black  p-2 font-bold text-sm hover:underline hover:underline-offset-8 ${isActive ? " text-blue-700 underline underline-offset-8" : "text-black"}`}>MINEFS</NavLink></li>
+                                <Tooltip id="TireAndWheelProtectionExceedsLimit"  />
+                                <li><NavLink data-tooltip-id="TireAndWheelProtectionExceedsLimit" data-tooltip-content="Tire And Wheel Protection Exceeds Limit" to="/TireAndWheelProtectionExceedsLimit" className={({ isActive }) => `block text-black  p-2 font-bold text-sm hover:underline hover:underline-offset-8 ${isActive ? " text-blue-700 underline underline-offset-8" : "text-black"}`}>TAWPEL</NavLink></li>
                             </ul>
                         )}
                     </li>
