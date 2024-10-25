@@ -24,6 +24,7 @@ import GapAmountOverAdvance from './Components/ToleranceRules/GapAmountOverAdvan
 import OtherAmountsOverAdvance from './Components/ToleranceRules/OtherAmountsOverAdvance';
 import Halo from './Components/ToleranceRules/Halo';
 import TermProtection from './Components/ToleranceRules/TermProtection';
+import WindshieldProtection from './Components/ToleranceRules/WindshieldProtection';
 
 
 const router = createBrowserRouter([
@@ -98,6 +99,10 @@ const router = createBrowserRouter([
       {
         path: "TermProtection",
         element: <TermProtection/>,
+      },
+      {
+        path: "WindshieldProtection",
+        element: <WindshieldProtection/>,
       },
     ],
   },

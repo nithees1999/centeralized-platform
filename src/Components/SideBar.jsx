@@ -59,6 +59,9 @@ export default function SideBar({ isOpen, onClose, sidebarRef }) {
                                 <li><NavLink data-tooltip-id="Halo" data-tooltip-content="Halo" to="/Halo" className={({ isActive }) => `block text-black  p-2 font-bold text-sm hover:underline hover:underline-offset-8 ${isActive ? " text-blue-700 underline underline-offset-8" : "text-black"}`}>Halo</NavLink></li>
                                 <Tooltip id="TermProtection"  />
                                 <li><NavLink data-tooltip-id="TermProtection" data-tooltip-content="TermProtection" to="/TermProtection" className={({ isActive }) => `block text-black  p-2 font-bold text-sm hover:underline hover:underline-offset-8 ${isActive ? " text-blue-700 underline underline-offset-8" : "text-black"}`}>TermProtection</NavLink></li>
+                                <Tooltip id="WindshieldProtection"  />
+                                <li><NavLink data-tooltip-id="WindshieldProtection" data-tooltip-content="WindshieldProtection" to="/WindshieldProtection" className={({ isActive }) => `block text-black  p-2 font-bold text-sm hover:underline hover:underline-offset-8 ${isActive ? " text-blue-700 underline underline-offset-8" : "text-black"}`}>WindshieldProtection</NavLink></li>
+                                
                             </ul>
                         )}
                     </li>
