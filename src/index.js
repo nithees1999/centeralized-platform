@@ -104,6 +104,7 @@ const router = createBrowserRouter([
         path: "TermProtection",
         element: <TermProtection/>,
       },
+      {
         path: "TheftProtectionFeeExceedsLimit",
         element: <TheftProtectionFeeExceedsLimit/>,
       },
