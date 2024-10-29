@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import PaginationButtons from "./PaginationButtons";
 import LoadingIcons from 'react-loading-icons'
-import MyModal from "./MyModal";
+import OrigenateModal from "./OrigenateModal";
 
 export default function Origenate() {
     const [searchParams, setSearchParams] = useState({
@@ -153,7 +153,7 @@ export default function Origenate() {
                 </button>
             </form>
             <section className="min-h-screen py-8 px-4 m-2 border border-black rounded-md">
-                <MyModal open={open} onCloseModal={onCloseModal} creds={creds} modalInputChange={modalInputChange} handlePasswordUpdate={()=>handlePasswordUpdate(creds)} updateResponse={updateResponse} />
+                <OrigenateModal open={open} onCloseModal={onCloseModal} creds={creds} modalInputChange={modalInputChange} handlePasswordUpdate={()=>handlePasswordUpdate(creds)} updateResponse={updateResponse} />
                 <table className="w-full">
                     <thead className="border border-black ">
                         <tr>
