@@ -69,6 +69,14 @@ export default function SideBar({ isOpen, onClose, sidebarRef }) {
                                 <li><NavLink data-tooltip-id="ModelIsNotEligibleForSentinel" data-tooltip-content="Model Is Not Eligible For Sentinel" to="/ModelIsNotEligibleForSentinel" className={({ isActive }) => `block text-black  p-2 font-bold text-sm hover:underline hover:underline-offset-8 ${isActive ? " text-blue-700 underline underline-offset-8" : "text-black"}`}>MINEFS</NavLink></li>
                                 <Tooltip id="TireAndWheelProtectionExceedsLimit"  />
                                 <li><NavLink data-tooltip-id="TireAndWheelProtectionExceedsLimit" data-tooltip-content="Tire And Wheel Protection Exceeds Limit" to="/TireAndWheelProtectionExceedsLimit" className={({ isActive }) => `block text-black  p-2 font-bold text-sm hover:underline hover:underline-offset-8 ${isActive ? " text-blue-700 underline underline-offset-8" : "text-black"}`}>TAWPEL</NavLink></li>
+                                <Tooltip id="DentProtection"  />
+                                <li><NavLink data-tooltip-id="DentProtection" data-tooltip-content="DentProtection" to="/DentProtection" className={({ isActive }) => `block text-black  p-2 font-bold text-sm hover:underline hover:underline-offset-8 ${isActive ? " text-blue-700 underline underline-offset-8" : "text-black"}`}>DentProtection</NavLink></li>
+                                <Tooltip id="KeyReplacementProtection"  />
+                                <li><NavLink data-tooltip-id="KeyReplacementProtection" data-tooltip-content="KeyReplacementProtection" to="/KeyReplacementProtection" className={({ isActive }) => `block text-black  p-2 font-bold text-sm hover:underline hover:underline-offset-8 ${isActive ? " text-blue-700 underline underline-offset-8" : "text-black"}`}>KeyReplacementProtection</NavLink></li>
+                                <Tooltip id="ModelIsNotValidForTaxCredit"  />
+                                <li><NavLink data-tooltip-id="ModelIsNotValidForTaxCredit" data-tooltip-content="ModelIsNotValidForTaxCredit" to="/ModelIsNotValidForTaxCredit" className={({ isActive }) => `block text-black  p-2 font-bold text-sm hover:underline hover:underline-offset-8 ${isActive ? " text-blue-700 underline underline-offset-8" : "text-black"}`}>ModelIsNotValidForTaxCredit</NavLink></li>
+                                <Tooltip id="InvalidExcessiveWearAndUse"  />
+                                <li><NavLink data-tooltip-id="InvalidExcessiveWearAndUse" data-tooltip-content="InvalidExcessiveWearAndUse" to="/InvalidExcessiveWearAndUse" className={({ isActive }) => `block text-black  p-2 font-bold text-sm hover:underline hover:underline-offset-8 ${isActive ? " text-blue-700 underline underline-offset-8" : "text-black"}`}>InvalidExcessiveWearAndUse</NavLink></li>
                             </ul>
                         )}
                     </li>

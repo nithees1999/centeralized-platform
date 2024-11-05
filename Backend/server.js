@@ -4,7 +4,7 @@ const mysql = require('mssql/msnodesqlv8');
 const SqlString = require('tsqlstring');
 
 const config = {
-    server: 'LTIN527389',
+    server: 'LTIN191785',
     driver: "SQL Server Native Client 11.0",
     database: "ForTestDB",
     connectionTimeout: 150000,
@@ -14,7 +14,7 @@ const config = {
     }
 };
 const config2 = {
-    server: 'LTIN527389',
+    server: 'LTIN191785',
     driver: "SQL Server Native Client 11.0",
     database: "rules",
     connectionTimeout: 150000,
@@ -395,6 +395,19 @@ app.post('/api/Checklist', async (req, res) => {
     const result = await db.query(query);
     res.json(result.recordset);
 });
+
+
+// Fetch InvalidExcessiveWearAndUse data
+app.get('/api/invalidExcessiveWearAndUseTable', async (req, res) => {
+    try {
+        const query = `SELECT * FROM InvalidExcessiveWearAndUse`; // Update with your actual table name
+        const result = await db.query(query); // Execute the query on db2
+        res.json(result.recordset); // Send the result as JSON
+    } catch (err) {
+        console.error("Error fetching InvalidExcessiveWearAndUse data:", err);
+        res.status(500).json({ error: "Error fetching data" });
+    }
+ });
 
 
 

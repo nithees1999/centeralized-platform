@@ -29,8 +29,10 @@ import TheftProtectionFeeExceedsLimit from './Components/ToleranceRules/TheftPro
 import EVTaxCredit from './Components/ToleranceRules/EVTaxCredit';
 import ModelIsNotEligibleForSentinel from './Components/ToleranceRules/ModelIsNotEligibleForSentinel';
 import TireAndWheelProtectionExceedsLimit from './Components/ToleranceRules/TireAndWheelProtectionExceedsLimit';
-
-
+import DentProtection from './Components/ToleranceRules/DentProtection';
+import KeyReplacementProtection from './Components/ToleranceRules/KeyReplacementProtection';
+import ModelIsNotValidForTaxCredit from './Components/ToleranceRules/ModelIsNotValidForTaxCredit';
+import InvalidExcessiveWearAndUse from './Components/ToleranceRules/InvalidExcessiveWearAndUse';
 
 const router = createBrowserRouter([
   {
@@ -127,6 +129,23 @@ const router = createBrowserRouter([
         path: "TireAndWheelProtectionExceedsLimit",
         element: <TireAndWheelProtectionExceedsLimit/>,
       },
+      {
+        path: "DentProtection",
+        element: <DentProtection/>,
+      },
+      {
+        path: "KeyReplacementProtection",
+        element: <KeyReplacementProtection/>,
+      },
+      {
+        path: "ModelIsNotValidForTaxCredit",
+        element: <ModelIsNotValidForTaxCredit/>,
+      },
+      {
+        path: "InvalidExcessiveWearAndUse",
+        element: <InvalidExcessiveWearAndUse/>,
+      },
+     
     ],
   },
 ]);
