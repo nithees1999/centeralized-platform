@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 export default function ModelIsNotValidForTaxCredit(){
     const data = [
         {"ProductType":"Lease","Condition":"New","VIN":"2HKRS3H40RH303791","Year":"2024","Make":"Honda","Model":"CRV","Term":"24","EVTaxCredit":"0.01","Override":"9"},

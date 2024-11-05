@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 export default function CapitalizedCostReductionCash(){
     const data = [
         {"ProductType":"Lease","Condition":"New","VIN":"3GPKHWRM1RS500005","Year":"2024","Make":"Honda","Model":"PROLOGUE","Term":"36","CapitalizedCostReduction–Cash":"7499.99","EVTaxCreditValue":"7500","OverrideLevel":"9"},
