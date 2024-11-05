@@ -64,5 +64,11 @@
       "title": "Tire And Wheel Protection Exceeds Limit",
       "shorthand": "TAWPEL",
       "navigationLink": "/TireAndWheelProtectionExceedsLimit"
+    },
+    {
+      "id": "SentinelExceedsLimit",
+      "title": "Sentinel Exceeds Limit",
+      "shorthand": "SEL",
+      "navigationLink": "/SentinelExceedsLimit"
     }
   ]

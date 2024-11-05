@@ -28,6 +28,7 @@ import TheftProtectionFeeExceedsLimit from './Components/ToleranceRules/TheftPro
 import EVTaxCredit from './Components/ToleranceRules/EVTaxCredit';
 import ModelIsNotEligibleForSentinel from './Components/ToleranceRules/ModelIsNotEligibleForSentinel';
 import TireAndWheelProtectionExceedsLimit from './Components/ToleranceRules/TireAndWheelProtectionExceedsLimit';
+import SentinelExceedsLimit from './Components/ToleranceRules/SentinelExceedsLimit';
 
 
 
@@ -119,6 +120,10 @@ const router = createBrowserRouter([
       {
         path: "TireAndWheelProtectionExceedsLimit",
         element: <TireAndWheelProtectionExceedsLimit/>,
+      },
+      {
+        path: "SentinelExceedsLimit",
+        element: <SentinelExceedsLimit/>,
       },
     ],
   },
