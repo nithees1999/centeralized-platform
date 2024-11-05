@@ -29,6 +29,8 @@ import EVTaxCredit from './Components/ToleranceRules/EVTaxCredit';
 import ModelIsNotEligibleForSentinel from './Components/ToleranceRules/ModelIsNotEligibleForSentinel';
 import TireAndWheelProtectionExceedsLimit from './Components/ToleranceRules/TireAndWheelProtectionExceedsLimit';
 import SentinelExceedsLimit from './Components/ToleranceRules/SentinelExceedsLimit';
+import ModelIsNotValidForTaxCredit from './Components/ToleranceRules/ModelIsNotValidForTaxCredit';
+import CapitalizedCostReductionCash from './Components/ToleranceRules/CapitalizedCostReductionCash';
 
 
 
@@ -124,6 +126,14 @@ const router = createBrowserRouter([
       {
         path: "SentinelExceedsLimit",
         element: <SentinelExceedsLimit/>,
+      },
+      {
+        path: "ModelIsNotValidForTaxCredit",
+        element: <ModelIsNotValidForTaxCredit/>,
+      },
+      {
+        path: "CapitalizedCostReductionCash",
+        element: <CapitalizedCostReductionCash/>,
       },
     ],
   },

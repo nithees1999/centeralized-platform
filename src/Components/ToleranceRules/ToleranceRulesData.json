@@ -70,5 +70,17 @@
       "title": "Sentinel Exceeds Limit",
       "shorthand": "SEL",
       "navigationLink": "/SentinelExceedsLimit"
+    },
+    {
+      "id": "ModelIsNotValidForTaxCredit",
+      "title": "Model Is Not Valid For Tax Credit",
+      "shorthand": "MINVFTC",
+      "navigationLink": "/ModelIsNotValidForTaxCredit"
+    },
+    {
+      "id": "CapitalizedCostReductionCash",
+      "title": "Capitalized Cost Reduction Cash",
+      "shorthand": "CCRC",
+      "navigationLink": "/CapitalizedCostReductionCash"
     }
   ]
