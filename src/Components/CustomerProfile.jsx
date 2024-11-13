@@ -1,6 +1,7 @@
 import { FaSearch, FaHome } from "react-icons/fa";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import UploadExcelModal from "./UploadExcelModal";
 const CustomerProfile = () => {
     const [formState, setFormState] = useState({
         State: '',
@@ -32,6 +33,19 @@ const CustomerProfile = () => {
         };
         fetchData();
     }, []);
+
+    //Modal
+    const [open, setOpen] = useState(false);
+
+    const onOpenModal = (element) => {
+        setOpen(true)
+    }
+    const onCloseModal = () => {
+        setOpen(false);
+        // setUpdateResponse("")
+    }
+
+
     const handleChange = (e) => {
         const { name, value } = e.target;
         setFormState(prevState => ({
@@ -74,7 +88,13 @@ const CustomerProfile = () => {
     };
     return (
         <div className="p-2">
-            <h1 className="text-center text-xl font-bold p-2 text-blue-700">CUSTOMER PROFILE</h1>
+            <UploadExcelModal open={open} onCloseModal={onCloseModal} />
+
+            {/* <h1 className="text-center text-xl font-bold p-2 text-blue-900">CUSTOMER PROFILE</h1> */}
+            <div class="flex justify-between items-center w-full">
+                <span class="text-xl font-bold text-blue-900 mx-auto">Customer Profile</span>
+                <button class="p-2 bg-blue-900 text-white rounded-xl" onClick={() => onOpenModal()}>Upload</button>
+            </div>
             <form
                 className="conditionsNav p-2 m-2 border border-black rounded-md flex justify-start lg:justify-center items-center gap-1 flex-wrap"
                 onSubmit={handleSearch}
@@ -147,19 +167,19 @@ const CustomerProfile = () => {
                 <table className="w-full">
                     <thead className="border border-black">
                         <tr>
-                            <th className="p-4 border border-black text-blue-700">First Name</th>
-                            <th className="p-4 border border-black text-blue-700">Last Name</th>
-                            <th className="p-4 border border-black text-blue-700">DOB</th>
-                            <th className="p-4 border border-black text-blue-700">House</th>
-                            <th className="p-4 border border-black text-blue-700">Street Name</th>
-                            <th className="p-4 border border-black text-blue-700">Street Type</th>
-                            <th className="p-4 border border-black text-blue-700">City</th>
-                            <th className="p-4 border border-black text-blue-700">State</th>
-                            <th className="p-4 border border-black text-blue-700">Zip Code</th>
-                            <th className="p-4 border border-black text-blue-700">SSN</th>
-                            <th className="p-4 border border-black text-blue-700">FICO Score</th>
-                            <th className="p-4 border border-black text-blue-700">Tier</th>
-                            <th className="p-4 border border-black text-blue-700">ScoreCard</th>
+                            <th className="p-4 border border-black text-blue-900">First Name</th>
+                            <th className="p-4 border border-black text-blue-900">Last Name</th>
+                            <th className="p-4 border border-black text-blue-900">DOB</th>
+                            <th className="p-4 border border-black text-blue-900">House</th>
+                            <th className="p-4 border border-black text-blue-900">Street Name</th>
+                            <th className="p-4 border border-black text-blue-900">Street Type</th>
+                            <th className="p-4 border border-black text-blue-900">City</th>
+                            <th className="p-4 border border-black text-blue-900">State</th>
+                            <th className="p-4 border border-black text-blue-900">Zip Code</th>
+                            <th className="p-4 border border-black text-blue-900">SSN</th>
+                            <th className="p-4 border border-black text-blue-900">FICO Score</th>
+                            <th className="p-4 border border-black text-blue-900">Tier</th>
+                            <th className="p-4 border border-black text-blue-900">ScoreCard</th>
                         </tr>
                     </thead>
                     <tbody className="border border-black">

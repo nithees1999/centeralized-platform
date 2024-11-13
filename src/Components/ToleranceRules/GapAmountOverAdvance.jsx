@@ -9,7 +9,8 @@ export default function GapAmountOverAdvance() {
 
     // Search parameters to fetch VIN
     const [searchParams, setSearchParams] = useState({
-        VIN: ''
+        VIN: '',
+        override: '',
     });
 
     // Handle input changes in the UI form
@@ -71,8 +72,8 @@ export default function GapAmountOverAdvance() {
 
     return (
         <>
-            <h1 className="text-center text-xl font-bold p-2 text-blue-700">ToleranceRules</h1>
-            <h1 className="text-center text-xl font-bold p-2 text-blue-700">Gap Amount Over Advance</h1>
+            <h1 className="text-center text-xl font-bold p-2 text-blue-900">ToleranceRules</h1>
+            <h1 className="text-center text-xl font-bold p-2 text-blue-900">Gap Amount Over Advance</h1>
             <form
                 className="conditionsNav p-2 m-2 border border-black rounded-md flex justify-start lg:justify-center items-center gap-1 flex-wrap"
                 onSubmit={handleSearch}
@@ -80,6 +81,17 @@ export default function GapAmountOverAdvance() {
                 <section>
                     <label className="px-1 font-medium" htmlFor="VIN">VIN:</label>
                     <input name="VIN" value={searchParams.VIN} onChange={handleChange} type="text" className="border border-black rounded p-2" required />
+                </section>
+
+                <section>
+                    <label className="px-1 font-medium" htmlFor="override">Override:</label>
+                    <select name="override" id="override" value={searchParams.override} onChange={handleChange} className="border border-black rounded p-2">
+                        <option value="">All</option>
+                        <option value="0">0</option>
+                        <option value="2">2</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
                 </section>
 
                 <button className="rounded-md p-2 mx-2 border border-black" type="submit">Submit</button>
@@ -110,17 +122,17 @@ export default function GapAmountOverAdvance() {
                     <table className="w-full">
                         <thead className="border border-black">
                             <tr>
-                                <th className="p-4 border border-black text-blue-700">Term</th>
-                                <th className="p-4 border border-black text-blue-700">Invoice</th>
-                                <th className="p-4 border border-black text-blue-700">D&H</th>
-                                <th className="p-4 border border-black text-blue-700">Colorup charge</th>
-                                <th className="p-4 border border-black text-blue-700">PIO Invoice</th>
-                                <th className="p-4 border border-black text-blue-700">% of Invoice</th>
-                                <th className="p-4 border border-black text-blue-700">Parameter</th>
-                                <th className="p-4 border border-black text-blue-700">GAP</th>
-                                <th className="p-4 border border-black text-blue-700">Difference</th>
-                                <th className="p-4 border border-black text-blue-700">Override</th>
-                                <th className="p-4 border border-black text-blue-700">Release</th>
+                                <th className="p-4 border border-black text-blue-900">Term</th>
+                                <th className="p-4 border border-black text-blue-900">Invoice</th>
+                                <th className="p-4 border border-black text-blue-900">D&H</th>
+                                <th className="p-4 border border-black text-blue-900">Colorup charge</th>
+                                <th className="p-4 border border-black text-blue-900">PIO Invoice</th>
+                                <th className="p-4 border border-black text-blue-900">% of Invoice</th>
+                                <th className="p-4 border border-black text-blue-900">Parameter</th>
+                                <th className="p-4 border border-black text-blue-900">GAP</th>
+                                <th className="p-4 border border-black text-blue-900">Difference</th>
+                                <th className="p-4 border border-black text-blue-900">Override</th>
+                                <th className="p-4 border border-black text-blue-900">Release</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -137,6 +149,15 @@ export default function GapAmountOverAdvance() {
                                                 percentageOfInvoice,
                                                 parseFloat(difference[index])
                                             );
+
+                                            if (
+                                                searchParams.override &&
+                                                calculatedOverride !== searchParams.override 
+                                            ) {
+                                                return null; // Skip this row if it doesn't match the selected Override level
+                                            }
+
+
                                             return (
                                                 <tr key={index}>
                                                     <td className="p-2 border border-black">{TermData}</td>

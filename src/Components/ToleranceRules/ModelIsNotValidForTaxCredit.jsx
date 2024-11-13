@@ -13,23 +13,23 @@ export default function ModelIsNotValidForTaxCredit(){
 
     return (
         <>
-            <h1 className="text-center text-xl font-bold p-2 text-blue-700">Other Amounts Over Advance</h1>
+            <h1 className="text-center text-xl font-bold p-2 text-blue-900">Other Amounts Over Advance</h1>
             <section className="py-8 px-4 m-2 border border-black rounded-md">
                 <div style={{ overflowX: 'auto' }}>
                     <table className="w-full">
                         <thead className="border border-black">
                             <tr>
-                                <th className="p-4 border border-black text-blue-700">Product Type</th>
-                                <th className="p-4 border border-black text-blue-700">Condition</th>
-                                <th className="p-4 border border-black text-blue-700">VIN</th>
-                                <th className="p-4 border border-black text-blue-700">Year</th>
-                                <th className="p-4 border border-black text-blue-700">Make</th>
-                                <th className="p-4 border border-black text-blue-700">Model</th>
-                                <th className="p-4 border border-black text-blue-700">Term</th>
-                                <th className="p-4 border border-black text-blue-700">EV Tax Credit</th>
-                                <th className="p-4 border border-black text-blue-700">Description</th>
-                                <th className="p-4 border border-black text-blue-700">Override</th>
-                                <th className="p-4 border border-black text-blue-700">Release</th>
+                                <th className="p-4 border border-black text-blue-900">Product Type</th>
+                                <th className="p-4 border border-black text-blue-900">Condition</th>
+                                <th className="p-4 border border-black text-blue-900">VIN</th>
+                                <th className="p-4 border border-black text-blue-900">Year</th>
+                                <th className="p-4 border border-black text-blue-900">Make</th>
+                                <th className="p-4 border border-black text-blue-900">Model</th>
+                                <th className="p-4 border border-black text-blue-900">Term</th>
+                                <th className="p-4 border border-black text-blue-900">EV Tax Credit</th>
+                                <th className="p-4 border border-black text-blue-900">Description</th>
+                                <th className="p-4 border border-black text-blue-900">Override</th>
+                                <th className="p-4 border border-black text-blue-900">Release</th>
                             </tr>
                         </thead>
                         <tbody>

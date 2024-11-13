@@ -4,6 +4,7 @@ import { FaSearch, FaHome } from 'react-icons/fa';
 import LoadingIcons from 'react-loading-icons'
 import Select from 'react-select';
 import PaginationButtons from "./PaginationButtons";
+import UploadExcelModal from './UploadExcelModal';
 
 const AutoApproval = () => {
     const [stateData, setStateData] = useState({
@@ -33,6 +34,17 @@ const AutoApproval = () => {
     const filterAutoApprovalUrl = "/api/autoApprovalFilter"
     const getApprovalStatesUrl = "/api/getApprovalStates"
     const getApprovalTiersUrl = "/api/getApprovalTiers"
+
+        //Modal
+        const [open, setOpen] = useState(false);
+
+        const onOpenModal = (element) => {
+            setOpen(true)
+        }
+        const onCloseModal = () => {
+            setOpen(false);
+            // setUpdateResponse("")
+        } 
 
     //dropdown multiSelect
     const options = [
@@ -135,7 +147,13 @@ const AutoApproval = () => {
 
     return (
         <div className="p-2">
-            <h1 className="text-center text-xl font-bold p-2 text-blue-700">AUTO APPROVAL</h1>
+            <UploadExcelModal open={open} onCloseModal={onCloseModal}  />
+
+            {/* <h1 className="text-center text-xl font-bold p-2 text-blue-900">AUTO APPROVAL</h1> */}
+            <div class="flex justify-between items-center w-full">
+                <span class="text-xl font-bold text-blue-900 mx-auto">Auto Approval</span>
+                <button class="p-2 bg-blue-900 text-white rounded-xl" onClick={() => onOpenModal()}>Upload</button>
+            </div>
             <form
                 className="conditionsNav p-2 m-2 border border-black rounded-md flex justify-start lg:justify-center items-center gap-1 flex-wrap"
                 onSubmit={handleSearch}
@@ -207,16 +225,16 @@ const AutoApproval = () => {
                     <table className="w-full">
                         <thead className="border border-black">
                             <tr>
-                                <th className="p-4 border border-black text-blue-700" >Last Name</th>
-                                <th className="p-4 border border-black text-blue-700" >First Name</th>
-                                <th className="p-4 border border-black text-blue-700" >City</th>
-                                <th className="p-4 border border-black text-blue-700" >State</th>
-                                <th className="p-4 border border-black text-blue-700" >Zip Code</th>
-                                <th className="p-4 border border-black text-blue-700" >SSN</th>
-                                <th className="p-4 border border-black text-blue-700" >FICO Score</th>
-                                <th className="p-4 border border-black text-blue-700">Tier</th>
+                                <th className="p-4 border border-black text-blue-900" >Last Name</th>
+                                <th className="p-4 border border-black text-blue-900" >First Name</th>
+                                <th className="p-4 border border-black text-blue-900" >City</th>
+                                <th className="p-4 border border-black text-blue-900" >State</th>
+                                <th className="p-4 border border-black text-blue-900" >Zip Code</th>
+                                <th className="p-4 border border-black text-blue-900" >SSN</th>
+                                <th className="p-4 border border-black text-blue-900" >FICO Score</th>
+                                <th className="p-4 border border-black text-blue-900">Tier</th>
                                 {selectedOptionFields && selectedOptionFields.map((option) => (
-                                    <th key={option.label} className="p-2 border border-black text-blue-700">
+                                    <th key={option.label} className="p-2 border border-black text-blue-900">
                                         {[option.label]}
                                     </th>
                                 ))}

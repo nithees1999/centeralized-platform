@@ -13,7 +13,8 @@ export default function GAPIsNotPermitted() {
         state: '',
         category: '',
         TotalFinanceAmount: '',
-        TotalInsuranceAmount: ''
+        TotalInsuranceAmount: '',
+        override: '',
     });
 
     // Handle input changes in the UI form
@@ -141,8 +142,8 @@ export default function GAPIsNotPermitted() {
 
     return (
         <>
-            <h1 className="text-center text-xl font-bold p-2 text-blue-700">ToleranceRules</h1>
-            <h1 className="text-center text-xl font-bold p-2 text-blue-700">GAP is not permitted</h1>
+            <h1 className="text-center text-xl font-bold p-2 text-blue-900">ToleranceRules</h1>
+            <h1 className="text-center text-xl font-bold p-2 text-blue-900">GAP is not permitted</h1>
             <form
                 className="conditionsNav p-2 m-2 border border-black rounded-md flex justify-start lg:justify-center items-center gap-1 flex-wrap"
                 onSubmit={handleSearch}
@@ -182,6 +183,16 @@ export default function GAPIsNotPermitted() {
                     </select>
                 </section>
 
+                <section>
+                    <label className="px-1 font-medium" htmlFor="override">Override:</label>
+                    <select name="override" id="override" value={searchParams.override} onChange={handleChange} className="border border-black rounded p-2">
+                        <option value="">All</option>
+                        <option value="False">False</option>
+                        <option value="4">4</option>
+                        <option value="9">9</option>
+                    </select>
+                </section>
+
                 <button className="rounded-md p-2 mx-2 border border-black" type="submit">Submit</button>
             </form>
 
@@ -208,29 +219,38 @@ export default function GAPIsNotPermitted() {
                     <table className="w-full">
                         <thead className="border border-black">
                             <tr>
-                                <th className="p-4 border border-black text-blue-700">Term</th>
-                                <th className="p-4 border border-black text-blue-700">GAP</th>
-                                <th className="p-4 border border-black text-blue-700">Total Amount Finance</th>
-                                <th className="p-4 border border-black text-blue-700">Total Insurance Amount</th>
-                                <th className="p-4 border border-black text-blue-700">Adjusted Amount</th>
-                                <th className="p-4 border border-black text-blue-700">MSRP</th>
-                                <th className="p-4 border border-black text-blue-700">LTV</th>
-                                <th className="p-4 border border-black text-blue-700">Rule</th>
-                                <th className="p-4 border border-black text-blue-700">Override level</th>
-                                <th className="p-4 border border-black text-blue-700">Release</th>
+                                <th className="p-4 border border-black text-blue-900">Term</th>
+                                <th className="p-4 border border-black text-blue-900">GAP</th>
+                                <th className="p-4 border border-black text-blue-900">Total Amount Finance</th>
+                                <th className="p-4 border border-black text-blue-900">Total Insurance Amount</th>
+                                <th className="p-4 border border-black text-blue-900">Adjusted Amount</th>
+                                <th className="p-4 border border-black text-blue-900">MSRP</th>
+                                <th className="p-4 border border-black text-blue-900">LTV</th>
+                                <th className="p-4 border border-black text-blue-900">Rule</th>
+                                <th className="p-4 border border-black text-blue-900">Override level</th>
+                                <th className="p-4 border border-black text-blue-900">Release</th>
                             </tr>
                         </thead>
                         <tbody>
                             {vinData && vinData.map((element) => (
                                 <React.Fragment key={element.VIN}>
                                     {
-                                        
+
                                         GAP && GAP.map((GAPValue, index) => {
                                             const { calculatedAdjustedAmout, calculatedLTVAmount, claculatedRule, calculatedOverrideLevel } = calculateValues(
                                                 parseInt(searchParams.TotalFinanceAmount),
                                                 parseInt(searchParams.TotalInsuranceAmount),
                                                 parseInt(element.MSRP_AM)
                                             );
+
+                                            // Apply filtering based on selected Override value
+                                            if (
+                                                searchParams.override &&
+                                                calculatedOverrideLevel !== searchParams.override 
+                                            ) {
+                                                return null; // Skip this row if it doesn't match the selected Override level
+                                            }
+
                                             return (
                                                 <tr key={index}>
                                                     <td className="p-2 border border-black">{TermData}</td>

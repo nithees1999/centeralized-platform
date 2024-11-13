@@ -67,7 +67,7 @@ const ToleranceRulesModal = (props) => {
                         required
                     />
                     {!isItemFound ? <span>Enter valid Rule Name</span> : null}
-                    <button type="submit" className="mt-2 w-full bg-blue-500 text-white font-semibold py-2 rounded-md hover:bg-blue-600 transition duration-200">Submit</button>
+                    <button type="submit" className="mt-2 w-full bg-blue-900 text-white font-semibold py-2 rounded-md hover:bg-blue-600 transition duration-200">Submit</button>
                     <ul className="max-h-60 overflow-y-auto">
                         {results.map(item => (
                             <li className="cursor-pointer p-2 hover:bg-blue-100 transition duration-150 rounded-lg" onClick={() => handleClick(item.title)} key={item.id}>{item.shorthand} :- {item.title}</li>

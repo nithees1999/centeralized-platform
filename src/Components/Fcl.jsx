@@ -39,7 +39,7 @@ const FCLPage = () => {
     };
     return (
         <div className="p-2">
-            <h1 className="text-center text-xl font-bold p-2 text-blue-700">FCL</h1>
+            <h1 className="text-center text-xl font-bold p-2 text-blue-900">FCL</h1>
             <div className="conditionsNav p-2 m-2 border border-black rounded-md flex justify-start lg:justify-center items-center gap-1 flex-wrap">
                 <div>
                     <label className="px-1 font-medium" htmlFor="Product">Product:</label>

@@ -66,8 +66,8 @@ export default function TireAndWheelProtectionExceedsLimit() {
 
     return (
         <>
-            <h1 className="text-center text-xl font-bold p-2 text-blue-700">ToleranceRules</h1>
-            <h1 className="text-center text-xl font-bold p-2 text-blue-700">Tire And Wheel Protection Exceeds Limit</h1>
+            <h1 className="text-center text-xl font-bold p-2 text-blue-900">ToleranceRules</h1>
+            <h1 className="text-center text-xl font-bold p-2 text-blue-900">Tire And Wheel Protection Exceeds Limit</h1>
             <form
                 className="conditionsNav p-2 m-2 border border-black rounded-md flex justify-start lg:justify-center items-center gap-1 flex-wrap"
                 onSubmit={handleSearch}
@@ -108,12 +108,12 @@ export default function TireAndWheelProtectionExceedsLimit() {
                     <table className="w-full">
                         <thead className="border border-black">
                             <tr>
-                                <th className="p-4 border border-black text-blue-700">Term</th>
-                                <th className="p-4 border border-black text-blue-700">Parameter</th>
-                                <th className="p-4 border border-black text-blue-700">Tire & Wheel</th>
-                                <th className="p-4 border border-black text-blue-700">Difference</th>
-                                <th className="p-4 border border-black text-blue-700">Override</th>
-                                <th className="p-4 border border-black text-blue-700">Release</th>
+                                <th className="p-4 border border-black text-blue-900">Term</th>
+                                <th className="p-4 border border-black text-blue-900">Parameter</th>
+                                <th className="p-4 border border-black text-blue-900">Tire & Wheel</th>
+                                <th className="p-4 border border-black text-blue-900">Difference</th>
+                                <th className="p-4 border border-black text-blue-900">Override</th>
+                                <th className="p-4 border border-black text-blue-900">Release</th>
                             </tr>
                         </thead>
                         <tbody>
