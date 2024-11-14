@@ -167,7 +167,7 @@ const AutoApproval = () => {
                         value={stateData.State}
                         onChange={handleChange}
                     >
-                        <option value="">Select State</option>
+                        <option value="">NA</option>
                         {stateData.states.map((state, index) => (
                             <option key={index} value={state}>{state}</option>
                         ))}
@@ -182,7 +182,7 @@ const AutoApproval = () => {
                         value={stateData.Tier}
                         onChange={handleChange}
                     >
-                        <option value="">Select Tier</option>
+                        <option value="">NA</option>
                         {stateData.tiers.map((tier, index) => (
                             <option key={index} value={tier}>{tier}</option>
                         ))}

@@ -72,7 +72,7 @@ export default function ModelIsNotEligibleForSentinel() {
                 <button className="rounded-md p-2 mx-2 border border-black" type="submit">Submit</button>
             </form>
 
-            <section className="min-h-screen py-8 px-4 m-2 border border-black rounded-md">
+            <section className="py-8 px-4 m-2 border border-black rounded-md">
                 <div style={{ overflowX: 'auto' }}>
                     <table className="w-full">
                         <thead className="border border-black">

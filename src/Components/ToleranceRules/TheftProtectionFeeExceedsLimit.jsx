@@ -25,7 +25,7 @@ export default function TheftProtectionFeeExceedsLimit() {
             <h1 className="text-center text-xl font-bold p-2 text-blue-900">ToleranceRules</h1>
             <h1 className="text-center text-xl font-bold p-2 text-blue-900">Theft Protection Fee Exceeds Limit</h1>
 
-            <section className="min-h-screen py-8 px-4 m-2 border border-black rounded-md">
+            <section className="py-8 px-4 m-2 border border-black rounded-md">
                 <div style={{ overflowX: 'auto' }}>
                     <table className="w-full">
                         <thead className="border border-black">

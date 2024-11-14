@@ -92,7 +92,7 @@ const Residual = () => {
                         value={formState.Vehicle_Type}
                         onChange={handleChange}
                     >
-                        <option value="">Select Vehicle Type</option>
+                        <option value="">NA</option>
                         {vehicleType.map((vehicleType, index) => (
                             <option key={index} value={vehicleType}>{vehicleType}</option>
                         ))}
@@ -108,7 +108,7 @@ const Residual = () => {
                         value={formState.Finance}
                         onChange={handleChange}
                     >
-                        <option value="">Select Finance</option>
+                        <option value="">NA</option>
                         {Finance.map((Finance, index) => (
                             <option key={index} value={Finance}>{Finance}</option>
                         ))}
@@ -123,7 +123,7 @@ const Residual = () => {
                         value={formState.Vehicle_Year}
                         onChange={handleChange}
                     >
-                        <option value="">Select Vehicle_Year</option>
+                        <option value="">NA</option>
                         {Vehicle_Year.map((Vehicle_Year, index) => (
                             <option key={index} value={Vehicle_Year}>{Vehicle_Year}</option>
                         ))}

@@ -32,19 +32,19 @@ const UploadExcelModal = (props) => {
                             className='p-2 mx-4 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500'
                             placeholder="Enter Password"
                         />
-                    </div>
+                    </div> */}
 
                     <div>
                         <label htmlFor="">Admin Password :</label>
                         <input
                             name='AdminPassword'
                             type="text"
-                            value={creds.AdminPassword}
-                            onChange={modalInputChange}
+                            // value={creds.AdminPassword}
+                            // onChange={modalInputChange}
                             className='p-2 mx-4 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500'
                             placeholder="Authentication password"
                         />
-                    </div> */}
+                    </div>
                 </div>
                 <button className='mt-4 px-4 py-2 bg-blue-900 text-white rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500' onClick={handlePasswordUpdate} creds={creds}>
                     Upload

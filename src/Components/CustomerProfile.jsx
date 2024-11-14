@@ -108,7 +108,7 @@ const CustomerProfile = () => {
                         value={formState.State}
                         onChange={handleChange}
                     >
-                        <option value="">Select State</option>
+                        <option value="">NA</option>
                         {states.map((state, index) => (
                             <option key={index} value={state}>{state}</option>
                         ))}
@@ -123,7 +123,7 @@ const CustomerProfile = () => {
                         value={formState.Tier}
                         onChange={handleChange}
                     >
-                        <option value="">Select Tier</option>
+                        <option value="">NA</option>
                         {tiers.map((tier, index) => (
                             <option key={index} value={tier}>{tier}</option>
                         ))}
@@ -149,7 +149,7 @@ const CustomerProfile = () => {
                         value={formState.ScoreCard_Type}
                         onChange={handleChange}
                     >
-                        <option value="">Select ScoreCard</option>
+                        <option value="">NA</option>
                         {scoreCardTypes.map((type, index) => (
                             <option key={index} value={type}>{type}</option>
                         ))}

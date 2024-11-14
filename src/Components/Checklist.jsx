@@ -92,7 +92,7 @@ const Checklist = () => {
                 <div className="relative">
                     <label className="px-1 font-medium" htmlFor="Description">Description:</label>
                     <input
-                        className="border border-black rounded p-1 w-52"
+                        className="border border-black rounded p-1 w-96"
                         name="Description"
                         id="Description"
                         value={formState.Description}
@@ -131,7 +131,7 @@ const Checklist = () => {
                 </button>
                 {loading && <div>Loading...</div>}
             </form>
-            <section className="min-h-screen py-8 px-4 m-2 border border-black rounded-md">
+            <section className=" py-8 px-4 m-2 border border-black rounded-md">
                 <table className="w-full">
                     <thead className="border border-black">
                         <tr>

@@ -56,7 +56,7 @@ const Halo = () => {
                     <label className="px-1 font-medium" htmlFor="producttype">Product Type:</label>
 
                     <select value={selectedProductType} onChange={(e) => setSelectedProductType(e.target.value)} className="border border-black rounded p-2" required>
-                    <option value="" disabled>Select Product Type</option>
+                    <option value="" disabled>NA</option>
                         {uniqueProductTypes.map(type => <option key={type} value={type}>{type}</option>)}
                     </select>
                 </section>
@@ -65,7 +65,7 @@ const Halo = () => {
                 <section>
                     <label className="px-1 font-medium" htmlFor="condition">Condition:</label>
                     <select value={selectedCondition} onChange={(e) => setSelectedCondition(e.target.value)} className="border border-black rounded p-2" required>
-                    <option value="" disabled>Select Condition</option>
+                    <option value="" disabled>NA</option>
                         {uniqueConditions.map(condition => <option key={condition} value={condition}>{condition}</option>)}
                     </select>
                 </section>
@@ -79,7 +79,7 @@ const Halo = () => {
                         className="border border-black rounded p-2"
                         required
                     >
-                        <option value="" disabled>Select Employment Status(App)</option>
+                        <option value="" disabled>NA</option>
                         <option value="Non-Halo Associate">NON-HALO Associate</option>
                         {uniqueEmploymentStatusApps
                             .filter(status => status !== 'Student' && status !== 'Employed' && status !== 'Retired') 
@@ -90,7 +90,7 @@ const Halo = () => {
                 <section>
                     <label className="px-1 font-medium" htmlFor="EmploymentStatuscoAPP">Employment Status (Co-app):</label>
                     <select value={selectedEmploymentStatusCoApp} onChange={(e) => setSelectedEmploymentStatusCoApp(e.target.value)} className="border border-black rounded p-2" required>
-                    <option value="" disabled>Select Employment Status(Co-App)</option>
+                    <option value="" disabled>NA</option>
                         <option value="Non-Halo Associate">NON-HALO Associate</option>
                         {uniqueEmploymentStatusCoApps.map(status => <option key={status} value={status}>{status}</option>)}
                     </select>
@@ -111,7 +111,7 @@ const Halo = () => {
                 </section>
                 <button type="submit" className="rounded-md p-2 mx-2 border border-black">Submit</button>
             </form>
-            <section className="min-h-screen py-8 px-4 m-2 border border-black rounded-md">
+            <section className="py-8 px-4 m-2 border border-black rounded-md">
                 <div style={{ overflowX: 'auto' }}>
                     <table className="w-full">
                         <thead className="border border-black">
