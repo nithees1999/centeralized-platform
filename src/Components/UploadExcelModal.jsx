@@ -2,7 +2,7 @@ import { Modal } from 'react-responsive-modal';
 import 'react-responsive-modal/styles.css';
 
 const UploadExcelModal = (props) => {
-    const { open, onCloseModal, creds, modalInputChange , handlePasswordUpdate,updateResponse } = props
+    const { open, onCloseModal, creds , handlePasswordUpdate } = props
 
     return (
         <div>

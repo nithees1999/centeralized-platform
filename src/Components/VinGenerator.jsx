@@ -6,7 +6,6 @@ import PaginationButtons from "./PaginationButtons";
 import axios from "axios";
 import LoadingIcons from 'react-loading-icons'
 import Select from 'react-select';
-import OrigenateModal from "./OrigenateModal";
 import UploadExcelModal from "./UploadExcelModal";
 
 export default function VinGenerator() {
