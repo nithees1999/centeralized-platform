@@ -34,8 +34,8 @@ const OtherAmountsOverAdvance = () => {
     };
     return (
         <>
-            <h1 className="text-center text-xl font-bold p-2 text-blue-700">ToleranceRules</h1>
-            <h1 className="text-center text-xl font-bold p-2 text-blue-700">Other Amounts Over Advance</h1>
+            <h1 className="text-center text-xl font-bold p-2 text-blue-900">ToleranceRules</h1>
+            <h1 className="text-center text-xl font-bold p-2 text-blue-900">Other Amounts Over Advance</h1>
             <form
                 className="conditionsNav p-2 m-2 border border-black rounded-md flex justify-start lg:justify-center items-center gap-1 flex-wrap"
                 onSubmit={handleSearch}
@@ -85,17 +85,17 @@ const OtherAmountsOverAdvance = () => {
                 <div style={{ overflowX: 'auto' }}>
                     <table className="w-full">
                         <thead className="border border-black">
-                            <tr>
-                                <th className="p-4 border border-black text-blue-900">Product Type</th>
-                                <th className="p-4 border border-black text-blue-900">Condition</th>
-                                <th className="p-4 border border-black text-blue-900">Make</th>
-                                <th className="p-4 border border-black text-blue-900">Parameter</th>
-                                <th className="p-4 border border-black text-blue-900">Other Amount</th>
-                                <th className="p-4 border border-black text-blue-900">Difference</th>
-                                <th className="p-4 border border-black text-blue-900">Description</th>
-                                <th className="p-4 border border-black text-blue-900">Actual</th>
-                                <th className="p-4 border border-black text-blue-900">Override</th>
-                                <th className="p-4 border border-black text-blue-900">Release</th>
+                            <tr className='text-blue-900'>
+                                <th className="p-4 border border-black">Product Type</th>
+                                <th className="p-4 border border-black">Condition</th>
+                                <th className="p-4 border border-black">Make</th>
+                                <th className="p-4 border border-black">Parameter</th>
+                                <th className="p-4 border border-black">Other Amount</th>
+                                <th className="p-4 border border-black">Difference</th>
+                                <th className="p-4 border border-black">Description</th>
+                                <th className="p-4 border border-black">Actual</th>
+                                <th className="p-4 border border-black">Override</th>
+                                <th className="p-4 border border-black">Release</th>
                             </tr>
                         </thead>
                         <tbody>

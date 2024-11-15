@@ -47,7 +47,7 @@ const OrigenateModal = (props) => {
                 <button className='mt-4 px-4 py-2 border-2 border-black bg-black text-white rounded-md hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-500' onClick={handlePasswordUpdate} creds={creds}>
                     Update
                 </button>
-                <p className='text-center text-blue-700 text-xl font-bold'>{updateResponse}</p>
+                <p className='text-center text-blue-900 text-xl font-bold'>{updateResponse}</p>
             </Modal>
 
         </div>

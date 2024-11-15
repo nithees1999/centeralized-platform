@@ -34,7 +34,7 @@ const Halo = () => {
             );
         });
         setFilteredResults(results);
-     };
+    };
     const uniqueProductTypes = [...new Set(haloData.map(item => item.ProductType))];
     const uniqueConditions = [...new Set(haloData.map(item => item.Condition))];
     const uniqueEmploymentStatusApps = [...new Set(haloData.map(item => item.EmploymentStatusApp))];
@@ -46,8 +46,8 @@ const Halo = () => {
 
     return (
         <>
-            <h1 className="text-center text-xl font-bold p-2 text-blue-700">ToleranceRules</h1>
-            <h1 className="text-center text-xl font-bold p-2 text-blue-700">Halo</h1>
+            <h1 className="text-center text-xl font-bold p-2 text-blue-900">ToleranceRules</h1>
+            <h1 className="text-center text-xl font-bold p-2 text-blue-900">Halo</h1>
             <form
                 className="conditionsNav p-2 m-2 border border-black rounded-md flex justify-start lg:justify-center items-center gap-1 flex-wrap"
                 onSubmit={handleSearch}
@@ -57,7 +57,7 @@ const Halo = () => {
                     <label className="px-1 font-medium" htmlFor="producttype">Product Type:</label>
 
                     <select value={selectedProductType} onChange={(e) => setSelectedProductType(e.target.value)} className="border border-black rounded p-2" required>
-                    <option value="" disabled>NA</option>
+                        <option value="" disabled>NA</option>
                         {uniqueProductTypes.map(type => <option key={type} value={type}>{type}</option>)}
                     </select>
                 </section>
@@ -66,7 +66,7 @@ const Halo = () => {
                 <section>
                     <label className="px-1 font-medium" htmlFor="condition">Condition:</label>
                     <select value={selectedCondition} onChange={(e) => setSelectedCondition(e.target.value)} className="border border-black rounded p-2" required>
-                    <option value="" disabled>NA</option>
+                        <option value="" disabled>NA</option>
                         {uniqueConditions.map(condition => <option key={condition} value={condition}>{condition}</option>)}
                     </select>
                 </section>
@@ -83,7 +83,7 @@ const Halo = () => {
                         <option value="" disabled>NA</option>
                         <option value="Non-Halo Associate">NON-HALO Associate</option>
                         {uniqueEmploymentStatusApps
-                            .filter(status => status !== 'Student' && status !== 'Employed' && status !== 'Retired') 
+                            .filter(status => status !== 'Student' && status !== 'Employed' && status !== 'Retired')
                             .map(status => <option key={status} value={status}>{status}</option>)}
                     </select>
                 </section>
@@ -91,7 +91,7 @@ const Halo = () => {
                 <section>
                     <label className="px-1 font-medium" htmlFor="EmploymentStatuscoAPP">Employment Status (Co-app):</label>
                     <select value={selectedEmploymentStatusCoApp} onChange={(e) => setSelectedEmploymentStatusCoApp(e.target.value)} className="border border-black rounded p-2" required>
-                    <option value="" disabled>NA</option>
+                        <option value="" disabled>NA</option>
                         <option value="Non-Halo Associate">NON-HALO Associate</option>
                         {uniqueEmploymentStatusCoApps.map(status => <option key={status} value={status}>{status}</option>)}
                     </select>
@@ -102,7 +102,7 @@ const Halo = () => {
                     <select name="override" id="override"
                         value={selectedOverride}
                         onChange={(e) => setSelectedOverride(e.target.value)}
-                        className="border border-black rounded p-2" 
+                        className="border border-black rounded p-2"
                     >
                         <option value="">NA</option>
                         {uniqueOverride.map((cond, index) => (
@@ -116,17 +116,17 @@ const Halo = () => {
                 <div style={{ overflowX: 'auto' }}>
                     <table className="w-full">
                         <thead className="border border-black">
-                            <tr>
-                                <th className="p-4 border border-black text-blue-900">Product Type</th>
-                                <th className="p-4 border border-black text-blue-900">Condition</th>
-                                <th className="p-4 border border-black text-blue-900">Co-Applicant</th>
-                                <th className="p-4 border border-black text-blue-900">Employment Status (App)</th>
-                                <th className="p-4 border border-black text-blue-900">Employment Status (Co-app)</th>
-                                <th className="p-4 border border-black text-blue-900">Buy Rate</th>
-                                <th className="p-4 border border-black text-blue-900">Adjusted Rate</th>
-                                <th className="p-4 border border-black text-blue-900">Difference</th>
-                                <th className="p-4 border border-black text-blue-900">Rule</th>
-                                <th className="p-4 border border-black text-blue-900">Override Level</th>
+                            <tr className='text-blue-900'>
+                                <th className="p-4 border border-black">Product Type</th>
+                                <th className="p-4 border border-black">Condition</th>
+                                <th className="p-4 border border-black">Co-Applicant</th>
+                                <th className="p-4 border border-black">Employment Status (App)</th>
+                                <th className="p-4 border border-black">Employment Status (Co-app)</th>
+                                <th className="p-4 border border-black">Buy Rate</th>
+                                <th className="p-4 border border-black">Adjusted Rate</th>
+                                <th className="p-4 border border-black">Difference</th>
+                                <th className="p-4 border border-black">Rule</th>
+                                <th className="p-4 border border-black">Override Level</th>
                             </tr>
                         </thead>
                         <tbody>

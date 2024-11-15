@@ -1,74 +1,128 @@
 [
-    {
-      "id": "MaintenanceOverAdvance",
-      "title": "Maintenance Over Advance",
-      "shorthand": "MOA",
-      "navigationLink": "/MaintenanceOverAdvance"
-    },
-    {
-      "id": "GAPIsNotPermitted",
-      "title": "GAP Is Not Permitted",
-      "shorthand": "GAP-INP",
-      "navigationLink": "/GAPIsNotPermitted"
-    },
-    {
-      "id": "ServiceContractOverAdvance",
-      "title": "Service Contract Over Advance",
-      "shorthand": "SCOA",
-      "navigationLink": "/ServiceContractOverAdvance"
-    },
-    {
-      "id": "GapAmountOverAdvance",
-      "title": "Gap Amount Over Advance",
-      "shorthand": "GAP-AOA",
-      "navigationLink": "/GapAmountOverAdvance"
-    },
-    {
-      "id": "OtherAmountsOverAdvance",
-      "title": "Other Amounts Over Advance",
-      "shorthand": "OAOA",
-      "navigationLink": "/OtherAmountsOverAdvance"
-    },
-    {
-      "id": "Halo",
-      "title": "Halo",
-      "shorthand": "Halo",
-      "navigationLink": "/Halo"
-    },
-    {
-      "id": "TermProtection",
-      "title": "TermProtection",
-      "shorthand": "TP",
-      "navigationLink": "/TermProtection"
-    },
-    {
-      "id": "TheftProtectionFeeExceedsLimit",
-      "title": "Theft Protection Fee Exceeds Limit",
-      "shorthand": "TPFEL",
-      "navigationLink": "/TheftProtectionFeeExceedsLimit"
-    },
-    {
-      "id": "EVTaxCredit",
-      "title": "EV Tax Credit",
-      "shorthand": "EV-TC",
-      "navigationLink": "/EVTaxCredit"
-    },
-    {
-      "id": "ModelIsNotEligibleForSentinel",
-      "title": "Model Is Not Eligible For Sentinel",
-      "shorthand": "MINEFS",
-      "navigationLink": "/ModelIsNotEligibleForSentinel"
-    },
-    {
-      "id": "TireAndWheelProtectionExceedsLimit",
-      "title": "Tire And Wheel Protection Exceeds Limit",
-      "shorthand": "TAWPEL",
-      "navigationLink": "/TireAndWheelProtectionExceedsLimit"
-    },
-    {
-      "id": "SentinelExceedsLimit",
-      "title": "Sentinel Exceeds Limit",
-      "shorthand": "SEL",
-      "navigationLink": "/SentinelExceedsLimit"
-    }
-  ]
+  {
+    "pageNumber": 1,
+    "id": "MaintenanceOverAdvance",
+    "title": "Maintenance Over Advance",
+    "shorthand": "MOA",
+    "navigationLink": "/MaintenanceOverAdvance"
+  },
+  {
+    "pageNumber": 2,
+    "id": "GAPIsNotPermitted",
+    "title": "GAP Is Not Permitted",
+    "shorthand": "GAP-INP",
+    "navigationLink": "/GAPIsNotPermitted"
+  },
+  {
+    "pageNumber": 3,
+    "id": "ServiceContractOverAdvance",
+    "title": "Service Contract Over Advance",
+    "shorthand": "SCOA",
+    "navigationLink": "/ServiceContractOverAdvance"
+  },
+  {
+    "pageNumber": 4,
+    "id": "GapAmountOverAdvance",
+    "title": "Gap Amount Over Advance",
+    "shorthand": "GAP-AOA",
+    "navigationLink": "/GapAmountOverAdvance"
+  },
+  {
+    "pageNumber": 5,
+    "id": "OtherAmountsOverAdvance",
+    "title": "Other Amounts Over Advance",
+    "shorthand": "OAOA",
+    "navigationLink": "/OtherAmountsOverAdvance"
+  },
+  {
+    "pageNumber": 6,
+    "id": "TermProtection",
+    "title": "Term Protection",
+    "shorthand": "TP",
+    "navigationLink": "/TermProtection"
+  },
+  {
+    "pageNumber": 7,
+    "id": "EVTaxCredit",
+    "title": "EV Tax Credit",
+    "shorthand": "EV-TC",
+    "navigationLink": "/EVTaxCredit"
+  },
+  {
+    "pageNumber": 8,
+    "id": "Halo",
+    "title": "Halo",
+    "shorthand": "Halo",
+    "navigationLink": "/Halo"
+  },
+  {
+    "pageNumber": 9,
+    "id": "ModelIsNotEligibleForSentinel",
+    "title": "Model Is Not Eligible For Sentinel",
+    "shorthand": "MINEFS",
+    "navigationLink": "/ModelIsNotEligibleForSentinel"
+  },
+  {
+    "pageNumber": 10,
+    "id": "TireAndWheelProtectionExceedsLimit",
+    "title": "Tire And Wheel Protection Exceeds Limit",
+    "shorthand": "TAWPEL",
+    "navigationLink": "/TireAndWheelProtectionExceedsLimit"
+  },
+  {
+    "pageNumber": 11,
+    "id": "TheftProtectionFeeExceedsLimit",
+    "title": "Theft Protection Fee Exceeds Limit",
+    "shorthand": "TPFEL",
+    "navigationLink": "/TheftProtectionFeeExceedsLimit"
+  },
+  {
+    "pageNumber": 12,
+    "id": "WindshieldProtection",
+    "title": "Windshield Protection",
+    "shorthand": "WSP",
+    "navigationLink": "/WindshieldProtection"
+  },
+  {
+    "pageNumber": 13,
+    "id": "DentProtection",
+    "title": "Dent Protection",
+    "shorthand": "DP",
+    "navigationLink": "/DentProtection"
+  },
+  {
+    "pageNumber": 14,
+    "id": "KeyReplacementProtection",
+    "title": "Key Replacement Protection",
+    "shorthand": "KRP",
+    "navigationLink": "/KeyReplacementProtection"
+  },
+  {
+    "pageNumber": 15,
+    "id": "SentinelExceedsLimit",
+    "title": "Sentinel Exceeds Limit",
+    "shorthand": "SEL",
+    "navigationLink": "/SentinelExceedsLimit"
+  },
+  {
+    "pageNumber": 16,
+    "id": "ModelIsNotValidForTaxCredit",
+    "title": "Model Is Not Valid For Tax Credit",
+    "shorthand": "MINVFTC",
+    "navigationLink": "/ModelIsNotValidForTaxCredit"
+  },
+  {
+    "pageNumber": 17,
+    "id": "CapitalizedCostReductionCashMustBeGreaterThanOrEqualToEVtaxCredit",
+    "title": "Capitalized Cost Reduction Cash Must Be Greater Than Or Equal To EV Tax Credit",
+    "shorthand": "CCRCMBGTOETEV",
+    "navigationLink": "/CapitalizedCostReductionCashMustBeGreaterThanOrEqualToEVtaxCredit"
+  },
+  {
+    "pageNumber": 18,
+    "id": "InvalidExcessiveWearAndUse",
+    "title": "Invalid Excessive Wear And Use",
+    "shorthand": "IEWAU",
+    "navigationLink": "/InvalidExcessiveWearAndUse"
+  }
+]

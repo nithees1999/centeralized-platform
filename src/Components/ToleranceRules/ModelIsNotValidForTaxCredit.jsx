@@ -26,8 +26,8 @@ const ModelIsNotValidForTaxCredit = () => {
     };
     return (
         <>
-            <h1 className="text-center text-xl font-bold p-2 text-blue-700">ToleranceRules</h1>
-            <h1 className="text-center text-xl font-bold p-2 text-blue-700">Model is not valid for Tax Credit</h1>
+            <h1 className="text-center text-xl font-bold p-2 text-blue-900">ToleranceRules</h1>
+            <h1 className="text-center text-xl font-bold p-2 text-blue-900">Model is not valid for Tax Credit</h1>
             <form onSubmit={handleSubmit} className="p-2 m-2 border border-black rounded-md flex justify-start lg:justify-center items-center gap-1 flex-wrap">
                 <section>
                     <label className="px-1 font-medium" htmlFor="category">Select Category:</label>
@@ -48,18 +48,18 @@ const ModelIsNotValidForTaxCredit = () => {
                 <div style={{ overflowX: 'auto' }}>
                     <table className="w-full">
                         <thead className="border border-black">
-                            <tr>
-                                <th className="p-4 border border-black text-blue-700">Product Type</th>
-                                <th className="p-4 border border-black text-blue-700">Condition</th>
-                                <th className="p-4 border border-black text-blue-700">VIN</th>
-                                <th className="p-4 border border-black text-blue-700">Year</th>
-                                <th className="p-4 border border-black text-blue-700">Make</th>
-                                <th className="p-4 border border-black text-blue-700">Model</th>
-                                <th className="p-4 border border-black text-blue-700">Term</th>
-                                <th className="p-4 border border-black text-blue-700">EV Tax Credit</th>
-                                <th className="p-4 border border-black text-blue-700">Description</th>
-                                <th className="p-4 border border-black text-blue-700">Override</th>
-                                <th className="p-4 border border-black text-blue-700">Release</th>
+                            <tr className='text-blue-900'>
+                                <th className="p-4 border border-black">Product Type</th>
+                                <th className="p-4 border border-black">Condition</th>
+                                <th className="p-4 border border-black">VIN</th>
+                                <th className="p-4 border border-black">Year</th>
+                                <th className="p-4 border border-black">Make</th>
+                                <th className="p-4 border border-black">Model</th>
+                                <th className="p-4 border border-black">Term</th>
+                                <th className="p-4 border border-black">EV Tax Credit</th>
+                                <th className="p-4 border border-black">Description</th>
+                                <th className="p-4 border border-black">Override</th>
+                                <th className="p-4 border border-black">Release</th>
                             </tr>
                         </thead>
                         <tbody>

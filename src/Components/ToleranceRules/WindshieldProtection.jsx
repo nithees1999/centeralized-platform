@@ -14,7 +14,7 @@ const WindshieldProtection = () => {
         { ProductType: "Lease", Condition: "Used/Certified", VIN: "5FNYF8H5XMB004208", Year: 2023, Make: "Honda", Model: "PASSPORT", Term: 36, Parameter: 9999.00, WindshieldProtection: 10999.00, Difference: 1000.00, Description: "Windshield Protection Exceeds Limit", Actual: 10999.00, Override: 4, Release: "ITD28" },
         { ProductType: "Lease", Condition: "Used/Certified", VIN: "5FNYF8H5XMB004208", Year: 2023, Make: "Honda", Model: "PASSPORT", Term: 36, Parameter: 9999.00, WindshieldProtection: 10999.01, Difference: 1000.01, Description: "Windshield Protection Exceeds Limit", Actual: 10999.01, Override: 5, Release: "ITD28" },
         { ProductType: "Lease", Condition: "Certified", VIN: "19UDE2F78NA000270", Year: 2024, Make: "Acura", Model: "ILX", Term: 24, Parameter: 9999.00, WindshieldProtection: 10049.00, Difference: 50.00, Description: "Windshield Protection Exceeds Limit", Actual: 10049.00, Override: 0, Release: "ITD28" },
-     ];
+    ];
     const uniqueProductTypes = [...new Set(data.map(item => item.ProductType))];
     const uniqueConditions = [...new Set(data.map(item => item.Condition))];
     const [selectedProductType, setSelectedProductType] = useState('');
@@ -30,8 +30,8 @@ const WindshieldProtection = () => {
     };
     return (
         <>
-            <h1 className="text-center text-xl font-bold p-2 text-blue-700">ToleranceRules</h1>
-            <h1 className="text-center text-xl font-bold p-2 text-blue-700">WindshieldProtection</h1>
+            <h1 className="text-center text-xl font-bold p-2 text-blue-900">ToleranceRules</h1>
+            <h1 className="text-center text-xl font-bold p-2 text-blue-900">WindshieldProtection</h1>
             <form
                 className="conditionsNav p-2 m-2 border border-black rounded-md flex justify-start lg:justify-center items-center gap-1 flex-wrap"
                 onSubmit={handleSearch}
@@ -68,21 +68,21 @@ const WindshieldProtection = () => {
                 <div style={{ overflowX: 'auto' }}>
                     <table className="w-full">
                         <thead className="border border-black">
-                            <tr>
-                                <th className="p-4 border border-black text-blue-700">Product Type</th>
-                                <th className="p-4 border border-black text-blue-700">Condition</th>
-                                <th className="p-4 border border-black text-blue-700">VIN</th>
-                                <th className="p-4 border border-black text-blue-700">Year</th>
-                                <th className="p-4 border border-black text-blue-700">Make</th>
-                                <th className="p-4 border border-black text-blue-700">Model</th>
-                                <th className="p-4 border border-black text-blue-700">Term</th>
-                                <th className="p-4 border border-black text-blue-700">Parameter</th>
-                                <th className="p-4 border border-black text-blue-700">Windshield Protection</th>
-                                <th className="p-4 border border-black text-blue-700">Difference</th>
-                                <th className="p-4 border border-black text-blue-700">Description</th>
-                                <th className="p-4 border border-black text-blue-700">Actual</th>
-                                <th className="p-4 border border-black text-blue-700">Override</th>
-                                <th className="p-4 border border-black text-blue-700">Release</th>
+                            <tr className="text-blue-900">
+                                <th className="p-4 border border-black">Product Type</th>
+                                <th className="p-4 border border-black">Condition</th>
+                                <th className="p-4 border border-black">VIN</th>
+                                <th className="p-4 border border-black">Year</th>
+                                <th className="p-4 border border-black">Make</th>
+                                <th className="p-4 border border-black">Model</th>
+                                <th className="p-4 border border-black">Term</th>
+                                <th className="p-4 border border-black">Parameter</th>
+                                <th className="p-4 border border-black">Windshield Protection</th>
+                                <th className="p-4 border border-black">Difference</th>
+                                <th className="p-4 border border-black">Description</th>
+                                <th className="p-4 border border-black">Actual</th>
+                                <th className="p-4 border border-black">Override</th>
+                                <th className="p-4 border border-black">Release</th>
                             </tr>
                         </thead>
                         <tbody>
