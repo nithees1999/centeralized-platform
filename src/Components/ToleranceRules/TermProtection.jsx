@@ -14,7 +14,7 @@ const TermProtection = () => {
         { ProductType: "Lease", Condition: "Used/Certified", VIN: "5FNYF8H5XMB004208", Year: 2023, Make: "Honda", Model: "PASSPORT", Term: 36, Parameter: 9999.00, TermProtection: 10999.00, Difference: 1000.00, Description: "Term Protection Exceeds Limit", Actual: 10999.00, Override: 4, Release: "ITD28" },
         { ProductType: "Lease", Condition: "Used/Certified", VIN: "5FNYF8H5XMB004208", Year: 2023, Make: "Honda", Model: "PASSPORT", Term: 36, Parameter: 9999.00, TermProtection: 10999.01, Difference: 1000.01, Description: "Term Protection Exceeds Limit", Actual: 10999.01, Override: 5, Release: "ITD28" },
         { ProductType: "Lease", Condition: "Certified", VIN: "19UDE2F78NA000270", Year: 2024, Make: "Acura", Model: "ILX", Term: 24, Parameter: 9999.00, TermProtection: 10049.00, Difference: 50.00, Description: "Term Protection Exceeds Limit", Actual: 10049.00, Override: 0, Release: "ITD28" },
-     ];
+    ];
     const uniqueProductTypes = [...new Set(data.map(item => item.ProductType))];
     const uniqueConditions = [...new Set(data.map(item => item.Condition))];
     const uniqueOverride = [...new Set(data.map(item => item.Override))];
@@ -33,6 +33,7 @@ const TermProtection = () => {
     };
     return (
         <>
+            <h1 className="text-center text-xl font-bold p-2 text-blue-900">ToleranceRules</h1>
             <h1 className="text-center text-xl font-bold p-2 text-blue-900">Term Protection</h1>
             <form
                 className="conditionsNav p-2 m-2 border border-black rounded-md flex justify-start lg:justify-center items-center gap-1 flex-wrap"
@@ -70,7 +71,7 @@ const TermProtection = () => {
                     <select name="override" id="override"
                         value={selectedOverride}
                         onChange={(e) => setSelectedOverride(e.target.value)}
-                        className="border border-black rounded p-2" 
+                        className="border border-black rounded p-2"
                     >
                         <option value="">NA</option>
                         {uniqueOverride.map((cond, index) => (

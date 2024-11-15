@@ -34,6 +34,7 @@ const OtherAmountsOverAdvance = () => {
     };
     return (
         <>
+            <h1 className="text-center text-xl font-bold p-2 text-blue-900">ToleranceRules</h1>
             <h1 className="text-center text-xl font-bold p-2 text-blue-900">Other Amounts Over Advance</h1>
             <form
                 className="conditionsNav p-2 m-2 border border-black rounded-md flex justify-start lg:justify-center items-center gap-1 flex-wrap"

@@ -26,6 +26,7 @@ const ModelIsNotValidForTaxCredit = () => {
     };
     return (
         <>
+            <h1 className="text-center text-xl font-bold p-2 text-blue-900">ToleranceRules</h1>
             <h1 className="text-center text-xl font-bold p-2 text-blue-700">Model is not valid for Tax Credit</h1>
             <form onSubmit={handleSubmit} className="p-2 m-2 border border-black rounded-md flex justify-start lg:justify-center items-center gap-1 flex-wrap">
                 <section>

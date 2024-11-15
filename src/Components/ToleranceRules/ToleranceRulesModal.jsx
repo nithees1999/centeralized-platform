@@ -13,7 +13,7 @@ const ToleranceRulesModal = (props) => {
 
     // Fuse.js options
     const options = {
-        keys: ['title','shorthand'], // specify the keys to search in
+        keys: ['title', 'shorthand'], // specify the keys to search in
     };
 
     const fuse = new Fuse(data, options);
@@ -56,6 +56,7 @@ const ToleranceRulesModal = (props) => {
     return (
         <div>
             <Modal classNames={{ modal: "w-full max-w-md p-12  bg-white rounded-lg shadow-lg" }} open={open} onClose={onCloseModal} center>
+                <h1 className="text-center text-xl font-bold p-2 text-blue-900">ToleranceRules</h1>
                 <h2 className="text-2xl font-semibold mb-4">Search Tolerance Rules</h2>
                 <form onSubmit={handleSubmit}>
                     <input

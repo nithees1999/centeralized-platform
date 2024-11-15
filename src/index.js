@@ -34,7 +34,7 @@ import KeyReplacementProtection from './Components/ToleranceRules/KeyReplacement
 import ModelIsNotValidForTaxCredit from './Components/ToleranceRules/ModelIsNotValidForTaxCredit';
 import InvalidExcessiveWearAndUse from './Components/ToleranceRules/InvalidExcessiveWearAndUse';
 import SentinelExceedsLimit from './Components/ToleranceRules/SentinelExceedsLimit';
-import CapitalizedCostReductionCash from './Components/ToleranceRules/CapitalizedCostReductionCash';
+import CapitalizedCostReductionCashMustBeGreaterThanOrEqualToEVtaxCredit from './Components/ToleranceRules/CapitalizedCostReductionCashMustBeGreaterThanOrEqualToEVtaxCredit';
 
 const router = createBrowserRouter([
   {
@@ -83,77 +83,77 @@ const router = createBrowserRouter([
       },
       {
         path: "MaintenanceOverAdvance",
-        element: <MaintenanceOverAdvance/>,
+        element: <MaintenanceOverAdvance />,
       },
       {
         path: "GAPIsNotPermitted",
-        element: <GAPIsNotPermitted/>,
+        element: <GAPIsNotPermitted />,
       },
       {
         path: "ServiceContractOverAdvance",
-        element: <ServiceContractOverAdvance/>,
+        element: <ServiceContractOverAdvance />,
       },
       {
         path: "GapAmountOverAdvance",
-        element: <GapAmountOverAdvance/>,
+        element: <GapAmountOverAdvance />,
       },
       {
         path: "OtherAmountsOverAdvance",
-        element: <OtherAmountsOverAdvance/>,
+        element: <OtherAmountsOverAdvance />,
       },
       {
         path: "Halo",
-        element: <Halo/>,
+        element: <Halo />,
       },
       {
         path: "TermProtection",
-        element: <TermProtection/>,
+        element: <TermProtection />,
       },
       {
 
         path: "WindshieldProtection",
-        element: <WindshieldProtection/>,
+        element: <WindshieldProtection />,
       },
       {
 
         path: "TheftProtectionFeeExceedsLimit",
-        element: <TheftProtectionFeeExceedsLimit/>,
+        element: <TheftProtectionFeeExceedsLimit />,
       },
       {
         path: "EVTaxCredit",
-        element: <EVTaxCredit/>,
+        element: <EVTaxCredit />,
       },
       {
         path: "ModelIsNotEligibleForSentinel",
-        element: <ModelIsNotEligibleForSentinel/>,
+        element: <ModelIsNotEligibleForSentinel />,
       },
       {
         path: "TireAndWheelProtectionExceedsLimit",
-        element: <TireAndWheelProtectionExceedsLimit/>,
+        element: <TireAndWheelProtectionExceedsLimit />,
       },
       {
         path: "DentProtection",
-        element: <DentProtection/>,
+        element: <DentProtection />,
       },
       {
         path: "KeyReplacementProtection",
-        element: <KeyReplacementProtection/>,
+        element: <KeyReplacementProtection />,
       },
       {
         path: "SentinelExceedsLimit",
-        element: <SentinelExceedsLimit/>,
+        element: <SentinelExceedsLimit />,
       },
       {
         path: "ModelIsNotValidForTaxCredit",
-        element: <ModelIsNotValidForTaxCredit/>,
+        element: <ModelIsNotValidForTaxCredit />,
       },
       {
         path: "InvalidExcessiveWearAndUse",
-        element: <InvalidExcessiveWearAndUse/>,
+        element: <InvalidExcessiveWearAndUse />,
       },
-     {
-        path: "CapitalizedCostReductionCash",
-        element: <CapitalizedCostReductionCash/>,
+      {
+        path: "CapitalizedCostReductionCashMustBeGreaterThanOrEqualToEVtaxCredit",
+        element: <CapitalizedCostReductionCashMustBeGreaterThanOrEqualToEVtaxCredit />,
       },
     ],
   },

@@ -34,7 +34,7 @@ const Halo = () => {
             );
         });
         setFilteredResults(results);
-     };
+    };
     const uniqueProductTypes = [...new Set(haloData.map(item => item.ProductType))];
     const uniqueConditions = [...new Set(haloData.map(item => item.Condition))];
     const uniqueEmploymentStatusApps = [...new Set(haloData.map(item => item.EmploymentStatusApp))];
@@ -46,6 +46,7 @@ const Halo = () => {
 
     return (
         <>
+            <h1 className="text-center text-xl font-bold p-2 text-blue-900">ToleranceRules</h1>
             <h1 className="text-center text-xl font-bold p-2 text-blue-900">Halo</h1>
             <form
                 className="conditionsNav p-2 m-2 border border-black rounded-md flex justify-start lg:justify-center items-center gap-1 flex-wrap"
@@ -56,7 +57,7 @@ const Halo = () => {
                     <label className="px-1 font-medium" htmlFor="producttype">Product Type:</label>
 
                     <select value={selectedProductType} onChange={(e) => setSelectedProductType(e.target.value)} className="border border-black rounded p-2" required>
-                    <option value="" disabled>NA</option>
+                        <option value="" disabled>NA</option>
                         {uniqueProductTypes.map(type => <option key={type} value={type}>{type}</option>)}
                     </select>
                 </section>
@@ -65,7 +66,7 @@ const Halo = () => {
                 <section>
                     <label className="px-1 font-medium" htmlFor="condition">Condition:</label>
                     <select value={selectedCondition} onChange={(e) => setSelectedCondition(e.target.value)} className="border border-black rounded p-2" required>
-                    <option value="" disabled>NA</option>
+                        <option value="" disabled>NA</option>
                         {uniqueConditions.map(condition => <option key={condition} value={condition}>{condition}</option>)}
                     </select>
                 </section>
@@ -82,7 +83,7 @@ const Halo = () => {
                         <option value="" disabled>NA</option>
                         <option value="Non-Halo Associate">NON-HALO Associate</option>
                         {uniqueEmploymentStatusApps
-                            .filter(status => status !== 'Student' && status !== 'Employed' && status !== 'Retired') 
+                            .filter(status => status !== 'Student' && status !== 'Employed' && status !== 'Retired')
                             .map(status => <option key={status} value={status}>{status}</option>)}
                     </select>
                 </section>
@@ -90,7 +91,7 @@ const Halo = () => {
                 <section>
                     <label className="px-1 font-medium" htmlFor="EmploymentStatuscoAPP">Employment Status (Co-app):</label>
                     <select value={selectedEmploymentStatusCoApp} onChange={(e) => setSelectedEmploymentStatusCoApp(e.target.value)} className="border border-black rounded p-2" required>
-                    <option value="" disabled>NA</option>
+                        <option value="" disabled>NA</option>
                         <option value="Non-Halo Associate">NON-HALO Associate</option>
                         {uniqueEmploymentStatusCoApps.map(status => <option key={status} value={status}>{status}</option>)}
                     </select>
@@ -101,7 +102,7 @@ const Halo = () => {
                     <select name="override" id="override"
                         value={selectedOverride}
                         onChange={(e) => setSelectedOverride(e.target.value)}
-                        className="border border-black rounded p-2" 
+                        className="border border-black rounded p-2"
                     >
                         <option value="">NA</option>
                         {uniqueOverride.map((cond, index) => (
