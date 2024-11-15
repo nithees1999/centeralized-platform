@@ -167,19 +167,19 @@ export default function ServiceContractOverAdvance() {
                 <div style={{ overflowX: 'auto' }}>
                     <table className="w-full">
                         <thead className="border border-black">
-                            <tr>
-                                <th className="p-4 border border-black text-blue-900">Term</th>
-                                <th className="p-4 border border-black text-blue-900">Invoice</th>
-                                <th className="p-4 border border-black text-blue-900">D&H</th>
-                                <th className="p-4 border border-black text-blue-900">Colorup charge</th>
-                                <th className="p-4 border border-black text-blue-900">PIO Invoice</th>
-                                <th className="p-4 border border-black text-blue-900">% of Invoice</th>
-                                <th className="p-4 border border-black text-blue-900">Parameter</th>
-                                <th className="p-4 border border-black text-blue-900">VSC</th>
-                                <th className="p-4 border border-black text-blue-900">Difference</th>
-                                <th className="p-4 border border-black text-blue-900">Company/Provider Name</th>
-                                <th className="p-4 border border-black text-blue-900">Override</th>
-                                <th className="p-4 border border-black text-blue-900">Release</th>
+                            <tr className="text-blue-900">
+                                <th className="p-4 border border-black">Term</th>
+                                <th className="p-4 border border-black">Invoice</th>
+                                <th className="p-4 border border-black">D&H</th>
+                                <th className="p-4 border border-black">Colorup charge</th>
+                                <th className="p-4 border border-black">PIO Invoice</th>
+                                <th className="p-4 border border-black">% of Invoice</th>
+                                <th className="p-4 border border-black">Parameter</th>
+                                <th className="p-4 border border-black">VSC</th>
+                                <th className="p-4 border border-black">Difference</th>
+                                <th className="p-4 border border-black">Company/Provider Name</th>
+                                <th className="p-4 border border-black">Override</th>
+                                <th className="p-4 border border-black">Release</th>
                             </tr>
                         </thead>
 

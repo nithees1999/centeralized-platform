@@ -86,21 +86,21 @@ const TermProtection = () => {
                 <div style={{ overflowX: 'auto' }}>
                     <table className="w-full">
                         <thead className="border border-black">
-                            <tr>
-                                <th className="p-4 border border-black text-blue-900">Product Type</th>
-                                <th className="p-4 border border-black text-blue-900">Condition</th>
-                                <th className="p-4 border border-black text-blue-900">VIN</th>
-                                <th className="p-4 border border-black text-blue-900">Year</th>
-                                <th className="p-4 border border-black text-blue-900">Make</th>
-                                <th className="p-4 border border-black text-blue-900">Model</th>
-                                <th className="p-4 border border-black text-blue-900">Term</th>
-                                <th className="p-4 border border-black text-blue-900">Parameter</th>
-                                <th className="p-4 border border-black text-blue-900">Term Protection</th>
-                                <th className="p-4 border border-black text-blue-900">Difference</th>
-                                <th className="p-4 border border-black text-blue-900">Description</th>
-                                <th className="p-4 border border-black text-blue-900">Actual</th>
-                                <th className="p-4 border border-black text-blue-900">Override</th>
-                                <th className="p-4 border border-black text-blue-900">Release</th>
+                            <tr className="text-blue-900">
+                                <th className="p-4 border border-black">Product Type</th>
+                                <th className="p-4 border border-black">Condition</th>
+                                <th className="p-4 border border-black">VIN</th>
+                                <th className="p-4 border border-black">Year</th>
+                                <th className="p-4 border border-black">Make</th>
+                                <th className="p-4 border border-black">Model</th>
+                                <th className="p-4 border border-black">Term</th>
+                                <th className="p-4 border border-black">Parameter</th>
+                                <th className="p-4 border border-black">Term Protection</th>
+                                <th className="p-4 border border-black">Difference</th>
+                                <th className="p-4 border border-black">Description</th>
+                                <th className="p-4 border border-black">Actual</th>
+                                <th className="p-4 border border-black">Override</th>
+                                <th className="p-4 border border-black">Release</th>
                             </tr>
                         </thead>
                         <tbody>

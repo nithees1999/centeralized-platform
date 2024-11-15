@@ -116,17 +116,17 @@ const Halo = () => {
                 <div style={{ overflowX: 'auto' }}>
                     <table className="w-full">
                         <thead className="border border-black">
-                            <tr>
-                                <th className="p-4 border border-black text-blue-900">Product Type</th>
-                                <th className="p-4 border border-black text-blue-900">Condition</th>
-                                <th className="p-4 border border-black text-blue-900">Co-Applicant</th>
-                                <th className="p-4 border border-black text-blue-900">Employment Status (App)</th>
-                                <th className="p-4 border border-black text-blue-900">Employment Status (Co-app)</th>
-                                <th className="p-4 border border-black text-blue-900">Buy Rate</th>
-                                <th className="p-4 border border-black text-blue-900">Adjusted Rate</th>
-                                <th className="p-4 border border-black text-blue-900">Difference</th>
-                                <th className="p-4 border border-black text-blue-900">Rule</th>
-                                <th className="p-4 border border-black text-blue-900">Override Level</th>
+                            <tr className='text-blue-900'>
+                                <th className="p-4 border border-black">Product Type</th>
+                                <th className="p-4 border border-black">Condition</th>
+                                <th className="p-4 border border-black">Co-Applicant</th>
+                                <th className="p-4 border border-black">Employment Status (App)</th>
+                                <th className="p-4 border border-black">Employment Status (Co-app)</th>
+                                <th className="p-4 border border-black">Buy Rate</th>
+                                <th className="p-4 border border-black">Adjusted Rate</th>
+                                <th className="p-4 border border-black">Difference</th>
+                                <th className="p-4 border border-black">Rule</th>
+                                <th className="p-4 border border-black">Override Level</th>
                             </tr>
                         </thead>
                         <tbody>

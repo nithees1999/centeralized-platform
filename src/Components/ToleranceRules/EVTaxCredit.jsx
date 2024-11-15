@@ -15,15 +15,15 @@ export default function EVTaxCredit() {
                 <div style={{ overflowX: 'auto' }}>
                     <table className="w-full">
                         <thead className="border border-black">
-                            <tr>
-                                <th className="p-4 border border-black text-blue-900">Product Type</th>
-                                <th className="p-4 border border-black text-blue-900">Condition</th>
-                                <th className="p-4 border border-black text-blue-900">VIN</th>
-                                <th className="p-4 border border-black text-blue-900">Year</th>
-                                <th className="p-4 border border-black text-blue-900">Make</th>
-                                <th className="p-4 border border-black text-blue-900">Model</th>
-                                <th className="p-4 border border-black text-blue-900">EV Tax credit value</th>
-                                <th className="p-4 border border-black text-blue-900">Override</th>
+                            <tr className='text-blue-900'>
+                                <th className="p-4 border border-black">Product Type</th>
+                                <th className="p-4 border border-black">Condition</th>
+                                <th className="p-4 border border-black">VIN</th>
+                                <th className="p-4 border border-black">Year</th>
+                                <th className="p-4 border border-black">Make</th>
+                                <th className="p-4 border border-black">Model</th>
+                                <th className="p-4 border border-black">EV Tax credit value</th>
+                                <th className="p-4 border border-black">Override</th>
                             </tr>
                         </thead>
                         <tbody>

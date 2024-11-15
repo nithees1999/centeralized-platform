@@ -76,16 +76,16 @@ export default function ModelIsNotEligibleForSentinel() {
                 <div style={{ overflowX: 'auto' }}>
                     <table className="w-full">
                         <thead className="border border-black">
-                            <tr>
-                                <th className="p-4 border border-black text-blue-900">productType</th>
-                                <th className="p-4 border border-black text-blue-900">Condition</th>
-                                <th className="p-4 border border-black text-blue-900">VIN</th>
-                                <th className="p-4 border border-black text-blue-900">Year</th>
-                                <th className="p-4 border border-black text-blue-900">Make</th>
-                                <th className="p-4 border border-black text-blue-900">Model</th>
-                                <th className="p-4 border border-black text-blue-900">Term</th>
-                                <th className="p-4 border border-black text-blue-900">Sentinel</th>
-                                <th className="p-4 border border-black text-blue-900">OverRide</th>
+                            <tr className='text-blue-900'>
+                                <th className="p-4 border border-black">productType</th>
+                                <th className="p-4 border border-black">Condition</th>
+                                <th className="p-4 border border-black">VIN</th>
+                                <th className="p-4 border border-black">Year</th>
+                                <th className="p-4 border border-black">Make</th>
+                                <th className="p-4 border border-black">Model</th>
+                                <th className="p-4 border border-black">Term</th>
+                                <th className="p-4 border border-black">Sentinel</th>
+                                <th className="p-4 border border-black">OverRide</th>
                             </tr>
                         </thead>
                         <tbody>

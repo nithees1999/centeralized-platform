@@ -218,17 +218,17 @@ export default function GAPIsNotPermitted() {
                 <div style={{ overflowX: 'auto' }}>
                     <table className="w-full">
                         <thead className="border border-black">
-                            <tr>
-                                <th className="p-4 border border-black text-blue-900">Term</th>
-                                <th className="p-4 border border-black text-blue-900">GAP</th>
-                                <th className="p-4 border border-black text-blue-900">Total Amount Finance</th>
-                                <th className="p-4 border border-black text-blue-900">Total Insurance Amount</th>
-                                <th className="p-4 border border-black text-blue-900">Adjusted Amount</th>
-                                <th className="p-4 border border-black text-blue-900">MSRP</th>
-                                <th className="p-4 border border-black text-blue-900">LTV</th>
-                                <th className="p-4 border border-black text-blue-900">Rule</th>
-                                <th className="p-4 border border-black text-blue-900">Override level</th>
-                                <th className="p-4 border border-black text-blue-900">Release</th>
+                            <tr className='text-blue-900'>
+                                <th className="p-4 border border-black">Term</th>
+                                <th className="p-4 border border-black">GAP</th>
+                                <th className="p-4 border border-black">Total Amount Finance</th>
+                                <th className="p-4 border border-black">Total Insurance Amount</th>
+                                <th className="p-4 border border-black">Adjusted Amount</th>
+                                <th className="p-4 border border-black">MSRP</th>
+                                <th className="p-4 border border-black">LTV</th>
+                                <th className="p-4 border border-black">Rule</th>
+                                <th className="p-4 border border-black">Override level</th>
+                                <th className="p-4 border border-black">Release</th>
                             </tr>
                         </thead>
                         <tbody>

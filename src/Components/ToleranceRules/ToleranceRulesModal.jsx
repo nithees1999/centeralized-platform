@@ -57,7 +57,7 @@ const ToleranceRulesModal = (props) => {
         <div>
             <Modal classNames={{ modal: "w-full max-w-md p-12  bg-white rounded-lg shadow-lg" }} open={open} onClose={onCloseModal} center>
                 <h1 className="text-center text-xl font-bold p-2 text-blue-900">ToleranceRules</h1>
-                <h2 className="text-2xl font-semibold mb-4">Search Tolerance Rules</h2>
+                <h2 className="text-2xl font-semibold mb-4 text-blue-900">Search Tolerance Rules</h2>
                 <form onSubmit={handleSubmit}>
                     <input
                         className={`w-full p-2 border ${isItemFound ? "border-gray-300" : "border-red-500"}  border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500`}

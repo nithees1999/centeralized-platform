@@ -31,7 +31,7 @@ const WindshieldProtection = () => {
     return (
         <>
             <h1 className="text-center text-xl font-bold p-2 text-blue-900">ToleranceRules</h1>
-            <h1 className="text-center text-xl font-bold p-2 text-blue-700">WindshieldProtection</h1>
+            <h1 className="text-center text-xl font-bold p-2 text-blue-900">WindshieldProtection</h1>
             <form
                 className="conditionsNav p-2 m-2 border border-black rounded-md flex justify-start lg:justify-center items-center gap-1 flex-wrap"
                 onSubmit={handleSearch}
@@ -68,21 +68,21 @@ const WindshieldProtection = () => {
                 <div style={{ overflowX: 'auto' }}>
                     <table className="w-full">
                         <thead className="border border-black">
-                            <tr>
-                                <th className="p-4 border border-black text-blue-700">Product Type</th>
-                                <th className="p-4 border border-black text-blue-700">Condition</th>
-                                <th className="p-4 border border-black text-blue-700">VIN</th>
-                                <th className="p-4 border border-black text-blue-700">Year</th>
-                                <th className="p-4 border border-black text-blue-700">Make</th>
-                                <th className="p-4 border border-black text-blue-700">Model</th>
-                                <th className="p-4 border border-black text-blue-700">Term</th>
-                                <th className="p-4 border border-black text-blue-700">Parameter</th>
-                                <th className="p-4 border border-black text-blue-700">Windshield Protection</th>
-                                <th className="p-4 border border-black text-blue-700">Difference</th>
-                                <th className="p-4 border border-black text-blue-700">Description</th>
-                                <th className="p-4 border border-black text-blue-700">Actual</th>
-                                <th className="p-4 border border-black text-blue-700">Override</th>
-                                <th className="p-4 border border-black text-blue-700">Release</th>
+                            <tr className="text-blue-900">
+                                <th className="p-4 border border-black">Product Type</th>
+                                <th className="p-4 border border-black">Condition</th>
+                                <th className="p-4 border border-black">VIN</th>
+                                <th className="p-4 border border-black">Year</th>
+                                <th className="p-4 border border-black">Make</th>
+                                <th className="p-4 border border-black">Model</th>
+                                <th className="p-4 border border-black">Term</th>
+                                <th className="p-4 border border-black">Parameter</th>
+                                <th className="p-4 border border-black">Windshield Protection</th>
+                                <th className="p-4 border border-black">Difference</th>
+                                <th className="p-4 border border-black">Description</th>
+                                <th className="p-4 border border-black">Actual</th>
+                                <th className="p-4 border border-black">Override</th>
+                                <th className="p-4 border border-black">Release</th>
                             </tr>
                         </thead>
                         <tbody>
