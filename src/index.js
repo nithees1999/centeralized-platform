@@ -24,15 +24,17 @@ import GapAmountOverAdvance from './Components/ToleranceRules/GapAmountOverAdvan
 import OtherAmountsOverAdvance from './Components/ToleranceRules/OtherAmountsOverAdvance';
 import Halo from './Components/ToleranceRules/Halo';
 import TermProtection from './Components/ToleranceRules/TermProtection';
+import WindshieldProtection from './Components/ToleranceRules/WindshieldProtection';
 import TheftProtectionFeeExceedsLimit from './Components/ToleranceRules/TheftProtectionFeeExceedsLimit';
 import EVTaxCredit from './Components/ToleranceRules/EVTaxCredit';
 import ModelIsNotEligibleForSentinel from './Components/ToleranceRules/ModelIsNotEligibleForSentinel';
 import TireAndWheelProtectionExceedsLimit from './Components/ToleranceRules/TireAndWheelProtectionExceedsLimit';
-import SentinelExceedsLimit from './Components/ToleranceRules/SentinelExceedsLimit';
+import DentProtection from './Components/ToleranceRules/DentProtection';
+import KeyReplacementProtection from './Components/ToleranceRules/KeyReplacementProtection';
 import ModelIsNotValidForTaxCredit from './Components/ToleranceRules/ModelIsNotValidForTaxCredit';
+import InvalidExcessiveWearAndUse from './Components/ToleranceRules/InvalidExcessiveWearAndUse';
+import SentinelExceedsLimit from './Components/ToleranceRules/SentinelExceedsLimit';
 import CapitalizedCostReductionCash from './Components/ToleranceRules/CapitalizedCostReductionCash';
-
-
 
 const router = createBrowserRouter([
   {
@@ -108,6 +110,12 @@ const router = createBrowserRouter([
         element: <TermProtection/>,
       },
       {
+
+        path: "WindshieldProtection",
+        element: <WindshieldProtection/>,
+      },
+      {
+
         path: "TheftProtectionFeeExceedsLimit",
         element: <TheftProtectionFeeExceedsLimit/>,
       },
@@ -124,6 +132,14 @@ const router = createBrowserRouter([
         element: <TireAndWheelProtectionExceedsLimit/>,
       },
       {
+        path: "DentProtection",
+        element: <DentProtection/>,
+      },
+      {
+        path: "KeyReplacementProtection",
+        element: <KeyReplacementProtection/>,
+      },
+      {
         path: "SentinelExceedsLimit",
         element: <SentinelExceedsLimit/>,
       },
@@ -132,6 +148,10 @@ const router = createBrowserRouter([
         element: <ModelIsNotValidForTaxCredit/>,
       },
       {
+        path: "InvalidExcessiveWearAndUse",
+        element: <InvalidExcessiveWearAndUse/>,
+      },
+     {
         path: "CapitalizedCostReductionCash",
         element: <CapitalizedCostReductionCash/>,
       },
