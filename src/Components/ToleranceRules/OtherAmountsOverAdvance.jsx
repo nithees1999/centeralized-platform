@@ -22,7 +22,7 @@ const OtherAmountsOverAdvance = () => {
     const [selectedCondition, setSelectedCondition] = useState('');
     const [filteredData, setFilteredData] = useState(data);
     const handleSearch = (e) => {
-        e.preventDefault(); 
+        e.preventDefault();
         const filtered = data.filter(item =>
             (selectedProductType ? item.ProductType === selectedProductType : true) &&
             (selectedCondition ? item.Condition === selectedCondition : true)
@@ -31,10 +31,11 @@ const OtherAmountsOverAdvance = () => {
     };
     return (
         <>
+            <h1 className="text-center text-xl font-bold p-2 text-blue-700">ToleranceRules</h1>
             <h1 className="text-center text-xl font-bold p-2 text-blue-700">Other Amounts Over Advance</h1>
             <form
                 className="conditionsNav p-2 m-2 border border-black rounded-md flex justify-start lg:justify-center items-center gap-1 flex-wrap"
-                onSubmit={handleSearch} 
+                onSubmit={handleSearch}
             >
                 <section>
                     <label className="px-1 font-medium" htmlFor="producttype">Product Type:</label>

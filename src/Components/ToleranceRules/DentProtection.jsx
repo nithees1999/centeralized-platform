@@ -30,6 +30,7 @@ const DentProtection = () => {
     };
     return (
         <>
+            <h1 className="text-center text-xl font-bold p-2 text-blue-700">ToleranceRules</h1>
             <h1 className="text-center text-xl font-bold p-2 text-blue-700">DentProtection</h1>
             <form
                 className="conditionsNav p-2 m-2 border border-black rounded-md flex justify-start lg:justify-center items-center gap-1 flex-wrap"

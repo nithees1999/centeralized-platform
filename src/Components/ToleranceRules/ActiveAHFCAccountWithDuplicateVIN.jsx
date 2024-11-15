@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import axios from "axios";
-export default function InvalidExcessiveWearAndUse() {
+export default function ActiveAHFCAccountWithDuplicateVIN() {
     const [tableData, setTableData] = useState([]);
     const [columnNames, setColumnNames] = useState([]);
-    // Fetch data on component mount
+    
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get("http://localhost:8080/api/invalidExcessiveWearAndUseTable");
+                const response = await axios.get("http://localhost:8080/api/ActiveAHFCAccountWithDuplicateVINTable");
                 const responseData = response.data;
                 setTableData(responseData);
                 setColumnNames(Object.keys(responseData[0]));
@@ -20,7 +20,7 @@ export default function InvalidExcessiveWearAndUse() {
     return (
         <>
             <h1 className="text-center text-xl font-bold p-2 text-blue-700">ToleranceRules</h1>
-            <h1 className='text-center text-xl font-bold p-2 text-blue-700'>Invalid Excessive Wear And Use</h1>
+            <h1 className='text-center text-xl font-bold p-2 text-blue-700'>Active AHFC Account With Duplicate VIN</h1>
             <section style={{ overflowX: 'auto' }} className='p-4 text-center'>
                 <table className="min-w-full bg-white border border-gray-300">
                     <thead>
