@@ -53,8 +53,8 @@ export default function ModelIsNotEligibleForSentinel() {
 
     return (
         <>
-            <h1 className="text-center text-xl font-bold p-2 text-blue-700">ToleranceRules</h1>
-            <h1 className="text-center text-xl font-bold p-2 text-blue-700">Model Is Not Eligible For Sentinel</h1>
+            <h1 className="text-center text-xl font-bold p-2 text-blue-900">ToleranceRules</h1>
+            <h1 className="text-center text-xl font-bold p-2 text-blue-900">Model Is Not Eligible For Sentinel</h1>
             <form
                 className="conditionsNav p-2 m-2 border border-black rounded-md flex justify-start lg:justify-center items-center gap-1 flex-wrap"
                 onSubmit={handleSearch}
@@ -72,20 +72,20 @@ export default function ModelIsNotEligibleForSentinel() {
                 <button className="rounded-md p-2 mx-2 border border-black" type="submit">Submit</button>
             </form>
 
-            <section className="min-h-screen py-8 px-4 m-2 border border-black rounded-md">
+            <section className="py-8 px-4 m-2 border border-black rounded-md">
                 <div style={{ overflowX: 'auto' }}>
                     <table className="w-full">
                         <thead className="border border-black">
                             <tr>
-                                <th className="p-4 border border-black text-blue-700">productType</th>
-                                <th className="p-4 border border-black text-blue-700">Condition</th>
-                                <th className="p-4 border border-black text-blue-700">VIN</th>
-                                <th className="p-4 border border-black text-blue-700">Year</th>
-                                <th className="p-4 border border-black text-blue-700">Make</th>
-                                <th className="p-4 border border-black text-blue-700">Model</th>
-                                <th className="p-4 border border-black text-blue-700">Term</th>
-                                <th className="p-4 border border-black text-blue-700">Sentinel</th>
-                                <th className="p-4 border border-black text-blue-700">OverRide</th>
+                                <th className="p-4 border border-black text-blue-900">productType</th>
+                                <th className="p-4 border border-black text-blue-900">Condition</th>
+                                <th className="p-4 border border-black text-blue-900">VIN</th>
+                                <th className="p-4 border border-black text-blue-900">Year</th>
+                                <th className="p-4 border border-black text-blue-900">Make</th>
+                                <th className="p-4 border border-black text-blue-900">Model</th>
+                                <th className="p-4 border border-black text-blue-900">Term</th>
+                                <th className="p-4 border border-black text-blue-900">Sentinel</th>
+                                <th className="p-4 border border-black text-blue-900">OverRide</th>
                             </tr>
                         </thead>
                         <tbody>

@@ -1,7 +1,7 @@
 import { Modal } from 'react-responsive-modal';
 import 'react-responsive-modal/styles.css';
 
-const MyModal = (props) => {
+const OrigenateModal = (props) => {
     const { open, onCloseModal, creds, modalInputChange , handlePasswordUpdate,updateResponse } = props
 
     return (
@@ -54,4 +54,4 @@ const MyModal = (props) => {
     );
 };
 
-export default MyModal;
+export default OrigenateModal;

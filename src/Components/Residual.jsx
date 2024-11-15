@@ -77,7 +77,7 @@ const Residual = () => {
 
     return (
         <div className="p-2">
-            <h1 className="text-center text-xl font-bold p-2 text-blue-700">Residual</h1>
+            <h1 className="text-center text-xl font-bold p-2 text-blue-900">Residual</h1>
             <form
                 className="conditionsNav p-2 m-2 border border-black rounded-md flex justify-start lg:justify-center items-center gap-1 flex-wrap"
                 onSubmit={handleSearch}
@@ -92,7 +92,7 @@ const Residual = () => {
                         value={formState.Vehicle_Type}
                         onChange={handleChange}
                     >
-                        <option value="">Select Vehicle Type</option>
+                        <option value="">NA</option>
                         {vehicleType.map((vehicleType, index) => (
                             <option key={index} value={vehicleType}>{vehicleType}</option>
                         ))}
@@ -108,7 +108,7 @@ const Residual = () => {
                         value={formState.Finance}
                         onChange={handleChange}
                     >
-                        <option value="">Select Finance</option>
+                        <option value="">NA</option>
                         {Finance.map((Finance, index) => (
                             <option key={index} value={Finance}>{Finance}</option>
                         ))}
@@ -123,7 +123,7 @@ const Residual = () => {
                         value={formState.Vehicle_Year}
                         onChange={handleChange}
                     >
-                        <option value="">Select Vehicle_Year</option>
+                        <option value="">NA</option>
                         {Vehicle_Year.map((Vehicle_Year, index) => (
                             <option key={index} value={Vehicle_Year}>{Vehicle_Year}</option>
                         ))}
@@ -142,14 +142,14 @@ const Residual = () => {
                 <table className="w-full">
                     <thead className="border border-black">
                         <tr>
-                            <th className="p-4 border border-black text-blue-700">Module</th>
-                            <th className="p-4 border border-black text-blue-700">Brand</th>
-                            <th className="p-4 border border-black text-blue-700">Finance</th>
-                            <th className="p-4 border border-black text-blue-700">Vehicle_Type</th>
-                            <th className="p-4 border border-black text-blue-700">Formula</th>
-                            <th className="p-4 border border-black text-blue-700">Formula_Field</th>
-                            <th className="p-4 border border-black text-blue-700">Vehicle_Year</th>
-                            <th className="p-4 border border-black text-blue-700">Formula_Field_Expansion</th>
+                            <th className="p-4 border border-black text-blue-900">Module</th>
+                            <th className="p-4 border border-black text-blue-900">Brand</th>
+                            <th className="p-4 border border-black text-blue-900">Finance</th>
+                            <th className="p-4 border border-black text-blue-900">Vehicle_Type</th>
+                            <th className="p-4 border border-black text-blue-900">Formula</th>
+                            <th className="p-4 border border-black text-blue-900">Formula_Field</th>
+                            <th className="p-4 border border-black text-blue-900">Vehicle_Year</th>
+                            <th className="p-4 border border-black text-blue-900">Formula_Field_Expansion</th>
                             
                         </tr>
                     </thead>

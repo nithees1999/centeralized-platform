@@ -43,6 +43,7 @@ const ModelIsNotValidForTaxCredit = () => {
                 <button type="submit" className="rounded-md p-2 mx-2 border border-black">Submit</button>
             </form>
             <section className="min-h-screen py-8 px-4 m-2 border border-black rounded-md">
+
                 <div style={{ overflowX: 'auto' }}>
                     <table className="w-full">
                         <thead className="border border-black">
@@ -63,6 +64,7 @@ const ModelIsNotValidForTaxCredit = () => {
                         <tbody>
                             {filteredData.length > 0 ? (
                                 filteredData.map((item, index) => (
+
                                     <tr key={index}>
                                         <td className="p-2 border border-black">{item.ProductType}</td>
                                         <td className="p-2 border border-black">{item.Condition}</td>
@@ -92,3 +94,4 @@ const ModelIsNotValidForTaxCredit = () => {
     );
 };
 export default ModelIsNotValidForTaxCredit;
+

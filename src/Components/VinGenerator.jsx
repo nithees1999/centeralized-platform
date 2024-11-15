@@ -6,6 +6,7 @@ import PaginationButtons from "./PaginationButtons";
 import axios from "axios";
 import LoadingIcons from 'react-loading-icons'
 import Select from 'react-select';
+import UploadExcelModal from "./UploadExcelModal";
 
 export default function VinGenerator() {
     const [loading, setLoading] = useState(false);
@@ -36,6 +37,17 @@ export default function VinGenerator() {
     const portUrl = "http://localhost:8080"
     const fetchVinDetailsUrl = "/api/fetchVinDetails"
     const filterVinDetailsUrl = "/api/VinFilter"
+
+    //Modal
+    const [open, setOpen] = useState(false);
+
+    const onOpenModal = (element) => {
+        setOpen(true)
+    }
+    const onCloseModal = () => {
+        setOpen(false);
+        // setUpdateResponse("")
+    } 
 
     const fetchVinDetails = async () => {
         setLoading(true)
@@ -151,7 +163,17 @@ export default function VinGenerator() {
 
     return (
         <div className=" p-2 ">
-            <h1 className="text-center text-xl font-bold p-2 text-blue-700">VIN Generator</h1>
+            <UploadExcelModal open={open} onCloseModal={onCloseModal}  />
+            {/* <div>
+            <span className="text-center text-xl font-bold p-2 text-blue-900 self-center">VIN Generator</span>
+            <button className="text-center text-xl font-bold p-2 text-blue-900">Upload</button>
+            </div> */}
+            <div class="flex justify-between items-center w-full">
+                <span class="text-xl font-bold p-2 text-blue-900 mx-auto">VIN Generator</span>
+                <button class="p-2 bg-blue-900 text-white rounded-xl" onClick={() => onOpenModal()}>Upload</button>
+            </div>
+
+
             <form
                 className="conditionsNav p-2 m-2 border border-black rounded-md flex justify-start lg:justify-center items-center gap-1 flex-wrap "
                 onSubmit={handleSearch}
@@ -258,15 +280,15 @@ export default function VinGenerator() {
             <section className="min-h-screen py-8 px-4 m-2 border border-black rounded-md">
                 <table className="w-full">
                     <thead className="border border-black ">
-                        <tr>
-                            <th className="p-2 border border-black text-blue-700">VIN Type</th>
-                            <th className="p-2 border border-black text-blue-700">VIN Number</th>
-                            <th className="p-2 border border-black text-blue-700">Model</th>
-                            <th className="p-2 border border-black text-blue-700">Make</th>
-                            <th className="p-2 border border-black text-blue-700">Year</th>
-                            <th className="p-2 border border-black text-blue-700">Model ID</th>
+                        <tr className="text-blue-900">
+                            <th className="p-2 border border-black">VIN Type</th>
+                            <th className="p-2 border border-black">VIN Number</th>
+                            <th className="p-2 border border-black">Model</th>
+                            <th className="p-2 border border-black">Make</th>
+                            <th className="p-2 border border-black">Year</th>
+                            <th className="p-2 border border-black">Model ID</th>
                             {selectedOptionFields && selectedOptionFields.map((option) => (
-                                <th key={option.label} className="p-2 border border-black text-blue-700">
+                                <th key={option.label} className="p-2 border border-black">
                                     {option.label}
                                 </th>
                             ))}

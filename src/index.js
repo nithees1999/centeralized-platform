@@ -33,6 +33,8 @@ import DentProtection from './Components/ToleranceRules/DentProtection';
 import KeyReplacementProtection from './Components/ToleranceRules/KeyReplacementProtection';
 import ModelIsNotValidForTaxCredit from './Components/ToleranceRules/ModelIsNotValidForTaxCredit';
 import InvalidExcessiveWearAndUse from './Components/ToleranceRules/InvalidExcessiveWearAndUse';
+import SentinelExceedsLimit from './Components/ToleranceRules/SentinelExceedsLimit';
+import CapitalizedCostReductionCash from './Components/ToleranceRules/CapitalizedCostReductionCash';
 
 const router = createBrowserRouter([
   {
@@ -138,6 +140,10 @@ const router = createBrowserRouter([
         element: <KeyReplacementProtection/>,
       },
       {
+        path: "SentinelExceedsLimit",
+        element: <SentinelExceedsLimit/>,
+      },
+      {
         path: "ModelIsNotValidForTaxCredit",
         element: <ModelIsNotValidForTaxCredit/>,
       },
@@ -145,7 +151,10 @@ const router = createBrowserRouter([
         path: "InvalidExcessiveWearAndUse",
         element: <InvalidExcessiveWearAndUse/>,
       },
-     
+     {
+        path: "CapitalizedCostReductionCash",
+        element: <CapitalizedCostReductionCash/>,
+      },
     ],
   },
 ]);

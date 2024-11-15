@@ -3,7 +3,8 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import PaginationButtons from "./PaginationButtons";
 import LoadingIcons from 'react-loading-icons'
-import MyModal from "./MyModal";
+import OrigenateModal from "./OrigenateModal";
+import UploadExcelModal from "./UploadExcelModal";
 
 export default function Origenate() {
     const [searchParams, setSearchParams] = useState({
@@ -23,11 +24,22 @@ export default function Origenate() {
         responseDataPosts = responseData.slice(firstPostIndex, lastPostIndex)
     }
 
-        //api call URLs
-        const portUrl = "http://localhost:8080"
-        const fetchOrigenateDetailsUrl = "/api/fetchOrigenateDetails"
-        const filterOrigenateDetailsUrl = "/api/OrigenateFilter"
-        const updateOrigenateRecord ="/api/updateOrigenateRecord"
+    //api call URLs
+    const portUrl = "http://localhost:8080"
+    const fetchOrigenateDetailsUrl = "/api/fetchOrigenateDetails"
+    const filterOrigenateDetailsUrl = "/api/OrigenateFilter"
+    const updateOrigenateRecord = "/api/updateOrigenateRecord"
+
+    //Modal
+    const [openUpload, setOpenUpload] = useState(false);
+
+    const onOpenModalUpload = (element) => {
+        setOpenUpload(true)
+    }
+    const onCloseModalUpload = () => {
+        setOpenUpload(false);
+        // setUpdateResponse("")
+    }
 
     //Modal
     const [open, setOpen] = useState(false);
@@ -50,21 +62,21 @@ export default function Origenate() {
     const onCloseModal = () => {
         setOpen(false);
         setUpdateResponse("")
-    } 
+    }
 
     const modalInputChange = (e) => {
         setCreds({ ...creds, [e.target.name]: e.target.value })
     }
 
-    const handlePasswordUpdate = async (creds) =>{
-        if(creds.AdminPassword && creds.AdminPassword === customAdminPassword){
+    const handlePasswordUpdate = async (creds) => {
+        if (creds.AdminPassword && creds.AdminPassword === customAdminPassword) {
             const Response = await axios.post(portUrl + updateOrigenateRecord, {
-                id : creds.User_ID,
-                data : creds.Password
+                id: creds.User_ID,
+                data: creds.Password
             });
             setUpdateResponse(Response.data)
             fetchOrigenateDetails()
-        }else{
+        } else {
             setUpdateResponse("Admin password error")
         }
     }
@@ -114,7 +126,12 @@ export default function Origenate() {
 
     return (
         <div className=" p-2 ">
-            <h1 className="text-center text-xl font-bold p-2 text-blue-700  ">Origenate Details</h1>
+            <UploadExcelModal open={openUpload} onCloseModal={onCloseModalUpload} />
+            {/* <h1 className="text-center text-xl font-bold p-2 text-blue-900  ">Origenate Details</h1> */}
+            <div class="flex justify-between items-center w-full">
+                <span class="text-xl font-bold text-blue-900 mx-auto">Origenate Details</span>
+                <button class="p-2 bg-blue-900 text-white rounded-xl" onClick={() => onOpenModalUpload()}>Upload</button>
+            </div>
             <form
                 className="conditionsNav p-2 m-2 border border-black rounded-md flex justify-start lg:justify-center items-center gap-1 flex-wrap "
                 onSubmit={handleSearch}
@@ -153,16 +170,16 @@ export default function Origenate() {
                 </button>
             </form>
             <section className="min-h-screen py-8 px-4 m-2 border border-black rounded-md">
-                <MyModal open={open} onCloseModal={onCloseModal} creds={creds} modalInputChange={modalInputChange} handlePasswordUpdate={()=>handlePasswordUpdate(creds)} updateResponse={updateResponse} />
+                <OrigenateModal open={open} onCloseModal={onCloseModal} creds={creds} modalInputChange={modalInputChange} handlePasswordUpdate={() => handlePasswordUpdate(creds)} updateResponse={updateResponse} />
                 <table className="w-full">
                     <thead className="border border-black ">
                         <tr>
-                            <th className="p-4 border border-black text-blue-700">User Id</th>
-                            <th className="p-4 border border-black text-blue-700">Password</th>
-                            <th className="p-4 border border-black text-blue-700">Team</th>
-                            <th className="p-4 border border-black text-blue-700">Security Profile</th>
-                            <th className="p-4 border border-black text-blue-700">ENV</th>
-                            <th className="p-4 border border-black text-blue-700">EDIT</th>
+                            <th className="p-4 border border-black text-blue-900">User Id</th>
+                            <th className="p-4 border border-black text-blue-900">Password</th>
+                            <th className="p-4 border border-black text-blue-900">Team</th>
+                            <th className="p-4 border border-black text-blue-900">Security Profile</th>
+                            <th className="p-4 border border-black text-blue-900">ENV</th>
+                            <th className="p-4 border border-black text-blue-900">EDIT</th>
                         </tr>
                     </thead>
 
@@ -183,7 +200,7 @@ export default function Origenate() {
                                         <td className="p-2 border border-black">{element.Security_Profile}</td>
                                         <td className="p-2 border border-black">{element.Env}</td>
                                         <td className="p-2 border border-black text-center">
-                                                <FaEdit className="inline-block cursor-pointer" onClick={() => onOpenModal(element)} />
+                                            <FaEdit className="inline-block cursor-pointer" onClick={() => onOpenModal(element)} />
                                         </td>
                                     </tr>
                                 ))

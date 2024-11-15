@@ -1,15 +1,19 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import links from "../../Utils/links"
 
-export default function GapAmountOverAdvance() {
+export default function SentinelExceedsLimit() {
+    const { portUrl, filterVinDetailsUrl } = links
 
     // API call URLs
-    const portUrl = "http://localhost:8080";
-    const filterVinDetailsUrl = "/api/VinFilter";
+    // const portUrl = "http://localhost:8080";
+    // const filterVinDetailsUrl = "/api/VinFilter";
 
     // Search parameters to fetch VIN
     const [searchParams, setSearchParams] = useState({
         VIN: '',
+        ProductType: '',
+        condition: '',
         override: '',
     });
 
@@ -38,7 +42,7 @@ export default function GapAmountOverAdvance() {
     // Formula Calculation function
     const calculateValues = (invoice, DandH, colorupCharge, PIOInvoice, percentageOfInvoice, difference) => {
         const calculatedParameter = (invoice + DandH + colorupCharge + PIOInvoice) * percentageOfInvoice / 100;
-        const calculatedGAP = calculatedParameter + difference;
+        const calculatedSentinel = calculatedParameter + difference;
         let calculatedOverride
 
         if (difference <= 50) {
@@ -50,11 +54,12 @@ export default function GapAmountOverAdvance() {
         } else if (difference > 1000) {
             calculatedOverride = "5"
         }
-        return { calculatedParameter, calculatedGAP, calculatedOverride }
+        return { calculatedParameter, calculatedSentinel, calculatedOverride }
     };
 
     //initiate when changes in the form input
     useEffect(() => {
+        const { condition } = searchParams;
 
         const setFormData = (TermData, percentageOfInvoice, difference) => {
             setTermData(TermData)
@@ -62,18 +67,25 @@ export default function GapAmountOverAdvance() {
             setdifference(difference)
         };
 
-        if (vinData.length ? vinData[0].Make === "Honda" : null) {
-            setFormData(36, 4, [50, 50.01, 500.01, 1000.01])
-        } else {
-            setFormData(24, 4, [50, 50.01, 500.01, 1000.01])
+        if (condition === "NEW") {
+            if (vinData.length ? vinData[0].Make === "Honda" : null) {
+                setFormData(36, 5, [50, 50.01, 1000, 1000.01])
+            } else {
+                setFormData(24, 5, [50, 50.01, 500.01, 1000.01])
+            }
+        } else if (condition === "Used/Certified") {
+            if (vinData ? vinData[0].Make === "Honda" : null) {
+                setFormData(36, 5, [50, 50.01, 1000, 1000.01])
+            } else {
+                setFormData(24, 5, [50, 50.01, 500.01, 1000.01])
+            }
         }
-
     }, [searchParams, vinData]);
 
     return (
         <>
             <h1 className="text-center text-xl font-bold p-2 text-blue-900">ToleranceRules</h1>
-            <h1 className="text-center text-xl font-bold p-2 text-blue-900">Gap Amount Over Advance</h1>
+            <h1 className="text-center text-xl font-bold p-2 text-blue-900">Sentinel exceeds limit</h1>
             <form
                 className="conditionsNav p-2 m-2 border border-black rounded-md flex justify-start lg:justify-center items-center gap-1 flex-wrap"
                 onSubmit={handleSearch}
@@ -81,6 +93,24 @@ export default function GapAmountOverAdvance() {
                 <section>
                     <label className="px-1 font-medium" htmlFor="VIN">VIN:</label>
                     <input name="VIN" value={searchParams.VIN} onChange={handleChange} type="text" className="border border-black rounded p-2" required />
+                </section>
+
+                <section>
+                    <label className="px-1 font-medium" htmlFor="ProductType">Product Type:</label>
+                    <select name="ProductType" id="ProductType" value={searchParams.ProductType} onChange={handleChange} className="border border-black rounded p-2" required >
+                        <option value="">NA</option>
+                        <option value="Retail">Retail</option>
+                        <option value="Lease">Lease</option>
+                    </select>
+                </section>
+
+                <section>
+                    <label className="px-1 font-medium" htmlFor="condition">Condition:</label>
+                    <select name="condition" id="condition" value={searchParams.condition} onChange={handleChange} className="border border-black rounded p-2" required >
+                        <option value="">NA</option>
+                        <option value="NEW">New</option>
+                        <option value="Used/Certified">Used/Certified</option>
+                    </select>
                 </section>
 
                 <section>
@@ -100,11 +130,9 @@ export default function GapAmountOverAdvance() {
             {vinData.length ?
                 <section className="conditionsNav p-2 m-2 border border-black rounded-md flex justify-start lg:justify-center items-center gap-1 flex-wrap">
                     <span className="px-1 font-normal">Product Type:</span>
-                    <span className="px-1 font-bold">Retail</span>
+                    <span className="px-1 font-bold">{searchParams.ProductType ? searchParams.ProductType : null}</span>
                     <span className="px-1 font-normal">Condition:</span>
-                    <span className="px-1 font-bold">New & Used/Certified</span>
-                    <span className="px-1 font-normal">Category:</span>
-                    <span className="px-1 font-bold">Honda & Other care</span>
+                    <span className="px-1 font-bold">{searchParams.condition ? searchParams.condition : null}</span>
                     <span className="px-1 font-normal">vin:</span>
                     <span className="px-1 font-bold">{vinData[0].VIN ? vinData[0].VIN : null}</span>
                     <span className="px-1 font-normal">Year:</span>
@@ -117,7 +145,7 @@ export default function GapAmountOverAdvance() {
                 :
                 null
             }
-            <section className="min-h-screen py-8 px-4 m-2 border border-black rounded-md">
+            <section className="py-8 px-4 m-2 border border-black rounded-md">
                 <div style={{ overflowX: 'auto' }}>
                     <table className="w-full">
                         <thead className="border border-black">
@@ -129,7 +157,7 @@ export default function GapAmountOverAdvance() {
                                 <th className="p-4 border border-black text-blue-900">PIO Invoice</th>
                                 <th className="p-4 border border-black text-blue-900">% of Invoice</th>
                                 <th className="p-4 border border-black text-blue-900">Parameter</th>
-                                <th className="p-4 border border-black text-blue-900">GAP</th>
+                                <th className="p-4 border border-black text-blue-900">Sentinel</th>
                                 <th className="p-4 border border-black text-blue-900">Difference</th>
                                 <th className="p-4 border border-black text-blue-900">Override</th>
                                 <th className="p-4 border border-black text-blue-900">Release</th>
@@ -141,7 +169,7 @@ export default function GapAmountOverAdvance() {
                                     {
 
                                         difference && difference.map((differenceValue, index) => {
-                                            const { calculatedParameter, calculatedGAP, calculatedOverride } = calculateValues(
+                                            const { calculatedParameter, calculatedSentinel, calculatedOverride } = calculateValues(
                                                 parseInt(element.DLR_INV_AM),
                                                 parseInt(element.DH_AMT),
                                                 parseInt(element.Color_Upcharge_Invoice),
@@ -157,7 +185,6 @@ export default function GapAmountOverAdvance() {
                                                 return null; // Skip this row if it doesn't match the selected Override level
                                             }
 
-
                                             return (
                                                 <tr key={index}>
                                                     <td className="p-2 border border-black">{TermData}</td>
@@ -167,7 +194,7 @@ export default function GapAmountOverAdvance() {
                                                     <td className="p-2 border border-black">{element.PIO_Total_Dlr_Invoice_Amount}</td>
                                                     <td className="p-2 border border-black">{percentageOfInvoice}</td>
                                                     <td className="p-2 border border-black">{calculatedParameter}</td>
-                                                    <td className="p-2 border border-black">{calculatedGAP.toFixed(2)}</td>
+                                                    <td className="p-2 border border-black">{calculatedSentinel.toFixed(2)}</td>
                                                     <td className="p-2 border border-black">{differenceValue}</td>
                                                     <td className="p-2 border border-black">{calculatedOverride}</td>
                                                     <td className="p-2 border border-black">Wave 36B</td>

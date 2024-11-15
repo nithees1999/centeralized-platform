@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import PaginationButtons from "./PaginationButtons";
 import LoadingIcons from 'react-loading-icons'
+import UploadExcelModal from "./UploadExcelModal";
 
 export default function Dealer() {
     const [searchParams, setSearchParams] = useState({
@@ -25,6 +26,17 @@ export default function Dealer() {
     const portUrl = "http://localhost:8080"
     const fetchDealerDetailsUrl = "/api/fetchDealerDetails"
     const filterDealerDetailsUrl = "/api/DealerFilter"
+
+    //Modal
+    const [open, setOpen] = useState(false);
+
+    const onOpenModal = (element) => {
+        setOpen(true)
+    }
+    const onCloseModal = () => {
+        setOpen(false);
+        // setUpdateResponse("")
+    }
 
     const fetchDealerDetails = async () => {
         setLoading(true)
@@ -66,7 +78,13 @@ export default function Dealer() {
 
     return (
         <div className=" p-2 ">
-            <h1 className="text-center text-xl font-bold p-2 text-blue-700">Dealer Details</h1>
+            <UploadExcelModal open={open} onCloseModal={onCloseModal} />
+
+            {/* <h1 className="text-center text-xl font-bold p-2 text-blue-900">Dealer Details</h1> */}
+            <div class="flex justify-between items-center w-full">
+                <span class="text-xl font-bold text-blue-900 mx-auto">Dealer Details</span>
+                <button class="p-2 bg-blue-900 text-white rounded-xl"onClick={() => onOpenModal()}>Upload</button>
+            </div>
             <form
                 className="conditionsNav p-2 m-2 border border-black rounded-md flex justify-start lg:justify-center items-center gap-1 flex-wrap "
                 onSubmit={handleSearch}
@@ -103,11 +121,11 @@ export default function Dealer() {
                 <table className="w-full">
                     <thead className="border border-black ">
                         <tr>
-                            <th className="p-4 border border-black text-blue-700">State</th>
-                            <th className="p-4 border border-black text-blue-700">Brand</th>
-                            <th className="p-4 border border-black text-blue-700">Dealer Number</th>
-                            <th className="p-4 border border-black text-blue-700">Userid</th>
-                            <th className="p-4 border border-black text-blue-700">Password</th>
+                            <th className="p-4 border border-black text-blue-900">State</th>
+                            <th className="p-4 border border-black text-blue-900">Brand</th>
+                            <th className="p-4 border border-black text-blue-900">Dealer Number</th>
+                            <th className="p-4 border border-black text-blue-900">Userid</th>
+                            <th className="p-4 border border-black text-blue-900">Password</th>
                         </tr>
                     </thead>
 
