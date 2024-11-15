@@ -397,19 +397,139 @@ app.post('/api/Checklist', async (req, res) => {
 });
 
 
-// Fetch InvalidExcessiveWearAndUse data
+// Fetch InvalidExcessiveWearAndUse 
 app.get('/api/invalidExcessiveWearAndUseTable', async (req, res) => {
     try {
-        const query = `SELECT * FROM InvalidExcessiveWearAndUse`; // Update with your actual table name
-        const result = await db.query(query); // Execute the query on db2
-        res.json(result.recordset); // Send the result as JSON
+        const query = `SELECT * FROM InvalidExcessiveWearAndUse`; 
+        const result = await db.query(query); 
+        res.json(result.recordset); 
     } catch (err) {
         console.error("Error fetching InvalidExcessiveWearAndUse data:", err);
         res.status(500).json({ error: "Error fetching data" });
     }
  });
 
+// Fetch  ActiveAHFCAccountWithDuplicateVIN 
+app.get('/api/ActiveAHFCAccountWithDuplicateVINTable', async (req, res) => {
+    try {
+        const query = `SELECT * FROM  ActiveAHFCAccountWithDuplicateVIN`;
+        const result = await db.query(query); 
+        res.json(result.recordset); 
+    } catch (err) {
+        console.error("Error fetching  ActiveAHFCAccountWithDuplicateVIN data:", err);
+        res.status(500).json({ error: "Error fetching data" });
+    }
+ });
 
+ // Fetch  AdvanceExceedsApproval 
+app.get('/api/AdvanceExceedsApproval', async (req, res) => {
+    try {
+        const query = `SELECT * FROM  AdvanceExceedsApproval`; 
+        const result = await db.query(query); 
+        res.json(result.recordset); 
+    } catch (err) {
+        console.error("Error fetching  AdvanceExceedsApproval:", err);
+        res.status(500).json({ error: "Error fetching data" });
+    }
+ });
+
+ 
+  // Fetch   MandatoryChecklistItemsAreNotMarkedComplete 
+app.get('/api/MandatoryChecklistItemsAreNotMarkedComplete', async (req, res) => {
+    try {
+        const query = `SELECT * FROM MandatoryChecklistItemsAreNotMarkedComplete`; 
+        const result = await db.query(query); 
+        res.json(result.recordset); 
+    } catch (err) {
+        console.error("Error fetching   MandatoryChecklistItemsAreNotMarkedComplete:", err);
+        res.status(500).json({ error: "Error fetching data" });
+    }
+});
+
+
+  // Fetch  ContractSalesProgramDoesNotMatchApprovedSalesProgramOrSalesProgramReturnedErrors
+  app.get('/api/ContractSalesProgramDoesNotMatchApprovedSalesProgramOrSalesProgramReturnedErrors', async (req, res) => {
+    try {
+        const query = `SELECT * FROM ContractSalesProgramDoesNotMatchApprovedSalesProgramOrSalesProgramReturnedErrors`; 
+        const result = await db.query(query); 
+        res.json(result.recordset); 
+    } catch (err) {
+        console.error("Error fetching ContractSalesProgramDoesNotMatchApprovedSalesProgramOrSalesProgramReturnedErrors:", err);
+        res.status(500).json({ error: "Error fetching data" });
+    }
+});
+
+  // Fetch  CollateralAgeIsGreaterThanParameter
+  app.get('/api/CollateralAgeIsGreaterThanParameter', async (req, res) => {
+    try {
+        const query = `SELECT * FROM CollateralAgeIsGreaterThanParameter`; 
+        const result = await db.query(query); 
+        res.json(result.recordset); 
+    } catch (err) {
+        console.error("Error fetching CollateralAgeIsGreaterThanParameter:", err);
+        res.status(500).json({ error: "Error fetching data" });
+    }
+});
+
+  // Fetch  Maximum Mileage is greater than parameter
+  app.get('/api/MaximumMileageIsGreaterThanParameter', async (req, res) => {
+    try {
+        const query = `SELECT * FROM MaximumMileageIsGreaterThanParameter`; 
+        const result = await db.query(query); 
+        res.json(result.recordset); 
+    } catch (err) {
+        console.error("Error fetching MaximumMileageIsGreaterThanParameter:", err);
+        res.status(500).json({ error: "Error fetching data" });
+    }
+});
+  // Fetch  VIN is not certified
+  app.get('/api/VINIsNotCertified', async (req, res) => {
+    try {
+        const query = `SELECT * FROM VINIsNotCertified`; 
+        const result = await db.query(query); 
+        res.json(result.recordset); 
+    } catch (err) {
+        console.error("Error fetching VINIsNotCertified:", err);
+        res.status(500).json({ error: "Error fetching data" });
+    }
+});
+
+
+  // Fetch  InvalidVIN
+  app.get('/api/InvalidVIN', async (req, res) => {
+    try {
+        const query = `SELECT * FROM InvalidVIN`; 
+        const result = await db.query(query); 
+        res.json(result.recordset); 
+    } catch (err) {
+        console.error("Error fetching InvalidVIN:", err);
+        res.status(500).json({ error: "Error fetching data" });
+    }
+});
+
+  // Fetch  OrigenateDuplicateVIN
+  app.get('/api/OrigenateDuplicateVIN', async (req, res) => {
+    try {
+        const query = `SELECT * FROM OrigenateDuplicateVIN`; 
+        const result = await db.query(query); 
+        res.json(result.recordset); 
+    } catch (err) {
+        console.error("Error fetching OrigenateDuplicateVIN:", err);
+        res.status(500).json({ error: "Error fetching data" });
+    }
+});
+
+ // Fetch  DuplicateVIN
+ app.get('/api/DuplicateVIN', async (req, res) => {
+    try {
+        const query = `SELECT * FROM DuplicateVIN`; 
+        const result = await db.query(query); 
+        res.json(result.recordset); 
+    } catch (err) {
+        console.error("Error fetching DuplicateVIN:", err);
+        res.status(500).json({ error: "Error fetching data" });
+    }
+});
 
 
 // Sending response to the client

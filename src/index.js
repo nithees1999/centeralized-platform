@@ -33,6 +33,16 @@ import DentProtection from './Components/ToleranceRules/DentProtection';
 import KeyReplacementProtection from './Components/ToleranceRules/KeyReplacementProtection';
 import ModelIsNotValidForTaxCredit from './Components/ToleranceRules/ModelIsNotValidForTaxCredit';
 import InvalidExcessiveWearAndUse from './Components/ToleranceRules/InvalidExcessiveWearAndUse';
+import ActiveAHFCAccountWithDuplicateVIN from './Components/ToleranceRules/ActiveAHFCAccountWithDuplicateVIN';
+import AdvanceExceedsApproval from './Components/ToleranceRules/AdvanceExceedsApproval';
+import MandatoryChecklistItemsAreNotMarkedComplete from './Components/ToleranceRules/MandatoryChecklistItemsAreNotMarkedComplete';
+import ContractSalesProgramDoesNotMatchApprovedSalesProgramOrSalesProgramReturnedErrors from './Components/ToleranceRules/ContractSalesProgramDoesNotMatchApprovedSalesProgramOrSalesProgramReturnedErrors';
+import CollateralAgeIsGreaterThanParameter from './Components/ToleranceRules/CollateralAgeIsGreaterThanParameter';
+import MaximumMileageIsGreaterThanParameter from './Components/ToleranceRules/MaximumMileageIsGreaterThanParameter';
+import VINIsNotCertified from './Components/ToleranceRules/VINIsNotCertified';
+import InvalidVIN from './Components/ToleranceRules/InvalidVIN';
+import OrigenateDuplicateVIN from './Components/ToleranceRules/OrigenateDuplicateVIN';
+import DuplicateVIN from './Components/ToleranceRules/DuplicateVIN';
 import SentinelExceedsLimit from './Components/ToleranceRules/SentinelExceedsLimit';
 import CapitalizedCostReductionCashMustBeGreaterThanOrEqualToEVtaxCredit from './Components/ToleranceRules/CapitalizedCostReductionCashMustBeGreaterThanOrEqualToEVtaxCredit';
 
@@ -150,6 +160,47 @@ const router = createBrowserRouter([
       {
         path: "InvalidExcessiveWearAndUse",
         element: <InvalidExcessiveWearAndUse />,
+      },
+      {
+        path: "ActiveAHFCAccountWithDuplicateVIN",
+        element: <ActiveAHFCAccountWithDuplicateVIN/>,
+      },
+      
+      {
+        path: "AdvanceExceedsApproval",
+        element: <AdvanceExceedsApproval/>,
+      },
+      {
+        path: "MandatoryChecklistItemsAreNotMarkedComplete",
+        element: <MandatoryChecklistItemsAreNotMarkedComplete/>,
+      },
+      {
+        path: "ContractSalesProgramDoesNotMatchApprovedSalesProgramOrSalesProgramReturnedErrors",
+        element: <ContractSalesProgramDoesNotMatchApprovedSalesProgramOrSalesProgramReturnedErrors/>,
+      },
+      {
+        path: "CollateralAgeIsGreaterThanParameter",
+        element: <CollateralAgeIsGreaterThanParameter/>,
+      },
+      {
+        path: "MaximumMileageIsGreaterThanParameter",
+        element: <MaximumMileageIsGreaterThanParameter/>,
+      },
+      {
+        path: "VINIsNotCertified",
+        element: <VINIsNotCertified/>,
+      },
+      {
+        path: "InvalidVIN",
+        element: <InvalidVIN/>,
+      },
+      {
+        path: "OrigenateDuplicateVIN",
+        element: <OrigenateDuplicateVIN/>,
+      },
+      {
+        path: "DuplicateVIN",
+        element: <DuplicateVIN/>,
       },
       {
         path: "CapitalizedCostReductionCashMustBeGreaterThanOrEqualToEVtaxCredit",
