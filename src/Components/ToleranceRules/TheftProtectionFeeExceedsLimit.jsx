@@ -22,22 +22,22 @@ export default function TheftProtectionFeeExceedsLimit() {
 
     return (
         <>
-            <h1 className="text-center text-xl font-bold p-2 text-blue-700">ToleranceRules</h1>
-            <h1 className="text-center text-xl font-bold p-2 text-blue-700">Theft Protection Fee Exceeds Limit</h1>
+            <h1 className="text-center text-xl font-bold p-2 text-blue-900">ToleranceRules</h1>
+            <h1 className="text-center text-xl font-bold p-2 text-blue-900">Theft Protection Fee Exceeds Limit</h1>
 
-            <section className="min-h-screen py-8 px-4 m-2 border border-black rounded-md">
+            <section className="py-8 px-4 m-2 border border-black rounded-md">
                 <div style={{ overflowX: 'auto' }}>
                     <table className="w-full">
                         <thead className="border border-black">
                             <tr>
-                                <th className="p-4 border border-black text-blue-700">Product Type</th>
-                                <th className="p-4 border border-black text-blue-700">Condition</th>
-                                <th className="p-4 border border-black text-blue-700">Make</th>
-                                <th className="p-4 border border-black text-blue-700">Parameter</th>
-                                <th className="p-4 border border-black text-blue-700">Theft</th>
-                                <th className="p-4 border border-black text-blue-700">Difference</th>
-                                <th className="p-4 border border-black text-blue-700">Override</th>
-                                <th className="p-4 border border-black text-blue-700">Release</th>
+                                <th className="p-4 border border-black text-blue-900">Product Type</th>
+                                <th className="p-4 border border-black text-blue-900">Condition</th>
+                                <th className="p-4 border border-black text-blue-900">Make</th>
+                                <th className="p-4 border border-black text-blue-900">Parameter</th>
+                                <th className="p-4 border border-black text-blue-900">Theft</th>
+                                <th className="p-4 border border-black text-blue-900">Difference</th>
+                                <th className="p-4 border border-black text-blue-900">Override</th>
+                                <th className="p-4 border border-black text-blue-900">Release</th>
                             </tr>
                         </thead>
                         <tbody>

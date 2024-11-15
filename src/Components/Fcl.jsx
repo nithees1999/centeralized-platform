@@ -39,12 +39,12 @@ const FCLPage = () => {
     };
     return (
         <div className="p-2">
-            <h1 className="text-center text-xl font-bold p-2 text-blue-700">FCL</h1>
+            <h1 className="text-center text-xl font-bold p-2 text-blue-900">FCL</h1>
             <div className="conditionsNav p-2 m-2 border border-black rounded-md flex justify-start lg:justify-center items-center gap-1 flex-wrap">
                 <div>
                     <label className="px-1 font-medium" htmlFor="Product">Product:</label>
                     <select className="border border-black rounded p-1 w-32" value={product} onChange={(e) => setProduct(e.target.value)}>
-                        <option value="">Select Product</option>
+                        <option value="">NA</option>
                         <option value="Retail & Balloon">Retail & Balloon</option>
                         <option value="Lease">Lease</option>
                     </select>
@@ -52,7 +52,7 @@ const FCLPage = () => {
                 <div>
                     <label className="px-1 font-medium" htmlFor="ScoreCard">ScoreCard:</label>
                     <select className="border border-black rounded p-1 w-32" value={scoreCard} onChange={(e) => setScoreCard(e.target.value)}>
-                        <option value="">Select ScoreCard</option>
+                        <option value="">NA</option>
                         <option value="THN">THN</option>
                         <option value="DLQ">DLQ</option>
                         <option value="CLN">CLN</option>
@@ -61,7 +61,7 @@ const FCLPage = () => {
                 <div>
                     <label className="px-1 font-medium" htmlFor="SalesProgram">SalesProgram:</label>
                     <select className="border border-black rounded p-1 w-32" value={salesProgram} onChange={(e) => setSalesProgram(e.target.value)}>
-                        <option value="">Select Sales Program</option>
+                        <option value="">NA</option>
                         <option value="Standard">Standard</option>
                         <option value="Incentive & Special">Incentive & Special</option>
                     </select>
@@ -69,7 +69,7 @@ const FCLPage = () => {
                 <div>
                     <label className="px-1 font-medium" htmlFor="Term">Term:</label>
                     <select className="border border-black rounded p-1 w-32" value={term} onChange={(e) => setTerm(e.target.value)}>
-                        <option value="">Select Term</option>
+                        <option value="">NA</option>
                         <option value="Regular">Regular</option>
                         <option value="Extended">Extended</option>
                     </select>

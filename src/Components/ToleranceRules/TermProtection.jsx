@@ -17,14 +17,17 @@ const TermProtection = () => {
      ];
     const uniqueProductTypes = [...new Set(data.map(item => item.ProductType))];
     const uniqueConditions = [...new Set(data.map(item => item.Condition))];
+    const uniqueOverride = [...new Set(data.map(item => item.Override))];
     const [selectedProductType, setSelectedProductType] = useState('');
     const [selectedCondition, setSelectedCondition] = useState('');
+    const [selectedOverride, setSelectedOverride] = useState('');
     const [filteredData, setFilteredData] = useState(data);
     const handleSearch = (e) => {
         e.preventDefault();
         const filtered = data.filter(item =>
             (selectedProductType ? item.ProductType === selectedProductType : true) &&
-            (selectedCondition ? item.Condition === selectedCondition : true)
+            (selectedCondition ? item.Condition === selectedCondition : true) &&
+            (selectedOverride !== "" ? item.Override === parseInt(selectedOverride) : true)
         );
         setFilteredData(filtered);
     };
@@ -62,27 +65,42 @@ const TermProtection = () => {
                         ))}
                     </select>
                 </section>
+
+                <section>
+                    <label className="px-1 font-medium" htmlFor="override">Override:</label>
+                    <select name="override" id="override"
+                        value={selectedOverride}
+                        onChange={(e) => setSelectedOverride(e.target.value)}
+                        className="border border-black rounded p-2" 
+                    >
+                        <option value="">NA</option>
+                        {uniqueOverride.map((cond, index) => (
+                            <option key={index} value={cond}>{cond}</option>
+                        ))}
+                    </select>
+                </section>
+
                 <button type="submit" className="rounded-md p-2 mx-2 border border-black">Submit</button>
             </form>
-            <section className="min-h-screen py-8 px-4 m-2 border border-black rounded-md">
+            <section className="py-8 px-4 m-2 border border-black rounded-md">
                 <div style={{ overflowX: 'auto' }}>
                     <table className="w-full">
                         <thead className="border border-black">
                             <tr>
-                                <th className="p-4 border border-black text-blue-700">Product Type</th>
-                                <th className="p-4 border border-black text-blue-700">Condition</th>
-                                <th className="p-4 border border-black text-blue-700">VIN</th>
-                                <th className="p-4 border border-black text-blue-700">Year</th>
-                                <th className="p-4 border border-black text-blue-700">Make</th>
-                                <th className="p-4 border border-black text-blue-700">Model</th>
-                                <th className="p-4 border border-black text-blue-700">Term</th>
-                                <th className="p-4 border border-black text-blue-700">Parameter</th>
-                                <th className="p-4 border border-black text-blue-700">Term Protection</th>
-                                <th className="p-4 border border-black text-blue-700">Difference</th>
-                                <th className="p-4 border border-black text-blue-700">Description</th>
-                                <th className="p-4 border border-black text-blue-700">Actual</th>
-                                <th className="p-4 border border-black text-blue-700">Override</th>
-                                <th className="p-4 border border-black text-blue-700">Release</th>
+                                <th className="p-4 border border-black text-blue-900">Product Type</th>
+                                <th className="p-4 border border-black text-blue-900">Condition</th>
+                                <th className="p-4 border border-black text-blue-900">VIN</th>
+                                <th className="p-4 border border-black text-blue-900">Year</th>
+                                <th className="p-4 border border-black text-blue-900">Make</th>
+                                <th className="p-4 border border-black text-blue-900">Model</th>
+                                <th className="p-4 border border-black text-blue-900">Term</th>
+                                <th className="p-4 border border-black text-blue-900">Parameter</th>
+                                <th className="p-4 border border-black text-blue-900">Term Protection</th>
+                                <th className="p-4 border border-black text-blue-900">Difference</th>
+                                <th className="p-4 border border-black text-blue-900">Description</th>
+                                <th className="p-4 border border-black text-blue-900">Actual</th>
+                                <th className="p-4 border border-black text-blue-900">Override</th>
+                                <th className="p-4 border border-black text-blue-900">Release</th>
                             </tr>
                         </thead>
                         <tbody>

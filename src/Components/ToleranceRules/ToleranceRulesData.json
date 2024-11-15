@@ -1,0 +1,74 @@
+[
+    {
+      "id": "MaintenanceOverAdvance",
+      "title": "Maintenance Over Advance",
+      "shorthand": "MOA",
+      "navigationLink": "/MaintenanceOverAdvance"
+    },
+    {
+      "id": "GAPIsNotPermitted",
+      "title": "GAP Is Not Permitted",
+      "shorthand": "GAP-INP",
+      "navigationLink": "/GAPIsNotPermitted"
+    },
+    {
+      "id": "ServiceContractOverAdvance",
+      "title": "Service Contract Over Advance",
+      "shorthand": "SCOA",
+      "navigationLink": "/ServiceContractOverAdvance"
+    },
+    {
+      "id": "GapAmountOverAdvance",
+      "title": "Gap Amount Over Advance",
+      "shorthand": "GAP-AOA",
+      "navigationLink": "/GapAmountOverAdvance"
+    },
+    {
+      "id": "OtherAmountsOverAdvance",
+      "title": "Other Amounts Over Advance",
+      "shorthand": "OAOA",
+      "navigationLink": "/OtherAmountsOverAdvance"
+    },
+    {
+      "id": "Halo",
+      "title": "Halo",
+      "shorthand": "Halo",
+      "navigationLink": "/Halo"
+    },
+    {
+      "id": "TermProtection",
+      "title": "TermProtection",
+      "shorthand": "TP",
+      "navigationLink": "/TermProtection"
+    },
+    {
+      "id": "TheftProtectionFeeExceedsLimit",
+      "title": "Theft Protection Fee Exceeds Limit",
+      "shorthand": "TPFEL",
+      "navigationLink": "/TheftProtectionFeeExceedsLimit"
+    },
+    {
+      "id": "EVTaxCredit",
+      "title": "EV Tax Credit",
+      "shorthand": "EV-TC",
+      "navigationLink": "/EVTaxCredit"
+    },
+    {
+      "id": "ModelIsNotEligibleForSentinel",
+      "title": "Model Is Not Eligible For Sentinel",
+      "shorthand": "MINEFS",
+      "navigationLink": "/ModelIsNotEligibleForSentinel"
+    },
+    {
+      "id": "TireAndWheelProtectionExceedsLimit",
+      "title": "Tire And Wheel Protection Exceeds Limit",
+      "shorthand": "TAWPEL",
+      "navigationLink": "/TireAndWheelProtectionExceedsLimit"
+    },
+    {
+      "id": "SentinelExceedsLimit",
+      "title": "Sentinel Exceeds Limit",
+      "shorthand": "SEL",
+      "navigationLink": "/SentinelExceedsLimit"
+    }
+  ]

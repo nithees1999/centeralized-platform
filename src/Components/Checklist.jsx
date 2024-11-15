@@ -84,7 +84,7 @@ const Checklist = () => {
     }, []);
     return (
         <div className="p-2">
-            <h1 className="text-center text-xl font-bold p-2 text-blue-700">CheckList</h1>
+            <h1 className="text-center text-xl font-bold p-2 text-blue-900">CheckList</h1>
             <form
                 className="conditionsNav p-2 m-2 border border-black rounded-md flex justify-start lg:justify-center items-center gap-1 flex-wrap"
                 onSubmit={handleSearch}
@@ -92,7 +92,7 @@ const Checklist = () => {
                 <div className="relative">
                     <label className="px-1 font-medium" htmlFor="Description">Description:</label>
                     <input
-                        className="border border-black rounded p-1 w-52"
+                        className="border border-black rounded p-1 w-96"
                         name="Description"
                         id="Description"
                         value={formState.Description}
@@ -131,13 +131,13 @@ const Checklist = () => {
                 </button>
                 {loading && <div>Loading...</div>}
             </form>
-            <section className="min-h-screen py-8 px-4 m-2 border border-black rounded-md">
+            <section className=" py-8 px-4 m-2 border border-black rounded-md">
                 <table className="w-full">
                     <thead className="border border-black">
                         <tr>
-                            <th className="p-4 border border-black text-blue-700">Category</th>
-                            <th className="p-4 border border-black text-blue-700">Active</th>
-                            <th className="p-4 border border-black text-blue-700">Validation Type</th>
+                            <th className="p-4 border border-black text-blue-900">Category</th>
+                            <th className="p-4 border border-black text-blue-900">Active</th>
+                            <th className="p-4 border border-black text-blue-900">Validation Type</th>
                         </tr>
                     </thead>
                     <tbody className="border border-black">

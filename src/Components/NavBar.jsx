@@ -32,12 +32,15 @@ export default function NavBar() {
 
 
     return (
-        <nav className="bg-gray-200 w-full text-blue-700">
+        <nav className="bg-blue-950 w-full text-white">
             <div className='flex justify-between mx-4 p-4'>
                 <button onClick={toggleSidebar} className='text-2xl cursor-pointer'>
                     <RxHamburgerMenu />
                 </button>
-                <span><NavLink to="/" className=" font-bold">Centralized Platform</NavLink></span>
+                <div>
+                    <button className='bg-blue-900 py-1 px-2 mx-2 rounded-lg '>Prism </button>
+                    <span><NavLink to="/" className=" font-bold">Centralized Platform</NavLink></span>
+                </div>
             </div>
 
             <SideBar isOpen={isSidebarOpen} onClose={toggleSidebar} sidebarRef={sidebarRef} />

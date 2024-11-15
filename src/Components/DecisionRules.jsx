@@ -40,7 +40,7 @@ export default function DecisionRules(){
 
     return (
         <>
-            <h1 className='p-2 text-2xl font-bold text-center'>Rules Engine</h1>
+            <h1 className='p-2 text-2xl font-bold text-center text-blue-900'>DecisionRules Engine</h1>
             <form className="p-4">
                 <label className="block text-gray-700 mb-2 mx-2 font-semibold" htmlFor="dropdown">
                     Select Rule:
@@ -64,13 +64,13 @@ export default function DecisionRules(){
                 )}
                 <button
                     onClick={handleButtonClick}
-                    className="mt-4 px-4 py-2 text-white bg-blue-500 rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400"
+                    className="mt-4 px-4 py-2 text-white bg-blue-900 rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400"
                 >
                     Submit
                 </button>
                 <button
                     onClick={handleReset} type='button'
-                    className="mt-4 mx-2 px-4 py-2 text-white bg-blue-500 rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400"
+                    className="mt-4 mx-2 px-4 py-2 text-white bg-blue-900 rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400"
                 >
                     Reset
                 </button>
@@ -79,7 +79,7 @@ export default function DecisionRules(){
             <section style={{ overflowX: 'auto' }} className='p-4 text-center'>
                 <table className="min-w-full bg-white border border-gray-300" >
                     <thead>
-                        <tr className="bg-gray-100">
+                        <tr className="bg-gray-100 text-blue-900">
                             {columnNames.map((item, index) => (
                                 <th key={index} className={`px-4 py-2 border ${item === 'Description' ? 'min-w-80' : item === 'When to Use or Rule Detail' ? 'min-w-96' : ''}`}>
                                     {item}

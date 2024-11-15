@@ -12,6 +12,7 @@ export default function MaintenanceOverAdvance() {
         VIN: '',
         Condition: '',
         category: '',
+        override: '',
     });
 
     // Handle input changes in the UI form
@@ -171,9 +172,9 @@ export default function MaintenanceOverAdvance() {
 
     return (
         <>
-            <h1 className="text-center text-xl font-bold p-2 text-blue-700">ToleranceRules</h1>
-            <h1 className="text-center text-xl font-bold p-2 text-blue-700">Maintenance over - advance </h1>
-            <h1 className="text-center text-xl font-bold p-2 text-blue-700">{tableTitle}</h1>
+            <h1 className="text-center text-xl font-bold p-2 text-blue-900">ToleranceRules</h1>
+            <h1 className="text-center text-xl font-bold p-2 text-blue-900">Maintenance over - advance </h1>
+            <h1 className="text-center text-xl font-bold p-2 text-blue-900">{tableTitle}</h1>
 
             <form
                 className="conditionsNav p-2 m-2 border border-black rounded-md flex justify-start lg:justify-center items-center gap-1 flex-wrap"
@@ -199,6 +200,17 @@ export default function MaintenanceOverAdvance() {
                         <option value="">NA</option>
                         <option value="MaintOtherCare">Maint - Other Care</option>
                         <option value="MaintHondaCare">Maint - Honda Care </option>
+                    </select>
+                </section>
+
+                <section>
+                    <label className="px-1 font-medium" htmlFor="override">Override:</label>
+                    <select name="override" id="override" value={searchParams.override} onChange={handleChange} className="border border-black rounded p-2">
+                        <option value="">All</option>
+                        <option value="0">0</option>
+                        <option value="2">2</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
                     </select>
                 </section>
 
@@ -228,19 +240,19 @@ export default function MaintenanceOverAdvance() {
                     <table className="w-full">
                         <thead className="border border-black">
                             <tr>
-                                <th className="p-4 border border-black text-blue-700">Term</th>
-                                <th className="p-4 border border-black text-blue-700">Invoice</th>
-                                <th className="p-4 border border-black text-blue-700">D&H</th>
-                                <th className="p-4 border border-black text-blue-700">Colorup charge</th>
-                                <th className="p-4 border border-black text-blue-700">% of Invoice</th>
-                                <th className="p-4 border border-black text-blue-700">Parameter</th>
-                                <th className="p-4 border border-black text-blue-700">Optional Maintenance contract</th>
-                                <th className="p-4 border border-black text-blue-700">Difference</th>
-                                <th className="p-4 border border-black text-blue-700">Company/ Provider Name</th>
-                                <th className="p-4 border border-black text-blue-700">Policy term</th>
-                                <th className="p-4 border border-black text-blue-700">Actual</th>
-                                <th className="p-4 border border-black text-blue-700">Parameter</th>
-                                <th className="p-4 border border-black text-blue-700">Override</th>
+                                <th className="p-4 border border-black text-blue-900">Term</th>
+                                <th className="p-4 border border-black text-blue-900">Invoice</th>
+                                <th className="p-4 border border-black text-blue-900">D&H</th>
+                                <th className="p-4 border border-black text-blue-900">Colorup charge</th>
+                                <th className="p-4 border border-black text-blue-900">% of Invoice</th>
+                                <th className="p-4 border border-black text-blue-900">Parameter</th>
+                                <th className="p-4 border border-black text-blue-900">Optional Maintenance contract</th>
+                                <th className="p-4 border border-black text-blue-900">Difference</th>
+                                <th className="p-4 border border-black text-blue-900">Company/ Provider Name</th>
+                                <th className="p-4 border border-black text-blue-900">Policy term</th>
+                                <th className="p-4 border border-black text-blue-900">Actual</th>
+                                <th className="p-4 border border-black text-blue-900">Parameter</th>
+                                <th className="p-4 border border-black text-blue-900">Override</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -255,6 +267,25 @@ export default function MaintenanceOverAdvance() {
                                                 percentOfInvoiceValue,
                                                 DifferenceData[index],
                                             );
+
+                                            // if(searchParams.override && calculatedOverride.toString() !== searchParams.override){
+                                            //     return null
+                                            // }
+
+                                            if (
+
+                                                (searchParams.override &&
+                                                    (
+                                                        (index !== 0 && calculatedOverride.toString() !== searchParams.override) || (index === 0 && searchParams.override !== '4')
+
+                                                    )
+
+                                                )
+
+                                            ) {
+                                                return null;
+                                            }
+
                                             return (
                                                 <tr key={index}>
                                                     <td className="p-2 border border-black">{TermData}</td>

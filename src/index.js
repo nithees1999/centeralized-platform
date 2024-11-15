@@ -43,8 +43,8 @@ import VINIsNotCertified from './Components/ToleranceRules/VINIsNotCertified';
 import InvalidVIN from './Components/ToleranceRules/InvalidVIN';
 import OrigenateDuplicateVIN from './Components/ToleranceRules/OrigenateDuplicateVIN';
 import DuplicateVIN from './Components/ToleranceRules/DuplicateVIN';
-
-
+import SentinelExceedsLimit from './Components/ToleranceRules/SentinelExceedsLimit';
+import CapitalizedCostReductionCash from './Components/ToleranceRules/CapitalizedCostReductionCash';
 
 const router = createBrowserRouter([
   {
@@ -150,6 +150,10 @@ const router = createBrowserRouter([
         element: <KeyReplacementProtection/>,
       },
       {
+        path: "SentinelExceedsLimit",
+        element: <SentinelExceedsLimit/>,
+      },
+      {
         path: "ModelIsNotValidForTaxCredit",
         element: <ModelIsNotValidForTaxCredit/>,
       },
@@ -198,7 +202,10 @@ const router = createBrowserRouter([
         path: "DuplicateVIN",
         element: <DuplicateVIN/>,
       },
-     
+     {
+        path: "CapitalizedCostReductionCash",
+        element: <CapitalizedCostReductionCash/>,
+      },
     ],
   },
 ]);

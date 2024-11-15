@@ -18,6 +18,7 @@ const Halo = () => {
     const [selectedCondition, setSelectedCondition] = useState('');
     const [selectedEmploymentStatusApp, setSelectedEmploymentStatusApp] = useState('');
     const [selectedEmploymentStatusCoApp, setSelectedEmploymentStatusCoApp] = useState('');
+    const [selectedOverride, setSelectedOverride] = useState('');
     const [filteredResults, setFilteredResults] = useState(haloData); // Initialize with all data
     const handleSearch = (e) => {
         e.preventDefault();
@@ -28,7 +29,8 @@ const Halo = () => {
                 (selectedEmploymentStatusApp === "Non-Halo Associate"
                     ? ["Student", "Employed", "Retired"].includes(item.EmploymentStatusApp)
                     : (selectedEmploymentStatusApp ? item.EmploymentStatusApp === selectedEmploymentStatusApp : true)) &&
-                (selectedEmploymentStatusCoApp ? item.EmploymentStatusCoApp === selectedEmploymentStatusCoApp : true)
+                (selectedEmploymentStatusCoApp ? item.EmploymentStatusCoApp === selectedEmploymentStatusCoApp : true) &&
+                (selectedOverride !== "" ? item.OverrideLevel === parseInt(selectedOverride) : true)
             );
         });
         setFilteredResults(results);
@@ -37,6 +39,7 @@ const Halo = () => {
     const uniqueConditions = [...new Set(haloData.map(item => item.Condition))];
     const uniqueEmploymentStatusApps = [...new Set(haloData.map(item => item.EmploymentStatusApp))];
     const uniqueEmploymentStatusCoApps = [...new Set(haloData.map(item => item.EmploymentStatusCoApp))];
+    const uniqueOverride = [...new Set(haloData.map(item => item.OverrideLevel))];
 
 
 
@@ -54,7 +57,7 @@ const Halo = () => {
                     <label className="px-1 font-medium" htmlFor="producttype">Product Type:</label>
 
                     <select value={selectedProductType} onChange={(e) => setSelectedProductType(e.target.value)} className="border border-black rounded p-2" required>
-                    <option value="" disabled>Select Product Type</option>
+                    <option value="" disabled>NA</option>
                         {uniqueProductTypes.map(type => <option key={type} value={type}>{type}</option>)}
                     </select>
                 </section>
@@ -63,7 +66,7 @@ const Halo = () => {
                 <section>
                     <label className="px-1 font-medium" htmlFor="condition">Condition:</label>
                     <select value={selectedCondition} onChange={(e) => setSelectedCondition(e.target.value)} className="border border-black rounded p-2" required>
-                    <option value="" disabled>Select Condition</option>
+                    <option value="" disabled>NA</option>
                         {uniqueConditions.map(condition => <option key={condition} value={condition}>{condition}</option>)}
                     </select>
                 </section>
@@ -77,7 +80,7 @@ const Halo = () => {
                         className="border border-black rounded p-2"
                         required
                     >
-                        <option value="" disabled>Select Employment Status(App)</option>
+                        <option value="" disabled>NA</option>
                         <option value="Non-Halo Associate">NON-HALO Associate</option>
                         {uniqueEmploymentStatusApps
                             .filter(status => status !== 'Student' && status !== 'Employed' && status !== 'Retired') 
@@ -88,28 +91,42 @@ const Halo = () => {
                 <section>
                     <label className="px-1 font-medium" htmlFor="EmploymentStatuscoAPP">Employment Status (Co-app):</label>
                     <select value={selectedEmploymentStatusCoApp} onChange={(e) => setSelectedEmploymentStatusCoApp(e.target.value)} className="border border-black rounded p-2" required>
-                    <option value="" disabled>Select Employment Status(Co-App)</option>
+                    <option value="" disabled>NA</option>
                         <option value="Non-Halo Associate">NON-HALO Associate</option>
                         {uniqueEmploymentStatusCoApps.map(status => <option key={status} value={status}>{status}</option>)}
                     </select>
                 </section>
+
+                <section>
+                    <label className="px-1 font-medium" htmlFor="override">Override:</label>
+                    <select name="override" id="override"
+                        value={selectedOverride}
+                        onChange={(e) => setSelectedOverride(e.target.value)}
+                        className="border border-black rounded p-2" 
+                    >
+                        <option value="">NA</option>
+                        {uniqueOverride.map((cond, index) => (
+                            <option key={index} value={cond}>{cond}</option>
+                        ))}
+                    </select>
+                </section>
                 <button type="submit" className="rounded-md p-2 mx-2 border border-black">Submit</button>
             </form>
-            <section className="min-h-screen py-8 px-4 m-2 border border-black rounded-md">
+            <section className="py-8 px-4 m-2 border border-black rounded-md">
                 <div style={{ overflowX: 'auto' }}>
                     <table className="w-full">
                         <thead className="border border-black">
                             <tr>
-                                <th className="p-4 border border-black text-blue-700">Product Type</th>
-                                <th className="p-4 border border-black text-blue-700">Condition</th>
-                                <th className="p-4 border border-black text-blue-700">Co-Applicant</th>
-                                <th className="p-4 border border-black text-blue-700">Employment Status (App)</th>
-                                <th className="p-4 border border-black text-blue-700">Employment Status (Co-app)</th>
-                                <th className="p-4 border border-black text-blue-700">Buy Rate</th>
-                                <th className="p-4 border border-black text-blue-700">Adjusted Rate</th>
-                                <th className="p-4 border border-black text-blue-700">Difference</th>
-                                <th className="p-4 border border-black text-blue-700">Rule</th>
-                                <th className="p-4 border border-black text-blue-700">Override Level</th>
+                                <th className="p-4 border border-black text-blue-900">Product Type</th>
+                                <th className="p-4 border border-black text-blue-900">Condition</th>
+                                <th className="p-4 border border-black text-blue-900">Co-Applicant</th>
+                                <th className="p-4 border border-black text-blue-900">Employment Status (App)</th>
+                                <th className="p-4 border border-black text-blue-900">Employment Status (Co-app)</th>
+                                <th className="p-4 border border-black text-blue-900">Buy Rate</th>
+                                <th className="p-4 border border-black text-blue-900">Adjusted Rate</th>
+                                <th className="p-4 border border-black text-blue-900">Difference</th>
+                                <th className="p-4 border border-black text-blue-900">Rule</th>
+                                <th className="p-4 border border-black text-blue-900">Override Level</th>
                             </tr>
                         </thead>
                         <tbody>
