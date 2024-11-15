@@ -1,4 +1,4 @@
-import ChatBot from "./Components/Chatbot";
+import ChatBot from "./Components/ChatBot/Chatbot";
 import NavBar from "./Components/NavBar";
 import { Outlet } from "react-router-dom";
 
