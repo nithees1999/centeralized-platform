@@ -45,6 +45,7 @@ import OrigenateDuplicateVIN from './Components/ToleranceRules/OrigenateDuplicat
 import DuplicateVIN from './Components/ToleranceRules/DuplicateVIN';
 import SentinelExceedsLimit from './Components/ToleranceRules/SentinelExceedsLimit';
 import CapitalizedCostReductionCashMustBeGreaterThanOrEqualToEVtaxCredit from './Components/ToleranceRules/CapitalizedCostReductionCashMustBeGreaterThanOrEqualToEVtaxCredit';
+import VINValidationNotCompleted from './Components/ToleranceRules/VINValidationNotCompleted';
 
 const router = createBrowserRouter([
   {
@@ -205,6 +206,10 @@ const router = createBrowserRouter([
       {
         path: "CapitalizedCostReductionCashMustBeGreaterThanOrEqualToEVtaxCredit",
         element: <CapitalizedCostReductionCashMustBeGreaterThanOrEqualToEVtaxCredit />,
+      },
+      {
+        path: "VINValidationNotCompleted",
+        element: <VINValidationNotCompleted />,
       },
     ],
   },

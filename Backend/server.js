@@ -4,7 +4,8 @@ const mysql = require('mssql/msnodesqlv8');
 const SqlString = require('tsqlstring');
 
 const config = {
-    server: 'LTIN191785',
+    // server: 'LTIN191785',
+    server: 'LTIN527389',
     driver: "SQL Server Native Client 11.0",
     database: "ForTestDB",
     connectionTimeout: 150000,
@@ -14,7 +15,8 @@ const config = {
     }
 };
 const config2 = {
-    server: 'LTIN191785',
+    // server: 'LTIN191785',
+    server: 'LTIN527389',
     driver: "SQL Server Native Client 11.0",
     database: "rules",
     connectionTimeout: 150000,

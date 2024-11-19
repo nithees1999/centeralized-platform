@@ -124,5 +124,82 @@
     "title": "Invalid Excessive Wear And Use",
     "shorthand": "IEWAU",
     "navigationLink": "/InvalidExcessiveWearAndUse"
+  },
+  {
+    "pageNumber": 19,
+    "id": "ActiveAHFCAccountWithDuplicateVIN",
+    "title": "Active AHFC Account With Duplicate VIN",
+    "shorthand": "A-AHFC-AWD-VIN",
+    "navigationLink": "/ActiveAHFCAccountWithDuplicateVIN"
+  },
+  {
+    "pageNumber": 25,
+    "id": "AdvanceExceedsApproval",
+    "title": "Advance Exceeds Approval",
+    "shorthand": "AEA",
+    "navigationLink": "/AdvanceExceedsApproval"
+  },
+  {
+    "pageNumber": 26,
+    "id": "MandatoryChecklistItemsAreNotMarkedComplete",
+    "title": "Mandatory Checklist Items Are Not Marked Complete",
+    "shorthand": "MCIANMC",
+    "navigationLink": "/MandatoryChecklistItemsAreNotMarkedComplete"
+  },
+  {
+    "pageNumber": 27,
+    "id": "ContractSalesProgramDoesNotMatchApprovedSalesProgramOrSalesProgramReturnedErrors",
+    "title": "Contract Sales Program Does Not Match Approved Sales Program Or Sales Program Returned Errors",
+    "shorthand": "CSPDNMASPOSPRE",
+    "navigationLink": "/ContractSalesProgramDoesNotMatchApprovedSalesProgramOrSalesProgramReturnedErrors"
+  },
+  {
+    "pageNumber": 28,
+    "id": "CollateralAgeIsGreaterThanParameter",
+    "title": "Collateral Age Is Greater Than Parameter",
+    "shorthand": "CAIGTP",
+    "navigationLink": "/CollateralAgeIsGreaterThanParameter"
+  },
+  {
+    "pageNumber": 29,
+    "id": "MaximumMileageIsGreaterThanParameter",
+    "title": "Maximum Mileage Is Greater Than Parameter",
+    "shorthand": "MMIGTP",
+    "navigationLink": "/MaximumMileageIsGreaterThanParameter"
+  },
+  {
+    "pageNumber": 30,
+    "id": "VINIsNotCertified",
+    "title": "VIN Is Not Certified",
+    "shorthand": "VIN-INC",
+    "navigationLink": "/VINIsNotCertified"
+  },
+  {
+    "pageNumber": 31,
+    "id": "InvalidVIN",
+    "title": "Invalid VIN",
+    "shorthand": "I-VIN",
+    "navigationLink": "/InvalidVIN"
+  },
+  {
+    "pageNumber": 32,
+    "id": "OrigenateDuplicateVIN",
+    "title": "Origenate Duplicate VIN",
+    "shorthand": "OD-VIN",
+    "navigationLink": "/OrigenateDuplicateVIN"
+  },
+  {
+    "pageNumber": 33,
+    "id": "DuplicateVIN",
+    "title": "DuplicateVIN",
+    "shorthand": "D-VIN",
+    "navigationLink": "/DuplicateVIN"
+  },
+  {
+    "pageNumber": 34,
+    "id": "VINValidationNotCompleted",
+    "title": "VIN Validation Not Completed",
+    "shorthand": "VIN-VNC",
+    "navigationLink": "/VINValidationNotCompleted"
   }
 ]
