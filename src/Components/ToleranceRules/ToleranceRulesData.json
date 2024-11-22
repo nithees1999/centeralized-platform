@@ -201,5 +201,35 @@
     "title": "VIN Validation Not Completed",
     "shorthand": "VIN-VNC",
     "navigationLink": "/VINValidationNotCompleted"
+  },
+  {
+    "pageNumber": 34,
+    "id": "ContractDateIsFutureDated",
+    "title": "Contract Date Is Future Dated",
+    "shorthand": "CDIFD",
+    "navigationLink": "/ContractDateIsFutureDated"
+  },
+  {
+    "pageNumber": 34,
+    "id": "ContractRateGreaterThanMaxAllowedByMoreThanParameter",
+    "title": "Contract Rate greater than Max Allowed by more than parameter",
+    "shorthand": "CRGTMABMTP",
+    "navigationLink": "/ContractRateGreaterThanMaxAllowedByMoreThanParameter"
+  },
+  {
+    "pageNumber": 34,
+    "id": "ContractRateExceedsUsuryRate",
+    "title": "Contract Rate exceeds Usury Rate",
+    "shorthand": "CREUR",
+    "navigationLink": "/ContractRateExceedsUsuryRate"
+  },
+  {
+    "pageNumber": 34,
+    "id": "DealerParticipationExceedsMaxSpread",
+    "title": "Dealer Participation exceeds Max Spread",
+    "shorthand": "DPEMS",
+    "navigationLink": "/DealerParticipationExceedsMaxSpread"
   }
+ 
+  
 ]

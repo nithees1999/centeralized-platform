@@ -16,6 +16,7 @@ import CustomerProfile from './Components/CustomerProfile';
 import Fcl from './Components/Fcl';
 import Residual from './Components/Residual';
 import Checklist from './Components/Checklist';
+import MyDealsData from './Components/MyDealsData';
 import DecisionRules from './Components/DecisionRules';
 import MaintenanceOverAdvance from './Components/ToleranceRules/MaintenanceOverAdvance';
 import GAPIsNotPermitted from './Components/ToleranceRules/GAPIsNotPermitted';
@@ -46,6 +47,10 @@ import DuplicateVIN from './Components/ToleranceRules/DuplicateVIN';
 import SentinelExceedsLimit from './Components/ToleranceRules/SentinelExceedsLimit';
 import CapitalizedCostReductionCashMustBeGreaterThanOrEqualToEVtaxCredit from './Components/ToleranceRules/CapitalizedCostReductionCashMustBeGreaterThanOrEqualToEVtaxCredit';
 import VINValidationNotCompleted from './Components/ToleranceRules/VINValidationNotCompleted';
+import ContractDateIsFutureDated from './Components/ToleranceRules/ContractDateIsFutureDated';
+import ContractRateGreaterThanMaxAllowedByMoreThanParameter from './Components/ToleranceRules/ContractRateGreaterThanMaxAllowedByMoreThanParameter';
+import ContractRateExceedsUsuryRate from './Components/ToleranceRules/ContractRateExceedsUsuryRate';
+import DealerParticipationExceedsMaxSpread from './Components/ToleranceRules/DealerParticipationExceedsMaxSpread';
 
 const router = createBrowserRouter([
   {
@@ -87,6 +92,10 @@ const router = createBrowserRouter([
       {
         path: "Checklist",
         element: <Checklist />,
+      },
+      {
+        path: "MyDealsData",
+        element: <MyDealsData />,
       },
       {
         path: "DecisionRules",
@@ -211,6 +220,24 @@ const router = createBrowserRouter([
         path: "VINValidationNotCompleted",
         element: <VINValidationNotCompleted />,
       },
+      {
+        path: "ContractDateIsFutureDated",
+        element: <ContractDateIsFutureDated />,
+      },
+      {
+        path: "ContractRateGreaterThanMaxAllowedByMoreThanParameter",
+        element: <ContractRateGreaterThanMaxAllowedByMoreThanParameter />,
+      },
+      {
+        path: "ContractRateExceedsUsuryRate",
+        element: <ContractRateExceedsUsuryRate />,
+      },
+      {
+        path: "DealerParticipationExceedsMaxSpread",
+        element: <DealerParticipationExceedsMaxSpread />,
+      },
+      
+     
     ],
   },
 ]);
