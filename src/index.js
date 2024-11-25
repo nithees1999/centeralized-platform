@@ -51,6 +51,10 @@ import ContractDateIsFutureDated from './Components/ToleranceRules/ContractDateI
 import ContractRateGreaterThanMaxAllowedByMoreThanParameter from './Components/ToleranceRules/ContractRateGreaterThanMaxAllowedByMoreThanParameter';
 import ContractRateExceedsUsuryRate from './Components/ToleranceRules/ContractRateExceedsUsuryRate';
 import DealerParticipationExceedsMaxSpread from './Components/ToleranceRules/DealerParticipationExceedsMaxSpread';
+import ContractFormState from './Components/ToleranceRules/ContractFormState';
+import ContractDateIsGreater from './Components/ToleranceRules/ContractDateIsGreater';
+import ContractRateIsLessThanMinimumAllowed from './Components/ToleranceRules/ContractRateIsLessThanMinimumAllowed';
+// import data from './Components/ToleranceRules/ToleranceRulesData.json'
 
 const router = createBrowserRouter([
   {
@@ -236,8 +240,18 @@ const router = createBrowserRouter([
         path: "DealerParticipationExceedsMaxSpread",
         element: <DealerParticipationExceedsMaxSpread />,
       },
-      
-     
+      {
+        path: "ContractFormState",
+        element: <ContractFormState />,
+      },
+      {
+        path: "ContractDateIsGreater",
+        element: <ContractDateIsGreater />,
+      },
+      {
+        path: "ContractRateIsLessThanMinimumAllowed",
+        element: <ContractRateIsLessThanMinimumAllowed />,
+      },
     ],
   },
 ]);
