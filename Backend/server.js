@@ -4,8 +4,8 @@ const mysql = require('mssql/msnodesqlv8');
 const SqlString = require('tsqlstring');
 
 const config = {
-    // server: 'LTIN191785',
-    server: 'LTIN527389',
+    server: 'LTIN191785',
+    //server: 'LTIN527389',
     driver: "SQL Server Native Client 11.0",
     database: "ForTestDB",
     connectionTimeout: 150000,
@@ -15,8 +15,8 @@ const config = {
     }
 };
 const config2 = {
-    // server: 'LTIN191785',
-    server: 'LTIN527389',
+     server: 'LTIN191785',
+    //server: 'LTIN527389',
     driver: "SQL Server Native Client 11.0",
     database: "rules",
     connectionTimeout: 150000,
@@ -529,6 +529,55 @@ app.get('/api/MandatoryChecklistItemsAreNotMarkedComplete', async (req, res) => 
         res.json(result.recordset); 
     } catch (err) {
         console.error("Error fetching DuplicateVIN:", err);
+        res.status(500).json({ error: "Error fetching data" });
+    }
+});
+
+ // Fetch  ContractDateIsFutureDated
+ app.get('/api/ContractDateIsFutureDated', async (req, res) => {
+    try {
+        const query = `SELECT * FROM ContractDateIsFutureDated`; 
+        const result = await db.query(query); 
+        res.json(result.recordset); 
+    } catch (err) {
+        console.error("Error fetching ContractDateIsFutureDated:", err);
+        res.status(500).json({ error: "Error fetching data" });
+    }
+});
+
+ // Fetch  ContractRateGreaterThanMaxAllowedByMoreThanParameter
+ app.get('/api/ContractRateGreaterThanMaxAllowedByMoreThanParameter', async (req, res) => {
+    try {
+        const query = `SELECT * FROM ContractRateGreaterThanMaxAllowedByMoreThanParameter`; 
+        const result = await db.query(query); 
+        res.json(result.recordset); 
+    } catch (err) {
+        console.error("Error fetching ContractRateGreaterThanMaxAllowedByMoreThanParameter:", err);
+        res.status(500).json({ error: "Error fetching data" });
+    }
+});
+
+
+
+ // Fetch  ContractRateExceedsUsuryRate
+ app.get('/api/ContractRateExceedsUsuryRate', async (req, res) => {
+    try {
+        const query = `SELECT * FROM ContractRateExceedsUsuryRate`; 
+        const result = await db.query(query); 
+        res.json(result.recordset); 
+    } catch (err) {
+        console.error("Error fetching ContractRateExceedsUsuryRate:", err);
+        res.status(500).json({ error: "Error fetching data" });
+    }
+});
+// Fetch  DealerParticipationExceedsMaxSpread
+app.get('/api/DealerParticipationExceedsMaxSpread', async (req, res) => {
+    try {
+        const query = `SELECT * FROM DealerParticipationExceedsMaxSpread`; 
+        const result = await db.query(query); 
+        res.json(result.recordset); 
+    } catch (err) {
+        console.error("Error fetching DealerParticipationExceedsMaxSpread:", err);
         res.status(500).json({ error: "Error fetching data" });
     }
 });
