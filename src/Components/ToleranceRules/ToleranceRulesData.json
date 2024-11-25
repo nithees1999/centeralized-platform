@@ -4,202 +4,223 @@
     "id": "MaintenanceOverAdvance",
     "title": "Maintenance Over Advance",
     "shorthand": "MOA",
-    "navigationLink": "/MaintenanceOverAdvance"
+    "navigationLink": "MaintenanceOverAdvance"
   },
   {
     "pageNumber": 2,
     "id": "GAPIsNotPermitted",
     "title": "GAP Is Not Permitted",
     "shorthand": "GAP-INP",
-    "navigationLink": "/GAPIsNotPermitted"
+    "navigationLink": "GAPIsNotPermitted"
   },
   {
     "pageNumber": 3,
     "id": "ServiceContractOverAdvance",
     "title": "Service Contract Over Advance",
     "shorthand": "SCOA",
-    "navigationLink": "/ServiceContractOverAdvance"
+    "navigationLink": "ServiceContractOverAdvance"
   },
   {
     "pageNumber": 4,
     "id": "GapAmountOverAdvance",
     "title": "Gap Amount Over Advance",
     "shorthand": "GAP-AOA",
-    "navigationLink": "/GapAmountOverAdvance"
+    "navigationLink": "GapAmountOverAdvance"
   },
   {
     "pageNumber": 5,
     "id": "OtherAmountsOverAdvance",
     "title": "Other Amounts Over Advance",
     "shorthand": "OAOA",
-    "navigationLink": "/OtherAmountsOverAdvance"
+    "navigationLink": "OtherAmountsOverAdvance"
   },
   {
     "pageNumber": 6,
     "id": "TermProtection",
     "title": "Term Protection",
     "shorthand": "TP",
-    "navigationLink": "/TermProtection"
+    "navigationLink": "TermProtection"
   },
   {
     "pageNumber": 7,
     "id": "EVTaxCredit",
     "title": "EV Tax Credit",
     "shorthand": "EV-TC",
-    "navigationLink": "/EVTaxCredit"
+    "navigationLink": "EVTaxCredit"
   },
   {
     "pageNumber": 8,
     "id": "Halo",
     "title": "Halo",
     "shorthand": "Halo",
-    "navigationLink": "/Halo"
+    "navigationLink": "Halo"
   },
   {
     "pageNumber": 9,
     "id": "ModelIsNotEligibleForSentinel",
     "title": "Model Is Not Eligible For Sentinel",
     "shorthand": "MINEFS",
-    "navigationLink": "/ModelIsNotEligibleForSentinel"
+    "navigationLink": "ModelIsNotEligibleForSentinel"
   },
   {
     "pageNumber": 10,
     "id": "TireAndWheelProtectionExceedsLimit",
     "title": "Tire And Wheel Protection Exceeds Limit",
     "shorthand": "TAWPEL",
-    "navigationLink": "/TireAndWheelProtectionExceedsLimit"
+    "navigationLink": "TireAndWheelProtectionExceedsLimit"
   },
   {
     "pageNumber": 11,
     "id": "TheftProtectionFeeExceedsLimit",
     "title": "Theft Protection Fee Exceeds Limit",
     "shorthand": "TPFEL",
-    "navigationLink": "/TheftProtectionFeeExceedsLimit"
+    "navigationLink": "TheftProtectionFeeExceedsLimit"
   },
   {
     "pageNumber": 12,
     "id": "WindshieldProtection",
     "title": "Windshield Protection",
     "shorthand": "WSP",
-    "navigationLink": "/WindshieldProtection"
+    "navigationLink": "WindshieldProtection"
   },
   {
     "pageNumber": 13,
     "id": "DentProtection",
     "title": "Dent Protection",
     "shorthand": "DP",
-    "navigationLink": "/DentProtection"
+    "navigationLink": "DentProtection"
   },
   {
     "pageNumber": 14,
     "id": "KeyReplacementProtection",
     "title": "Key Replacement Protection",
     "shorthand": "KRP",
-    "navigationLink": "/KeyReplacementProtection"
+    "navigationLink": "KeyReplacementProtection"
   },
   {
     "pageNumber": 15,
     "id": "SentinelExceedsLimit",
     "title": "Sentinel Exceeds Limit",
     "shorthand": "SEL",
-    "navigationLink": "/SentinelExceedsLimit"
+    "navigationLink": "SentinelExceedsLimit"
   },
   {
     "pageNumber": 16,
     "id": "ModelIsNotValidForTaxCredit",
     "title": "Model Is Not Valid For Tax Credit",
     "shorthand": "MINVFTC",
-    "navigationLink": "/ModelIsNotValidForTaxCredit"
+    "navigationLink": "ModelIsNotValidForTaxCredit"
   },
   {
     "pageNumber": 17,
     "id": "CapitalizedCostReductionCashMustBeGreaterThanOrEqualToEVtaxCredit",
     "title": "Capitalized Cost Reduction Cash Must Be Greater Than Or Equal To EV Tax Credit",
     "shorthand": "CCRCMBGTOETEV",
-    "navigationLink": "/CapitalizedCostReductionCashMustBeGreaterThanOrEqualToEVtaxCredit"
+    "navigationLink": "CapitalizedCostReductionCashMustBeGreaterThanOrEqualToEVtaxCredit"
   },
   {
     "pageNumber": 18,
     "id": "InvalidExcessiveWearAndUse",
     "title": "Invalid Excessive Wear And Use",
     "shorthand": "IEWAU",
-    "navigationLink": "/InvalidExcessiveWearAndUse"
+    "navigationLink": "InvalidExcessiveWearAndUse"
   },
   {
     "pageNumber": 19,
     "id": "ActiveAHFCAccountWithDuplicateVIN",
     "title": "Active AHFC Account With Duplicate VIN",
     "shorthand": "A-AHFC-AWD-VIN",
-    "navigationLink": "/ActiveAHFCAccountWithDuplicateVIN"
+    "navigationLink": "ActiveAHFCAccountWithDuplicateVIN"
   },
   {
     "pageNumber": 25,
     "id": "AdvanceExceedsApproval",
     "title": "Advance Exceeds Approval",
     "shorthand": "AEA",
-    "navigationLink": "/AdvanceExceedsApproval"
+    "navigationLink": "AdvanceExceedsApproval"
   },
   {
     "pageNumber": 26,
     "id": "MandatoryChecklistItemsAreNotMarkedComplete",
     "title": "Mandatory Checklist Items Are Not Marked Complete",
     "shorthand": "MCIANMC",
-    "navigationLink": "/MandatoryChecklistItemsAreNotMarkedComplete"
+    "navigationLink": "MandatoryChecklistItemsAreNotMarkedComplete"
   },
   {
     "pageNumber": 27,
     "id": "ContractSalesProgramDoesNotMatchApprovedSalesProgramOrSalesProgramReturnedErrors",
     "title": "Contract Sales Program Does Not Match Approved Sales Program Or Sales Program Returned Errors",
     "shorthand": "CSPDNMASPOSPRE",
-    "navigationLink": "/ContractSalesProgramDoesNotMatchApprovedSalesProgramOrSalesProgramReturnedErrors"
+    "navigationLink": "ContractSalesProgramDoesNotMatchApprovedSalesProgramOrSalesProgramReturnedErrors"
   },
   {
     "pageNumber": 28,
     "id": "CollateralAgeIsGreaterThanParameter",
     "title": "Collateral Age Is Greater Than Parameter",
     "shorthand": "CAIGTP",
-    "navigationLink": "/CollateralAgeIsGreaterThanParameter"
+    "navigationLink": "CollateralAgeIsGreaterThanParameter"
   },
   {
     "pageNumber": 29,
     "id": "MaximumMileageIsGreaterThanParameter",
     "title": "Maximum Mileage Is Greater Than Parameter",
     "shorthand": "MMIGTP",
-    "navigationLink": "/MaximumMileageIsGreaterThanParameter"
+    "navigationLink": "MaximumMileageIsGreaterThanParameter"
   },
   {
     "pageNumber": 30,
     "id": "VINIsNotCertified",
     "title": "VIN Is Not Certified",
     "shorthand": "VIN-INC",
-    "navigationLink": "/VINIsNotCertified"
+    "navigationLink": "VINIsNotCertified"
   },
   {
     "pageNumber": 31,
     "id": "InvalidVIN",
     "title": "Invalid VIN",
     "shorthand": "I-VIN",
-    "navigationLink": "/InvalidVIN"
+    "navigationLink": "InvalidVIN"
   },
   {
     "pageNumber": 32,
     "id": "OrigenateDuplicateVIN",
     "title": "Origenate Duplicate VIN",
     "shorthand": "OD-VIN",
-    "navigationLink": "/OrigenateDuplicateVIN"
+    "navigationLink": "OrigenateDuplicateVIN"
   },
   {
     "pageNumber": 33,
     "id": "DuplicateVIN",
     "title": "DuplicateVIN",
     "shorthand": "D-VIN",
-    "navigationLink": "/DuplicateVIN"
+    "navigationLink": "DuplicateVIN"
   },
   {
     "pageNumber": 34,
     "id": "VINValidationNotCompleted",
     "title": "VIN Validation Not Completed",
     "shorthand": "VIN-VNC",
-    "navigationLink": "/VINValidationNotCompleted"
+    "navigationLink": "VINValidationNotCompleted"
+  },
+  {
+    "pageNumber": 35,
+    "id": "ContractFormState",
+    "title": "Contract Form State",
+    "shorthand": "CFS",
+    "navigationLink": "ContractFormState"
+  },
+  {
+    "pageNumber": 35,
+    "id": "ContractDateIsGreater",
+    "title": "ContractDateIsGreater",
+    "shorthand": "CDIG",
+    "navigationLink": "ContractDateIsGreater"
+  },
+  {
+    "pageNumber": 35,
+    "id": "ContractRateIsLessThanMinimumAllowed",
+    "title": "Contract Rate Is Less Than Minimum Allowed",
+    "shorthand": "CRILTMA",
+    "navigationLink": "ContractRateIsLessThanMinimumAllowed"
   }
 ]

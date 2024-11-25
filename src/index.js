@@ -46,6 +46,10 @@ import DuplicateVIN from './Components/ToleranceRules/DuplicateVIN';
 import SentinelExceedsLimit from './Components/ToleranceRules/SentinelExceedsLimit';
 import CapitalizedCostReductionCashMustBeGreaterThanOrEqualToEVtaxCredit from './Components/ToleranceRules/CapitalizedCostReductionCashMustBeGreaterThanOrEqualToEVtaxCredit';
 import VINValidationNotCompleted from './Components/ToleranceRules/VINValidationNotCompleted';
+import ContractFormState from './Components/ToleranceRules/ContractFormState';
+import ContractDateIsGreater from './Components/ToleranceRules/ContractDateIsGreater';
+import ContractRateIsLessThanMinimumAllowed from './Components/ToleranceRules/ContractRateIsLessThanMinimumAllowed';
+// import data from './Components/ToleranceRules/ToleranceRulesData.json'
 
 const router = createBrowserRouter([
   {
@@ -210,6 +214,18 @@ const router = createBrowserRouter([
       {
         path: "VINValidationNotCompleted",
         element: <VINValidationNotCompleted />,
+      },
+      {
+        path: "ContractFormState",
+        element: <ContractFormState />,
+      },
+      {
+        path: "ContractDateIsGreater",
+        element: <ContractDateIsGreater />,
+      },
+      {
+        path: "ContractRateIsLessThanMinimumAllowed",
+        element: <ContractRateIsLessThanMinimumAllowed />,
       },
     ],
   },

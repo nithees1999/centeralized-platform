@@ -1,17 +1,17 @@
 import React from 'react';
-const VINValidationNotCompleted = () => {
+const ContractDateIsGreater = () => {
     const filteredData = [
-        {"RSS":"","Wave":"","CCR_CR":"","Active_Deactive":"Active","Comments":"","ContractScreen":"Closing Prep (Contract Info)","Product":"Lease","RuleDescription":"VIN Validation not completed","ToDealer":"Y","WarningVsError":"Warning","WhenToUse":"","RuleDetailsLogic":"VIN Validation Return Status = false and Duplicate VIN = false and Error Message is 'Duplicate VIN. Contact PE or MC personnel, model details not returned' or 'Request has timed out for a response message from AHM Service, model details not returned' or 'VIN not found'","Rule":"600","CreditOrContract":"Contract","Parameter":"","Override":"3,9,4","OpenIssuesQuestions":"","BusinessResponse":"V20 - Updated Rule Logic\nV24 - Update Override Level; Contract Type"},
-        {"RSS":"","Wave":"","CCR_CR":"","Active_Deactive":"Active","Comments":"","ContractScreen":"Closing Prep (Contract Info)","Product":"Retail","RuleDescription":"VIN Validation not completed","ToDealer":"Y","WarningVsError":"Warning","WhenToUse":"","RuleDetailsLogic":"VIN Validation Return Status = false and Duplicate VIN = false and Error Message is 'Duplicate VIN. Contact PE or MC personnel, model details not returned' or 'Request has timed out for a response message from AHM Service, model details not returned' or 'VIN not found'","Rule":"600","CreditOrContract":"Contract","Parameter":"","Override":"3,9,4","OpenIssuesQuestions":"","BusinessResponse":"V20 - Updated Rule Logic\nV24 - Update Override Level; Contract Type"},
-        {"RSS":"","Wave":"","CCR_CR":"","Active_Deactive":"Active","Comments":"","ContractScreen":"Closing Prep (Contract Info)","Product":"MC","RuleDescription":"VIN Validation not completed","ToDealer":"Y","WarningVsError":"Warning","WhenToUse":"","RuleDetailsLogic":"VIN Validation Return Status = false and Duplicate VIN = false and Error Message is 'Duplicate VIN. Contact PE or MC personnel, model details not returned' or 'Request has timed out for a response message from AHM Service, model details not returned' or 'VIN not found'","Rule":"600","CreditOrContract":"Contract","Parameter":"","Override":"3,9,4","OpenIssuesQuestions":"","BusinessResponse":"V20 - Updated Rule Logic\nV24 - Update Override Level; Contract Type"},
-        {"RSS":"","Wave":"","CCR_CR":"","Active_Deactive":"Active","Comments":"","ContractScreen":"Closing Prep (Contract Info)","Product":"PE","RuleDescription":"VIN Validation not completed","ToDealer":"Y","WarningVsError":"Warning","WhenToUse":"","RuleDetailsLogic":"VIN Validation Return Status = false and Duplicate VIN = false and Error Message is 'Duplicate VIN. Contact PE or MC personnel, model details not returned' or 'Request has timed out for a response message from AHM Service, model details not returned' or 'VIN not found'","Rule":"600","CreditOrContract":"Contract","Parameter":"","Override":"3,9,4","OpenIssuesQuestions":"","BusinessResponse":"V20 - Updated Rule Logic\nV24 - Update Override Level; Contract Type"},
-        {"RSS":"","Wave":"","CCR_CR":"","Active_Deactive":"Active","Comments":"","ContractScreen":"Closing Prep (Contract Info)","Product":"Marine","RuleDescription":"VIN Validation not completed","ToDealer":"Y","WarningVsError":"Warning","WhenToUse":"","RuleDetailsLogic":"VIN Validation Return Status = false and Duplicate VIN = false and Error Message is 'Duplicate VIN. Contact PE or MC personnel, model details not returned' or 'Request has timed out for a response message from AHM Service, model details not returned' or 'VIN not found'","Rule":"600","CreditOrContract":"Contract","Parameter":"","Override":"3,9,4","OpenIssuesQuestions":"","BusinessResponse":"V20 - Updated Rule Logic\nV24 - Update Override Level; Contract Type"}
+        {"RSS":"","Wave":"","CCR_CR":"","Active_Deactive":"Active","Comments":"","ContractScreen":"Closing Prep (Contract Info)","Product":"Lease","RuleDescription":"Contract Date  is greater than X days of Sales Program Effective End Date","ToDealer":"Y","WarningVsError":"Warning","WhenToUse":"","RuleDetailsLogic":"For Lease and Retail Contracts, the Contract Date must be within the Sales Program Expiration Date plus 10 days ","Rule":"385","CreditOrContract":"Contract","Parameter":"10","Override":"4","OpenIssuesQuestions":"Sales Program PED - Effective End Date\nDuplicate to 128?","BusinessResponse":""},
+        {"RSS":"","Wave":"","CCR_CR":"","Active_Deactive":"Active","Comments":"","ContractScreen":"Closing Prep (Contract Info)","Product":"Retail","RuleDescription":"Contract Date  is greater than X days of Sales Program Effective End Date","ToDealer":"Y","WarningVsError":"Warning","WhenToUse":"","RuleDetailsLogic":"For Lease and Retail Contracts, the Contract Date must be within the Sales Program Expiration Date plus 10 days ","Rule":"385","CreditOrContract":"Contract","Parameter":"10","Override":"4","OpenIssuesQuestions":"Sales Program PED - Effective End Date\nDuplicate to 128?","BusinessResponse":""},
+        {"RSS":"","Wave":"","CCR_CR":"","Active_Deactive":"Active","Comments":"","ContractScreen":"Closing Prep (Contract Info)","Product":"MC","RuleDescription":"Contract Date  is greater than X days of Sales Program Effective End Date","ToDealer":"Y","WarningVsError":"Warning","WhenToUse":"","RuleDetailsLogic":"For Lease and Retail Contracts, the Contract Date must be within the Sales Program Expiration Date plus 10 days ","Rule":"385","CreditOrContract":"Contract","Parameter":"10","Override":"4","OpenIssuesQuestions":"Sales Program PED - Effective End Date\nDuplicate to 128?","BusinessResponse":""},
+        {"RSS":"","Wave":"","CCR_CR":"","Active_Deactive":"Active","Comments":"","ContractScreen":"Closing Prep (Contract Info)","Product":"PE","RuleDescription":"Contract Date  is greater than X days of Sales Program Effective End Date","ToDealer":"Y","WarningVsError":"Warning","WhenToUse":"","RuleDetailsLogic":"For Lease and Retail Contracts, the Contract Date must be within the Sales Program Expiration Date plus 10 days ","Rule":"385","CreditOrContract":"Contract","Parameter":"10","Override":"4","OpenIssuesQuestions":"Sales Program PED - Effective End Date\nDuplicate to 128?","BusinessResponse":""},
+        {"RSS":"","Wave":"","CCR_CR":"","Active_Deactive":"Active","Comments":"","ContractScreen":"Closing Prep (Contract Info)","Product":"Marine","RuleDescription":"Contract Date  is greater than X days of Sales Program Effective End Date","ToDealer":"Y","WarningVsError":"Warning","WhenToUse":"","RuleDetailsLogic":"For Lease and Retail Contracts, the Contract Date must be within the Sales Program Expiration Date plus 10 days ","Rule":"385","CreditOrContract":"Contract","Parameter":"10","Override":"4","OpenIssuesQuestions":"Sales Program PED - Effective End Date\nDuplicate to 128?","BusinessResponse":""}
     ];
 
     return (
         <>
             <h1 className="text-center text-xl font-bold p-2 text-blue-900">ToleranceRules</h1>
-            <h1 className="text-center text-xl font-bold p-2 text-blue-900">VIN Validation not completed</h1>
+            <h1 className="text-center text-xl font-bold p-2 text-blue-900">Contract Form State &lt;&gt; Dealer State OR Contract Date &gt; Contract Form Expiration Date</h1>
             <section className="py-8 px-4 m-2 border border-black rounded-md">
 
                 <div style={{ overflowX: 'auto' }}>
@@ -25,7 +25,7 @@ const VINValidationNotCompleted = () => {
                                 <th className="p-4 border border-black">Comments</th>
                                 <th className="p-4 border border-black min-w-60">Contract Screen</th>
                                 <th className="p-4 border border-black">Product</th>
-                                <th className="p-4 border border-black">Rule Description</th>
+                                <th className="p-4 border border-black min-w-96">Rule Description</th>
                                 <th className="p-4 border border-black">To Dealer (Y/N)</th>
                                 <th className="p-4 border border-black">Warning vs Error</th>
                                 <th className="p-4 border border-black">When To Use</th>
@@ -34,8 +34,8 @@ const VINValidationNotCompleted = () => {
                                 <th className="p-4 border border-black">Credit or Contract</th>
                                 <th className="p-4 border border-black">Parameter</th>
                                 <th className="p-4 border border-black">Override</th>
-                                <th className="p-4 border border-black">Open Issues / Questions</th>
-                                <th className="p-4 border border-black min-w-96">Business Response</th>
+                                <th className="p-4 border border-black min-w-80">Open Issues / Questions</th>
+                                <th className="p-4 border border-black">Business Response</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -70,4 +70,4 @@ const VINValidationNotCompleted = () => {
         </>
     );
 };
-export default VINValidationNotCompleted;
+export default ContractDateIsGreater;
