@@ -4,7 +4,7 @@ const mysql = require('mssql/msnodesqlv8');
 const SqlString = require('tsqlstring');
 
 const config = {
-    server: 'LTIN191785',
+    server: 'LTIN508758\\MSSQLSERVER22',
     //server: 'LTIN527389',
     driver: "SQL Server Native Client 11.0",
     database: "ForTestDB",
@@ -15,7 +15,7 @@ const config = {
     }
 };
 const config2 = {
-     server: 'LTIN191785',
+     server: 'LTIN508758\\MSSQLSERVER22',
     //server: 'LTIN527389',
     driver: "SQL Server Native Client 11.0",
     database: "rules",
@@ -581,6 +581,99 @@ app.get('/api/DealerParticipationExceedsMaxSpread', async (req, res) => {
         res.status(500).json({ error: "Error fetching data" });
     }
 });
+// Fetch  ContractRateIsLessThanMinimumAllowed
+app.get('/api/ContractRateIsLessThanMinimumAllowed', async (req, res) => {
+    try {
+        const query = `SELECT * FROM ContractRateIsLessThanMinimumAllowed`; 
+        const result = await db.query(query); 
+        res.json(result.recordset); 
+    } catch (err) {
+        console.error("Error fetching ContractRateIsLessThanMinimumAllowed:", err);
+        res.status(500).json({ error: "Error fetching data" });
+    }
+});
+// Fetch  PaymentScheduleAndTermDoNotMatch
+app.get('/api/PaymentScheduleAndTermDoNotMatch', async (req, res) => {
+    try {
+        const query = `SELECT * FROM PaymentScheduleAndTermDoNotMatch`; 
+        const result = await db.query(query); 
+        res.json(result.recordset); 
+    } catch (err) {
+        console.error("Error fetching PaymentScheduleAndTermDoNotMatch:", err);
+        res.status(500).json({ error: "Error fetching data" });
+    }
+});
+// Fetch  ContractTermDoesNotMatchApprovedTerm
+app.get('/api/ContractTermDoesNotMatchApprovedTerm', async (req, res) => {
+    try {
+        const query = `SELECT * FROM ContractTermDoesNotMatchApprovedTerm`; 
+        const result = await db.query(query); 
+        res.json(result.recordset); 
+    } catch (err) {
+        console.error("Error fetching ContractTermDoesNotMatchApprovedTerm:", err);
+        res.status(500).json({ error: "Error fetching data" });
+    }
+});
+
+
+// Fetch  APRIsNotWithin.125%
+app.get('/api/APRIsNotWithin125', async (req, res) => {
+    try {
+        const query = `SELECT * FROM APRIsNotWithin125`; 
+        const result = await db.query(query); 
+        res.json(result.recordset); 
+    } catch (err) {
+        console.error("Error fetching APRIsNotWithin125", err);
+        res.status(500).json({ error: "Error fetching data" });
+    }
+});
+
+// Fetch  FinanceChargeIsUnderstated
+app.get('/api/FinanceChargeIsUnderstated', async (req, res) => {
+    try {
+        const query = `SELECT * FROM FinanceChargeIsUnderstated`; 
+        const result = await db.query(query); 
+        res.json(result.recordset); 
+    } catch (err) {
+        console.error("Error fetching FinanceChargeIsUnderstated:", err);
+        res.status(500).json({ error: "Error fetching data" });
+    }
+});
+
+// Fetch  InvalidTurnInFee
+app.get('/api/InvalidTurnInFee', async (req, res) => {
+    try {
+        const query = `SELECT * FROM InvalidTurnInFee`; 
+        const result = await db.query(query); 
+        res.json(result.recordset); 
+    } catch (err) {
+        console.error("Error fetching InvalidTurnInFee:", err);
+        res.status(500).json({ error: "Error fetching data" });
+    }
+});
+// Fetch  InvalidDaysToFirstPayment
+app.get('/api/InvalidDaysToFirstPayment', async (req, res) => {
+    try {
+        const query = `SELECT * FROM InvalidDaysToFirstPayment`; 
+        const result = await db.query(query); 
+        res.json(result.recordset); 
+    } catch (err) {
+        console.error("Error fetching InvalidDaysToFirstPayment:", err);
+        res.status(500).json({ error: "Error fetching data" });
+    }
+});
+// Fetch  PaymentDueDateIsAfterParameterDayOfMonth
+app.get('/api/PaymentDueDateIsAfterParameterDayOfMonth', async (req, res) => {
+    try {
+        const query = `SELECT * FROM PaymentDueDateIsAfterParameterDayOfMonth`; 
+        const result = await db.query(query); 
+        res.json(result.recordset); 
+    } catch (err) {
+        console.error("Error fetching PaymentDueDateIsAfterParameterDayOfMonth:", err);
+        res.status(500).json({ error: "Error fetching data" });
+    }
+});
+
 
 
 // Sending response to the client

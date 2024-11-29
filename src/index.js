@@ -51,6 +51,14 @@ import ContractDateIsFutureDated from './Components/ToleranceRules/ContractDateI
 import ContractRateGreaterThanMaxAllowedByMoreThanParameter from './Components/ToleranceRules/ContractRateGreaterThanMaxAllowedByMoreThanParameter';
 import ContractRateExceedsUsuryRate from './Components/ToleranceRules/ContractRateExceedsUsuryRate';
 import DealerParticipationExceedsMaxSpread from './Components/ToleranceRules/DealerParticipationExceedsMaxSpread';
+import ContractRateIsLessThanMinimumAllowed from './Components/ToleranceRules/ContractRateIsLessThanMinimumAllowed';
+import PaymentScheduleAndTermDoNotMatch from './Components/ToleranceRules/PaymentScheduleAndTermDoNotMatch';
+import ContractTermDoesNotMatchApprovedTerm from './Components/ToleranceRules/ContractTermDoesNotMatchApprovedTerm';
+import APRIsNotWithin125 from './Components/ToleranceRules/APRIsNotWithin125';
+import FinanceChargeIsUnderstated from './Components/ToleranceRules/FinanceChargeIsUnderstated';
+import InvalidTurnInFee from './Components/ToleranceRules/InvalidTurnInFee';
+import InvalidDaysToFirstPayment from './Components/ToleranceRules/InvalidDaysToFirstPayment';
+import PaymentDueDateIsAfterParameterDayOfMonth from './Components/ToleranceRules/PaymentDueDateIsAfterParameterDayOfMonth';
 
 const router = createBrowserRouter([
   {
@@ -236,6 +244,39 @@ const router = createBrowserRouter([
         path: "DealerParticipationExceedsMaxSpread",
         element: <DealerParticipationExceedsMaxSpread />,
       },
+      {
+        path: "ContractRateIsLessThanMinimumAllowed",
+        element: <ContractRateIsLessThanMinimumAllowed />,
+      },
+      {
+        path: "PaymentScheduleAndTermDoNotMatch",
+        element: <PaymentScheduleAndTermDoNotMatch />,
+      },
+      {
+        path: "ContractTermDoesNotMatchApprovedTerm",
+        element: <ContractTermDoesNotMatchApprovedTerm />,
+      },
+      {
+        path: "APRIsNotWithin125",
+        element: <APRIsNotWithin125 />,
+      },
+      {
+        path: "FinanceChargeIsUnderstated",
+        element: <FinanceChargeIsUnderstated />,
+      },
+      {
+        path: "InvalidTurnInFee",
+        element: <InvalidTurnInFee />,
+      },
+      {
+        path: "InvalidDaysToFirstPayment",
+        element: <InvalidDaysToFirstPayment />,
+      },
+      {
+        path: "PaymentDueDateIsAfterParameterDayOfMonth",
+        element: <PaymentDueDateIsAfterParameterDayOfMonth />,
+      },
+      
       
      
     ],
