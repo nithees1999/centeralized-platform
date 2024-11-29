@@ -12,7 +12,7 @@ export default function Home() {
             }}
         >
             <div className="p-5 m-5">
-                <h1 className=" text-blue-900 text-4xl font-bold">Data Discovering studio</h1>
+                <h1 className=" text-blue-900 text-4xl font-bold">Data Discovery Studio</h1>
             </div>
         </div>
     );

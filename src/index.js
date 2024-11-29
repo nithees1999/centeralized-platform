@@ -59,6 +59,10 @@ import FinanceChargeIsUnderstated from './Components/ToleranceRules/FinanceCharg
 import InvalidTurnInFee from './Components/ToleranceRules/InvalidTurnInFee';
 import InvalidDaysToFirstPayment from './Components/ToleranceRules/InvalidDaysToFirstPayment';
 import PaymentDueDateIsAfterParameterDayOfMonth from './Components/ToleranceRules/PaymentDueDateIsAfterParameterDayOfMonth';
+import ContractFormState from './Components/ToleranceRules/ContractFormState';
+import ContractDateIsGreater from './Components/ToleranceRules/ContractDateIsGreater';
+import ContractRateIsLessThanMinimumAllowed from './Components/ToleranceRules/ContractRateIsLessThanMinimumAllowed';
+// import data from './Components/ToleranceRules/ToleranceRulesData.json'
 
 const router = createBrowserRouter([
   {
@@ -276,9 +280,18 @@ const router = createBrowserRouter([
         path: "PaymentDueDateIsAfterParameterDayOfMonth",
         element: <PaymentDueDateIsAfterParameterDayOfMonth />,
       },
-      
-      
-     
+      {
+        path: "ContractFormState",
+        element: <ContractFormState />,
+      },
+      {
+        path: "ContractDateIsGreater",
+        element: <ContractDateIsGreater />,
+      },
+      {
+        path: "ContractRateIsLessThanMinimumAllowed",
+        element: <ContractRateIsLessThanMinimumAllowed />,
+      },
     ],
   },
 ]);

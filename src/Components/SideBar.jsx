@@ -24,7 +24,7 @@ export default function SideBar({ isOpen, onClose, sidebarRef }) {
 
     //Tolerance rules
     const [isTolerance, setIsTolerance] = useState(false);
-    const isToleranceActive = data.some(item => location.pathname === item.navigationLink); // Check if any item matches the current path
+    const isToleranceActive = data.some(item => location.pathname === `/${item.navigationLink}`); // Check if any item matches the current path
     const toggleToleranceMenu = () => {
         setIsTolerance(!isTolerance);
     };
@@ -65,7 +65,7 @@ export default function SideBar({ isOpen, onClose, sidebarRef }) {
                                 {data.map((item, index) => (
                                     <ul className="mt-2" key={index}>
                                         <Tooltip id={item.id} />
-                                        <li><NavLink data-tooltip-id={item.id} data-tooltip-content={item.title} to={item.id} className={({ isActive }) => `block    p-2 font-bold text-sm hover:underline hover:underline-offset-8 ${isActive ? " text-gray-500 underline underline-offset-8" : " "}`}>{item.shorthand}</NavLink></li>
+                                        <li><NavLink data-tooltip-id={item.id} data-tooltip-content={item.title} to={item.navigationLink} className={({ isActive }) => `block    p-2 font-bold text-sm hover:underline hover:underline-offset-8 ${isActive ? " text-gray-500 underline underline-offset-8" : " "}`}>{item.shorthand}</NavLink></li>
                                     </ul>
                                 ))}
                             </div>
