@@ -203,32 +203,88 @@
     "navigationLink": "/VINValidationNotCompleted"
   },
   {
-    "pageNumber": 34,
+    "pageNumber": 37,
     "id": "ContractDateIsFutureDated",
     "title": "Contract Date Is Future Dated",
     "shorthand": "CDIFD",
     "navigationLink": "/ContractDateIsFutureDated"
   },
   {
-    "pageNumber": 34,
+    "pageNumber": 38,
     "id": "ContractRateGreaterThanMaxAllowedByMoreThanParameter",
     "title": "Contract Rate greater than Max Allowed by more than parameter",
     "shorthand": "CRGTMABMTP",
     "navigationLink": "/ContractRateGreaterThanMaxAllowedByMoreThanParameter"
   },
   {
-    "pageNumber": 34,
+    "pageNumber": 39,
     "id": "ContractRateExceedsUsuryRate",
     "title": "Contract Rate exceeds Usury Rate",
     "shorthand": "CREUR",
     "navigationLink": "/ContractRateExceedsUsuryRate"
   },
   {
-    "pageNumber": 34,
+    "pageNumber": 40,
     "id": "DealerParticipationExceedsMaxSpread",
     "title": "Dealer Participation exceeds Max Spread",
     "shorthand": "DPEMS",
     "navigationLink": "/DealerParticipationExceedsMaxSpread"
+  },
+  {
+    "pageNumber": 41,
+    "id": "ContractRateIsLessThanMinimumAllowed",
+    "title": "Contract Rate is less than Minimum Allowed",
+    "shorthand": "CRILTMA",
+    "navigationLink": "/ContractRateIsLessThanMinimumAllowed"
+  },
+  {
+    "pageNumber": 42,
+    "id": "PaymentScheduleAndTermDoNotMatch",
+    "title": "Payment Schedule and Term do not match",
+    "shorthand": "PSATDNM",
+    "navigationLink": "/PaymentScheduleAndTermDoNotMatch"
+  },
+  {
+    "pageNumber": 43,
+    "id": "ContractTermDoesNotMatchApprovedTerm",
+    "title": "Contract Term does not match Approved Term ",
+    "shorthand": "CTDNMAT",
+    "navigationLink": "/ContractTermDoesNotMatchApprovedTerm"
+  },
+  {
+    "pageNumber": 44,
+    "id": "APRIsNotWithin125",
+    "title": "APR is not within .125%",
+    "shorthand": "AINWI125",
+    "navigationLink": "/APRIsNotWithin125"
+  },
+  {
+    "pageNumber": 45,
+    "id": "FinanceChargeIsUnderstated",
+    "title": "Finance Charge is Understated",
+    "shorthand": "FCIU",
+    "navigationLink": "/FinanceChargeIsUnderstated"
+  },
+  {
+    "pageNumber": 46,
+    "id": "InvalidTurnInFee",
+    "title": "Invalid Turn in Fee",
+    "shorthand": "ITIF",
+    "navigationLink": "/InvalidTurnInFee"
+  },
+  {
+    "pageNumber": 47,
+    "id": "InvalidDaysToFirstPayment",
+    "title": "Invalid Days to First Payment",
+    "shorthand": "IDTFP",
+    "navigationLink": "/InvalidDaysToFirstPayment"
+  },
+  {
+    "pageNumber": 48,
+    "id": "PaymentDueDateIsAfterParameterDayOfMonth",
+    "title": "Payment Due Date is after Parameter Day of Month",
+    "shorthand": "PDDIAPDOM",
+    "navigationLink": "/PaymentDueDateIsAfterParameterDayOfMonth"
   },
   {
     "pageNumber": 35,
@@ -251,6 +307,8 @@
     "shorthand": "CRILTMA",
     "navigationLink": "ContractRateIsLessThanMinimumAllowed"
   }
- 
+  
+  
+  
   
 ]
