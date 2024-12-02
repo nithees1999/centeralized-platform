@@ -61,7 +61,9 @@ import InvalidDaysToFirstPayment from './Components/ToleranceRules/InvalidDaysTo
 import PaymentDueDateIsAfterParameterDayOfMonth from './Components/ToleranceRules/PaymentDueDateIsAfterParameterDayOfMonth';
 import ContractFormState from './Components/ToleranceRules/ContractFormState';
 import ContractDateIsGreater from './Components/ToleranceRules/ContractDateIsGreater';
-import ContractRateIsLessThanMinimumAllowed from './Components/ToleranceRules/ContractRateIsLessThanMinimumAllowed';
+import AdvanceMonthlyPaymentAndAdvanceSinglePaymentCannotEquelsZero from './Components/ToleranceRules/AdvanceMonthlyPaymentAndAdvanceSinglePaymentCannotEquelsZero';
+import ItemizationAdvanceMonthlyPaymentDoesNotEqualDisclosureFirstPaymentAmount from './Components/ToleranceRules/ItemizationAdvanceMonthlyPaymentDoesNotEqualDisclosureFirstPaymentAmount';
+import ItemizationAdvanceMonthlyPaymentDoesNotEqualTotalMonthlyPayment from './Components/ToleranceRules/ItemizationAdvanceMonthlyPaymentDoesNotEqualTotalMonthlyPayment';
 // import data from './Components/ToleranceRules/ToleranceRulesData.json'
 
 const router = createBrowserRouter([
@@ -289,8 +291,16 @@ const router = createBrowserRouter([
         element: <ContractDateIsGreater />,
       },
       {
-        path: "ContractRateIsLessThanMinimumAllowed",
-        element: <ContractRateIsLessThanMinimumAllowed />,
+        path: "AdvanceMonthlyPaymentAndAdvanceSinglePaymentCannotEquelsZero",
+        element: <AdvanceMonthlyPaymentAndAdvanceSinglePaymentCannotEquelsZero />,
+      },
+      {
+        path: "ItemizationAdvanceMonthlyPaymentDoesNotEqualDisclosureFirstPaymentAmount",
+        element: <ItemizationAdvanceMonthlyPaymentDoesNotEqualDisclosureFirstPaymentAmount />,
+      },
+      {
+        path: "ItemizationAdvanceMonthlyPaymentDoesNotEqualTotalMonthlyPayment",
+        element: <ItemizationAdvanceMonthlyPaymentDoesNotEqualTotalMonthlyPayment />,
       },
     ],
   },
