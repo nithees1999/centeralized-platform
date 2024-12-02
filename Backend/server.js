@@ -4,21 +4,10 @@ const mysql = require('mssql/msnodesqlv8');
 const SqlString = require('tsqlstring');
 
 const config = {
-    server: 'LTIN191785',
-    //server: 'LTIN527389',
+    // server: 'LTIN191785',
+    server: 'LTIN527389',
     driver: "SQL Server Native Client 11.0",
-    database: "ForTestDB",
-    connectionTimeout: 150000,
-    options: {
-        encrypt: false,
-        trustedConnection: true
-    }
-};
-const config2 = {
-     server: 'LTIN191785',
-    //server: 'LTIN527389',
-    driver: "SQL Server Native Client 11.0",
-    database: "rules",
+    database: "DDS",
     connectionTimeout: 150000,
     options: {
         encrypt: false,
@@ -30,24 +19,19 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 const db = new mysql.ConnectionPool(config);
-const db2 = new mysql.ConnectionPool(config2);
 
 db.connect()
-    .then(() => console.log('Connected to ForTestDB'))
-    .catch(err => console.error('Connection error to ForTestDB:', err));
-
-db2.connect()
-    .then(() => console.log('Connected to rules database'))
-    .catch(err => console.error('Connection error to rules database:', err));
+    .then(() => console.log('Connected to DDS database'))
+    .catch(err => console.error('Connection error to DDS:', err));
 
 //MOA - maintenanceOVerAdvance
 //fetch tables details
 app.get('/api/rulesTable/:option', async (req, res) => {
     const selectedOption = req.params.option;
     try {
-        const query = `SELECT * FROM ${selectedOption}`;
+        const query = `SELECT * FROM decisionrule.${selectedOption}`;
 
-        const result = await db2.query(query); // Use the request method to execute the query
+        const result = await db.query(query); // Use the request method to execute the query
 
         res.json(result.recordset); // Send the result as JSON
     } catch (err) {
