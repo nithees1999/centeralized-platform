@@ -61,8 +61,24 @@ import InvalidDaysToFirstPayment from './Components/ToleranceRules/InvalidDaysTo
 import PaymentDueDateIsAfterParameterDayOfMonth from './Components/ToleranceRules/PaymentDueDateIsAfterParameterDayOfMonth';
 import ContractFormState from './Components/ToleranceRules/ContractFormState';
 import ContractDateIsGreater from './Components/ToleranceRules/ContractDateIsGreater';
-import ContractRateIsLessThanMinimumAllowed from './Components/ToleranceRules/ContractRateIsLessThanMinimumAllowed';
+import PastDuePaymentDateInPast from './Components/ToleranceRules/PastDuePaymentDateInPast';
+import FirstPaymentAmountMustEqualRemainingMonthlyPaymentAmount from './Components/ToleranceRules/FirstPaymentAmountMustEqualRemainingMonthlyPaymentAmount';
+import MaxPaymentNotZeroAndContractPaymentExceedsApprovedPayment from './Components/ToleranceRules/MaxPaymentNotZeroAndContractPaymentExceedsApprovedPayment';
+import AmountFinancedAdjustedCapCostIsLessThanParameter from './Components/ToleranceRules/AmountFinancedAdjustedCapCostIsLessThanParameter';
+import UnpaidCashBalanceAmountIsGreaterThanApprovedAmount from './Components/ToleranceRules/UnpaidCashBalanceAmountIsGreaterThanApprovedAmount';
+import AmountFinancedIsLessThanParameter from './Components/ToleranceRules/AmountFinancedIsLessThanParameter';
+import AdjustedCapCostExceedsApprovedAmount from './Components/ToleranceRules/AdjustedCapCostExceedsApprovedAmount';
+import CapCostReductionExceeds20OfTheGrossCapCost from './Components/ToleranceRules/CapCostReductionExceeds20OfTheGrossCapCost';
 // import data from './Components/ToleranceRules/ToleranceRulesData.json'
+import UnderstatedTotalSalePrice from './Components/ToleranceRules/UnderstatedTotalSalePrice';
+import TruthInLendingDownPaymentLessThan0 from './Components/ToleranceRules/TruthInLendingDownPaymentLessThan0';
+import ItemizationTotalsAmountDueAtLeaseSigningDoesNotMatch from './Components/ToleranceRules/ItemizationTotalsAmountDueAtLeaseSigningDoesNotMatch';
+import CCRCashPlusCCRTradeInMustCapCostReduction from './Components/ToleranceRules/CCRCashPlusCCRTradeInMustCapCostReduction';
+import PurchaseOptionAtEndOfLeaseTermMustEqualResidualValue from './Components/ToleranceRules/PurchaseOptionAtEndOfLeaseTermMustEqualResidualValue';
+import InvalidExcessiveWearAndUseCentsPerMileBasedOnMSRP from './Components/ToleranceRules/InvalidExcessiveWearAndUseCentsPerMileBasedOnMSRP';
+import InvalidExcessiveWearAndUseAnnualMiles from './Components/ToleranceRules/InvalidExcessiveWearAndUseAnnualMiles';
+
+      
 
 const router = createBrowserRouter([
   {
@@ -289,9 +305,66 @@ const router = createBrowserRouter([
         element: <ContractDateIsGreater />,
       },
       {
-        path: "ContractRateIsLessThanMinimumAllowed",
-        element: <ContractRateIsLessThanMinimumAllowed />,
+        path: "PastDuePaymentDateInPast",
+        element: <PastDuePaymentDateInPast />,
       },
+      {
+        path: "FirstPaymentAmountMustEqualRemainingMonthlyPaymentAmount",
+        element: <FirstPaymentAmountMustEqualRemainingMonthlyPaymentAmount />,
+      },
+      {
+        path: "MaxPaymentNotZeroAndContractPaymentExceedsApprovedPayment",
+        element: <MaxPaymentNotZeroAndContractPaymentExceedsApprovedPayment />,
+      },
+      {
+        path: "AmountFinancedAdjustedCapCostIsLessThanParameter",
+        element: <AmountFinancedAdjustedCapCostIsLessThanParameter />,
+      },
+      {
+        path: "UnpaidCashBalanceAmountIsGreaterThanApprovedAmount",
+        element: <UnpaidCashBalanceAmountIsGreaterThanApprovedAmount />,
+      },
+      {
+        path: "AmountFinancedIsLessThanParameter",
+        element: <AmountFinancedIsLessThanParameter />,
+      },
+      {
+        path: "AdjustedCapCostExceedsApprovedAmount",
+        element: <AdjustedCapCostExceedsApprovedAmount />,
+      },
+      {
+        path: "CapCostReductionExceeds20OfTheGrossCapCost",
+        element: <CapCostReductionExceeds20OfTheGrossCapCost />,
+      },
+      {
+        path: "UnderstatedTotalSalePrice",
+        element: <UnderstatedTotalSalePrice />,
+      },
+      {
+        path: "TruthInLendingDownPaymentLessThan0",
+        element: <TruthInLendingDownPaymentLessThan0 />,
+      },
+      {
+        path: "ItemizationTotalsAmountDueAtLeaseSigningDoesNotMatch",
+        element: <ItemizationTotalsAmountDueAtLeaseSigningDoesNotMatch />,
+      },
+      {
+        path: "CCRCashPlusCCRTradeInMustCapCostReduction",
+        element: <CCRCashPlusCCRTradeInMustCapCostReduction />,
+      },
+      {
+        path: "PurchaseOptionAtEndOfLeaseTermMustEqualResidualValue",
+        element: <PurchaseOptionAtEndOfLeaseTermMustEqualResidualValue />,
+      },
+      {
+        path: "InvalidExcessiveWearAndUseCentsPerMileBasedOnMSRP",
+        element: <InvalidExcessiveWearAndUseCentsPerMileBasedOnMSRP />,
+      },
+      {
+        path: "InvalidExcessiveWearAndUseAnnualMiles",
+        element: <InvalidExcessiveWearAndUseAnnualMiles />,
+      }
+      
     ],
   },
 ]);
