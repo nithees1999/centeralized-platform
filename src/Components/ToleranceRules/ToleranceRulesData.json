@@ -203,6 +203,20 @@
     "navigationLink": "/VINValidationNotCompleted"
   },
   {
+    "pageNumber": 35,
+    "id": "ContractFormState",
+    "title": "Contract Form State",
+    "shorthand": "CFS",
+    "navigationLink": "ContractFormState"
+  },
+  {
+    "pageNumber": 36,
+    "id": "ContractDateIsGreater",
+    "title": "Contract Date Is Greater",
+    "shorthand": "CDIG",
+    "navigationLink": "ContractDateIsGreater"
+  },
+  {
     "pageNumber": 37,
     "id": "ContractDateIsFutureDated",
     "title": "Contract Date Is Future Dated",
@@ -287,11 +301,11 @@
     "navigationLink": "/PaymentDueDateIsAfterParameterDayOfMonth"
   },
   {
-    "pageNumber": 35,
-    "id": "ContractFormState",
-    "title": "Contract Form State",
-    "shorthand": "CFS",
-    "navigationLink": "ContractFormState"
+    "pageNumber": 51,
+    "id": "ItemizationAdvanceMonthlyPaymentDoesNotEqualDisclosureFirstPaymentAmount",
+    "title": "Itemization Advance Monthly Payment (1st Month) does not equal Disclosure First Payment Amount",
+    "shorthand": "IAMPDNEDFPA",
+    "navigationLink": "/ItemizationAdvanceMonthlyPaymentDoesNotEqualDisclosureFirstPaymentAmount"
   },
   {
     "pageNumber": 36,
@@ -300,7 +314,13 @@
     "shorthand": "CDIG",
     "navigationLink": "ContractDateIsGreater"
   },
-  
+  {
+    "pageNumber": 52,
+    "id": "AdvanceMonthlyPaymentAndAdvanceSinglePaymentCannotEquelsZero",
+    "title": "Advance Monthly Payment And Advance Single Payment Cannot Equels Zero",
+    "shorthand": "AMPAASPCEZ",
+    "navigationLink": "AdvanceMonthlyPaymentAndAdvanceSinglePaymentCannotEquelsZero"
+  },
   {
     "pageNumber": 49,
     "id": "PastDuePaymentDateInPast",
@@ -428,12 +448,12 @@
     "title": "Invalid Excessive Wear and Use - Annual Miles",
     "shorthand": "IEWAUAM",
     "navigationLink": "InvalidExcessiveWearAndUseAnnualMiles"
+  },
+  {
+    "pageNumber": 53,
+    "id": "ItemizationAdvanceMonthlyPaymentDoesNotEqualTotalMonthlyPayment",
+    "title": "Itemization Advance Monthly Payment (1st Month) does not equal Total Monthly Payment (Calc)",
+    "shorthand": "IAMPDNETMP",
+    "navigationLink": "ItemizationAdvanceMonthlyPaymentDoesNotEqualTotalMonthlyPayment"
   }
-  
-  
-  
-  
-  
-  
-  
 ]

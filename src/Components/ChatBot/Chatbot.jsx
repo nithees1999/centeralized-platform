@@ -14,6 +14,8 @@ const suggestionsList = [
   "contract lender verification",
   "checklist item",
   "Formula for DTI",
+  "Customer Details",
+  "Provide list of customer test data"
 ];
 
 const ChatBot = () => {
@@ -45,8 +47,13 @@ const ChatBot = () => {
       });
 
       if (response.data && response.data.answer) {
-        const botMessage = { sender: 'bot', text: response.data.answer };
-        setMessages((prevMessages) => [...prevMessages, botMessage]);
+        const responseArry = response.data.answer.split("\n\n")
+        responseArry.forEach(element => {
+          const botMessage = { sender: 'bot', text: [...element] };
+          setMessages((prevMessages) => [...prevMessages, botMessage]);
+        });
+        // const botMessage = { sender: 'bot', text: [...responseArry] };
+        // setMessages((prevMessages) => [...prevMessages, botMessage]);
 
         // Check if the message contains "vin" and the response is not the default "unable to understand" message
         if (

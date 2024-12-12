@@ -73,6 +73,7 @@ export default function SideBar({ isOpen, onClose, sidebarRef }) {
                     </li>
                     <li><NavLink to="/Checklist" className={({ isActive }) => ` block   p-2  font-bold hover:underline hover:underline-offset-8 ${isActive ? " text-gray-500 underline underline-offset-8 " : "   "}`}>Checklist</NavLink></li>
                     <li><NavLink to="/MyDealsData" className={({ isActive }) => ` block   p-2  font-bold hover:underline hover:underline-offset-8 ${isActive ? " text-gray-500 underline underline-offset-8 " : "   "}`}>My Deals Data</NavLink></li>
+                    <li><NavLink to="/HelloServletRequest" className={({ isActive }) => ` block   p-2  font-bold hover:underline hover:underline-offset-8 ${isActive ? " text-gray-500 underline underline-offset-8 " : "   "}`}>ServletRequest</NavLink></li>
                 </ul>
             </div>
         </div>
