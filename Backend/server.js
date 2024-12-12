@@ -657,6 +657,172 @@ app.get('/api/PaymentDueDateIsAfterParameterDayOfMonth', async (req, res) => {
         res.status(500).json({ error: "Error fetching data" });
     }
 });
+// Fetch  PastDuePaymentDateInPast
+app.get('/api/PastDuePaymentDateInPast', async (req, res) => {
+    try {
+        const query = `SELECT * FROM PastDuePaymentDateInPast`; 
+        const result = await db.query(query); 
+        res.json(result.recordset); 
+    } catch (err) {
+        console.error("Error fetching PastDuePaymentDateInPast:", err);
+        res.status(500).json({ error: "Error fetching data" });
+    }
+});
+// Fetch  FirstPaymentAmountMustEqualRemainingMonthlyPaymentAmount
+app.get('/api/FirstPaymentAmountMustEqualRemainingMonthlyPaymentAmount', async (req, res) => {
+    try {
+        const query = `SELECT * FROM FirstPaymentAmountMustEqualRemainingMonthlyPaymentAmount`; 
+        const result = await db.query(query); 
+        res.json(result.recordset); 
+    } catch (err) {
+        console.error("Error fetching FirstPaymentAmountMustEqualRemainingMonthlyPaymentAmount:", err);
+        res.status(500).json({ error: "Error fetching data" });
+    }
+});
+// Fetch  MaxPaymentNotZeroAndContractPaymentExceedsApprovedPayment
+app.get('/api/MaxPaymentNotZeroAndContractPaymentExceedsApprovedPayment', async (req, res) => {
+    try {
+        const query = `SELECT * FROM MaxPaymentNotZeroAndContractPaymentExceedsApprovedPayment`; 
+        const result = await db.query(query); 
+        res.json(result.recordset); 
+    } catch (err) {
+        console.error("Error fetching MaxPaymentNotZeroAndContractPaymentExceedsApprovedPayment:", err);
+        res.status(500).json({ error: "Error fetching data" });
+    }
+});
+// Fetch  AmountFinancedAdjustedCapCostIsLessThanParameter
+app.get('/api/AmountFinancedAdjustedCapCostIsLessThanParameter', async (req, res) => {
+    try {
+        const query = `SELECT * FROM AmountFinancedAdjustedCapCostIsLessThanParameter`; 
+        const result = await db.query(query); 
+        res.json(result.recordset); 
+    } catch (err) {
+        console.error("Error fetching AmountFinancedAdjustedCapCostIsLessThanParameter:", err);
+        res.status(500).json({ error: "Error fetching data" });
+    }
+});
+// Fetch  UnpaidCashBalanceAmountIsGreaterThanApprovedAmount
+app.get('/api/UnpaidCashBalanceAmountIsGreaterThanApprovedAmount', async (req, res) => {
+    try {
+        const query = `SELECT * FROM UnpaidCashBalanceAmountIsGreaterThanApprovedAmount`; 
+        const result = await db.query(query); 
+        res.json(result.recordset); 
+    } catch (err) {
+        console.error("Error fetching UnpaidCashBalanceAmountIsGreaterThanApprovedAmount:", err);
+        res.status(500).json({ error: "Error fetching data" });
+    }
+});
+// Fetch  AmountFinancedIsLessThanParameter
+app.get('/api/AmountFinancedIsLessThanParameter', async (req, res) => {
+    try {
+        const query = `SELECT * FROM AmountFinancedIsLessThanParameter`; 
+        const result = await db.query(query); 
+        res.json(result.recordset); 
+    } catch (err) {
+        console.error("Error fetching AmountFinancedIsLessThanParameter:", err);
+        res.status(500).json({ error: "Error fetching data" });
+    }
+});
+// Fetch  AdjustedCapCostExceedsApprovedAmount
+app.get('/api/AdjustedCapCostExceedsApprovedAmount', async (req, res) => {
+    try {
+        const query = `SELECT * FROM AdjustedCapCostExceedsApprovedAmount`; 
+        const result = await db.query(query); 
+        res.json(result.recordset); 
+    } catch (err) {
+        console.error("Error fetching AdjustedCapCostExceedsApprovedAmount:", err);
+        res.status(500).json({ error: "Error fetching data" });
+    }
+});
+// Fetch  CapCostReductionExceeds20OfTheGrossCapCost
+app.get('/api/CapCostReductionExceeds20OfTheGrossCapCost', async (req, res) => {
+    try {
+        const query = `SELECT * FROM CapCostReductionExceeds20OfTheGrossCapCost`; 
+        const result = await db.query(query); 
+        res.json(result.recordset); 
+    } catch (err) {
+        console.error("Error fetching CapCostReductionExceeds20OfTheGrossCapCost:", err);
+        res.status(500).json({ error: "Error fetching data" });
+    }
+});
+// Fetch  UnderstatedTotalSalePrice
+app.get('/api/UnderstatedTotalSalePrice', async (req, res) => {
+    try {
+        const query = `SELECT * FROM UnderstatedTotalSalePrice`; 
+        const result = await db.query(query); 
+        res.json(result.recordset); 
+    } catch (err) {
+        console.error("Error fetching UnderstatedTotalSalePrice:", err);
+        res.status(500).json({ error: "Error fetching data" });
+    }
+});
+// Fetch  TruthInLendingDownPaymentLessThan0
+app.get('/api/TruthInLendingDownPaymentLessThan0', async (req, res) => {
+    try {
+        const query = `SELECT * FROM TruthInLendingDownPaymentLessThan0`; 
+        const result = await db.query(query); 
+        res.json(result.recordset); 
+    } catch (err) {
+        console.error("Error fetching TruthInLendingDownPaymentLessThan0:", err);
+        res.status(500).json({ error: "Error fetching data" });
+    }
+});
+// Fetch  ItemizationTotalsAmountDueAtLeaseSigningDoesNotMatch
+app.get('/api/ItemizationTotalsAmountDueAtLeaseSigningDoesNotMatch', async (req, res) => {
+    try {
+        const query = `SELECT * FROM ItemizationTotalsAmountDueAtLeaseSigningDoesNotMatch`; 
+        const result = await db.query(query); 
+        res.json(result.recordset); 
+    } catch (err) {
+        console.error("Error fetching ItemizationTotalsAmountDueAtLeaseSigningDoesNotMatch:", err);
+        res.status(500).json({ error: "Error fetching data" });
+    }
+});
+// Fetch  ItemizationTotalsAmountDueAtLeaseSigningDoesNotMatch
+app.get('/api/CCRCashPlusCCRTradeInMustCapCostReduction', async (req, res) => {
+    try {
+        const query = `SELECT * FROM CCRCashPlusCCRTradeInMustCapCostReduction`; 
+        const result = await db.query(query); 
+        res.json(result.recordset); 
+    } catch (err) {
+        console.error("Error fetching CCRCashPlusCCRTradeInMustCapCostReduction:", err);
+        res.status(500).json({ error: "Error fetching data" });
+    }
+});
+// Fetch  ItemizationTotalsAmountDueAtLeaseSigningDoesNotMatch
+app.get('/api/PurchaseOptionAtEndOfLeaseTermMustEqualResidualValue', async (req, res) => {
+    try {
+        const query = `SELECT * FROM PurchaseOptionAtEndOfLeaseTermMustEqualResidualValue`; 
+        const result = await db.query(query); 
+        res.json(result.recordset); 
+    } catch (err) {
+        console.error("Error fetching PurchaseOptionAtEndOfLeaseTermMustEqualResidualValue:", err);
+        res.status(500).json({ error: "Error fetching data" });
+    }
+});
+// Fetch  InvalidExcessiveWearAndUseCentsPerMileBasedOnMSRP
+app.get('/api/InvalidExcessiveWearAndUseCentsPerMileBasedOnMSRP', async (req, res) => {
+    try {
+        const query = `SELECT * FROM InvalidExcessiveWearAndUseCentsPerMileBasedOnMSRP`; 
+        const result = await db.query(query); 
+        res.json(result.recordset); 
+    } catch (err) {
+        console.error("Error fetching InvalidExcessiveWearAndUseCentsPerMileBasedOnMSRP:", err);
+        res.status(500).json({ error: "Error fetching data" });
+    }
+});
+// Fetch  InvalidExcessiveWearAndUseCentsPerMileBasedOnMSRP
+app.get('/api/InvalidExcessiveWearAndUseAnnualMiles', async (req, res) => {
+    try {
+        const query = `SELECT * FROM InvalidExcessiveWearAndUseAnnualMiles`; 
+        const result = await db.query(query); 
+        res.json(result.recordset); 
+    } catch (err) {
+        console.error("Error fetching InvalidExcessiveWearAndUseAnnualMiles:", err);
+        res.status(500).json({ error: "Error fetching data" });
+    }
+});
+
 
 // API endpoint to fetch table data by table name of tolerance Rules
 app.get('/api/toleranceRulesTable/:tableName', async (req, res) => {
