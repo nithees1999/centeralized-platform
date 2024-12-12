@@ -69,6 +69,10 @@ import UnpaidCashBalanceAmountIsGreaterThanApprovedAmount from './Components/Tol
 import AmountFinancedIsLessThanParameter from './Components/ToleranceRules/AmountFinancedIsLessThanParameter';
 import AdjustedCapCostExceedsApprovedAmount from './Components/ToleranceRules/AdjustedCapCostExceedsApprovedAmount';
 import CapCostReductionExceeds20OfTheGrossCapCost from './Components/ToleranceRules/CapCostReductionExceeds20OfTheGrossCapCost';
+import AdvanceMonthlyPaymentAndAdvanceSinglePaymentCannotEquelsZero from './Components/ToleranceRules/AdvanceMonthlyPaymentAndAdvanceSinglePaymentCannotEquelsZero';
+import ItemizationAdvanceMonthlyPaymentDoesNotEqualDisclosureFirstPaymentAmount from './Components/ToleranceRules/ItemizationAdvanceMonthlyPaymentDoesNotEqualDisclosureFirstPaymentAmount';
+import ItemizationAdvanceMonthlyPaymentDoesNotEqualTotalMonthlyPayment from './Components/ToleranceRules/ItemizationAdvanceMonthlyPaymentDoesNotEqualTotalMonthlyPayment';
+import HelloServletRequest from './Components/HelloServletRequest';
 // import data from './Components/ToleranceRules/ToleranceRulesData.json'
 import UnderstatedTotalSalePrice from './Components/ToleranceRules/UnderstatedTotalSalePrice';
 import TruthInLendingDownPaymentLessThan0 from './Components/ToleranceRules/TruthInLendingDownPaymentLessThan0';
@@ -331,6 +335,22 @@ const router = createBrowserRouter([
       {
         path: "AdjustedCapCostExceedsApprovedAmount",
         element: <AdjustedCapCostExceedsApprovedAmount />,
+      },
+      {
+        path: "AdvanceMonthlyPaymentAndAdvanceSinglePaymentCannotEquelsZero",
+        element: <AdvanceMonthlyPaymentAndAdvanceSinglePaymentCannotEquelsZero />,
+      },
+      {
+        path: "ItemizationAdvanceMonthlyPaymentDoesNotEqualDisclosureFirstPaymentAmount",
+        element: <ItemizationAdvanceMonthlyPaymentDoesNotEqualDisclosureFirstPaymentAmount />,
+      },
+      {
+        path: "ItemizationAdvanceMonthlyPaymentDoesNotEqualTotalMonthlyPayment",
+        element: <ItemizationAdvanceMonthlyPaymentDoesNotEqualTotalMonthlyPayment />,
+      },
+      {
+        path: "HelloServletRequest",
+        element: <HelloServletRequest />,
       },
       {
         path: "CapCostReductionExceeds20OfTheGrossCapCost",

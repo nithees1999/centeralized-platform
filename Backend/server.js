@@ -386,46 +386,46 @@ app.post('/api/Checklist', async (req, res) => {
 // Fetch InvalidExcessiveWearAndUse 
 app.get('/api/invalidExcessiveWearAndUseTable', async (req, res) => {
     try {
-        const query = `SELECT * FROM InvalidExcessiveWearAndUse`; 
-        const result = await db.query(query); 
-        res.json(result.recordset); 
+        const query = `SELECT * FROM InvalidExcessiveWearAndUse`;
+        const result = await db.query(query);
+        res.json(result.recordset);
     } catch (err) {
         console.error("Error fetching InvalidExcessiveWearAndUse data:", err);
         res.status(500).json({ error: "Error fetching data" });
     }
- });
+});
 
 // Fetch  ActiveAHFCAccountWithDuplicateVIN 
 app.get('/api/ActiveAHFCAccountWithDuplicateVINTable', async (req, res) => {
     try {
         const query = `SELECT * FROM  ActiveAHFCAccountWithDuplicateVIN`;
-        const result = await db.query(query); 
-        res.json(result.recordset); 
+        const result = await db.query(query);
+        res.json(result.recordset);
     } catch (err) {
         console.error("Error fetching  ActiveAHFCAccountWithDuplicateVIN data:", err);
         res.status(500).json({ error: "Error fetching data" });
     }
- });
+});
 
- // Fetch  AdvanceExceedsApproval 
+// Fetch  AdvanceExceedsApproval 
 app.get('/api/AdvanceExceedsApproval', async (req, res) => {
     try {
-        const query = `SELECT * FROM  AdvanceExceedsApproval`; 
-        const result = await db.query(query); 
-        res.json(result.recordset); 
+        const query = `SELECT * FROM  AdvanceExceedsApproval`;
+        const result = await db.query(query);
+        res.json(result.recordset);
     } catch (err) {
         console.error("Error fetching  AdvanceExceedsApproval:", err);
         res.status(500).json({ error: "Error fetching data" });
     }
- });
+});
 
- 
-  // Fetch   MandatoryChecklistItemsAreNotMarkedComplete 
+
+// Fetch   MandatoryChecklistItemsAreNotMarkedComplete 
 app.get('/api/MandatoryChecklistItemsAreNotMarkedComplete', async (req, res) => {
     try {
-        const query = `SELECT * FROM MandatoryChecklistItemsAreNotMarkedComplete`; 
-        const result = await db.query(query); 
-        res.json(result.recordset); 
+        const query = `SELECT * FROM MandatoryChecklistItemsAreNotMarkedComplete`;
+        const result = await db.query(query);
+        res.json(result.recordset);
     } catch (err) {
         console.error("Error fetching   MandatoryChecklistItemsAreNotMarkedComplete:", err);
         res.status(500).json({ error: "Error fetching data" });
@@ -433,47 +433,47 @@ app.get('/api/MandatoryChecklistItemsAreNotMarkedComplete', async (req, res) => 
 });
 
 
-  // Fetch  ContractSalesProgramDoesNotMatchApprovedSalesProgramOrSalesProgramReturnedErrors
-  app.get('/api/ContractSalesProgramDoesNotMatchApprovedSalesProgramOrSalesProgramReturnedErrors', async (req, res) => {
+// Fetch  ContractSalesProgramDoesNotMatchApprovedSalesProgramOrSalesProgramReturnedErrors
+app.get('/api/ContractSalesProgramDoesNotMatchApprovedSalesProgramOrSalesProgramReturnedErrors', async (req, res) => {
     try {
-        const query = `SELECT * FROM ContractSalesProgramDoesNotMatchApprovedSalesProgramOrSalesProgramReturnedErrors`; 
-        const result = await db.query(query); 
-        res.json(result.recordset); 
+        const query = `SELECT * FROM ContractSalesProgramDoesNotMatchApprovedSalesProgramOrSalesProgramReturnedErrors`;
+        const result = await db.query(query);
+        res.json(result.recordset);
     } catch (err) {
         console.error("Error fetching ContractSalesProgramDoesNotMatchApprovedSalesProgramOrSalesProgramReturnedErrors:", err);
         res.status(500).json({ error: "Error fetching data" });
     }
 });
 
-  // Fetch  CollateralAgeIsGreaterThanParameter
-  app.get('/api/CollateralAgeIsGreaterThanParameter', async (req, res) => {
+// Fetch  CollateralAgeIsGreaterThanParameter
+app.get('/api/CollateralAgeIsGreaterThanParameter', async (req, res) => {
     try {
-        const query = `SELECT * FROM CollateralAgeIsGreaterThanParameter`; 
-        const result = await db.query(query); 
-        res.json(result.recordset); 
+        const query = `SELECT * FROM CollateralAgeIsGreaterThanParameter`;
+        const result = await db.query(query);
+        res.json(result.recordset);
     } catch (err) {
         console.error("Error fetching CollateralAgeIsGreaterThanParameter:", err);
         res.status(500).json({ error: "Error fetching data" });
     }
 });
 
-  // Fetch  Maximum Mileage is greater than parameter
-  app.get('/api/MaximumMileageIsGreaterThanParameter', async (req, res) => {
+// Fetch  Maximum Mileage is greater than parameter
+app.get('/api/MaximumMileageIsGreaterThanParameter', async (req, res) => {
     try {
-        const query = `SELECT * FROM MaximumMileageIsGreaterThanParameter`; 
-        const result = await db.query(query); 
-        res.json(result.recordset); 
+        const query = `SELECT * FROM MaximumMileageIsGreaterThanParameter`;
+        const result = await db.query(query);
+        res.json(result.recordset);
     } catch (err) {
         console.error("Error fetching MaximumMileageIsGreaterThanParameter:", err);
         res.status(500).json({ error: "Error fetching data" });
     }
 });
-  // Fetch  VIN is not certified
-  app.get('/api/VINIsNotCertified', async (req, res) => {
+// Fetch  VIN is not certified
+app.get('/api/VINIsNotCertified', async (req, res) => {
     try {
-        const query = `SELECT * FROM VINIsNotCertified`; 
-        const result = await db.query(query); 
-        res.json(result.recordset); 
+        const query = `SELECT * FROM VINIsNotCertified`;
+        const result = await db.query(query);
+        res.json(result.recordset);
     } catch (err) {
         console.error("Error fetching VINIsNotCertified:", err);
         res.status(500).json({ error: "Error fetching data" });
@@ -481,60 +481,60 @@ app.get('/api/MandatoryChecklistItemsAreNotMarkedComplete', async (req, res) => 
 });
 
 
-  // Fetch  InvalidVIN
-  app.get('/api/InvalidVIN', async (req, res) => {
+// Fetch  InvalidVIN
+app.get('/api/InvalidVIN', async (req, res) => {
     try {
-        const query = `SELECT * FROM InvalidVIN`; 
-        const result = await db.query(query); 
-        res.json(result.recordset); 
+        const query = `SELECT * FROM InvalidVIN`;
+        const result = await db.query(query);
+        res.json(result.recordset);
     } catch (err) {
         console.error("Error fetching InvalidVIN:", err);
         res.status(500).json({ error: "Error fetching data" });
     }
 });
 
-  // Fetch  OrigenateDuplicateVIN
-  app.get('/api/OrigenateDuplicateVIN', async (req, res) => {
+// Fetch  OrigenateDuplicateVIN
+app.get('/api/OrigenateDuplicateVIN', async (req, res) => {
     try {
-        const query = `SELECT * FROM OrigenateDuplicateVIN`; 
-        const result = await db.query(query); 
-        res.json(result.recordset); 
+        const query = `SELECT * FROM OrigenateDuplicateVIN`;
+        const result = await db.query(query);
+        res.json(result.recordset);
     } catch (err) {
         console.error("Error fetching OrigenateDuplicateVIN:", err);
         res.status(500).json({ error: "Error fetching data" });
     }
 });
 
- // Fetch  DuplicateVIN
- app.get('/api/DuplicateVIN', async (req, res) => {
+// Fetch  DuplicateVIN
+app.get('/api/DuplicateVIN', async (req, res) => {
     try {
-        const query = `SELECT * FROM DuplicateVIN`; 
-        const result = await db.query(query); 
-        res.json(result.recordset); 
+        const query = `SELECT * FROM DuplicateVIN`;
+        const result = await db.query(query);
+        res.json(result.recordset);
     } catch (err) {
         console.error("Error fetching DuplicateVIN:", err);
         res.status(500).json({ error: "Error fetching data" });
     }
 });
 
- // Fetch  ContractDateIsFutureDated
- app.get('/api/ContractDateIsFutureDated', async (req, res) => {
+// Fetch  ContractDateIsFutureDated
+app.get('/api/ContractDateIsFutureDated', async (req, res) => {
     try {
-        const query = `SELECT * FROM ContractDateIsFutureDated`; 
-        const result = await db.query(query); 
-        res.json(result.recordset); 
+        const query = `SELECT * FROM ContractDateIsFutureDated`;
+        const result = await db.query(query);
+        res.json(result.recordset);
     } catch (err) {
         console.error("Error fetching ContractDateIsFutureDated:", err);
         res.status(500).json({ error: "Error fetching data" });
     }
 });
 
- // Fetch  ContractRateGreaterThanMaxAllowedByMoreThanParameter
- app.get('/api/ContractRateGreaterThanMaxAllowedByMoreThanParameter', async (req, res) => {
+// Fetch  ContractRateGreaterThanMaxAllowedByMoreThanParameter
+app.get('/api/ContractRateGreaterThanMaxAllowedByMoreThanParameter', async (req, res) => {
     try {
-        const query = `SELECT * FROM ContractRateGreaterThanMaxAllowedByMoreThanParameter`; 
-        const result = await db.query(query); 
-        res.json(result.recordset); 
+        const query = `SELECT * FROM ContractRateGreaterThanMaxAllowedByMoreThanParameter`;
+        const result = await db.query(query);
+        res.json(result.recordset);
     } catch (err) {
         console.error("Error fetching ContractRateGreaterThanMaxAllowedByMoreThanParameter:", err);
         res.status(500).json({ error: "Error fetching data" });
@@ -543,12 +543,12 @@ app.get('/api/MandatoryChecklistItemsAreNotMarkedComplete', async (req, res) => 
 
 
 
- // Fetch  ContractRateExceedsUsuryRate
- app.get('/api/ContractRateExceedsUsuryRate', async (req, res) => {
+// Fetch  ContractRateExceedsUsuryRate
+app.get('/api/ContractRateExceedsUsuryRate', async (req, res) => {
     try {
-        const query = `SELECT * FROM ContractRateExceedsUsuryRate`; 
-        const result = await db.query(query); 
-        res.json(result.recordset); 
+        const query = `SELECT * FROM ContractRateExceedsUsuryRate`;
+        const result = await db.query(query);
+        res.json(result.recordset);
     } catch (err) {
         console.error("Error fetching ContractRateExceedsUsuryRate:", err);
         res.status(500).json({ error: "Error fetching data" });
@@ -557,9 +557,9 @@ app.get('/api/MandatoryChecklistItemsAreNotMarkedComplete', async (req, res) => 
 // Fetch  DealerParticipationExceedsMaxSpread
 app.get('/api/DealerParticipationExceedsMaxSpread', async (req, res) => {
     try {
-        const query = `SELECT * FROM DealerParticipationExceedsMaxSpread`; 
-        const result = await db.query(query); 
-        res.json(result.recordset); 
+        const query = `SELECT * FROM DealerParticipationExceedsMaxSpread`;
+        const result = await db.query(query);
+        res.json(result.recordset);
     } catch (err) {
         console.error("Error fetching DealerParticipationExceedsMaxSpread:", err);
         res.status(500).json({ error: "Error fetching data" });
@@ -568,9 +568,9 @@ app.get('/api/DealerParticipationExceedsMaxSpread', async (req, res) => {
 // Fetch  ContractRateIsLessThanMinimumAllowed
 app.get('/api/ContractRateIsLessThanMinimumAllowed', async (req, res) => {
     try {
-        const query = `SELECT * FROM ContractRateIsLessThanMinimumAllowed`; 
-        const result = await db.query(query); 
-        res.json(result.recordset); 
+        const query = `SELECT * FROM ContractRateIsLessThanMinimumAllowed`;
+        const result = await db.query(query);
+        res.json(result.recordset);
     } catch (err) {
         console.error("Error fetching ContractRateIsLessThanMinimumAllowed:", err);
         res.status(500).json({ error: "Error fetching data" });
@@ -579,9 +579,9 @@ app.get('/api/ContractRateIsLessThanMinimumAllowed', async (req, res) => {
 // Fetch  PaymentScheduleAndTermDoNotMatch
 app.get('/api/PaymentScheduleAndTermDoNotMatch', async (req, res) => {
     try {
-        const query = `SELECT * FROM PaymentScheduleAndTermDoNotMatch`; 
-        const result = await db.query(query); 
-        res.json(result.recordset); 
+        const query = `SELECT * FROM PaymentScheduleAndTermDoNotMatch`;
+        const result = await db.query(query);
+        res.json(result.recordset);
     } catch (err) {
         console.error("Error fetching PaymentScheduleAndTermDoNotMatch:", err);
         res.status(500).json({ error: "Error fetching data" });
@@ -590,9 +590,9 @@ app.get('/api/PaymentScheduleAndTermDoNotMatch', async (req, res) => {
 // Fetch  ContractTermDoesNotMatchApprovedTerm
 app.get('/api/ContractTermDoesNotMatchApprovedTerm', async (req, res) => {
     try {
-        const query = `SELECT * FROM ContractTermDoesNotMatchApprovedTerm`; 
-        const result = await db.query(query); 
-        res.json(result.recordset); 
+        const query = `SELECT * FROM ContractTermDoesNotMatchApprovedTerm`;
+        const result = await db.query(query);
+        res.json(result.recordset);
     } catch (err) {
         console.error("Error fetching ContractTermDoesNotMatchApprovedTerm:", err);
         res.status(500).json({ error: "Error fetching data" });
@@ -603,9 +603,9 @@ app.get('/api/ContractTermDoesNotMatchApprovedTerm', async (req, res) => {
 // Fetch  APRIsNotWithin.125%
 app.get('/api/APRIsNotWithin125', async (req, res) => {
     try {
-        const query = `SELECT * FROM APRIsNotWithin125`; 
-        const result = await db.query(query); 
-        res.json(result.recordset); 
+        const query = `SELECT * FROM APRIsNotWithin125`;
+        const result = await db.query(query);
+        res.json(result.recordset);
     } catch (err) {
         console.error("Error fetching APRIsNotWithin125", err);
         res.status(500).json({ error: "Error fetching data" });
@@ -615,9 +615,9 @@ app.get('/api/APRIsNotWithin125', async (req, res) => {
 // Fetch  FinanceChargeIsUnderstated
 app.get('/api/FinanceChargeIsUnderstated', async (req, res) => {
     try {
-        const query = `SELECT * FROM FinanceChargeIsUnderstated`; 
-        const result = await db.query(query); 
-        res.json(result.recordset); 
+        const query = `SELECT * FROM FinanceChargeIsUnderstated`;
+        const result = await db.query(query);
+        res.json(result.recordset);
     } catch (err) {
         console.error("Error fetching FinanceChargeIsUnderstated:", err);
         res.status(500).json({ error: "Error fetching data" });
@@ -627,9 +627,9 @@ app.get('/api/FinanceChargeIsUnderstated', async (req, res) => {
 // Fetch  InvalidTurnInFee
 app.get('/api/InvalidTurnInFee', async (req, res) => {
     try {
-        const query = `SELECT * FROM InvalidTurnInFee`; 
-        const result = await db.query(query); 
-        res.json(result.recordset); 
+        const query = `SELECT * FROM InvalidTurnInFee`;
+        const result = await db.query(query);
+        res.json(result.recordset);
     } catch (err) {
         console.error("Error fetching InvalidTurnInFee:", err);
         res.status(500).json({ error: "Error fetching data" });
@@ -638,9 +638,9 @@ app.get('/api/InvalidTurnInFee', async (req, res) => {
 // Fetch  InvalidDaysToFirstPayment
 app.get('/api/InvalidDaysToFirstPayment', async (req, res) => {
     try {
-        const query = `SELECT * FROM InvalidDaysToFirstPayment`; 
-        const result = await db.query(query); 
-        res.json(result.recordset); 
+        const query = `SELECT * FROM InvalidDaysToFirstPayment`;
+        const result = await db.query(query);
+        res.json(result.recordset);
     } catch (err) {
         console.error("Error fetching InvalidDaysToFirstPayment:", err);
         res.status(500).json({ error: "Error fetching data" });
@@ -649,9 +649,9 @@ app.get('/api/InvalidDaysToFirstPayment', async (req, res) => {
 // Fetch  PaymentDueDateIsAfterParameterDayOfMonth
 app.get('/api/PaymentDueDateIsAfterParameterDayOfMonth', async (req, res) => {
     try {
-        const query = `SELECT * FROM PaymentDueDateIsAfterParameterDayOfMonth`; 
-        const result = await db.query(query); 
-        res.json(result.recordset); 
+        const query = `SELECT * FROM PaymentDueDateIsAfterParameterDayOfMonth`;
+        const result = await db.query(query);
+        res.json(result.recordset);
     } catch (err) {
         console.error("Error fetching PaymentDueDateIsAfterParameterDayOfMonth:", err);
         res.status(500).json({ error: "Error fetching data" });
@@ -824,6 +824,19 @@ app.get('/api/InvalidExcessiveWearAndUseAnnualMiles', async (req, res) => {
 });
 
 
+// API endpoint to fetch table data by table name of tolerance Rules
+app.get('/api/toleranceRulesTable/:tableName', async (req, res) => {
+    const { tableName } = req.params;
+    try {
+        // Fetch data from the table
+        const query = `SELECT * FROM tolerance.${tableName}`;
+        const result = await db.query(query); // Use the request method to execute the query
+        res.json(result.recordset); // Send the result as JSON
+    } catch (error) {
+        console.error('Error fetching table data:', error);
+        res.status(500).json({ error: 'Failed to fetch table data' });
+    }
+});
 
 
 // Sending response to the client
