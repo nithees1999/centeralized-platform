@@ -5,9 +5,9 @@ const SqlString = require('tsqlstring');
 
 const config = {
     // server: 'LTIN191785',
-    server: 'LTIN527389',
+    server: 'LTIN508758\\MSSQLSERVER22',
     driver: "SQL Server Native Client 11.0",
-    database: "DDS",
+    database: "ForTestDB",
     connectionTimeout: 150000,
     options: {
         encrypt: false,
@@ -811,7 +811,7 @@ app.get('/api/InvalidExcessiveWearAndUseCentsPerMileBasedOnMSRP', async (req, re
         res.status(500).json({ error: "Error fetching data" });
     }
 });
-// Fetch  InvalidExcessiveWearAndUseCentsPerMileBasedOnMSRP
+// Fetch  InvalidExcessiveWearAndUseAnnualMilesInvalidExcessiveWearAndUseCentsPerMileBasedOnMSRP
 app.get('/api/InvalidExcessiveWearAndUseAnnualMiles', async (req, res) => {
     try {
         const query = `SELECT * FROM InvalidExcessiveWearAndUseAnnualMiles`; 
@@ -819,6 +819,39 @@ app.get('/api/InvalidExcessiveWearAndUseAnnualMiles', async (req, res) => {
         res.json(result.recordset); 
     } catch (err) {
         console.error("Error fetching InvalidExcessiveWearAndUseAnnualMiles:", err);
+        res.status(500).json({ error: "Error fetching data" });
+    }
+});
+// Fetch  OverstatedTotalSalePrice
+app.get('/api/OverstatedTotalSalePrice', async (req, res) => {
+    try {
+        const query = `SELECT * FROM OverstatedTotalSalePrice`; 
+        const result = await db.query(query); 
+        res.json(result.recordset); 
+    } catch (err) {
+        console.error("Error fetching OverstatedTotalSalePrice:", err);
+        res.status(500).json({ error: "Error fetching data" });
+    }
+});
+// Fetch  UnderstatedTotalOfPayments
+app.get('/api/UnderstatedTotalOfPayments', async (req, res) => {
+    try {
+        const query = `SELECT * FROM UnderstatedTotalOfPayments`; 
+        const result = await db.query(query); 
+        res.json(result.recordset); 
+    } catch (err) {
+        console.error("Error fetching UnderstatedTotalOfPayments:", err);
+        res.status(500).json({ error: "Error fetching data" });
+    }
+});
+// Fetch  OverstatedTotalOfPayments
+app.get('/api/OverstatedTotalOfPayments', async (req, res) => {
+    try {
+        const query = `SELECT * FROM OverstatedTotalOfPayments`; 
+        const result = await db.query(query); 
+        res.json(result.recordset); 
+    } catch (err) {
+        console.error("Error fetching OverstatedTotalOfPayments:", err);
         res.status(500).json({ error: "Error fetching data" });
     }
 });

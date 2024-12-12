@@ -77,6 +77,9 @@ import CCRCashPlusCCRTradeInMustCapCostReduction from './Components/ToleranceRul
 import PurchaseOptionAtEndOfLeaseTermMustEqualResidualValue from './Components/ToleranceRules/PurchaseOptionAtEndOfLeaseTermMustEqualResidualValue';
 import InvalidExcessiveWearAndUseCentsPerMileBasedOnMSRP from './Components/ToleranceRules/InvalidExcessiveWearAndUseCentsPerMileBasedOnMSRP';
 import InvalidExcessiveWearAndUseAnnualMiles from './Components/ToleranceRules/InvalidExcessiveWearAndUseAnnualMiles';
+import OverstatedTotalSalePrice from './Components/ToleranceRules/OverstatedTotalSalePrice';
+import UnderstatedTotalOfPayments from './Components/ToleranceRules/UnderstatedTotalOfPayments';
+import OverstatedTotalOfPayments from './Components/ToleranceRules/OverstatedTotalOfPayments';
 
       
 
@@ -363,6 +366,18 @@ const router = createBrowserRouter([
       {
         path: "InvalidExcessiveWearAndUseAnnualMiles",
         element: <InvalidExcessiveWearAndUseAnnualMiles />,
+      },
+      {
+        path: "OverstatedTotalSalePrice",
+        element: <OverstatedTotalSalePrice />,
+      },
+      {
+        path: "UnderstatedTotalOfPayments",
+        element: <UnderstatedTotalOfPayments />,
+      },
+      {
+        path: "OverstatedTotalOfPayments",
+        element: <OverstatedTotalOfPayments />,
       }
       
     ],

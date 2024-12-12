@@ -366,6 +366,28 @@
     "navigationLink": "UnderstatedTotalSalePrice"
   },
   {
+    "pageNumber": 61,
+    "id": "OverstatedTotalSalePrice",
+    "title": "Overstated Total Sale Price",
+    "shorthand": "OTSP",
+    "navigationLink": "OverstatedTotalSalePrice"
+  },
+  {
+    "pageNumber": 62,
+    "id": "UnderstatedTotalOfPayments",
+    "title": "Understated Total of Payments",
+    "shorthand": "UTOP",
+    "navigationLink": "UnderstatedTotalOfPayments"
+  },
+  {
+    "pageNumber": 63,
+    "id": "OverstatedTotalOfPayments",
+    "title": "Overstated Total of Payments",
+    "shorthand": "OTOP",
+    "navigationLink": "OverstatedTotalOfPayments"
+  },
+  
+  {
     "pageNumber": 71,
     "id": "TruthInLendingDownPaymentLessThan0",
     "title": "Truth In Lending Down Payment less than 0",
