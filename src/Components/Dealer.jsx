@@ -81,9 +81,9 @@ export default function Dealer() {
             <UploadExcelModal open={open} onCloseModal={onCloseModal} />
 
             {/* <h1 className="text-center text-xl font-bold p-2 text-blue-900">Dealer Details</h1> */}
-            <div class="flex justify-between items-center w-full">
-                <span class="text-xl font-bold text-blue-900 mx-auto">Dealer Details</span>
-                <button class="p-2 bg-blue-900 text-white rounded-xl"onClick={() => onOpenModal()}>Upload</button>
+            <div className="flex justify-between items-center w-full">
+                <span className="text-xl font-bold text-blue-900 mx-auto">Dealer Details</span>
+                <button className="p-2 bg-blue-900 text-white rounded-xl"onClick={() => onOpenModal()}>Upload</button>
             </div>
             <form
                 className="conditionsNav p-2 m-2 border border-black rounded-md flex justify-start lg:justify-center items-center gap-1 flex-wrap "

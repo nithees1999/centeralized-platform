@@ -64,6 +64,7 @@ import ContractDateIsGreater from './Components/ToleranceRules/ContractDateIsGre
 import AdvanceMonthlyPaymentAndAdvanceSinglePaymentCannotEquelsZero from './Components/ToleranceRules/AdvanceMonthlyPaymentAndAdvanceSinglePaymentCannotEquelsZero';
 import ItemizationAdvanceMonthlyPaymentDoesNotEqualDisclosureFirstPaymentAmount from './Components/ToleranceRules/ItemizationAdvanceMonthlyPaymentDoesNotEqualDisclosureFirstPaymentAmount';
 import ItemizationAdvanceMonthlyPaymentDoesNotEqualTotalMonthlyPayment from './Components/ToleranceRules/ItemizationAdvanceMonthlyPaymentDoesNotEqualTotalMonthlyPayment';
+import HelloServletRequest from './Components/HelloServletRequest';
 // import data from './Components/ToleranceRules/ToleranceRulesData.json'
 
 const router = createBrowserRouter([
@@ -301,6 +302,10 @@ const router = createBrowserRouter([
       {
         path: "ItemizationAdvanceMonthlyPaymentDoesNotEqualTotalMonthlyPayment",
         element: <ItemizationAdvanceMonthlyPaymentDoesNotEqualTotalMonthlyPayment />,
+      },
+      {
+        path: "HelloServletRequest",
+        element: <HelloServletRequest />,
       },
     ],
   },
