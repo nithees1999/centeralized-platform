@@ -406,6 +406,55 @@
     "shorthand": "OTOP",
     "navigationLink": "OverstatedTotalOfPayments"
   },
+  {
+    "pageNumber": 64,
+    "id": "TradeInAllowanceTradeInDebtAndPositiveNetTradeIn",
+    "title": "Trade-in Allowance < Trade-in Debt and Positive Net Trade-in",
+    "shorthand": "TIATIDAPNTI",
+    "navigationLink": "TradeInAllowanceTradeInDebtAndPositiveNetTradeIn"
+  },
+  {
+    "pageNumber": 65,
+    "id": "TradeInAllowanceTradeInDebtAndNegativeNetTradeIn",
+    "title": "Trade-in Allowance > Trade-in Debt and Negative Net Trade-in",
+    "shorthand": "TIATIDANNTI",
+    "navigationLink": "TradeInAllowanceTradeInDebtAndNegativeNetTradeIn"
+  },
+  {
+    "pageNumber": 66,
+    "id": "PriorCreditOrLeaseBalanceOutstandingBalanceOnTradeInIsIncorrectOrShouldBe0",
+    "title": "Prior Credit or Lease Balance/Outstanding Balance on Trade In is incorrect or should be 0",
+    "shorthand": "PCOLBOBOTIIIOSB0",
+    "navigationLink": "PriorCreditOrLeaseBalanceOutstandingBalanceOnTradeInIsIncorrectOrShouldBe0"
+  },
+  {
+    "pageNumber": 67,
+    "id": "NegativeEquityDoesNotMatchBalanceDueOnTradeIn",
+    "title": "Negative Equity does not match Balance Due on Trade-In",
+    "shorthand": "NEDNBDOTI",
+    "navigationLink": "NegativeEquityDoesNotMatchBalanceDueOnTradeIn"
+  },
+  {
+    "pageNumber": 68,
+    "id": "NegativeEquityNotAllowed",
+    "title": "Negative Equity Not Allowed",
+    "shorthand": "NENA",
+    "navigationLink": "NegativeEquityNotAllowed"
+  },
+  {
+    "pageNumber": 69,
+    "id": "InvalidRefundableSecurityDeposit",
+    "title": "Invalid Refundable Security Deposit",
+    "shorthand": "IRSD",
+    "navigationLink": "InvalidRefundableSecurityDeposit"
+  },
+  {
+    "pageNumber": 70,
+    "id": "DepreciationAmountNotValid",
+    "title": "Depreciation Amount not valid",
+    "shorthand": "DANV",
+    "navigationLink": "DepreciationAmountNotValid"
+  },
   
   {
     "pageNumber": 71,
@@ -455,5 +504,111 @@
     "title": "Itemization Advance Monthly Payment (1st Month) does not equal Total Monthly Payment (Calc)",
     "shorthand": "IAMPDNETMP",
     "navigationLink": "ItemizationAdvanceMonthlyPaymentDoesNotEqualTotalMonthlyPayment"
+  },
+  {
+    "pageNumber": 77,
+    "id": "SalesTaxMustBeLessThanCashPrice",
+    "title": "Sales Tax must be less than Cash Price",
+    "shorthand": "STMBLTCP",
+    "navigationLink": "SalesTaxMustBeLessThanCashPrice"
+  },
+  {
+    "pageNumber": 78,
+    "id": "FLDocStampFeeIsNotWithinTolerance",
+    "title": "FL Doc Stamp Fee is not within tolerance",
+    "shorthand": "FDSFINWT",
+    "navigationLink": "FLDocStampFeeIsNotWithinTolerance"
+  },
+  {
+    "pageNumber": 79,
+    "id": "InvalidBalloonResidualValue",
+    "title": "Invalid Balloon Residual Value",
+    "shorthand": "IBRV",
+    "navigationLink": "InvalidBalloonResidualValue"
+  },
+  {
+    "pageNumber": 80,
+    "id": "UnderResidualVerifyAnnualMileage",
+    "title": "Under Residual - verify annual mileage",
+    "shorthand": "URVAM",
+    "navigationLink": "UnderResidualVerifyAnnualMileage"
+  },
+  {
+    "pageNumber": 91,
+    "id": "EstimatedFeesAndTaxesUnderstated",
+    "title": "Estimated Fees and Taxes Understated",
+    "shorthand": "EFATU",
+    "navigationLink": "EstimatedFeesAndTaxesUnderstated"
+  },
+  {
+    "pageNumber": 92,
+    "id": "BIFlexCashClaimAmountDoesNotMatchContractAmount",
+    "title": "BI Flex Cash Claim Amount does not match Contract Amount",
+    "shorthand": "BIFCCDNMCA",
+    "navigationLink": "BIFlexCashClaimAmountDoesNotMatchContractAmount"
+  },
+  {
+    "pageNumber": 93,
+    "id": "NoFlexCashClaimFoundInPerformanceCenter",
+    "title": "No Flex Cash Claim found in Performance Center",
+    "shorthand": "NFCCFIPC",
+    "navigationLink": "NoFlexCashClaimFoundInPerformanceCenter"
+  },
+  {
+    "pageNumber": 94,
+    "id": "PerformanceCenterReturningFlexCashClaimNotPresentOnContract",
+    "title": "Performance Center returning Flex Cash claim not present on Contract",
+    "shorthand": "PCRFCCNPOC",
+    "navigationLink": "PerformanceCenterReturningFlexCashClaimNotPresentOnContract"
+  },
+  {
+    "pageNumber": 95,
+    "id": "BILoyaltyFlexCashClaimAmountDoesNotMatchContractAmount",
+    "title": "BI Loyalty Flex Cash Claim Amount does not match Contract Amount",
+    "shorthand": "BILFCCADNMCA",
+    "navigationLink": "BILoyaltyFlexCashClaimAmountDoesNotMatchContractAmount"
+  },
+  {
+    "pageNumber": 96,
+    "id": "NoLoyaltyFlexCashClaimFoundInPerformanceCenter",
+    "title": "No Loyalty Flex Cash claim found in Performance Center",
+    "shorthand": "NLFCCFIPC",
+    "navigationLink": "NoLoyaltyFlexCashClaimFoundInPerformanceCenter"
+  },
+  {
+    "pageNumber": 97,
+    "id": "PerformanceCenterReturningLoyaltyClaimNotPresentOnContract",
+    "title": "Performance Center returning Loyalty claim not present on Contract",
+    "shorthand": "PCRLCNPOC",
+    "navigationLink": "PerformanceCenterReturningLoyaltyClaimNotPresentOnContract"
+  },
+  {
+    "pageNumber": 98,
+    "id": "ConquestFlexCashClaimAmountDoesNotMatchContractAmount",
+    "title": "Conquest Flex Cash Claim Amount does not match Contract Amount",
+    "shorthand": "CFCCADNMCA",
+    "navigationLink": "ConquestFlexCashClaimAmountDoesNotMatchContractAmount"
+  },
+  {
+    "pageNumber": 99,
+    "id": "NoConquestFlexCashClaimFoundInPerformanceCenter",
+    "title": "No Conquest Flex Cash Claim found in Performance Center",
+    "shorthand": "NCFCCFIPC",
+    "navigationLink": "NoConquestFlexCashClaimFoundInPerformanceCenter"
+  },
+  {
+    "pageNumber": 100,
+    "id": "PerformanceCenterReturningConquestFlexCashClaimNotPresentOnContract",
+    "title": "Performance Center returning Conquest Flex Cash Claim not present on Contract",
+    "shorthand": "PCRCFCCNPOC",
+    "navigationLink": "PerformanceCenterReturningConquestFlexCashClaimNotPresentOnContractr"
   }
+  
+  
+  
+  
+  
+  
+  
+  
 ]

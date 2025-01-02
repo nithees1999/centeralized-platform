@@ -84,8 +84,27 @@ import InvalidExcessiveWearAndUseAnnualMiles from './Components/ToleranceRules/I
 import OverstatedTotalSalePrice from './Components/ToleranceRules/OverstatedTotalSalePrice';
 import UnderstatedTotalOfPayments from './Components/ToleranceRules/UnderstatedTotalOfPayments';
 import OverstatedTotalOfPayments from './Components/ToleranceRules/OverstatedTotalOfPayments';
-
-      
+import TradeInAllowanceTradeInDebtAndPositiveNetTradeIn from './Components/ToleranceRules/TradeInAllowanceTradeInDebtAndPositiveNetTradeIn';
+import TradeInAllowanceTradeInDebtAndNegativeNetTradeIn from './Components/ToleranceRules/TradeInAllowanceTradeInDebtAndNegativeNetTradeIn';
+import PriorCreditOrLeaseBalanceOutstandingBalanceOnTradeInIsIncorrectOrShouldBe0 from './Components/ToleranceRules/PriorCreditOrLeaseBalanceOutstandingBalanceOnTradeInIsIncorrectOrShouldBe0';
+import NegativeEquityDoesNotMatchBalanceDueOnTradeIn from './Components/ToleranceRules/NegativeEquityDoesNotMatchBalanceDueOnTradeIn';
+import NegativeEquityNotAllowed from './Components/ToleranceRules/NegativeEquityNotAllowed';
+import InvalidRefundableSecurityDeposit from './Components/ToleranceRules/InvalidRefundableSecurityDeposit';
+import DepreciationAmountNotValid from './Components/ToleranceRules/DepreciationAmountNotValid';
+import SalesTaxMustBeLessThanCashPrice from './Components/ToleranceRules/SalesTaxMustBeLessThanCashPrice';
+import FLDocStampFeeIsNotWithinTolerance from './Components/ToleranceRules/FLDocStampFeeIsNotWithinTolerance';
+import InvalidBalloonResidualValue from './Components/ToleranceRules/InvalidBalloonResidualValue';
+import UnderResidualVerifyAnnualMileage from './Components/ToleranceRules/UnderResidualVerifyAnnualMileage';
+import EstimatedFeesAndTaxesUnderstated from './Components/ToleranceRules/EstimatedFeesAndTaxesUnderstated';
+import BIFlexCashClaimAmountDoesNotMatchContractAmount from './Components/ToleranceRules/BIFlexCashClaimAmountDoesNotMatchContractAmount';
+import NoFlexCashClaimFoundInPerformanceCenter from './Components/ToleranceRules/NoFlexCashClaimFoundInPerformanceCenter';
+import PerformanceCenterReturningFlexCashClaimNotPresentOnContract from './Components/ToleranceRules/PerformanceCenterReturningFlexCashClaimNotPresentOnContract';
+import BILoyaltyFlexCashClaimAmountDoesNotMatchContractAmount from './Components/ToleranceRules/BILoyaltyFlexCashClaimAmountDoesNotMatchContractAmount';
+import NoLoyaltyFlexCashClaimFoundInPerformanceCenter from './Components/ToleranceRules/NoLoyaltyFlexCashClaimFoundInPerformanceCenter';
+import PerformanceCenterReturningLoyaltyClaimNotPresentOnContract from './Components/ToleranceRules/PerformanceCenterReturningLoyaltyClaimNotPresentOnContract';
+import ConquestFlexCashClaimAmountDoesNotMatchContractAmount from './Components/ToleranceRules/ConquestFlexCashClaimAmountDoesNotMatchContractAmount';
+import NoConquestFlexCashClaimFoundInPerformanceCenter from './Components/ToleranceRules/NoConquestFlexCashClaimFoundInPerformanceCenter';
+import PerformanceCenterReturningConquestFlexCashClaimNotPresentOnContract from './Components/ToleranceRules/PerformanceCenterReturningConquestFlexCashClaimNotPresentOnContract';
 
 const router = createBrowserRouter([
   {
@@ -398,7 +417,98 @@ const router = createBrowserRouter([
       {
         path: "OverstatedTotalOfPayments",
         element: <OverstatedTotalOfPayments />,
+      },
+      {
+        path: "TradeInAllowanceTradeInDebtAndPositiveNetTradeIn",
+        element: <TradeInAllowanceTradeInDebtAndPositiveNetTradeIn />,
+      },
+      {
+        path: "TradeInAllowanceTradeInDebtAndNegativeNetTradeIn",
+        element: <TradeInAllowanceTradeInDebtAndNegativeNetTradeIn />,
+      },
+      {
+        path: "PriorCreditOrLeaseBalanceOutstandingBalanceOnTradeInIsIncorrectOrShouldBe0",
+        element: <PriorCreditOrLeaseBalanceOutstandingBalanceOnTradeInIsIncorrectOrShouldBe0 />,
+      },
+      {
+        path: "NegativeEquityDoesNotMatchBalanceDueOnTradeIn",
+        element: <NegativeEquityDoesNotMatchBalanceDueOnTradeIn />,
+      },
+      {
+        path: "NegativeEquityNotAllowed",
+        element: <NegativeEquityNotAllowed />,
+      },
+      {
+        path: "InvalidRefundableSecurityDeposit",
+        element: <InvalidRefundableSecurityDeposit />,
+      },
+      {
+        path: "DepreciationAmountNotValid",
+        element: <DepreciationAmountNotValid />,
+      },
+      {
+        path: "SalesTaxMustBeLessThanCashPrice",
+        element: <SalesTaxMustBeLessThanCashPrice />,
+      },
+      {
+        path: "FLDocStampFeeIsNotWithinTolerance",
+        element: <FLDocStampFeeIsNotWithinTolerance />,
+      },
+      {
+        path: "InvalidBalloonResidualValue",
+        element: <InvalidBalloonResidualValue />,
+      },
+      
+      {
+        path: "UnderResidualVerifyAnnualMileage",
+        element: <UnderResidualVerifyAnnualMileage />,
+      },
+      {
+        path: "EstimatedFeesAndTaxesUnderstated",
+        element: <EstimatedFeesAndTaxesUnderstated />,
+      },
+      {
+        path: "BIFlexCashClaimAmountDoesNotMatchContractAmount",
+        element: <BIFlexCashClaimAmountDoesNotMatchContractAmount />,
+      },
+      {
+        path: "NoFlexCashClaimFoundInPerformanceCenter",
+        element: <NoFlexCashClaimFoundInPerformanceCenter />,
+      },
+      {
+        path: "PerformanceCenterReturningFlexCashClaimNotPresentOnContract",
+        element: <PerformanceCenterReturningFlexCashClaimNotPresentOnContract />,
+      },
+      {
+        path: "BILoyaltyFlexCashClaimAmountDoesNotMatchContractAmount",
+        element: <BILoyaltyFlexCashClaimAmountDoesNotMatchContractAmount />,
+      },
+      {
+        path: "NoLoyaltyFlexCashClaimFoundInPerformanceCenter",
+        element: <NoLoyaltyFlexCashClaimFoundInPerformanceCenter />,
+      },
+      {
+        path: "PerformanceCenterReturningLoyaltyClaimNotPresentOnContract",
+        element: <PerformanceCenterReturningLoyaltyClaimNotPresentOnContract />,
+      },
+      {
+        path: "ConquestFlexCashClaimAmountDoesNotMatchContractAmount",
+        element: <ConquestFlexCashClaimAmountDoesNotMatchContractAmount />,
+      },
+      {
+        path: "NoConquestFlexCashClaimFoundInPerformanceCenter",
+        element: <NoConquestFlexCashClaimFoundInPerformanceCenter />,
+      },
+      {
+        path: "PerformanceCenterReturningConquestFlexCashClaimNotPresentOnContract",
+        element: <PerformanceCenterReturningConquestFlexCashClaimNotPresentOnContract />,
       }
+      
+      
+      
+      
+      
+      
       
     ],
   },

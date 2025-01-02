@@ -855,6 +855,239 @@ app.get('/api/OverstatedTotalOfPayments', async (req, res) => {
         res.status(500).json({ error: "Error fetching data" });
     }
 });
+// Fetch  TradeInAllowanceTradeInDebtAndPositiveNetTradeIn
+app.get('/api/TradeInAllowanceTradeInDebtAndPositiveNetTradeIn', async (req, res) => {
+    try {
+        const query = `SELECT * FROM TradeInAllowanceTradeInDebtAndPositiveNetTradeIn`; 
+        const result = await db.query(query); 
+        res.json(result.recordset); 
+    } catch (err) {
+        console.error("Error fetching TradeInAllowanceTradeInDebtAndPositiveNetTradeIn:", err);
+        res.status(500).json({ error: "Error fetching data" });
+    }
+});
+// Fetch  TradeInAllowanceTradeInDebtAndNegativeNetTradeIn
+app.get('/api/TradeInAllowanceTradeInDebtAndNegativeNetTradeIn', async (req, res) => {
+    try {
+        const query = `SELECT * FROM TradeInAllowanceTradeInDebtAndNegativeNetTradeIn`; 
+        const result = await db.query(query); 
+        res.json(result.recordset); 
+    } catch (err) {
+        console.error("Error fetching TradeInAllowanceTradeInDebtAndNegativeNetTradeIn:", err);
+        res.status(500).json({ error: "Error fetching data" });
+    }
+});
+// Fetch  TradeInAllowanceTradeInDebtAndNegativeNetTradeIn
+app.get('/api/PriorCreditOrLeaseBalanceOutstandingBalanceOnTradeInIsIncorrectOrShouldBe0', async (req, res) => {
+    try {
+        const query = `SELECT * FROM PriorCreditOrLeaseBalanceOutstandingBalanceOnTradeInIsIncorrectOrShouldBe0`; 
+        const result = await db.query(query); 
+        res.json(result.recordset); 
+    } catch (err) {
+        console.error("Error fetching PriorCreditOrLeaseBalanceOutstandingBalanceOnTradeInIsIncorrectOrShouldBe0:", err);
+        res.status(500).json({ error: "Error fetching data" });
+    }
+});
+
+// Fetch  NegativeEquityDoesNotMatchBalanceDueOnTradeIn
+app.get('/api/NegativeEquityDoesNotMatchBalanceDueOnTradeIn', async (req, res) => {
+    try {
+        const query = `SELECT * FROM NegativeEquityDoesNotMatchBalanceDueOnTradeIn`; 
+        const result = await db.query(query); 
+        res.json(result.recordset); 
+    } catch (err) {
+        console.error("Error fetching NegativeEquityDoesNotMatchBalanceDueOnTradeIn:", err);
+        res.status(500).json({ error: "Error fetching data" });
+    }
+});
+// Fetch  NegativeEquityNotAllowed
+app.get('/api/NegativeEquityNotAllowed', async (req, res) => {
+    try {
+        const query = `SELECT * FROM NegativeEquityNotAllowed`; 
+        const result = await db.query(query); 
+        res.json(result.recordset); 
+    } catch (err) {
+        console.error("Error fetching NegativeEquityNotAllowed:", err);
+        res.status(500).json({ error: "Error fetching data" });
+    }
+});
+// Fetch  InvalidRefundableSecurityDeposit
+app.get('/api/InvalidRefundableSecurityDeposit', async (req, res) => {
+    try {
+        const query = `SELECT * FROM InvalidRefundableSecurityDeposit`; 
+        const result = await db.query(query); 
+        res.json(result.recordset); 
+    } catch (err) {
+        console.error("Error fetching InvalidRefundableSecurityDeposit:", err);
+        res.status(500).json({ error: "Error fetching data" });
+    }
+});
+// Fetch  DepreciationAmountNotValid
+app.get('/api/DepreciationAmountNotValid', async (req, res) => {
+    try {
+        const query = `SELECT * FROM DepreciationAmountNotValid`; 
+        const result = await db.query(query); 
+        res.json(result.recordset); 
+    } catch (err) {
+        console.error("Error fetching DepreciationAmountNotValid:", err);
+        res.status(500).json({ error: "Error fetching data" });
+    }
+});
+// Fetch  SalesTaxMustBeLessThanCashPrice
+app.get('/api/SalesTaxMustBeLessThanCashPrice', async (req, res) => {
+    try {
+        const query = `SELECT * FROM SalesTaxMustBeLessThanCashPrice`; 
+        const result = await db.query(query); 
+        res.json(result.recordset); 
+    } catch (err) {
+        console.error("Error fetching SalesTaxMustBeLessThanCashPrice:", err);
+        res.status(500).json({ error: "Error fetching data" });
+    }
+});
+// Fetch  FLDocStampFeeIsNotWithinTolerance
+app.get('/api/FLDocStampFeeIsNotWithinTolerance', async (req, res) => {
+    try {
+        const query = `SELECT * FROM FLDocStampFeeIsNotWithinTolerance`; 
+        const result = await db.query(query); 
+        res.json(result.recordset); 
+    } catch (err) {
+        console.error("Error fetching FLDocStampFeeIsNotWithinTolerance:", err);
+        res.status(500).json({ error: "Error fetching data" });
+    }
+});
+// Fetch  InvalidBalloonResidualValue
+app.get('/api/InvalidBalloonResidualValue', async (req, res) => {
+    try {
+        const query = `SELECT * FROM InvalidBalloonResidualValue`; 
+        const result = await db.query(query); 
+        res.json(result.recordset); 
+    } catch (err) {
+        console.error("Error fetching InvalidBalloonResidualValue:", err);
+        res.status(500).json({ error: "Error fetching data" });
+    }
+});
+// Fetch  UnderResidualVerifyAnnualMileage
+app.get('/api/UnderResidualVerifyAnnualMileage', async (req, res) => {
+    try {
+        const query = `SELECT * FROM UnderResidualVerifyAnnualMileage`; 
+        const result = await db.query(query); 
+        res.json(result.recordset); 
+    } catch (err) {
+        console.error("Error fetching UnderResidualVerifyAnnualMileage:", err);
+        res.status(500).json({ error: "Error fetching data" });
+    }
+});
+// Fetch  EstimatedFeesAndTaxesUnderstated
+app.get('/api/EstimatedFeesAndTaxesUnderstated', async (req, res) => {
+    try {
+        const query = `SELECT * FROM EstimatedFeesAndTaxesUnderstated`; 
+        const result = await db.query(query); 
+        res.json(result.recordset); 
+    } catch (err) {
+        console.error("Error fetching EstimatedFeesAndTaxesUnderstated:", err);
+        res.status(500).json({ error: "Error fetching data" });
+    }
+});
+// Fetch  BIFlexCashClaimAmountDoesNotMatchContractAmount
+app.get('/api/BIFlexCashClaimAmountDoesNotMatchContractAmount', async (req, res) => {
+    try {
+        const query = `SELECT * FROM BIFlexCashClaimAmountDoesNotMatchContractAmount`; 
+        const result = await db.query(query); 
+        res.json(result.recordset); 
+    } catch (err) {
+        console.error("Error fetching BIFlexCashClaimAmountDoesNotMatchContractAmount:", err);
+        res.status(500).json({ error: "Error fetching data" });
+    }
+});
+// Fetch  NoFlexCashClaimFoundInPerformanceCenter
+app.get('/api/NoFlexCashClaimFoundInPerformanceCenter', async (req, res) => {
+    try {
+        const query = `SELECT * FROM NoFlexCashClaimFoundInPerformanceCenter`; 
+        const result = await db.query(query); 
+        res.json(result.recordset); 
+    } catch (err) {
+        console.error("Error fetching NoFlexCashClaimFoundInPerformanceCenter:", err);
+        res.status(500).json({ error: "Error fetching data" });
+    }
+});
+// Fetch  PerformanceCenterReturningFlexCashClaimNotPresentOnContract
+app.get('/api/PerformanceCenterReturningFlexCashClaimNotPresentOnContract', async (req, res) => {
+    try {
+        const query = `SELECT * FROM PerformanceCenterReturningFlexCashClaimNotPresentOnContract`; 
+        const result = await db.query(query); 
+        res.json(result.recordset); 
+    } catch (err) {
+        console.error("Error fetching PerformanceCenterReturningFlexCashClaimNotPresentOnContract:", err);
+        res.status(500).json({ error: "Error fetching data" });
+    }
+});
+// Fetch  BILoyaltyFlexCashClaimAmountDoesNotMatchContractAmount
+app.get('/api/BILoyaltyFlexCashClaimAmountDoesNotMatchContractAmount', async (req, res) => {
+    try {
+        const query = `SELECT * FROM BILoyaltyFlexCashClaimAmountDoesNotMatchContractAmount`; 
+        const result = await db.query(query); 
+        res.json(result.recordset); 
+    } catch (err) {
+        console.error("Error fetching BILoyaltyFlexCashClaimAmountDoesNotMatchContractAmount:", err);
+        res.status(500).json({ error: "Error fetching data" });
+    }
+});
+
+// Fetch  NoLoyaltyFlexCashClaimFoundInPerformanceCenter
+app.get('/api/NoLoyaltyFlexCashClaimFoundInPerformanceCenter', async (req, res) => {
+    try {
+        const query = `SELECT * FROM NoLoyaltyFlexCashClaimFoundInPerformanceCenter`; 
+        const result = await db.query(query); 
+        res.json(result.recordset); 
+    } catch (err) {
+        console.error("Error fetching NoLoyaltyFlexCashClaimFoundInPerformanceCenter:", err);
+        res.status(500).json({ error: "Error fetching data" });
+    }
+});
+// Fetch  PerformanceCenterReturningLoyaltyClaimNotPresentOnContract
+app.get('/api/PerformanceCenterReturningLoyaltyClaimNotPresentOnContract', async (req, res) => {
+    try {
+        const query = `SELECT * FROM PerformanceCenterReturningLoyaltyClaimNotPresentOnContract`; 
+        const result = await db.query(query); 
+        res.json(result.recordset); 
+    } catch (err) {
+        console.error("Error fetching PerformanceCenterReturningLoyaltyClaimNotPresentOnContract:", err);
+        res.status(500).json({ error: "Error fetching data" });
+    }
+});
+// Fetch  ConquestFlexCashClaimAmountDoesNotMatchContractAmount
+app.get('/api/ConquestFlexCashClaimAmountDoesNotMatchContractAmount', async (req, res) => {
+    try {
+        const query = `SELECT * FROM ConquestFlexCashClaimAmountDoesNotMatchContractAmount`; 
+        const result = await db.query(query); 
+        res.json(result.recordset); 
+    } catch (err) {
+        console.error("Error fetching ConquestFlexCashClaimAmountDoesNotMatchContractAmount:", err);
+        res.status(500).json({ error: "Error fetching data" });
+    }
+});
+// Fetch  NoConquestFlexCashClaimFoundInPerformanceCenter
+app.get('/api/NoConquestFlexCashClaimFoundInPerformanceCenter', async (req, res) => {
+    try {
+        const query = `SELECT * FROM NoConquestFlexCashClaimFoundInPerformanceCenter`; 
+        const result = await db.query(query); 
+        res.json(result.recordset); 
+    } catch (err) {
+        console.error("Error fetching NoConquestFlexCashClaimFoundInPerformanceCenter:", err);
+        res.status(500).json({ error: "Error fetching data" });
+    }
+});
+// Fetch  PerformanceCenterReturningConquestFlexCashClaimNotPresentOnContract
+app.get('/api/PerformanceCenterReturningConquestFlexCashClaimNotPresentOnContract', async (req, res) => {
+    try {
+        const query = `SELECT * FROM PerformanceCenterReturningConquestFlexCashClaimNotPresentOnContract`; 
+        const result = await db.query(query); 
+        res.json(result.recordset); 
+    } catch (err) {
+        console.error("Error fetching PerformanceCenterReturningConquestFlexCashClaimNotPresentOnContract:", err);
+        res.status(500).json({ error: "Error fetching data" });
+    }
+});
 
 
 // API endpoint to fetch table data by table name of tolerance Rules
